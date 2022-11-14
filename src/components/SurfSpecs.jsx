@@ -1,10 +1,10 @@
-import { Select } from '@mantine/core';
+import { Select, NumberInput, TextInput, Group } from '@mantine/core';
 
 export default function SurfSpecs({ form }) {
   return (
     <>
       <Select
-        label="Style"
+        label="Style:"
         allowDeselect
         placeholder="style"
         data={[
@@ -20,6 +20,145 @@ export default function SurfSpecs({ form }) {
         ]}
         {...form.getInputProps('style')}
        />
+
+        <Group>
+        <NumberInput
+          label='Length(ft):'
+          {...form.getInputProps('lengthFt')}
+        />
+        <NumberInput
+          label='Length(in):'
+          {...form.getInputProps('lengthIn')}
+        />
+        </Group>
+
+        <Group>
+          <NumberInput
+            label="Width(in):"
+            placeholder='inches'
+            {...form.getInputProps('width')}
+          />
+          <NumberInput
+            label="Thickness(in):"
+            placeholder='inches'
+            {...form.getInputProps('thickness')}
+          />
+          <NumberInput
+            label="Volume(lt):"
+            placeholder='lt'
+            {...form.getInputProps('volume')}
+          />
+        </Group>
+
+        <Group>
+          <Select
+          label="Tail:"
+          allowDeselect
+          placeholder="style"
+          data={[
+            { value: 'squash', label: 'squash' },
+            { value: 'round pin', label: 'round pin' },
+            { value: 'swallow', label: 'swallow' },
+            { value: 'thumb', label: 'thumb' },
+            { value: 'fish', label: 'fish' },
+          ]}
+          {...form.getInputProps('tail')}
+        />
+          <Select
+          label="Blank:"
+          allowDeselect
+          data={[
+            { value: 'PU', label: 'PU' },
+            { value: 'EPS', label: 'EPS' },
+            { value: 'Custom', label: 'Custom' },
+          ]}
+          {...form.getInputProps('blank')}
+        />
+          <Select
+          label="Construction:"
+          allowDeselect
+          data={[
+            { value: 'STD PU', label: 'STD PU' },
+            { value: 'Carbon Wrap PU', label: 'Carbon Wrap PU' },
+            { value: 'STD EPS', label: 'STD EPS' },
+            { value: 'Carbon Wrap EPS', label: 'Carbon Wrap EPS' },
+            { value: 'Custom', label: 'Custom' },
+            { value: '4+4/4', label: '4+4/4' },
+            { value: '4+4/6', label: '4+4/6' },
+            { value: '6+4/4', label: '6+4/4' },
+            { value: '6+4/6', label: '6+4/6' },
+          ]}
+          {...form.getInputProps('construction')}
+        />
+          <NumberInput
+          label="Stance:"
+          {...form.getInputProps('stance')}
+          min={11}
+          max={20}
+        />
+        </Group>
+        <Group>
+        <Select
+          label="Logo:"
+          allowDeselect
+          data={[
+            { value: 'black', label: 'black' },
+            { value: 'blue', label: 'blue' },
+            { value: 'red', label: 'red' },
+            { value: 'white', label: 'white' },
+            { value: 'any', label: 'any' },
+          ]}
+          {...form.getInputProps('logo')}
+        />
+        <Select
+          label="Inserts:"
+          allowDeselect
+          data={[
+            { value: 'single', label: 'single' },
+            { value: 'double', label: 'double' },
+            { value: 'single/double', label: 'single/double' },
+            { value: 'see notes', label: 'see notes' },
+            { value: 'none', label: 'none' },
+          ]}
+          {...form.getInputProps('inserts')}
+        />
+        <Select
+          label="Rear Strap From Tail:"
+          allowDeselect
+          data={[
+            { value: '6', label: '6' },
+            { value: '7', label: '7' },
+            { value: '7 1/2', label: '7 1/2' },
+            { value: '8', label: '8' },
+            { value: '8 1/2', label: '8 1/2' },
+            { value: '9', label: '9' },
+            { value: '9 1/2', label: '9 1/2' },
+            { value: 'see notes', label: 'see notes' },
+            { value: 'none', label: 'none' },
+          ]}
+          {...form.getInputProps('rearStrap')}
+        />
+        <Select
+          label="Strap Width:"
+          allowDeselect
+          defaultValue='none'
+          data={[
+            { value: '5', label: '5' },
+            { value: '5 1/4', label: '5 1/4' },
+            { value: '5 1/2', label: '5 1/2' },
+            { value: '5 3/4', label: '5 3/4' },
+            { value: '6', label: '6' },
+            { value: '6 1/4', label: '6 1/4' },
+            { value: '6 1/2', label: '6 1/2' },
+            { value: 'see notes', label: 'see notes' },
+            { value: 'none', label: 'none' },
+          ]}
+          {...form.getInputProps('strapWidth')}
+        />
+        </Group>
+        <Group>
+
+        </Group>
     </>
   )
 }

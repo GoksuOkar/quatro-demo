@@ -36,10 +36,12 @@ export default function NewOrder() {
       email: '',
       address: '',
       weight: null,
-      height: null,
+      heightFt: 0,
+      heightIn: 0,
       level: '',
       style: '',
-      length: 0,
+      lengthFt: 0,
+      lengthIn:0,
       width: 0,
       thickness: 0,
       volume: 0,
@@ -62,6 +64,11 @@ export default function NewOrder() {
       rearInsertsFromTail: '',
       handle: false,
     },
+
+    transformValues: (values) => ({
+      height: `${values.heightFt}ft ${values.heightIn}`,
+      length: `${values.lengthFt}ft ${values.lengthIn}`
+    }),
 
     validate: (values) => {
       if (active === 1) {
@@ -180,12 +187,18 @@ export default function NewOrder() {
               placeholder="weight in lb"
               {...form.getInputProps('weight')}
             />
-            <NumberInput
-              label="Height:"
-              hideControls
-              placeholder="Height in inches"
-              {...form.getInputProps('height')}
-            />
+            <Group>
+              <NumberInput
+                label="Ft:"
+                placeholder="ft"
+                {...form.getInputProps('heightFt')}
+              />
+              <NumberInput
+                label="Inch:"
+                placeholder="in"
+                {...form.getInputProps('heightIn')}
+              />
+            </Group>
             <Select
               label="Level"
               allowDeselect
