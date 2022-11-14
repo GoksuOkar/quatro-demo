@@ -5,7 +5,6 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import "./index.css";
 
 import Home from "./routes/home";
 import NewOrder from "./routes/NewOrder";
