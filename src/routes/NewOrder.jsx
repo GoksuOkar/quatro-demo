@@ -85,7 +85,7 @@ export default function NewOrder() {
   return (
     <Container>
       <h1>NEW ORDER FORM</h1>
-        <Stepper active={active} breapoint='sm'>
+        <Stepper active={active} breapoint='sm' onStepClick={setActive}>
           <Stepper.Step description='Intro'>
             <Radio.Group
               name='intro'
