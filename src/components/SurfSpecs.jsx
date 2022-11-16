@@ -156,8 +156,38 @@ export default function SurfSpecs({ form }) {
           {...form.getInputProps('strapWidth')}
         />
         </Group>
-        <Group>
 
+        <Group>
+        <Select
+          label="Leash:"
+          data={[
+            { value: 'black', label: 'Black' },
+            { value: 'white', label: 'White' },
+            { value: 'no leash', label: 'No Leash' },
+          ]}
+          {...form.getInputProps('leash')}
+        />
+        <Select
+          label="Pads:"
+          data={[
+            { value: 'yes', label: 'Yes' },
+            { value: 'no', label: 'No' },
+            { value: 'custom', label: 'Custom' },
+          ]}
+          {...form.getInputProps('pads')}
+        />
+        <Select
+          label="Wave/Location:"
+          data={[
+            { value: 'steep/hollow point break', label: 'Steep/Hollor Point Break'},
+            { value: 'punchy beach break', label: 'Punchy Beach Break'},
+            { value: 'ankle waist high mush', label: 'Ankle Waist High Mush'},
+            { value: 'xl-xxl', label: 'xl-xxl' },
+            { value: 'Peahi', label: 'Peahi' },
+            { value: 'Other', label: 'Other' },
+          ]}
+          {...form.getInputProps('waveLocation')}
+        />
         </Group>
     </>
   )

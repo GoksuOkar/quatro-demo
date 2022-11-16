@@ -21,7 +21,7 @@ import SurfSpecs from '../components/SurfSpecs.jsx';
 
 export default function NewOrder() {
   const [active, setActive] = useState(0);
-  const [boardType, setBoardType] = useState(null);
+  const [boardType, setBoardType] = useState('Surf');
 
   const form = useForm({
     initialValues: {
@@ -30,7 +30,7 @@ export default function NewOrder() {
       firstName: '',
       lastName: '',
       current: false,
-      orderType: '',
+      orderType: 'Surf',
       approvedBy: '',
       phone: '',
       email: '',
@@ -58,7 +58,7 @@ export default function NewOrder() {
       stance: '',
       leash: '',
       pads: '',
-      waves: '',
+      waveLocation: '',
       finFromTail: '',
       boxLocation: '',
       rearInsertsFromTail: '',
