@@ -1,9 +1,9 @@
-import { Select, NumberInput, TextInput, Group } from '@mantine/core';
+import { Select, NumberInput, TextInput, Space, Group, Grid, Stack, Checkbox, Radio, Container } from '@mantine/core';
 
 export default function FoilSpecs({ form }) {
   return (
     <>
-      <h3>WINDSURF</h3>
+      <h3>FOIL</h3>
       <Select
         label="Style:"
         allowDeselect
@@ -15,20 +15,17 @@ export default function FoilSpecs({ form }) {
           { value: 'SUP/Sweeper', label: 'SUP/Sweeper' },
         ]}
         {...form.getInputProps('style')}
-       />
+      />
 
         <Group>
-        <NumberInput
-          label='Length(ft):'
-          {...form.getInputProps('lengthFt')}
-        />
-        <NumberInput
-          label='Length(in):'
-          {...form.getInputProps('lengthIn')}
-        />
-        </Group>
-
-        <Group>
+          <NumberInput
+            label='Length(ft):'
+            {...form.getInputProps('lengthFt')}
+          />
+          <NumberInput
+            label='Length(in):'
+            {...form.getInputProps('lengthIn')}
+          />
           <NumberInput
             label="Width(in):"
             placeholder='inches'
@@ -45,7 +42,6 @@ export default function FoilSpecs({ form }) {
             {...form.getInputProps('volume')}
           />
         </Group>
-
         <Group>
           <Select
           label="Blank:"
@@ -72,6 +68,18 @@ export default function FoilSpecs({ form }) {
           min={11}
           max={20}
         />
+          <Select
+            label="Fin Setup:"
+            allowDeselect
+            data={[
+              { value: 'Thruster', label: 'Thruster' },
+              { value: 'Quad', label: 'Quad' },
+              { value: 'Twin', label: 'Twin' },
+              { value: 'Single', label: 'Single' },
+              { value: 'Five Fin', label: 'Five Fin' },
+            ]}
+            {...form.getInputProps('finSetup')}
+          />
         </Group>
 
         <Group>
@@ -98,18 +106,6 @@ export default function FoilSpecs({ form }) {
             ]}
             {...form.getInputProps('boardColor')}
           />
-         <Select
-            label="Fin Setup:"
-            allowDeselect
-            data={[
-              { value: 'Thruster', label: 'Thruster' },
-              { value: 'Quad', label: 'Quad' },
-              { value: 'Twin', label: 'Twin' },
-              { value: 'Single', label: 'Single' },
-              { value: 'Five Fin', label: 'Five Fin' },
-            ]}
-            {...form.getInputProps('finSetup')}
-          />
           <Select
             label="Box Type:"
             allowDeselect
@@ -120,14 +116,14 @@ export default function FoilSpecs({ form }) {
             ]}
             {...form.getInputProps('boxType')}
           />
-        </Group>
-
-        <Group>
           <TextInput
             label='Fin Box From Tail'
             placeholder='please type'
             {...form.getInputProps('finFromTail') }
           />
+        </Group>
+
+        <Group>
           <Select
             label="Inserts:"
             allowDeselect
@@ -173,39 +169,45 @@ export default function FoilSpecs({ form }) {
             ]}
             {...form.getInputProps('strapWidth')}
           />
+          <Select
+            label="Wave/Location:"
+            data={[
+              { value: 'Harbor Freeride', label: 'Harbor Freeride'},
+              { value: 'Offshore', label: 'Offshore'},
+              { value: 'Wave', label: 'Wave'},
+              { value: 'xl-xxl', label: 'xl-xxl' },
+              { value: 'Other', label: 'Other' },
+            ]}
+            {...form.getInputProps('waveLocation')}
+          />
         </Group>
-
-        <Group>
-        <Select
-          label="Leash:"
-          data={[
-            { value: 'Deck', label: 'Deck' },
-            { value: 'Bottom', label: 'Bottom' },
-            { value: null, label: 'No' },
-          ]}
-          {...form.getInputProps('leash')}
-        />
-        <Select
-          label="Pads:"
-          data={[
-            { value: 'yes', label: 'Yes' },
-            { value: 'no', label: 'No' },
-            { value: 'custom', label: 'Custom' },
-          ]}
-          {...form.getInputProps('pads')}
-        />
-        <Select
-          label="Wave/Location:"
-          data={[
-            { value: 'Harbor Freeride', label: 'Harbor Freeride'},
-            { value: 'Offshore', label: 'Offshore'},
-            { value: 'Wave', label: 'Wave'},
-            { value: 'xl-xxl', label: 'xl-xxl' },
-            { value: 'Other', label: 'Other' },
-          ]}
-          {...form.getInputProps('waveLocation')}
-        />
+        <Group align="center" spacing={80}>
+          <Radio.Group
+            name='Leash'
+            label='Leash:'
+            // orientation='vertical'
+            {...form.getInputProps('leash')}
+          >
+            <Radio size='sm' value='Deck' label='Deck'/>
+            <Radio size='sm' value='Bottom' label='Bottom'/>
+            <Radio size='sm' value='No' label='No'/>
+          </Radio.Group>
+          <Radio.Group
+            name='Pads'
+            label='Pads:'
+            {...form.getInputProps('pads')}
+          >
+            <Radio size='sm' value='Yes' label='Yes'/>
+            <Radio size='sm' value='No' label='No'/>
+            <Radio size='sm' value='Custom' label='Custom'/>
+          </Radio.Group>
         </Group>
+        <Space h="md"/>
+        <Checkbox
+          labelPosition="left"
+          label="Handle:"
+          {...form.getInputProps('handle', {type: 'Checkbox'})}
+        />
     </>
   )
 }

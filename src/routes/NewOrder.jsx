@@ -92,7 +92,7 @@ export default function NewOrder() {
       if (form.validate().hasErrors) {
         return current;
       }
-      return current < 3 ? current + 1 : current;
+      return current < 4 ? current + 1 : current;
     });
     setBoardType(form.values.orderType)
   };
