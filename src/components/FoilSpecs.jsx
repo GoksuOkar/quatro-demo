@@ -197,10 +197,10 @@ export default function FoilSpecs({ form }) {
         <Select
           label="Wave/Location:"
           data={[
-            { value: 'Hookipa', label: 'Hookipa'},
-            { value: 'Kanaha', label: 'Kanaha'},
-            { value: 'Side/On Shore', label: 'Side On Shore'},
-            { value: 'Freeride', label: 'Freeride' },
+            { value: 'Harbor Freeride', label: 'Harbor Freeride'},
+            { value: 'Offshore', label: 'Offshore'},
+            { value: 'Wave', label: 'Wave'},
+            { value: 'xl-xxl', label: 'xl-xxl' },
             { value: 'Other', label: 'Other' },
           ]}
           {...form.getInputProps('waveLocation')}
