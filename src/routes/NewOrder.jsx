@@ -10,14 +10,15 @@ import {
   Space,
   Divider,
   Stepper,
-  Select
+  Select,
+  Code
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Carousel } from '@mantine/carousel';
 import { useState } from 'react';
 import SurfSpecs from '../components/SurfSpecs.jsx';
 // import FoilSpecs from '../components/FoilSpecs.jsx';
-// import WindsurfSpecs from '../components/WindsurfSpecs.jsx';
+import WindsurfSpecs from '../components/WindsurfSpecs.jsx';
 
 export default function NewOrder() {
   const [active, setActive] = useState(0);
@@ -71,28 +72,47 @@ export default function NewOrder() {
     }),
 
     validate: (values) => {
-      if (active === 1) {
+      if (active === 0) {
         return {
-          email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+          firstName: values.firstName.trim().length < 2 ? 'Name must include at least 2 characters' : null,
         }
       }
-
+      if (active === 1) {
+        return {
+          email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
+        }
+      }
       return {};
     },
   });
 
+  // goes to next step in form, if it's validated
   const nextStep = () => {
-    setActive(active + 1)
+    setActive((current) => {
+      if (form.validate().hasErrors) {
+        return current;
+      }
+      return current < 3 ? current + 1 : current;
+    });
     setBoardType(form.values.orderType)
   };
 
+  // goes to previous step in form
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
+
+  // cannot navigate to next step, using stepper, if not validated
+  const changeToActive = (val) => setActive((current) => {
+    if (form.validate().hasErrors) {
+      return val < current ? val : current;
+    }
+    return val;
+  });
 
 
   return (
     <Container>
       <h1>NEW ORDER FORM</h1>
-        <Stepper active={active} breapoint='sm' onStepClick={setActive}>
+        <Stepper active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
           <Stepper.Step description='Intro'>
             <Radio.Group
               name='intro'
@@ -216,9 +236,15 @@ export default function NewOrder() {
           <Stepper.Step description="Board Specs">
             {boardType === "Surf" ? (
               <SurfSpecs form={form}/>
-            ) : boardType === "Windsurf" ? (<div>windsurf</div>) : (<div>foil</div>)}
+            ) : boardType === "Windsurf" ? (<WindsurfSpecs form={form}/>) : (<div>foil</div>)}
           </Stepper.Step>
 
+        <Stepper.Completed>
+          Completed! Form values:
+          <Code block mt="xl">
+            {JSON.stringify(form.values, null, 2)}
+          </Code>
+        </Stepper.Completed>
         </Stepper>
         <Group position="right" mt="xl">
           {active !== 0 && (
@@ -226,7 +252,8 @@ export default function NewOrder() {
               Back
             </Button>
           )}
-          {active !== 3 && <Button onClick={nextStep}>Next step</Button>}
+          {active < 3 && <Button onClick={nextStep}>Next step</Button>}
+          {active === 3 && <Button onClick={nextStep}>Finish Order</Button>}
         </Group>
     </Container>
   )
