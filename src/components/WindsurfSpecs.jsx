@@ -3,6 +3,7 @@ import { Select, NumberInput, TextInput, Group } from '@mantine/core';
 export default function WindsurfSpecs({ form }) {
   return (
     <>
+      <h3>WINDSURF</h3>
       <Select
         label="Style:"
         allowDeselect
@@ -71,7 +72,7 @@ export default function WindsurfSpecs({ form }) {
           label="Construction:"
           allowDeselect
           data={[
-            { value: 'Regulas', label: 'Regulas' },
+            { value: 'Regular', label: 'Regular' },
             { value: 'Ultra Lite', label: 'Ultra Lite' },
             { value: 'Pro', label: 'Pro' },
             { value: 'Custom', label: 'Custom' },
@@ -85,64 +86,106 @@ export default function WindsurfSpecs({ form }) {
           max={20}
         />
         </Group>
+
         <Group>
-        <Select
-          label="Logo:"
-          allowDeselect
-          data={[
-            { value: 'black', label: 'black' },
-            { value: 'blue', label: 'blue' },
-            { value: 'red', label: 'red' },
-            { value: 'white', label: 'white' },
-            { value: 'Production Team', label: 'Production Team' },
-          ]}
-          {...form.getInputProps('logo')}
-        />
-        <Select
-          label="Inserts:"
-          allowDeselect
-          data={[
-            { value: 'single', label: 'single' },
-            { value: 'double', label: 'double' },
-            { value: 'single/double', label: 'single/double' },
-            { value: 'see notes', label: 'see notes' },
-            { value: 'none', label: 'none' },
-          ]}
-          {...form.getInputProps('inserts')}
-        />
-        <Select
-          label="Rear Strap From Tail:"
-          allowDeselect
-          data={[
-            { value: '6', label: '6' },
-            { value: '7', label: '7' },
-            { value: '7 1/2', label: '7 1/2' },
-            { value: '8', label: '8' },
-            { value: '8 1/2', label: '8 1/2' },
-            { value: '9', label: '9' },
-            { value: '9 1/2', label: '9 1/2' },
-            { value: 'see notes', label: 'see notes' },
-            { value: 'none', label: 'none' },
-          ]}
-          {...form.getInputProps('rearStrap')}
-        />
-        <Select
-          label="Strap Width:"
-          allowDeselect
-          defaultValue='none'
-          data={[
-            { value: '5', label: '5' },
-            { value: '5 1/4', label: '5 1/4' },
-            { value: '5 1/2', label: '5 1/2' },
-            { value: '5 3/4', label: '5 3/4' },
-            { value: '6', label: '6' },
-            { value: '6 1/4', label: '6 1/4' },
-            { value: '6 1/2', label: '6 1/2' },
-            { value: 'see notes', label: 'see notes' },
-            { value: 'none', label: 'none' },
-          ]}
-          {...form.getInputProps('strapWidth')}
-        />
+          <Select
+            label="Logo:"
+            allowDeselect
+            data={[
+              { value: 'black', label: 'black' },
+              { value: 'blue', label: 'blue' },
+              { value: 'red', label: 'red' },
+              { value: 'white', label: 'white' },
+              { value: 'Production Team', label: 'Production Team' },
+            ]}
+            {...form.getInputProps('logo')}
+          />
+          <Select
+            label="Board Color:"
+            allowDeselect
+            data={[
+              { value: 'Base Color', label: 'Base Color' },
+              { value: 'Clear Carbon', label: 'Clear Carbon' },
+              { value: 'Tint', label: 'Tint' },
+              { value: 'Paint Custom', label: 'Paint Custom' },
+              { value: 'Prodution Team', label: 'Prodution Team' },
+            ]}
+            {...form.getInputProps('boardColor')}
+          />
+         <Select
+            label="Fin Setup:"
+            allowDeselect
+            data={[
+              { value: 'Thruster', label: 'Thruster' },
+              { value: 'Quad', label: 'Quad' },
+              { value: 'Twin', label: 'Twin' },
+              { value: 'Single', label: 'Single' },
+              { value: 'Five Fin', label: 'Five Fin' },
+            ]}
+            {...form.getInputProps('finSetup')}
+          />
+          <Select
+            label="Box Type:"
+            allowDeselect
+            data={[
+              { value: 'STD', label: 'STD' },
+              { value: 'US', label: 'US' },
+              { value: 'Power Box', label: 'Power Box' },
+              { value: 'Custom Mix', label: 'Custom Mix' },
+            ]}
+            {...form.getInputProps('boxType')}
+          />
+        </Group>
+
+        <Group>
+          <TextInput
+            label='Fin Box From Tail'
+            placeholder='please type'
+            {...form.getInputProps('finFromTail') }
+          />
+          <Select
+            label="Inserts:"
+            allowDeselect
+            data={[
+              { value: 'single', label: 'single' },
+              { value: 'double', label: 'double' },
+              { value: 'single/double', label: 'single/double' },
+              { value: 'see notes', label: 'see notes' },
+              { value: 'none', label: 'none' },
+            ]}
+            {...form.getInputProps('inserts')}
+          />
+          <Select
+            label="Rear Strap From Tail:"
+            allowDeselect
+            data={[
+              { value: '7', label: '7' },
+              { value: '7 1/2', label: '7 1/2' },
+              { value: '8', label: '8' },
+              { value: '8 1/2', label: '8 1/2' },
+              { value: '9', label: '9' },
+              { value: '9 1/2', label: '9 1/2' },
+              { value: 'see notes', label: 'see notes' },
+            ]}
+            {...form.getInputProps('rearStrap')}
+          />
+          <Select
+            label="Strap Width:"
+            allowDeselect
+            defaultValue='none'
+            data={[
+              { value: '5', label: '5' },
+              { value: '5 1/4', label: '5 1/4' },
+              { value: '5 1/2', label: '5 1/2' },
+              { value: '5 3/4', label: '5 3/4' },
+              { value: '6', label: '6' },
+              { value: '6 1/4', label: '6 1/4' },
+              { value: '6 1/2', label: '6 1/2' },
+              { value: 'see notes', label: 'see notes' },
+              { value: 'none', label: 'none' },
+            ]}
+            {...form.getInputProps('strapWidth')}
+          />
         </Group>
 
         <Group>
@@ -167,11 +210,10 @@ export default function WindsurfSpecs({ form }) {
         <Select
           label="Wave/Location:"
           data={[
-            { value: 'steep/hollow point break', label: 'Steep/Hollor Point Break'},
-            { value: 'punchy beach break', label: 'Punchy Beach Break'},
-            { value: 'ankle waist high mush', label: 'Ankle Waist High Mush'},
-            { value: 'xl-xxl', label: 'xl-xxl' },
-            { value: 'Peahi', label: 'Peahi' },
+            { value: 'Hookipa', label: 'Hookipa'},
+            { value: 'Kanaha', label: 'Kanaha'},
+            { value: 'Side/On Shore', label: 'Side On Shore'},
+            { value: 'Freeride', label: 'Freeride' },
             { value: 'Other', label: 'Other' },
           ]}
           {...form.getInputProps('waveLocation')}

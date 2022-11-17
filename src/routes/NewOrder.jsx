@@ -17,7 +17,7 @@ import { useForm } from '@mantine/form';
 import { Carousel } from '@mantine/carousel';
 import { useState } from 'react';
 import SurfSpecs from '../components/SurfSpecs.jsx';
-// import FoilSpecs from '../components/FoilSpecs.jsx';
+import FoilSpecs from '../components/FoilSpecs.jsx';
 import WindsurfSpecs from '../components/WindsurfSpecs.jsx';
 
 export default function NewOrder() {
@@ -101,12 +101,15 @@ export default function NewOrder() {
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
 
   // cannot navigate to next step, using stepper, if not validated
-  const changeToActive = (val) => setActive((current) => {
-    if (form.validate().hasErrors) {
-      return val < current ? val : current;
-    }
-    return val;
-  });
+  const changeToActive = (val) => {
+    setActive((current) => {
+      if (form.validate().hasErrors) {
+        return val < current ? val : current;
+      }
+      return val;
+    })
+    setBoardType(form.values.orderType);
+  };
 
 
   return (
@@ -236,7 +239,7 @@ export default function NewOrder() {
           <Stepper.Step description="Board Specs">
             {boardType === "Surf" ? (
               <SurfSpecs form={form}/>
-            ) : boardType === "Windsurf" ? (<WindsurfSpecs form={form}/>) : (<div>foil</div>)}
+            ) : boardType === "Windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
           </Stepper.Step>
 
         <Stepper.Completed>
