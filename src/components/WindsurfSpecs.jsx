@@ -190,15 +190,6 @@ export default function WindsurfSpecs({ form }) {
 
         <Group>
         <Select
-          label="Leash:"
-          data={[
-            { value: 'black', label: 'Black' },
-            { value: 'white', label: 'White' },
-            { value: 'no leash', label: 'No Leash' },
-          ]}
-          {...form.getInputProps('leash')}
-        />
-        <Select
           label="Pads:"
           data={[
             { value: 'yes', label: 'Yes' },

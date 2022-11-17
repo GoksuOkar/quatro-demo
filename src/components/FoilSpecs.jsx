@@ -9,9 +9,10 @@ export default function FoilSpecs({ form }) {
         allowDeselect
         placeholder="style"
         data={[
-          { value: 'Wave Symmetrical', label: 'Wave Symmetrical' },
-          { value: 'Wave Asymmetrical', label: 'Wave Asymmetrical' },
-          { value: 'Freeride', label: 'Freeride' },
+          { value: 'GINXU', label: 'GINXU' },
+          { value: 'STD Wing', label: 'STD Wing' },
+          { value: 'Down Wind', label: 'Down Wind' },
+          { value: 'SUP/Sweeper', label: 'SUP/Sweeper' },
         ]}
         {...form.getInputProps('style')}
        />
@@ -47,18 +48,6 @@ export default function FoilSpecs({ form }) {
 
         <Group>
           <Select
-          label="Tail:"
-          allowDeselect
-          placeholder="style"
-          data={[
-            { value: 'Squash', label: 'Squash' },
-            { value: 'Round Pin', label: 'Round Pin' },
-            { value: 'Swallow', label: 'Swallow' },
-            { value: 'Asymmetric', label: 'Asymmetric' },
-          ]}
-          {...form.getInputProps('tail')}
-        />
-          <Select
           label="Blank:"
           allowDeselect
           data={[
@@ -72,9 +61,7 @@ export default function FoilSpecs({ form }) {
           label="Construction:"
           allowDeselect
           data={[
-            { value: 'Regular', label: 'Regular' },
-            { value: 'Ultra Lite', label: 'Ultra Lite' },
-            { value: 'Pro', label: 'Pro' },
+            { value: 'STD Carbon EPS', label: 'STD Carbon EPS' },
             { value: 'Custom', label: 'Custom' },
           ]}
           {...form.getInputProps('construction')}
@@ -104,11 +91,10 @@ export default function FoilSpecs({ form }) {
             label="Board Color:"
             allowDeselect
             data={[
-              { value: 'Base Color', label: 'Base Color' },
-              { value: 'Clear Carbon', label: 'Clear Carbon' },
               { value: 'Tint', label: 'Tint' },
-              { value: 'Paint Custom', label: 'Paint Custom' },
-              { value: 'Prodution Team', label: 'Prodution Team' },
+              { value: 'Clear Carbon Const Lines', label: 'Clear Carbon Const Lines' },
+              { value: 'Paint', label: 'Paint' },
+              { value: 'Custom', label: 'Custom' },
             ]}
             {...form.getInputProps('boardColor')}
           />
@@ -128,10 +114,9 @@ export default function FoilSpecs({ form }) {
             label="Box Type:"
             allowDeselect
             data={[
-              { value: 'STD', label: 'STD' },
-              { value: 'US', label: 'US' },
-              { value: 'Power Box', label: 'Power Box' },
-              { value: 'Custom Mix', label: 'Custom Mix' },
+              { value: 'STD Foil Plate', label: 'STD Foil Plate' },
+              { value: 'Long Foil Plate', label: 'Long Foil Plate' },
+              { value: 'Tuttle', label: 'Tuttle' },
             ]}
             {...form.getInputProps('boxType')}
           />
@@ -156,9 +141,10 @@ export default function FoilSpecs({ form }) {
             {...form.getInputProps('inserts')}
           />
           <Select
-            label="Rear Strap From Tail:"
+            label="Rear Inserts From Tail:"
             allowDeselect
             data={[
+              { value: '6', label: '6' },
               { value: '7', label: '7' },
               { value: '7 1/2', label: '7 1/2' },
               { value: '8', label: '8' },
@@ -166,8 +152,9 @@ export default function FoilSpecs({ form }) {
               { value: '9', label: '9' },
               { value: '9 1/2', label: '9 1/2' },
               { value: 'see notes', label: 'see notes' },
+              { value: 'none', label: 'none' },
             ]}
-            {...form.getInputProps('rearStrap')}
+            {...form.getInputProps('rearInsertsFromTail')}
           />
           <Select
             label="Strap Width:"
@@ -182,7 +169,7 @@ export default function FoilSpecs({ form }) {
               { value: '6 1/4', label: '6 1/4' },
               { value: '6 1/2', label: '6 1/2' },
               { value: 'see notes', label: 'see notes' },
-              { value: 'none', label: 'none' },
+              { value: null, label: 'none' },
             ]}
             {...form.getInputProps('strapWidth')}
           />
@@ -192,9 +179,9 @@ export default function FoilSpecs({ form }) {
         <Select
           label="Leash:"
           data={[
-            { value: 'black', label: 'Black' },
-            { value: 'white', label: 'White' },
-            { value: 'no leash', label: 'No Leash' },
+            { value: 'Deck', label: 'Deck' },
+            { value: 'Bottom', label: 'Bottom' },
+            { value: null, label: 'No' },
           ]}
           {...form.getInputProps('leash')}
         />
