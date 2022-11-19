@@ -16,6 +16,7 @@ import {
 import { useForm } from '@mantine/form';
 import { Carousel } from '@mantine/carousel';
 import { useState } from 'react';
+// import { OrderPDF } from '../components/OrderPDF.jsx';
 import SurfSpecs from '../components/SurfSpecs.jsx';
 import FoilSpecs from '../components/FoilSpecs.jsx';
 import WindsurfSpecs from '../components/WindsurfSpecs.jsx';

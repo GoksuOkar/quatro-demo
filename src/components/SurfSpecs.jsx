@@ -54,7 +54,7 @@ export default function SurfSpecs({ form }) {
           <Select
           label="Tail:"
           allowDeselect
-          placeholder="style"
+          placeholder="pick tail style"
           data={[
             { value: 'squash', label: 'squash' },
             { value: 'round pin', label: 'round pin' },
@@ -66,7 +66,9 @@ export default function SurfSpecs({ form }) {
         />
           <Select
           label="Blank:"
+          placeholder="pick blank"
           allowDeselect
+          defaultValue="PU"
           data={[
             { value: 'PU', label: 'PU' },
             { value: 'EPS', label: 'EPS' },
@@ -76,6 +78,7 @@ export default function SurfSpecs({ form }) {
         />
           <Select
           label="Construction:"
+          placeholder="pick construction"
           allowDeselect
           data={[
             { value: 'STD PU', label: 'STD PU' },
