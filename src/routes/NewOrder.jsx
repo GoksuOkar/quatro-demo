@@ -1,3 +1,4 @@
+import PDF from './PDF.jsx';
 import {
   TextInput,
   NumberInput,
@@ -14,6 +15,7 @@ import {
   Code
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { jsPDF } from "jspdf";
 import { Carousel } from '@mantine/carousel';
 import { useState } from 'react';
 // import { OrderPDF } from '../components/OrderPDF.jsx';
@@ -245,9 +247,9 @@ export default function NewOrder() {
 
         <Stepper.Completed>
           Completed! Form values:
-          <Code block mt="xl">
-            {JSON.stringify(form.values, null, 2)}
-          </Code>
+          <div>
+            <PDF/>
+          </div>
         </Stepper.Completed>
         </Stepper>
         <Group position="right" mt="xl">
