@@ -54,7 +54,7 @@ export default function SurfSpecs({ form }) {
           <Select
           label="Tail:"
           allowDeselect
-          placeholder="pick tail style"
+          placeholder="pick one"
           data={[
             { value: 'squash', label: 'squash' },
             { value: 'round pin', label: 'round pin' },
@@ -66,7 +66,7 @@ export default function SurfSpecs({ form }) {
         />
           <Select
           label="Blank:"
-          placeholder="pick blank"
+          placeholder="pick one"
           allowDeselect
           defaultValue="PU"
           data={[
@@ -78,7 +78,7 @@ export default function SurfSpecs({ form }) {
         />
           <Select
           label="Construction:"
-          placeholder="pick construction"
+          placeholder="pick one"
           allowDeselect
           data={[
             { value: 'STD PU', label: 'STD PU' },
@@ -95,6 +95,7 @@ export default function SurfSpecs({ form }) {
         />
           <NumberInput
           label="Stance:"
+          placeholder={11}
           {...form.getInputProps('stance')}
           min={11}
           max={20}
@@ -103,6 +104,7 @@ export default function SurfSpecs({ form }) {
 
         <Group>
         <Select
+          placeholder='pick one'
           label="Logo:"
           allowDeselect
           data={[
@@ -116,6 +118,7 @@ export default function SurfSpecs({ form }) {
         />
         <Select
           label="Board Color:"
+          placeholder='pick one'
           allowDeselect
           data={[
             { value: 'Natural White', label: 'Natural White' },
@@ -127,6 +130,7 @@ export default function SurfSpecs({ form }) {
         />
         <Select
           label="Fin Setup:"
+          placeholder='pick one'
           allowDeselect
           data={[
             { value: 'Thruster', label: 'Thruster' },
@@ -139,6 +143,7 @@ export default function SurfSpecs({ form }) {
         />
         <Select
           label="Box Type:"
+          placeholder='pick one'
           allowDeselect
           data={[
             { value: 'FCS II', label: 'FCS II' },
@@ -150,6 +155,7 @@ export default function SurfSpecs({ form }) {
         />
         <Select
           label="Box Color:"
+          placeholder='pick one'
           allowDeselect
           data={[
             { value: 'black', label: 'black' },
@@ -166,6 +172,7 @@ export default function SurfSpecs({ form }) {
         <Group>
           <Select
             label="Inserts:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: 'single', label: 'single' },
@@ -178,6 +185,7 @@ export default function SurfSpecs({ form }) {
           />
           <Select
             label="Rear Strap From Tail:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: '6', label: '6' },
@@ -194,6 +202,7 @@ export default function SurfSpecs({ form }) {
           />
           <Select
             label="Strap Width:"
+            placeholder='pick one'
             allowDeselect
             defaultValue='none'
             data={[
@@ -214,6 +223,7 @@ export default function SurfSpecs({ form }) {
         <Group>
         <Select
           label="Leash:"
+          placeholder='pick one'
           data={[
             { value: 'black', label: 'Black' },
             { value: 'white', label: 'White' },
@@ -223,6 +233,7 @@ export default function SurfSpecs({ form }) {
         />
         <Select
           label="Pads:"
+          placeholder='pick one'
           data={[
             { value: 'yes', label: 'Yes' },
             { value: 'no', label: 'No' },
@@ -232,6 +243,7 @@ export default function SurfSpecs({ form }) {
         />
         <Select
           label="Wave/Location:"
+          placeholder='pick one'
           data={[
             { value: 'steep/hollow point break', label: 'Steep/Hollor Point Break'},
             { value: 'punchy beach break', label: 'Punchy Beach Break'},

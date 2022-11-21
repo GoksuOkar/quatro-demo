@@ -7,7 +7,7 @@ export default function WindsurfSpecs({ form }) {
       <Select
         label="Style:"
         allowDeselect
-        placeholder="style"
+        placeholder='pick one'
         data={[
           { value: 'Wave Symmetrical', label: 'Wave Symmetrical' },
           { value: 'Wave Asymmetrical', label: 'Wave Asymmetrical' },
@@ -49,7 +49,7 @@ export default function WindsurfSpecs({ form }) {
           <Select
           label="Tail:"
           allowDeselect
-          placeholder="style"
+          placeholder='pick one'
           data={[
             { value: 'Squash', label: 'Squash' },
             { value: 'Round Pin', label: 'Round Pin' },
@@ -60,6 +60,7 @@ export default function WindsurfSpecs({ form }) {
         />
           <Select
           label="Blank:"
+          placeholder='pick one'
           allowDeselect
           data={[
             { value: 'EPS/Sandwich', label: 'EPS/Sandwich' },
@@ -70,6 +71,7 @@ export default function WindsurfSpecs({ form }) {
         />
           <Select
           label="Construction:"
+          placeholder='pick one'
           allowDeselect
           data={[
             { value: 'Regular', label: 'Regular' },
@@ -90,6 +92,7 @@ export default function WindsurfSpecs({ form }) {
         <Group>
           <Select
             label="Logo:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: 'black', label: 'black' },
@@ -102,6 +105,7 @@ export default function WindsurfSpecs({ form }) {
           />
           <Select
             label="Board Color:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: 'Base Color', label: 'Base Color' },
@@ -114,6 +118,7 @@ export default function WindsurfSpecs({ form }) {
           />
          <Select
             label="Fin Setup:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: 'Thruster', label: 'Thruster' },
@@ -126,6 +131,7 @@ export default function WindsurfSpecs({ form }) {
           />
           <Select
             label="Box Type:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: 'STD', label: 'STD' },
@@ -140,11 +146,12 @@ export default function WindsurfSpecs({ form }) {
         <Group>
           <TextInput
             label='Fin Box From Tail'
-            placeholder='please type'
+            placeholder='type here'
             {...form.getInputProps('finFromTail') }
           />
           <Select
             label="Inserts:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: 'single', label: 'single' },
@@ -157,6 +164,7 @@ export default function WindsurfSpecs({ form }) {
           />
           <Select
             label="Rear Strap From Tail:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: '7', label: '7' },
@@ -172,7 +180,7 @@ export default function WindsurfSpecs({ form }) {
           <Select
             label="Strap Width:"
             allowDeselect
-            defaultValue='none'
+            placeholder='pick one'
             data={[
               { value: '5', label: '5' },
               { value: '5 1/4', label: '5 1/4' },
@@ -191,6 +199,7 @@ export default function WindsurfSpecs({ form }) {
         <Group>
         <Select
           label="Pads:"
+          placeholder='pick one'
           data={[
             { value: 'yes', label: 'Yes' },
             { value: 'no', label: 'No' },
@@ -200,6 +209,7 @@ export default function WindsurfSpecs({ form }) {
         />
         <Select
           label="Wave/Location:"
+          placeholder='pick one'
           data={[
             { value: 'Hookipa', label: 'Hookipa'},
             { value: 'Kanaha', label: 'Kanaha'},

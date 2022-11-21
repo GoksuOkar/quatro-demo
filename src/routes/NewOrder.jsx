@@ -30,7 +30,7 @@ export default function NewOrder() {
   const form = useForm({
     initialValues: {
       intro: 'walk in',
-      customerType: '',
+      customerType: 'retail',
       firstName: '',
       lastName: '',
       current: false,
@@ -80,11 +80,11 @@ export default function NewOrder() {
           firstName: values.firstName.trim().length < 2 ? 'Name must include at least 2 characters' : null,
         }
       }
-      if (active === 1) {
-        return {
-          email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
-        }
-      }
+      // if (active === 1) {
+      //   return {
+      //     email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
+      //   }
+      // }
       return {};
     },
   });
