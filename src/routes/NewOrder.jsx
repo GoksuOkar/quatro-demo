@@ -29,7 +29,7 @@ export default function NewOrder() {
 
   const form = useForm({
     initialValues: {
-      intro: '',
+      intro: 'walk in',
       customerType: '',
       firstName: '',
       lastName: '',
@@ -248,7 +248,7 @@ export default function NewOrder() {
         <Stepper.Completed>
           Completed! Form values:
           <div>
-            <PDF/>
+            <PDF form={ form }/>
           </div>
         </Stepper.Completed>
         </Stepper>
