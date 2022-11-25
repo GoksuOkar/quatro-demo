@@ -124,7 +124,7 @@ export default function FoilSpecs({ form }) {
           />
           <TextInput
             label='Fin Box From Tail'
-            placeholder='please type'
+            placeholder='type here'
             {...form.getInputProps('finFromTail') }
           />
         </Group>

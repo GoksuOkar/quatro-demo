@@ -1,4 +1,6 @@
-import PDF from './PDF.jsx';
+import PdfWS from '../components/PdfWS.jsx';
+import PdfSurf from '../components/PdfSurf.jsx';
+import PdfFoil from '../components/PdfFoil.jsx';
 import {
   TextInput,
   NumberInput,
@@ -56,6 +58,7 @@ export default function NewOrder() {
       finSetup: '',
       boxType: '',
       boxColor: '',
+      logo:'',
       inserts: '',
       rearStrap: '',
       strapWidth: 0,
@@ -246,10 +249,11 @@ export default function NewOrder() {
           </Stepper.Step>
 
         <Stepper.Completed>
-          Completed! Form values:
-          <div>
-            <PDF form={ form }/>
-          </div>
+          {boardType === "Surf" ? (
+              <PdfSurf form={form}/>
+            ) : boardType === "Windsurf" ?
+            (<PdfWS form={form}/>) : (<PdfFoil form={form}/>)
+          }
         </Stepper.Completed>
         </Stepper>
         <Group position="right" mt="xl">

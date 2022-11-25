@@ -1,0 +1,41 @@
+
+@media print {
+    .mantine-Stepper-steps, h1 { display: none;}
+    .mantine-Group-root { display: none;}
+}
+
+#container {
+  display: grid;
+  height: 297mm;
+  width: 210mm;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 2fr 2fr;
+}
+
+#intro1 {
+  grid-column: 1 / span 2;
+}
+
+#intro2{
+  grid-column: 3 / span 2;
+}
+
+#rider1 {
+  grid-column: 1 / span 2;
+}
+
+#rider2 {
+  grid-column: 3 / span 2;
+}
+
+#boardspecs1{
+  grid-column: 1;
+}
+
+#boardspecs2{
+  grid-column: 2;
+}
+
+#boardspecs3{
+  grid-column: 3;
+}
