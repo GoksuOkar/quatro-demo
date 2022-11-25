@@ -54,7 +54,7 @@ export default function PdfWS({ form }) {
         </div>
         <div id='rider2'>
           <p>{`Level: ${form.values.level}`}</p>
-          <p>{`Location: ${form.values}`}</p>
+          <p>{`Location: ${form.values.waveLocation}`}</p>
         </div>
         {/* BOARD SPECS */}
         <div id='boardSpecs1'>
@@ -83,6 +83,10 @@ export default function PdfWS({ form }) {
           <p>{`Volume: ${form.values.volume}`}</p>
           <p>{`Rear Inserts From Tail: ${form.values.rearInsertsFromTail}`}</p>
         </div>
+        <div id="notes">
+          Notes:
+        </div>
+        <img id="image" src='/surfBoard.jpeg'/>
       </div>
       <Button
         color="lime"

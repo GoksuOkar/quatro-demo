@@ -39,3 +39,12 @@
 #boardspecs3{
   grid-column: 3;
 }
+
+#notes {
+  grid-column: 1 / span 2;
+}
+
+#image {
+  grid-column: 3 / span 2;
+  height: 280px;
+}
