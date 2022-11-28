@@ -70,19 +70,6 @@ export default function FoilSpecs({ form }) {
           min={11}
           max={20}
         />
-          <Select
-            label="Fin Setup:"
-            placeholder='pick one'
-            allowDeselect
-            data={[
-              { value: 'Thruster', label: 'Thruster' },
-              { value: 'Quad', label: 'Quad' },
-              { value: 'Twin', label: 'Twin' },
-              { value: 'Single', label: 'Single' },
-              { value: 'Five Fin', label: 'Five Fin' },
-            ]}
-            {...form.getInputProps('finSetup')}
-          />
         </Group>
 
         <Group>
@@ -123,9 +110,9 @@ export default function FoilSpecs({ form }) {
             {...form.getInputProps('boxType')}
           />
           <TextInput
-            label='Fin Box From Tail'
-            placeholder='type here'
-            {...form.getInputProps('finFromTail') }
+            label='Box Location'
+            placeholder='type in inches'
+            {...form.getInputProps('boxLocation') }
           />
         </Group>
 

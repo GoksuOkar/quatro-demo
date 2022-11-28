@@ -48,7 +48,7 @@ export default function PdfFoil({ form }) {
           <p>{`Box: ${form.values.boxType}`}</p>
           <p>{`Inserts: ${form.values.inserts}`}</p>
           <p>{`Board Color: ${form.values.boardColor}`}</p>
-          <p>{`Fin Box From Tail: ${form.values.finFromTail}`}</p>
+          <p>{`Box Location: ${form.values.boxLocation}`}</p>
         </div>
 
         <div id='boardSpecs2'>
