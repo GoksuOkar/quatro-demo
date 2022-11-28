@@ -11,15 +11,12 @@ export default function PdfSurf({ form }) {
   const myref = useRef(null);
   const [orderNum, setOrderNum] = useState('');
 
+  let current = form.values.current === false ? 'No' : 'Yes';
+
   //posts the order into the database, gets back the orderNumber
   useEffect(()=>{}, []);
 
-  const handleGeneratePdf = () => {
-    window.print();
-  };
-
   return(
-    <div>
       <div
        className="printme"
        id="container"
@@ -34,7 +31,7 @@ export default function PdfSurf({ form }) {
           <p>{`Order Number: ${orderNum}`}</p>
           <p>{`Intro: ${form.values.intro}`}</p>
           <p>{`Order Type: ${form.values.orderType}`}</p>
-          <p>{`Current Customer: ${form.values.current}`}</p>
+          <p>{`Current Customer: ${current}`}</p>
         </div>
         {/* RIDER INFO */}
         <div id='rider1'>
@@ -77,14 +74,5 @@ export default function PdfSurf({ form }) {
         </div>
         <img id="image" src='/surfBoard.jpeg'/>
       </div>
-      <Button
-        color="lime"
-        radius="xs"
-        size="xs"
-        compact onClick={handleGeneratePdf}
-      >
-        generate pdf
-      </Button>
-    </div>
   )
 }

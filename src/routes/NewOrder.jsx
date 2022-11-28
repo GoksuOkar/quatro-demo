@@ -183,6 +183,10 @@ export default function NewOrder() {
     setBoardType(form.values.orderType);
   };
 
+  const handleGeneratePdf = () => {
+    window.print();
+  };
+
 
   return (
     <Container>
@@ -330,6 +334,7 @@ export default function NewOrder() {
           )}
           {active < 3 && <Button onClick={nextStep}>Next step</Button>}
           {active === 3 && <Button onClick={nextStep}>Finish Order</Button>}
+          {active > 3 && <Button onClick={handleGeneratePdf}>Generate Pdf</Button>}
         </Group>
     </Container>
   )
