@@ -14,13 +14,10 @@ export default function PdfFoil({ form }) {
   //posts the order into the database, gets back the orderNumber
   useEffect(()=>{}, []);
 
-  const handleGeneratePdf = () => {
-    window.print();
-  };
-
+  let handle = form.values.handle === false ? 'No' : 'Yes';
+  let current = form.values.current === false ? 'No' : 'Yes';
 
   return(
-    <div>
       <div
        className="printme"
        id="container"
@@ -35,7 +32,7 @@ export default function PdfFoil({ form }) {
           <p>{`Order Number: ${orderNum}`}</p>
           <p>{`Intro: ${form.values.intro}`}</p>
           <p>{`Order Type: ${form.values.orderType}`}</p>
-          <p>{`Current Customer: ${form.values.current}`}</p>
+          <p>{`Current Customer: ${current}`}</p>
         </div>
         {/* RIDER INFO */}
         <div id='rider1'>
@@ -60,7 +57,7 @@ export default function PdfFoil({ form }) {
           <p>{`Tail: ${form.values.tail}`}</p>
           <p>{`Width: ${form.values.width}`}</p>
           <p>{`Leash: ${form.values.leash}`}</p>
-          <p>{`Handle: ${form.values.handle}`}</p>
+          <p>{`Handle: ${handle}`}</p>
           <p>{`Stance: ${form.values.stance}`}</p>
           <p>{`Logos Color: ${form.values.logo}`}</p>
           <p>{`Pads: ${form.values.pads}`}</p>
@@ -79,14 +76,5 @@ export default function PdfFoil({ form }) {
         </div>
         <img id="image" src='/surfBoard.jpeg'/>
       </div>
-      <Button
-        color="lime"
-        radius="xs"
-        size="xs"
-        compact onClick={handleGeneratePdf}
-      >
-        generate pdf
-      </Button>
-    </div>
   )
 }

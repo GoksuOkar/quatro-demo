@@ -40,7 +40,7 @@ export default function NewOrder() {
       phone: '',
       email: '',
       address: '',
-      weight: null,
+      weight: 0,
       heightFt: 0,
       heightIn: 0,
       level: '',
@@ -61,7 +61,7 @@ export default function NewOrder() {
       inserts: '',
       rearStrap: '',
       strapWidth: 0,
-      stance: '',
+      stance: 0,
       leash: '',
       pads: '',
       waveLocation: '',
@@ -80,13 +80,80 @@ export default function NewOrder() {
       if (active === 0) {
         return {
           firstName: values.firstName.trim().length < 2 ? 'Name must include at least 2 characters' : null,
+          lastName: values.lastName.trim().length < 2 ? 'Name must include at least 2 characters' : null,
         }
       }
-      // if (active === 1) {
-      //   return {
-      //     email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
-      //   }
-      // }
+      if (active === 1) {
+        return {
+          //email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
+          phone: values.phone.trim().length < 8 ? 'Phone number must be entered' : null,
+        }
+      }
+      if(active === 2) {
+        return ({
+          weight: values.weight < 30 ? 'Enter valid weight' : null,
+          heightFt: values.heightFt <= 0 ? 'Enter valid height' : null,
+          heightIn: values.heightIn <= 0 ? 'Enter valid height' : null,
+          level: values.level === '' ? 'Level must be picked' : null,
+        })
+      }
+      if(active === 3) {
+
+        const commonValidationValues = {
+          width: values.width <= 0 ? 'Enter Valid Width' : null,
+          style: values.style === '' ? 'Style must be picked' : null,
+          lengthFt: values.lengthFt <= 0 ? 'Enter valid length' : null,
+          lengthIn: values.lengthIn <= 0 ? 'Enter valid length' : null,
+          thickness: values.thickness <= 0 ? 'Enter valid thickness' : null,
+          volume: values.volume <= 0 ? 'Enter valid volume' : null,
+          blank: values.blank === '' ? 'Blank must be picked' : null,
+          construction: values.construction === '' ? 'Construction must be picked' : null,
+          boardColor: values.boardColor === '' ? 'Board color must be picked' : null,
+          logo: values.logo === '' ? 'Logo color must be picked' : null,
+          inserts: values.inserts === '' ? 'Inserts must be picked' : null,
+          waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
+          pads: values.pads === '' ? 'Pick pads' : null,
+          stance: values.stance <= 0 ? 'Enter valid stance' : null,
+          boxType: values.boxType === '' ? 'Box type must be picked' : null,
+          strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null,
+        }
+
+        const surfValidationValues = {
+          tail: values.tail === '' ? 'Tail must be picked' : null,
+          finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
+          boxColor: values.boxColor === '' ? 'Box color must be picked' : null,
+          rearStrap: values.rearStrap === '' ? 'Rear Strap must be picked' : null,
+          leash: values.leash === '' ? 'Pick leash' : null,
+        }
+
+        const windsurfValidationValues = {
+          tail: values.tail === '' ? 'Tail must be picked' : null,
+          finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
+          rearStrap: values.rearStrap === '' ? 'Rear Strap must be picked' : null,
+          finFromTail: values.finFromTail === '' ? 'Must be entered' : null,
+        }
+
+        const foilValidationValues = {
+          leash: values.leash === '' ? 'Pick leash' : null,
+          boxLocation: values.boxLocation === '' ? 'Must be entered' : null,
+          rearInsertsFromTail: values.rearInsertsFromTail === '' ? 'Pick one' : null,
+        }
+
+
+        if (values.orderType === 'Surf') {
+          return ({
+            ...commonValidationValues, ...surfValidationValues
+          })
+        } else if (values.orderType === 'Windsurf') {
+          return({
+            ...commonValidationValues, ...windsurfValidationValues
+          })
+        } else {
+          return({
+            ...commonValidationValues, ...foilValidationValues
+          })
+        }
+      }
       return {};
     },
   });
@@ -114,6 +181,10 @@ export default function NewOrder() {
       return val;
     })
     setBoardType(form.values.orderType);
+  };
+
+  const handleGeneratePdf = () => {
+    window.print();
   };
 
 
@@ -263,6 +334,7 @@ export default function NewOrder() {
           )}
           {active < 3 && <Button onClick={nextStep}>Next step</Button>}
           {active === 3 && <Button onClick={nextStep}>Finish Order</Button>}
+          {active > 3 && <Button onClick={handleGeneratePdf}>Generate Pdf</Button>}
         </Group>
     </Container>
   )
