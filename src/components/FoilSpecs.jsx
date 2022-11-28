@@ -7,7 +7,7 @@ export default function FoilSpecs({ form }) {
       <Select
         label="Style:"
         allowDeselect
-        placeholder="style"
+        placeholder='pick one'
         data={[
           { value: 'GINXU', label: 'GINXU' },
           { value: 'STD Wing', label: 'STD Wing' },
@@ -45,6 +45,7 @@ export default function FoilSpecs({ form }) {
         <Group>
           <Select
           label="Blank:"
+          placeholder='pick one'
           allowDeselect
           data={[
             { value: 'EPS/Sandwich', label: 'EPS/Sandwich' },
@@ -55,6 +56,7 @@ export default function FoilSpecs({ form }) {
         />
           <Select
           label="Construction:"
+          placeholder='pick one'
           allowDeselect
           data={[
             { value: 'STD Carbon EPS', label: 'STD Carbon EPS' },
@@ -68,23 +70,12 @@ export default function FoilSpecs({ form }) {
           min={11}
           max={20}
         />
-          <Select
-            label="Fin Setup:"
-            allowDeselect
-            data={[
-              { value: 'Thruster', label: 'Thruster' },
-              { value: 'Quad', label: 'Quad' },
-              { value: 'Twin', label: 'Twin' },
-              { value: 'Single', label: 'Single' },
-              { value: 'Five Fin', label: 'Five Fin' },
-            ]}
-            {...form.getInputProps('finSetup')}
-          />
         </Group>
 
         <Group>
           <Select
             label="Logo:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: 'black', label: 'black' },
@@ -97,6 +88,7 @@ export default function FoilSpecs({ form }) {
           />
           <Select
             label="Board Color:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: 'Tint', label: 'Tint' },
@@ -108,6 +100,7 @@ export default function FoilSpecs({ form }) {
           />
           <Select
             label="Box Type:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: 'STD Foil Plate', label: 'STD Foil Plate' },
@@ -117,15 +110,16 @@ export default function FoilSpecs({ form }) {
             {...form.getInputProps('boxType')}
           />
           <TextInput
-            label='Fin Box From Tail'
-            placeholder='please type'
-            {...form.getInputProps('finFromTail') }
+            label='Box Location'
+            placeholder='type in inches'
+            {...form.getInputProps('boxLocation') }
           />
         </Group>
 
         <Group>
           <Select
             label="Inserts:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: 'single', label: 'single' },
@@ -138,6 +132,7 @@ export default function FoilSpecs({ form }) {
           />
           <Select
             label="Rear Inserts From Tail:"
+            placeholder='pick one'
             allowDeselect
             data={[
               { value: '6', label: '6' },
@@ -154,8 +149,8 @@ export default function FoilSpecs({ form }) {
           />
           <Select
             label="Strap Width:"
+            placeholder='pick one'
             allowDeselect
-            defaultValue='none'
             data={[
               { value: '5', label: '5' },
               { value: '5 1/4', label: '5 1/4' },
@@ -171,6 +166,7 @@ export default function FoilSpecs({ form }) {
           />
           <Select
             label="Wave/Location:"
+            placeholder='pick one'
             data={[
               { value: 'Harbor Freeride', label: 'Harbor Freeride'},
               { value: 'Offshore', label: 'Offshore'},

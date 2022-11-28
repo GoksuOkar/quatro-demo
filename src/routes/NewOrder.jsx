@@ -1,4 +1,6 @@
-import PDF from './PDF.jsx';
+import PdfWS from '../components/PdfWS.jsx';
+import PdfSurf from '../components/PdfSurf.jsx';
+import PdfFoil from '../components/PdfFoil.jsx';
 import {
   TextInput,
   NumberInput,
@@ -15,7 +17,6 @@ import {
   Code
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { jsPDF } from "jspdf";
 import { Carousel } from '@mantine/carousel';
 import { useState } from 'react';
 // import { OrderPDF } from '../components/OrderPDF.jsx';
@@ -29,8 +30,8 @@ export default function NewOrder() {
 
   const form = useForm({
     initialValues: {
-      intro: '',
-      customerType: '',
+      intro: 'walk in',
+      customerType: 'retail',
       firstName: '',
       lastName: '',
       current: false,
@@ -56,6 +57,7 @@ export default function NewOrder() {
       finSetup: '',
       boxType: '',
       boxColor: '',
+      logo:'',
       inserts: '',
       rearStrap: '',
       strapWidth: 0,
@@ -80,11 +82,11 @@ export default function NewOrder() {
           firstName: values.firstName.trim().length < 2 ? 'Name must include at least 2 characters' : null,
         }
       }
-      if (active === 1) {
-        return {
-          email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
-        }
-      }
+      // if (active === 1) {
+      //   return {
+      //     email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
+      //   }
+      // }
       return {};
     },
   });
@@ -246,10 +248,11 @@ export default function NewOrder() {
           </Stepper.Step>
 
         <Stepper.Completed>
-          Completed! Form values:
-          <div>
-            <PDF/>
-          </div>
+          {boardType === "Surf" ? (
+              <PdfSurf form={form}/>
+            ) : boardType === "Windsurf" ?
+            (<PdfWS form={form}/>) : (<PdfFoil form={form}/>)
+          }
         </Stepper.Completed>
         </Stepper>
         <Group position="right" mt="xl">
