@@ -5,6 +5,11 @@
     a { display: none;}
 }
 
+h1 {
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 5%;
+}
+
 #container {
   display: grid;
   height: 297mm;
