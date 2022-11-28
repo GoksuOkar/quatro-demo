@@ -2,6 +2,7 @@
 @media print {
     .mantine-Stepper-steps, h1 { display: none;}
     .mantine-Group-root { display: none;}
+    a { display: none;}
 }
 
 #container {
