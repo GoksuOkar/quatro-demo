@@ -1,5 +1,5 @@
 import { Button } from '@mantine/core';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import './output.css';
 
 //foil output
@@ -9,10 +9,15 @@ const date = now.toISOString().slice(0, 10)
 
 export default function PdfFoil({ form }) {
   const myref = useRef(null);
+  const [orderNum, setOrderNum] = useState('');
+
+  //posts the order into the database, gets back the orderNumber
+  useEffect(()=>{}, []);
 
   const handleGeneratePdf = () => {
     window.print();
   };
+
 
   return(
     <div>
@@ -27,6 +32,7 @@ export default function PdfFoil({ form }) {
           <p>{`Address: ${form.values.address}`}</p>
         </div>
         <div id="intro2">
+          <p>{`Order Number: ${orderNum}`}</p>
           <p>{`Intro: ${form.values.intro}`}</p>
           <p>{`Order Type: ${form.values.orderType}`}</p>
           <p>{`Current Customer: ${form.values.current}`}</p>
