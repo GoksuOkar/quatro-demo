@@ -1,5 +1,4 @@
 import { Button } from '@mantine/core';
-import { jsPDF } from "jspdf";
 import { useRef } from 'react';
 import './output.css';
 

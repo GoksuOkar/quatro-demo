@@ -17,7 +17,6 @@ import {
   Code
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { jsPDF } from "jspdf";
 import { Carousel } from '@mantine/carousel';
 import { useState } from 'react';
 // import { OrderPDF } from '../components/OrderPDF.jsx';
