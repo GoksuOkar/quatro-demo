@@ -1,6 +1,7 @@
 import PdfWS from '../components/PdfWS.jsx';
 import PdfSurf from '../components/PdfSurf.jsx';
 import PdfFoil from '../components/PdfFoil.jsx';
+import axios from 'axios';
 import {
   TextInput,
   NumberInput,
@@ -23,6 +24,8 @@ import { useState } from 'react';
 import SurfSpecs from '../components/SurfSpecs.jsx';
 import FoilSpecs from '../components/FoilSpecs.jsx';
 import WindsurfSpecs from '../components/WindsurfSpecs.jsx';
+
+const BASEURI = 'localhost:3000';
 
 export default function NewOrder() {
   const [active, setActive] = useState(0);
@@ -168,6 +171,26 @@ export default function NewOrder() {
     });
     setBoardType(form.values.orderType)
   };
+
+  //post values to database
+  const storeOrder = () => {
+    axios
+      .post(`${BASEURI}/new-order`, form.values)
+      .catch((err) => console.log(err));
+
+  }
+
+  // finishes order
+  const finishOrder = () => {
+    storeOrder();
+    setActive((current) => {
+      if (form.validate().hasErrors) {
+        return current;
+      }
+      return current < 4 ? current + 1 : current;
+    });
+    setBoardType(form.values.orderType);
+  }
 
   // goes to previous step in form
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
@@ -335,7 +358,7 @@ export default function NewOrder() {
               </Button>
             )}
             {active < 3 && <Button onClick={nextStep}>Next step</Button>}
-            {active === 3 && <Button onClick={nextStep}>Finish Order</Button>}
+            {active === 3 && <Button onClick={finishOrder}>Finish Order</Button>}
             {active > 3 && <Button onClick={handleGeneratePdf}>Generate Pdf</Button>}
           </Group>
       </Container>
