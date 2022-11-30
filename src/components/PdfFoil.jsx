@@ -15,7 +15,6 @@ export default function PdfFoil({ form }) {
   useEffect(()=>{}, []);
 
   let handle = form.values.handle === false ? 'No' : 'Yes';
-  let current = form.values.current === false ? 'No' : 'Yes';
 
   return(
       <div
@@ -32,7 +31,6 @@ export default function PdfFoil({ form }) {
           <p>{`Order Number: ${orderNum}`}</p>
           <p>{`Intro: ${form.values.intro}`}</p>
           <p>{`Order Type: ${form.values.orderType}`}</p>
-          <p>{`Current Customer: ${current}`}</p>
         </div>
         {/* RIDER INFO */}
         <div id='rider1'>

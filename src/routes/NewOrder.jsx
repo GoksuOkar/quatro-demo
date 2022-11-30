@@ -37,7 +37,6 @@ export default function NewOrder() {
       customerType: 'retail',
       firstName: '',
       lastName: '',
-      current: true,
       orderType: 'Surf',
       approvedBy: '',
       phone: '',
@@ -97,7 +96,7 @@ export default function NewOrder() {
         return ({
           weight: values.weight < 30 ? 'Enter valid weight' : null,
           heightFt: values.heightFt <= 0 ? 'Enter valid height' : null,
-          heightIn: values.heightIn <= 0 ? 'Enter valid height' : null,
+          heightIn: values.heightIn < 0 ? 'Enter valid height' : null,
           level: values.level === '' ? 'Level must be picked' : null,
         })
       }
@@ -123,7 +122,7 @@ export default function NewOrder() {
         const surfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
           lengthFt: values.lengthFt <= 0 ? 'Enter valid length' : null,
-          lengthIn: values.lengthIn <= 0 ? 'Enter valid length' : null,
+          lengthIn: values.lengthIn < 0 ? 'Enter valid length' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
           boxColor: values.boxColor === '' ? 'Box color must be picked' : null,
           rearStrap: values.rearStrap === '' ? 'Rear Strap must be picked' : null,
@@ -164,16 +163,6 @@ export default function NewOrder() {
 
   // goes to next step in form, if it's validated
   const nextStep = () => {
-    console.log(form.values.current);
-    if (active === 0 && form.values.current) {
-      axios.get('/new-order', {baseURL:'http://localhost:3000'})
-        .then((result) => console.log(result))
-        .catch(err => console.log(err));
-      //check if current customer is in database
-      // if not, alert
-      // if yes, prefill the contact information
-      // skip to board specs page.
-    }
     setActive((current) => {
       if (form.validate().hasErrors) {
         return current;
@@ -253,11 +242,6 @@ export default function NewOrder() {
                   {...form.getInputProps('lastName')}
                 />
               </Group>
-              <Space h="md"/>
-              <Checkbox
-                label="This is a new customer"
-                {...form.getInputProps('current', {type: 'Checkbox'})}
-              />
               <Radio.Group
                 name='order type'
                 defaultValue={['walk in']}

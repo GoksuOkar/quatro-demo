@@ -1,5 +1,6 @@
 import { Button } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
+import axios from 'axios';
 import './output.css';
 
 //windsurf output
@@ -11,10 +12,10 @@ export default function PdfWS({ form }) {
   const myref = useRef(null);
   const [orderNum, setOrderNum] = useState('');
 
-  let current = form.values.current === false ? 'No' : 'Yes';
-
   //posts the order into the database, gets back the orderNumber
-  useEffect(()=>{}, []);
+  useEffect(()=>{
+    axios.post()
+  }, []);
 
   return(
       <div
@@ -31,7 +32,6 @@ export default function PdfWS({ form }) {
           <p>{`Order Number: ${orderNum}`}</p>
           <p>{`Intro: ${form.values.intro}`}</p>
           <p>{`Order Type: ${form.values.orderType}`}</p>
-          <p>{`Current Customer: ${current}`}</p>
         </div>
         {/* RIDER INFO */}
         <div id='rider1'>

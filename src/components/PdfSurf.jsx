@@ -11,8 +11,6 @@ export default function PdfSurf({ form }) {
   const myref = useRef(null);
   const [orderNum, setOrderNum] = useState('');
 
-  let current = form.values.current === false ? 'No' : 'Yes';
-
   //posts the order into the database, gets back the orderNumber
   useEffect(()=>{}, []);
 
@@ -31,7 +29,6 @@ export default function PdfSurf({ form }) {
           <p>{`Order Number: ${orderNum}`}</p>
           <p>{`Intro: ${form.values.intro}`}</p>
           <p>{`Order Type: ${form.values.orderType}`}</p>
-          <p>{`Current Customer: ${current}`}</p>
         </div>
         {/* RIDER INFO */}
         <div id='rider1'>
