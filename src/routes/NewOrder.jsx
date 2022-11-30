@@ -2,6 +2,7 @@ import PdfWS from '../components/PdfWS.jsx';
 import PdfSurf from '../components/PdfSurf.jsx';
 import PdfFoil from '../components/PdfFoil.jsx';
 import axios from 'axios';
+import { useEffect } from 'react';
 import {
   TextInput,
   NumberInput,
@@ -27,9 +28,14 @@ import WindsurfSpecs from '../components/WindsurfSpecs.jsx';
 
 const BASEURI = 'localhost:3000';
 
-export default function NewOrder() {
+export default function NewOrder({ customer }) {
   const [active, setActive] = useState(0);
   const [boardType, setBoardType] = useState('Surf');
+
+  useEffect(() => {
+    form.setFieldValue('firstName', customer.firstName);
+    form.setFieldValue('lastName', customer.lastName);
+  }, [])
 
   const form = useForm({
     initialValues: {
@@ -86,7 +92,6 @@ export default function NewOrder() {
         }
       }
       if (active === 1) {
-
         return {
           email: (/^\S+@\S+$/.test(values.email) && values.phone.trim().length < 8 && values.address.trim().length < 8) ? 'must fill at least one field' : null,
           // phone: (values.phone.trim().length < 8 && /^\S+@\S+$/.test(values.email) && ) ? 'must fill at least one field' : null,
@@ -160,6 +165,9 @@ export default function NewOrder() {
       return {};
     },
   });
+
+  // form.setFieldValue('firstName', customer.firstName);
+  // form.setFieldValue('lastName', customer.lastName);
 
   // goes to next step in form, if it's validated
   const nextStep = () => {
