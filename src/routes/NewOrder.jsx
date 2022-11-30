@@ -37,7 +37,7 @@ export default function NewOrder() {
       customerType: 'retail',
       firstName: '',
       lastName: '',
-      current: false,
+      current: true,
       orderType: 'Surf',
       approvedBy: '',
       phone: '',
@@ -87,9 +87,10 @@ export default function NewOrder() {
         }
       }
       if (active === 1) {
+
         return {
-          //email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
-          phone: values.phone.trim().length < 8 ? 'Phone number must be entered' : null,
+          email: (/^\S+@\S+$/.test(values.email) && values.phone.trim().length < 8 && values.address.trim().length < 8) ? 'must fill at least one field' : null,
+          // phone: (values.phone.trim().length < 8 && /^\S+@\S+$/.test(values.email) && ) ? 'must fill at least one field' : null,
         }
       }
       if(active === 2) {
@@ -103,11 +104,9 @@ export default function NewOrder() {
       if(active === 3) {
 
         const commonValidationValues = {
-          width: values.width <= 0 ? 'Enter Valid Width' : null,
+          // width: values.width <= 0 ? 'Enter Valid Width' : null,
           style: values.style === '' ? 'Style must be picked' : null,
-          lengthFt: values.lengthFt <= 0 ? 'Enter valid length' : null,
-          lengthIn: values.lengthIn <= 0 ? 'Enter valid length' : null,
-          thickness: values.thickness <= 0 ? 'Enter valid thickness' : null,
+          // thickness: values.thickness <= 0 ? 'Enter valid thickness' : null,
           volume: values.volume <= 0 ? 'Enter valid volume' : null,
           blank: values.blank === '' ? 'Blank must be picked' : null,
           construction: values.construction === '' ? 'Construction must be picked' : null,
@@ -123,6 +122,8 @@ export default function NewOrder() {
 
         const surfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
+          lengthFt: values.lengthFt <= 0 ? 'Enter valid length' : null,
+          lengthIn: values.lengthIn <= 0 ? 'Enter valid length' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
           boxColor: values.boxColor === '' ? 'Box color must be picked' : null,
           rearStrap: values.rearStrap === '' ? 'Rear Strap must be picked' : null,
@@ -132,8 +133,8 @@ export default function NewOrder() {
         const windsurfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
-          rearStrap: values.rearStrap === '' ? 'Rear Strap must be picked' : null,
-          finFromTail: values.finFromTail === '' ? 'Must be entered' : null,
+          // rearStrap: values.rearStrap === '' ? 'Rear Strap must be picked' : null,
+          // finFromTail: values.finFromTail === '' ? 'Must be entered' : null,
         }
 
         const foilValidationValues = {
@@ -163,6 +164,12 @@ export default function NewOrder() {
 
   // goes to next step in form, if it's validated
   const nextStep = () => {
+    if (active === 0 && form.values.current) {
+      //check if current customer is in database
+      // if not, alert
+      // if yes, prefill the contact information
+      // skip to board specs page.
+    }
     setActive((current) => {
       if (form.validate().hasErrors) {
         return current;
