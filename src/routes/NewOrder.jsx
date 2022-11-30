@@ -164,7 +164,11 @@ export default function NewOrder() {
 
   // goes to next step in form, if it's validated
   const nextStep = () => {
+    console.log(form.values.current);
     if (active === 0 && form.values.current) {
+      axios.get('/new-order', {baseURL:'http://localhost:3000'})
+        .then((result) => console.log(result))
+        .catch(err => console.log(err));
       //check if current customer is in database
       // if not, alert
       // if yes, prefill the contact information
