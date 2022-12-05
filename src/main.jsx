@@ -7,16 +7,11 @@ import {
 } from "react-router-dom";
 
 import Home from "./routes/home";
-import NewOrder from "./routes/NewOrder";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-  },
-  {
-    path: "/new-order",
-    element: <NewOrder />
   }
 ]);
 
