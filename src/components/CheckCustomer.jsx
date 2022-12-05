@@ -30,11 +30,21 @@ export default function CheckCustomer({ setCustomer, setOpened, setCurrent }) {
 
   // handles submission, setting state for customer name
   const handleClick = (values) => {
+    const { firstName, lastName } = values;
     if (!form.validate().hasErrors) {
-      console.log(form.values);
-      setCustomer(values);
-      setOpened(false);
-      setCurrent(true);
+      axios.get(`/customers/${firstName}-${lastName}`, {baseURL:'http://localhost:3000'})
+        .then((result) => {
+          if (result) {
+            setCustomer(result.data);
+            setOpened(false);
+            setCurrent(true);
+          } else {
+            setCustomer(values);
+            setOpened(false);
+            setCurrent(false);
+          }
+        })
+        .catch((err) => console.log(err));
     }
   }
 
@@ -46,21 +56,21 @@ export default function CheckCustomer({ setCustomer, setOpened, setCurrent }) {
           (values) => handleClick(values)
           )}
       >
-        <TextInput
-          placeholder="type here"
-          label="First Name"
-          {...form.getInputProps('firstName')}
-        />
-        <TextInput
-          placeholder="type here"
-          label="Last Name"
-          {...form.getInputProps('lastName')}
-        />
-        <Center>
+        <Stack>
+          <TextInput
+            placeholder="type here"
+            label="First Name"
+            {...form.getInputProps('firstName')}
+          />
+          <TextInput
+            placeholder="type here"
+            label="Last Name"
+            {...form.getInputProps('lastName')}
+          />
           <Button type="submit">
             Submit
           </Button>
-        </Center>
+        </Stack>
       </form>
     </Stack>
   )

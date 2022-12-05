@@ -1,16 +1,16 @@
 import { Group, Center, Container, Stack, Button, TextInput, Modal } from '@mantine/core';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NewOrder from './NewOrder';
 import CheckCustomer from '../components/CheckCustomer';
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
   const [customer, setCustomer] = useState({});
-  const [current, setCurrent] = useState(false);
+  const [current, setCurrent] = useState(true);
 
   return (
     <Container>
-      {!current && (
+      {current && (
         <>
           <Center>
             <h1>Forward Maui</h1>
@@ -37,7 +37,7 @@ export default function Home() {
           </Stack>
         </>
       )}
-        {current && <NewOrder customer={customer}/>}
+        {!current && <NewOrder customer={customer}/>}
         {/* <Center>
           <a href={`new-order`}>
             <Button variant="outline" color="dark">New Customer</Button>
