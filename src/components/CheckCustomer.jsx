@@ -30,7 +30,7 @@ export default function CheckCustomer({ setCustomer, setOpened }) {
 
   // handles submission, setting state for customer name
   const handleClick = (values) => {
-    const { firstName, lastName } = values;
+    let { firstName, lastName } = values;
     if (!form.validate().hasErrors) {
       axios.get(`/customers/${firstName}-${lastName}`, {baseURL:'http://localhost:3000'})
         .then((result) => {

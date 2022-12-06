@@ -1,6 +1,6 @@
 import { Group, Center, Container, Stack, Button, TextInput, Modal } from '@mantine/core';
 import { useState, useEffect } from 'react';
-import NewOrder from '../components/NewOrder';
+import NewCustomerOrder from '../components/NewCustomerOrder';
 import CheckCustomer from '../components/CheckCustomer';
 
 export default function Home() {
@@ -36,7 +36,8 @@ export default function Home() {
           </Stack>
         </>
       )}
-        {customer.firstName !== undefined && <NewOrder customer={customer}/>}
+        {(customer._id === undefined && customer.firstName)&& <NewCustomerOrder
+       customer={customer} setCustomer={setCustomer}/>}
         {/* <Center>
           <a href={`new-order`}>
             <Button variant="outline" color="dark">New Customer</Button>

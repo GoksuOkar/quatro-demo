@@ -28,7 +28,7 @@ import WindsurfSpecs from '../components/WindsurfSpecs.jsx';
 
 const BASEURI = 'localhost:3000';
 
-export default function NewOrder({ customer }) {
+export default function NewCustomerOrder({ customer, setCustomer }) {
   const [active, setActive] = useState(0);
   const [boardType, setBoardType] = useState('Surf');
 
@@ -89,6 +89,7 @@ export default function NewOrder({ customer }) {
         return {
           firstName: values.firstName.trim().length < 2 ? 'Name must include at least 2 characters' : null,
           lastName: values.lastName.trim().length < 2 ? 'Name must include at least 2 characters' : null,
+          approvedBy: ((values.customerType === 'team' || values.customerType === 'gratis') && values.approvedBy === '') ? 'Must select approval for team and gratis riders': null,
         }
       }
       if (active === 1) {
@@ -180,10 +181,24 @@ export default function NewOrder({ customer }) {
     setBoardType(form.values.orderType)
   };
 
+  // save rider info to database
+    const toBoardSpecs = () => {
+      const { firstName, lastName, email, phone, address, weight, height, level } = form.values;
+      if (current === 1) {
+        axios.post('/customers', { firstName, lastName, email, phone, address, weight, height, level }).then((result) => setCustomer(result.data));
+      }
+      setActive((current) => {
+        if (form.validate().hasErrors) {
+          return current;
+        }
+        return current < 4 ? current + 1 : current;
+      });
+    }
+
   //post values to database
   const storeOrder = () => {
     axios
-      .post(`${BASEURI}/new-order`, form.values)
+      .post(`${BASEURI}/orders`, form.values)
       .catch((err) => console.log(err));
 
   }
@@ -197,7 +212,6 @@ export default function NewOrder({ customer }) {
       }
       return current < 4 ? current + 1 : current;
     });
-    setBoardType(form.values.orderType);
   }
 
   // goes to previous step in form
@@ -215,6 +229,7 @@ export default function NewOrder({ customer }) {
   };
 
   const handleGeneratePdf = () => {
+    // post the customer to database
     window.print();
   };
 
@@ -223,7 +238,7 @@ export default function NewOrder({ customer }) {
     <div>
       <a href={`/`}>Home</a>
       <Container>
-          <h1>New Order</h1>
+          <h1>New Customer Order</h1>
           <Stepper active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
             <Stepper.Step description='Intro'>
               <Radio.Group
@@ -362,7 +377,7 @@ export default function NewOrder({ customer }) {
             )}
             {active < 3 && <Button onClick={nextStep}>Next step</Button>}
             {active === 3 && <Button onClick={finishOrder}>Finish Order</Button>}
-            {active > 3 && <Button onClick={handleGeneratePdf}>Generate Pdf</Button>}
+            {active > 3 && <Button onClick={handleGeneratePdf}>Finish</Button>}
           </Group>
       </Container>
     </div>
