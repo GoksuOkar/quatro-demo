@@ -7,9 +7,8 @@ import './output.css';
 const now = new Date()
 const date = now.toISOString().slice(0, 10)
 
-export default function PdfSurf({ form }) {
+export default function PdfSurf({ form, orderNum }) {
   const myref = useRef(null);
-  const [orderNum, setOrderNum] = useState('');
 
   //posts the order into the database, gets back the orderNumber
   useEffect(()=>{}, []);
@@ -33,7 +32,7 @@ export default function PdfSurf({ form }) {
         {/* RIDER INFO */}
         <div id='rider1'>
           <p>{`Weight: ${form.values.weight}lbs`}</p>
-          <p>{`Height: ${form.values.heightFt}ft ${form.values.In}in`}</p>
+          <p>{`Height: ${form.values.heightFt}ft ${form.values.heightIn}in`}</p>
         </div>
         <div id='rider2'>
           <p>{`Level: ${form.values.level}`}</p>

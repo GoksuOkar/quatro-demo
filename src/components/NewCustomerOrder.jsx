@@ -2,7 +2,7 @@ import PdfWS from '../components/PdfWS.jsx';
 import PdfSurf from '../components/PdfSurf.jsx';
 import PdfFoil from '../components/PdfFoil.jsx';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   TextInput,
   NumberInput,
@@ -20,17 +20,20 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Carousel } from '@mantine/carousel';
-import { useState } from 'react';
 // import { OrderPDF } from '../components/OrderPDF.jsx';
 import SurfSpecs from '../components/SurfSpecs.jsx';
 import FoilSpecs from '../components/FoilSpecs.jsx';
 import WindsurfSpecs from '../components/WindsurfSpecs.jsx';
 
-const BASEURI = 'localhost:3000';
+const Axios = axios.create({
+  baseURL: 'http://localhost:3000',
+});
+
 
 export default function NewCustomerOrder({ customer, setCustomer }) {
   const [active, setActive] = useState(0);
   const [boardType, setBoardType] = useState('Surf');
+  const [orderNum, setOrderNum] = useState('');
 
   useEffect(() => {
     form.setFieldValue('firstName', customer.firstName);
@@ -183,10 +186,10 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
 
   // save rider info to database
     const toBoardSpecs = () => {
-      const { firstName, lastName, email, phone, address, weight, height, level } = form.values;
-      if (current === 1) {
-        axios.post('/customers', { firstName, lastName, email, phone, address, weight, height, level }).then((result) => setCustomer(result.data));
-      }
+      //const { firstName, lastName, email, phone, address, weight, height, level } = form.values;
+      // if (current === 1) {
+      //   axios.post('/customers', { firstName, lastName, email, phone, address, weight, height, level }).then((result) => setCustomer(result.data));
+      // }
       setActive((current) => {
         if (form.validate().hasErrors) {
           return current;
@@ -196,16 +199,23 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
     }
 
   //post values to database
-  const storeOrder = () => {
-    axios
-      .post(`${BASEURI}/orders`, form.values)
-      .catch((err) => console.log(err));
-
+  const storeNewCustomerOrder = () => {
+    Axios.post('/customers', form.values)
+    .then((result) => {
+      console.log(result);
+      let customerId = result.data._id;
+      Axios.post('/orders', { ...form.values, customerId })
+        .then((result) => setOrderNum(`FM00${result.data.orderId}`))
+    })
+    .catch(err => console.log(err));
   }
 
   // finishes order
   const finishOrder = () => {
-    storeOrder();
+    if (orderNum === '' || orderNum === undefined) {
+      storeNewCustomerOrder();
+    }
+    // else update order!
     setActive((current) => {
       if (form.validate().hasErrors) {
         return current;
@@ -229,7 +239,6 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
   };
 
   const handleGeneratePdf = () => {
-    // post the customer to database
     window.print();
   };
 
@@ -363,21 +372,21 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
 
           <Stepper.Completed>
             {boardType === "Surf" ? (
-                <PdfSurf form={form}/>
+                <PdfSurf form={form} orderNum={orderNum}/>
               ) : boardType === "Windsurf" ?
-              (<PdfWS form={form}/>) : (<PdfFoil form={form}/>)
+              (<PdfWS form={form} orderNum={orderNum}/>) : (<PdfFoil form={form} orderNum={orderNum}/>)
             }
           </Stepper.Completed>
           </Stepper>
           <Group position="right" mt="xl">
-            {active !== 0 && (
+            {(active !== 0 && active < 3) && (
               <Button variant="default" onClick={prevStep}>
                 Back
               </Button>
             )}
             {active < 3 && <Button onClick={nextStep}>Next step</Button>}
             {active === 3 && <Button onClick={finishOrder}>Finish Order</Button>}
-            {active > 3 && <Button onClick={handleGeneratePdf}>Finish</Button>}
+            {active > 3 && <Button onClick={handleGeneratePdf}>Save/Print</Button>}
           </Group>
       </Container>
     </div>

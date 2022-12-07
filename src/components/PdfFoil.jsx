@@ -7,9 +7,9 @@ import './output.css';
 const now = new Date()
 const date = now.toISOString().slice(0, 10)
 
-export default function PdfFoil({ form }) {
+export default function PdfFoil({ form, orderNum }) {
   const myref = useRef(null);
-  const [orderNum, setOrderNum] = useState('');
+
 
   //posts the order into the database, gets back the orderNumber
   useEffect(()=>{}, []);
@@ -22,7 +22,7 @@ export default function PdfFoil({ form }) {
        id="container"
       >
         <div id="intro1">
-          <p>{`Date: ${date}`}</p>
+          <p><b>Date:</b>{` ${date}`}</p>
           <p>{`Name: ${form.values.firstName} ${form.values.lastName}`}</p>
           <p>{`Phone: ${form.values.phone}`}</p>
           <p>{`Address: ${form.values.address}`}</p>
@@ -35,7 +35,7 @@ export default function PdfFoil({ form }) {
         {/* RIDER INFO */}
         <div id='rider1'>
           <p>{`Weight: ${form.values.weight}lbs`}</p>
-          <p>{`Height: ${form.values.heightFt}ft ${form.values.In}in`}</p>
+          <p>{`Height: ${form.values.heightFt}ft ${form.values.heightIn}in`}</p>
         </div>
         <div id='rider2'>
           <p>{`Level: ${form.values.level}`}</p>
