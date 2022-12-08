@@ -8,7 +8,7 @@ import './output.css';
 const now = new Date()
 const date = now.toISOString().slice(0, 10)
 
-export default function PdfWS({ form, orderNum }) {
+export default function PdfWS({ form, orderNum, customer }) {
   const myref = useRef(null);
 
   //posts the order into the database, gets back the orderNumber
@@ -23,9 +23,9 @@ export default function PdfWS({ form, orderNum }) {
       >
         <div id="intro1">
           <p><b>Date:</b>{` ${date}`}</p>
-          <p><b>Name:</b>{` ${form.values.firstName} ${form.values.lastName}`}</p>
-          <p><b>Phone:</b>{` ${form.values.phone}`}</p>
-          <p><b>Address:</b>{` ${form.values.address}`}</p>
+          <p><b>Name:</b>{` ${customer.firstName} ${customer.lastName}`}</p>
+          <p><b>Phone:</b>{` ${customer.phone}`}</p>
+          <p><b>Address:</b>{` ${customer.address}`}</p>
         </div>
         <div id="intro2">
           <p><b>Order Number:</b>{` ${orderNum}`}</p>
@@ -34,11 +34,11 @@ export default function PdfWS({ form, orderNum }) {
         </div>
         {/* RIDER INFO */}
         <div id='rider1'>
-          <p><b>Weight:</b>{` ${form.values.weight}lbs`}</p>
-          <p><b>Height:</b>{` ${form.values.heightFt}ft ${form.values.heightIn}in`}</p>
+          <p><b>Weight:</b>{` ${fcustomer.weight}lbs`}</p>
+          <p><b>Height:</b>{` ${fcustomer.height}`}</p>
         </div>
         <div id='rider2'>
-          <p><b>Level:</b>{` ${form.values.level}`}</p>
+          <p><b>Level:</b>{` ${customer.level}`}</p>
           <p><b>Location:</b>{` ${form.values.waveLocation}`}</p>
         </div>
         {/* BOARD SPECS */}

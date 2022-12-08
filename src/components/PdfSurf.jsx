@@ -7,7 +7,7 @@ import './output.css';
 const now = new Date()
 const date = now.toISOString().slice(0, 10)
 
-export default function PdfSurf({ form, orderNum }) {
+export default function PdfSurf({ form, orderNum, customer }) {
   const myref = useRef(null);
 
   //posts the order into the database, gets back the orderNumber
@@ -20,9 +20,9 @@ export default function PdfSurf({ form, orderNum }) {
       >
         <div id="intro1">
           <p>{`Date: ${date}`}</p>
-          <p>{`Name: ${form.values.firstName} ${form.values.lastName}`}</p>
-          <p>{`Phone: ${form.values.phone}`}</p>
-          <p>{`Address: ${form.values.address}`}</p>
+          <p>{`Name: ${customer.firstName} ${customer.lastName}`}</p>
+          <p>{`Phone: ${customer.phone}`}</p>
+          <p>{`Address: ${customer.address}`}</p>
         </div>
         <div id="intro2">
           <p>{`Order Number: ${orderNum}`}</p>
@@ -31,11 +31,11 @@ export default function PdfSurf({ form, orderNum }) {
         </div>
         {/* RIDER INFO */}
         <div id='rider1'>
-          <p>{`Weight: ${form.values.weight}lbs`}</p>
-          <p>{`Height: ${form.values.heightFt}ft ${form.values.heightIn}in`}</p>
+          <p>{`Weight: ${customer.weight}lbs`}</p>
+          <p>{`Height: ${customer.height}`}</p>
         </div>
         <div id='rider2'>
-          <p>{`Level: ${form.values.level}`}</p>
+          <p>{`Level: ${customer.level}`}</p>
           <p>{`Location: ${form.values.waveLocation}`}</p>
         </div>
         {/* BOARD SPECS */}

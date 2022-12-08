@@ -2,6 +2,7 @@ import { Group, Center, Container, Stack, Button, TextInput, Modal } from '@mant
 import { useState, useEffect } from 'react';
 import NewCustomerOrder from '../components/NewCustomerOrder';
 import CheckCustomer from '../components/CheckCustomer';
+import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
@@ -38,14 +39,7 @@ export default function Home() {
       )}
         {(customer._id === undefined && customer.firstName)&& <NewCustomerOrder
        customer={customer} setCustomer={setCustomer}/>}
-        {/* <Center>
-          <a href={`new-order`}>
-            <Button variant="outline" color="dark">New Customer</Button>
-          </a>
-        </Center>
-        <Center>
-          <Button variant="outline" color="dark">Current Customer</Button>
-        </Center> */}
+        {customer._id && <CurrentCustomerOrder customer={customer}/>}
     </Container>
   )
 }

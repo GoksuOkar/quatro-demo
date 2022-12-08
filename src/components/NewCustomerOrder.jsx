@@ -34,6 +34,7 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
   const [active, setActive] = useState(0);
   const [boardType, setBoardType] = useState('Surf');
   const [orderNum, setOrderNum] = useState('');
+  const [client, setClient] = useState({});
 
   useEffect(() => {
     form.setFieldValue('firstName', customer.firstName);
@@ -186,10 +187,6 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
 
   // save rider info to database
     const toBoardSpecs = () => {
-      //const { firstName, lastName, email, phone, address, weight, height, level } = form.values;
-      // if (current === 1) {
-      //   axios.post('/customers', { firstName, lastName, email, phone, address, weight, height, level }).then((result) => setCustomer(result.data));
-      // }
       setActive((current) => {
         if (form.validate().hasErrors) {
           return current;
@@ -203,7 +200,8 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
     Axios.post('/customers', form.values)
     .then((result) => {
       console.log(result);
-      let customerId = result.data._id;
+      setClient(result.data);
+      let customerId = client._id;
       Axios.post('/orders', { ...form.values, customerId })
         .then((result) => setOrderNum(`FM00${result.data.orderId}`))
     })
@@ -372,9 +370,9 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
 
           <Stepper.Completed>
             {boardType === "Surf" ? (
-                <PdfSurf form={form} orderNum={orderNum}/>
+                <PdfSurf form={form} orderNum={orderNum} customer={client}/>
               ) : boardType === "Windsurf" ?
-              (<PdfWS form={form} orderNum={orderNum}/>) : (<PdfFoil form={form} orderNum={orderNum}/>)
+              (<PdfWS form={form} orderNum={orderNum} customer={client}/>) : (<PdfFoil form={form} orderNum={orderNum} customer={client}/>)
             }
           </Stepper.Completed>
           </Stepper>
