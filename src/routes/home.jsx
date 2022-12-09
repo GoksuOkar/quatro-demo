@@ -10,6 +10,7 @@ export default function Home() {
   const [opened, setOpened] = useState(false);
   const [customer, setCustomer] = useState({});
   const [orders, setOrders] = useState([]);
+  const [newCustomer, setNewCustomer] = useState({});
 
   const navigate = useNavigate();
   const Axios = axios.create({baseURL: 'http://localhost:3000'});
@@ -36,7 +37,7 @@ export default function Home() {
                 opened={opened}
                 onClose={() => setOpened(false)}
               >
-                <CheckCustomer setCustomer={setCustomer} setOpened={setOpened}/>
+                <CheckCustomer setCustomer={setCustomer} setOpened={setOpened}  customer={customer}/>
             </Modal>
               <Button
                 variant="outline"
@@ -50,7 +51,7 @@ export default function Home() {
         </>
       )}
         {(customer._id === undefined && customer.firstName)&& <NewCustomerOrder
-       customer={customer} setCustomer={setCustomer}/>}
+       customer={customer} newCustomer={newCustomer} setNewCustomer={setNewCustomer}/>}
         {customer._id && <CurrentCustomerOrder customer={customer}/>}
     </Container>
   )

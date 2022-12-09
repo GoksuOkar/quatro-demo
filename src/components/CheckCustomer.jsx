@@ -7,7 +7,7 @@ const customer = {
   lastName: 'okar',
 }
 
-export default function CheckCustomer({ setCustomer, setOpened }) {
+export default function CheckCustomer({ setCustomer, setOpened, customer }) {
   const form = useForm({
     initialValues: {
       firstName: "",
@@ -34,11 +34,11 @@ export default function CheckCustomer({ setCustomer, setOpened }) {
     if (!form.validate().hasErrors) {
       axios.get(`/customers/${firstName}-${lastName}`, {baseURL:'http://localhost:3000'})
         .then((result) => {
-          console.log(result);
           if (result.data) {
             setCustomer(result.data);
             setOpened(false);
           } else {
+            console.log(result.data);
             setCustomer(values);
             setOpened(false);
           }

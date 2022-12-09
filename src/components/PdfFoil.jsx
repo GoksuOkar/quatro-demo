@@ -28,9 +28,9 @@ export default function PdfFoil({ form, orderNum, customer }) {
           <p><b>Address:</b>{` ${customer.address}`}</p>
         </div>
         <div id="intro2">
-          <p>{`Order Number: ${orderNum}`}</p>
+          <p><b>Order Number:</b>{` ${orderNum}`}</p>
           <p><b>Intro:</b>{` ${form.values.intro}`}</p>
-          <p>{`Order Type: ${form.values.orderType}`}</p>
+          <p><b>Order Type:</b>{` ${form.values.orderType}`}</p>
         </div>
         {/* RIDER INFO */}
         <div id='rider1'>
@@ -47,8 +47,8 @@ export default function PdfFoil({ form, orderNum, customer }) {
           <p><b>Length:</b>{` ${form.values.lengthFt}ft ${form.values.lengthIn}`}</p>
           <p><b>Box:</b>{` ${form.values.boxType}`}</p>
           <p><b>Inserts:</b>{` ${form.values.inserts}`}</p>
-          <p>{`Board Color: ${form.values.boardColor}`}</p>
-          <p>{`Box Location: ${form.values.boxLocation}`}</p>
+          <p><b></b>{`Board Color: ${form.values.boardColor}`}</p>
+          <p><b></b>{`Box Location: ${form.values.boxLocation}`}</p>
         </div>
 
         <div id='boardSpecs2'>

@@ -30,11 +30,10 @@ const Axios = axios.create({
 });
 
 
-export default function NewCustomerOrder({ customer, setCustomer }) {
+export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer }) {
   const [active, setActive] = useState(0);
   const [boardType, setBoardType] = useState('Surf');
   const [orderNum, setOrderNum] = useState('');
-  const [client, setClient] = useState({});
 
   useEffect(() => {
     form.setFieldValue('firstName', customer.firstName);
@@ -199,11 +198,13 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
   const storeNewCustomerOrder = () => {
     Axios.post('/customers', form.values)
     .then((result) => {
-      console.log(result);
-      setClient(result.data);
-      let customerId = client._id;
+      setNewCustomer(result.data);
+      let customerId = result.data._id;
       Axios.post('/orders', { ...form.values, customerId })
-        .then((result) => setOrderNum(`FM00${result.data.orderId}`))
+        .then((result) => {
+          console.log(result.data.orderId);
+          setOrderNum(`FM00${result.data.orderId}`)
+        })
     })
     .catch(err => console.log(err));
   }
@@ -341,6 +342,8 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
                   label="Ft:"
                   placeholder="ft"
                   {...form.getInputProps('heightFt')}
+                  min={0}
+                  max={12}
                 />
                 <NumberInput
                   label="Inch:"
@@ -370,9 +373,9 @@ export default function NewCustomerOrder({ customer, setCustomer }) {
 
           <Stepper.Completed>
             {boardType === "Surf" ? (
-                <PdfSurf form={form} orderNum={orderNum} customer={client}/>
+                <PdfSurf form={form} orderNum={orderNum} customer={newCustomer}/>
               ) : boardType === "Windsurf" ?
-              (<PdfWS form={form} orderNum={orderNum} customer={client}/>) : (<PdfFoil form={form} orderNum={orderNum} customer={client}/>)
+              (<PdfWS form={form} orderNum={orderNum} customer={newCustomer}/>) : (<PdfFoil form={form} orderNum={orderNum} customer={newCustomer}/>)
             }
           </Stepper.Completed>
           </Stepper>
