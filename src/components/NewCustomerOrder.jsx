@@ -97,7 +97,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       }
       if (active === 1) {
         return {
-          email: (/^\S+@\S+$/.test(values.email) && values.phone.trim().length < 8 && values.address.trim().length < 8) ? 'must fill at least one field' : null,
+          email: (/^\S+@\S+$/.test(values.email) || values.phone.trim().length > 8 || values.address.trim().length > 8) ? null : 'must fill at least one field',
           // phone: (values.phone.trim().length < 8 && /^\S+@\S+$/.test(values.email) && ) ? 'must fill at least one field' : null,
         }
       }
