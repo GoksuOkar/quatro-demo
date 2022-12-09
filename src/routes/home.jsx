@@ -1,12 +1,23 @@
 import { Group, Center, Container, Stack, Button, TextInput, Modal } from '@mantine/core';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import NewCustomerOrder from '../components/NewCustomerOrder';
 import CheckCustomer from '../components/CheckCustomer';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
   const [customer, setCustomer] = useState({});
+  const [orders, setOrders] = useState([]);
+
+  const navigate = useNavigate();
+  const Axios = axios.create({baseURL: 'http://localhost:3000'});
+
+  const handleCustomerOrdersView = (name) => {
+    //seperate to first name and last name
+    //Axios.get(`/orders/${firstName}-${lastName}`)
+  }
 
   return (
     <Container>
@@ -18,6 +29,7 @@ export default function Home() {
           <Stack>
             <Center>
               <TextInput placeholder="search"/>
+              <Button color="dark" type="submit">submit</Button>
             </Center>
             <Center>
               <Modal
