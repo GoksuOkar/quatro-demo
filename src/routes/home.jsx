@@ -4,15 +4,13 @@ import axios from 'axios';
 import NewCustomerOrder from '../components/NewCustomerOrder';
 import CheckCustomer from '../components/CheckCustomer';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
-import { Navigate } from "react-router-dom";
+
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
   const [customer, setCustomer] = useState({});
   const [orders, setOrders] = useState([]);
   const [newCustomer, setNewCustomer] = useState({});
-
-  const auth = {'token': true};
 
   const Axios = axios.create({baseURL: 'http://localhost:3000'});
 
@@ -22,40 +20,38 @@ export default function Home() {
   }
 
   return (
-    auth.token ? (
-      <Container>
-        {customer.firstName === undefined && (
-          <>
+    <Container>
+      {customer.firstName === undefined && (
+        <>
+          <Center>
+            <h1>Forward Maui</h1>
+          </Center>
+          <Stack>
             <Center>
-              <h1>Forward Maui</h1>
+              <TextInput placeholder="search"/>
+              <Button color="dark" type="submit">submit</Button>
             </Center>
-            <Stack>
-              <Center>
-                <TextInput placeholder="search"/>
-                <Button color="dark" type="submit">submit</Button>
-              </Center>
-              <Center>
-                <Modal
-                  opened={opened}
-                  onClose={() => setOpened(false)}
-                >
-                  <CheckCustomer setCustomer={setCustomer} setOpened={setOpened}  customer={customer}/>
-              </Modal>
-                <Button
-                  variant="outline"
-                  color="dark"
-                  onClick={() => setOpened(true)}
-                >
-                  New Order
-                </Button>
-              </Center>
-            </Stack>
-          </>
-        )}
-          {(customer._id === undefined && customer.firstName)&& <NewCustomerOrder
-        customer={customer} newCustomer={newCustomer} setNewCustomer={setNewCustomer}/>}
-          {customer._id && <CurrentCustomerOrder customer={customer}/>}
-      </Container>
-    ) : <Navigate to="/login"/>
+            <Center>
+              <Modal
+                opened={opened}
+                onClose={() => setOpened(false)}
+              >
+                <CheckCustomer setCustomer={setCustomer} setOpened={setOpened}  customer={customer}/>
+            </Modal>
+              <Button
+                variant="outline"
+                color="dark"
+                onClick={() => setOpened(true)}
+              >
+                New Order
+              </Button>
+            </Center>
+          </Stack>
+        </>
+      )}
+        {(customer._id === undefined && customer.firstName)&& <NewCustomerOrder
+      customer={customer} newCustomer={newCustomer} setNewCustomer={setNewCustomer}/>}
+        {customer._id && <CurrentCustomerOrder customer={customer}/>}
+    </Container>
   )
 }
