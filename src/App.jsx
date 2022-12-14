@@ -3,7 +3,7 @@ import {
  } from "react-router-dom";
 
  import PrivateRoute from "./utils/PrivateRoute";
- import Home from "./routes/Home";
+ import Home from "./routes/home";
  import Login from "./routes/Login";
 
  export default function App () {
