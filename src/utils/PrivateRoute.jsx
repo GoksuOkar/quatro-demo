@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import Home from "../routes/Home";
+import Home from "../routes/home";
 
 export default function PrivateRoute () {
   const auth = {'token': true};
