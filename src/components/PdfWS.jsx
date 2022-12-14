@@ -1,5 +1,6 @@
 import { Button } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
+import axios from 'axios';
 import './output.css';
 
 //windsurf output
@@ -7,14 +8,13 @@ import './output.css';
 const now = new Date()
 const date = now.toISOString().slice(0, 10)
 
-export default function PdfWS({ form }) {
+export default function PdfWS({ form, orderNum, customer }) {
   const myref = useRef(null);
-  const [orderNum, setOrderNum] = useState('');
-
-  let current = form.values.current === false ? 'No' : 'Yes';
 
   //posts the order into the database, gets back the orderNumber
-  useEffect(()=>{}, []);
+  useEffect(()=>{
+    axios.post()
+  }, []);
 
   return(
       <div
@@ -22,55 +22,54 @@ export default function PdfWS({ form }) {
        id="container"
       >
         <div id="intro1">
-          <p>{`Date: ${date}`}</p>
-          <p>{`Name: ${form.values.firstName} ${form.values.lastName}`}</p>
-          <p>{`Phone: ${form.values.phone}`}</p>
-          <p>{`Address: ${form.values.address}`}</p>
+          <p><b>Date:</b>{` ${date}`}</p>
+          <p><b>Name:</b>{` ${customer.firstName} ${customer.lastName}`}</p>
+          <p><b>Phone:</b>{` ${customer.phone}`}</p>
+          <p><b>Address:</b>{` ${customer.address}`}</p>
         </div>
         <div id="intro2">
-          <p>{`Order Number: ${orderNum}`}</p>
-          <p>{`Intro: ${form.values.intro}`}</p>
-          <p>{`Order Type: ${form.values.orderType}`}</p>
-          <p>{`Current Customer: ${current}`}</p>
+          <p><b>Order Number:</b>{` ${orderNum}`}</p>
+          <p><b>Intro:</b>{` ${form.values.intro}`}</p>
+          <p><b>Order Type:</b>{` ${form.values.orderType}`}</p>
         </div>
         {/* RIDER INFO */}
         <div id='rider1'>
-          <p>{`Weight: ${form.values.weight}lbs`}</p>
-          <p>{`Height: ${form.values.heightFt}ft ${form.values.In}in`}</p>
+          <p><b>Weight:</b>{` ${fcustomer.weight}lbs`}</p>
+          <p><b>Height:</b>{` ${fcustomer.height}`}</p>
         </div>
         <div id='rider2'>
-          <p>{`Level: ${form.values.level}`}</p>
-          <p>{`Location: ${form.values.waveLocation}`}</p>
+          <p><b>Level:</b>{` ${customer.level}`}</p>
+          <p><b>Location:</b>{` ${form.values.waveLocation}`}</p>
         </div>
         {/* BOARD SPECS */}
         <div id='boardSpecs1'>
-          <p>{`Style: ${form.values.style}`}</p>
-          <p>{`Length: ${form.values.lengthFt}ft ${form.values.lengthIn}`}</p>
-          <p>{`Box: ${form.values.boxType}`}</p>
-          <p>{`Inserts: ${form.values.inserts}`}</p>
-          <p>{`Board Color: ${form.values.boardColor}`}</p>
-          <p>{`Fin Box From Tail: ${form.values.finFromTail}`}</p>
+          <p><b>Style:</b>{` ${form.values.style}`}</p>
+          <p><b>Length:</b>{` ${form.values.lengthFt}ft ${form.values.lengthIn}`}</p>
+          <p><b>Box:</b>{` ${form.values.boxType}`}</p>
+          <p><b>Inserts:</b>{` ${form.values.inserts}`}</p>
+          <p><b>Board Color:</b>{` ${form.values.boardColor}`}</p>
+          <p><b>Fin Box From Tail:</b>{` ${form.values.finFromTail}`}</p>
         </div>
 
         <div id='boardSpecs2'>
-          <p>{`Tail: ${form.values.tail}`}</p>
-          <p>{`Width: ${form.values.width}`}</p>
-          <p>{`Fin Setup: ${form.values.finSetup}`}</p>
-          <p>{`Stance: ${form.values.stance}`}</p>
-          <p>{`Logos Color: ${form.values.logo}`}</p>
-          <p>{`Pads: ${form.values.pads}`}</p>
+          <p><b>Tail:</b>{` ${form.values.tail}`}</p>
+          <p><b>Width:</b>{` ${form.values.width}`}</p>
+          <p><b>Fin Setup:</b>{` ${form.values.finSetup}`}</p>
+          <p><b>Stance:</b>{` ${form.values.stance}`}</p>
+          <p><b>Logos Color:</b>{` ${form.values.logo}`}</p>
+          <p><b>Pads:</b>{` ${form.values.pads}`}</p>
         </div>
 
         <div id='boardSpecs3'>
-          <p>{`Blank: ${form.values.blank}`}</p>
-          <p>{`Thickness: ${form.values.thickness}`}</p>
-          <p>{`Straps Width: ${form.values.strapWidth}`}</p>
-          <p>{`Construction: ${form.values.construction}`}</p>
-          <p>{`Volume: ${form.values.volume}`}</p>
-          <p>{`Rear Inserts From Tail: ${form.values.rearInsertsFromTail}`}</p>
+          <p><b>Blank:</b>{` ${form.values.blank}`}</p>
+          <p><b>Thickness:</b>{` ${form.values.thickness}`}</p>
+          <p><b>Straps Width:</b>{` ${form.values.strapWidth}`}</p>
+          <p><b>Construction:</b>{` ${form.values.construction}`}</p>
+          <p><b>Volume:</b>{` ${form.values.volume}`}</p>
+          <p><b>Rear Inserts From Tail:</b>{` ${form.values.rearInsertsFromTail}`}</p>
         </div>
         <div id="notes">
-          Notes:
+          <b>Notes:</b>
         </div>
         <img id="image" src='/surfBoard.jpeg'/>
       </div>
