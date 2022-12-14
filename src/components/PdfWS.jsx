@@ -34,8 +34,8 @@ export default function PdfWS({ form, orderNum, customer }) {
         </div>
         {/* RIDER INFO */}
         <div id='rider1'>
-          <p><b>Weight:</b>{` ${fcustomer.weight}lbs`}</p>
-          <p><b>Height:</b>{` ${fcustomer.height}`}</p>
+          <p><b>Weight:</b>{` ${customer.weight}lbs`}</p>
+          <p><b>Height:</b>{` ${customer.height}`}</p>
         </div>
         <div id='rider2'>
           <p><b>Level:</b>{` ${customer.level}`}</p>

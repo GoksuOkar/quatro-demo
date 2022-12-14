@@ -4,7 +4,7 @@ import axios from 'axios';
 import NewCustomerOrder from '../components/NewCustomerOrder';
 import CheckCustomer from '../components/CheckCustomer';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
-import { useNavigate } from "react-router-dom";
+
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
@@ -12,7 +12,6 @@ export default function Home() {
   const [orders, setOrders] = useState([]);
   const [newCustomer, setNewCustomer] = useState({});
 
-  const navigate = useNavigate();
   const Axios = axios.create({baseURL: 'http://localhost:3000'});
 
   const handleCustomerOrdersView = (name) => {
@@ -51,7 +50,7 @@ export default function Home() {
         </>
       )}
         {(customer._id === undefined && customer.firstName)&& <NewCustomerOrder
-       customer={customer} newCustomer={newCustomer} setNewCustomer={setNewCustomer}/>}
+      customer={customer} newCustomer={newCustomer} setNewCustomer={setNewCustomer}/>}
         {customer._id && <CurrentCustomerOrder customer={customer}/>}
     </Container>
   )
