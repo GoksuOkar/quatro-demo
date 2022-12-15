@@ -46,7 +46,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       customerType: 'retail',
       firstName: '',
       lastName: '',
-      orderType: 'Surf',
+      orderType: 'surf',
       approvedBy: '',
       phone: '',
       email: '',
@@ -152,11 +152,11 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
         }
 
 
-        if (values.orderType === 'Surf') {
+        if (values.orderType === 'surf') {
           return ({
             ...commonValidationValues, ...surfValidationValues
           })
-        } else if (values.orderType === 'Windsurf') {
+        } else if (values.orderType === 'windsurf') {
           return({
             ...commonValidationValues, ...windsurfValidationValues
           })
@@ -275,7 +275,6 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
               </Group>
               <Radio.Group
                 name='order type'
-                defaultValue={['walk in']}
                 label='Order Type'
                 withAsterisk
                 onChange={() => console.log('change')}

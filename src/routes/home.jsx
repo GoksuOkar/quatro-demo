@@ -1,5 +1,5 @@
 import { Group, Center, Container, Stack, Button, TextInput, Modal } from '@mantine/core';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import NewCustomerOrder from '../components/NewCustomerOrder';
 import CheckCustomer from '../components/CheckCustomer';
@@ -11,12 +11,26 @@ export default function Home() {
   const [customer, setCustomer] = useState({});
   const [orders, setOrders] = useState([]);
   const [newCustomer, setNewCustomer] = useState({});
+  const searchRef = useRef(null);
 
   const Axios = axios.create({baseURL: 'http://localhost:3000'});
 
   const handleCustomerOrdersView = (name) => {
     //seperate to first name and last name
     //Axios.get(`/orders/${firstName}-${lastName}`)
+  }
+
+  const handleSubmit = (e) => {
+    let input = searchRef.current.value.toLowerCase();
+    if (input === "surf" || input === "windsurf" || input === "foil") {
+      Axios.get(`/orders/${input}`).then(res => console.log(res.data))
+    } else {
+      let inputModified = input.split(' ')
+      let firstName = inputModified[0];
+      let lastName = inputModified[1];
+      console.log({firstName, lastName})
+      Axios.get(`/${firstName}-${lastName}/orders`).then(res => console.log(res.data));
+    }
   }
 
   return (
@@ -28,8 +42,8 @@ export default function Home() {
           </Center>
           <Stack>
             <Center>
-              <TextInput placeholder="search"/>
-              <Button color="dark" type="submit">submit</Button>
+              <TextInput placeholder="search" ref={searchRef}/>
+              <Button color="dark" onClick={handleSubmit}>submit</Button>
             </Center>
             <Center>
               <Modal
