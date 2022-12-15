@@ -1,5 +1,6 @@
 import { Group, Center, Container, Stack, Button, TextInput, Modal } from '@mantine/core';
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NewCustomerOrder from '../components/NewCustomerOrder';
 import CheckCustomer from '../components/CheckCustomer';
@@ -15,6 +16,8 @@ export default function Home() {
 
   const Axios = axios.create({baseURL: 'http://localhost:3000'});
 
+  const navigate = useNavigate();
+
   const handleCustomerOrdersView = (name) => {
     //seperate to first name and last name
     //Axios.get(`/orders/${firstName}-${lastName}`)
@@ -23,12 +26,14 @@ export default function Home() {
   const handleSubmit = (e) => {
     let input = searchRef.current.value.toLowerCase();
     if (input === "surf" || input === "windsurf" || input === "foil") {
-      Axios.get(`/orders/${input}`).then(res => console.log(res.data))
+      Axios.get(`/orders/${input}`).then((res) => {
+        //navigate(`/${input}Orders`, {state: res.data})
+        console.log(res.data);
+      })
     } else {
-      let inputModified = input.split(' ')
+      let inputModified = input.split(' ');
       let firstName = inputModified[0];
       let lastName = inputModified[1];
-      console.log({firstName, lastName})
       Axios.get(`/${firstName}-${lastName}/orders`).then(res => console.log(res.data));
     }
   }
