@@ -66,7 +66,7 @@ export default function CheckCustomer({ setCustomer, setOpened, customer }) {
             label="Last Name"
             {...form.getInputProps('lastName')}
           />
-          <Button type="submit">
+          <Button color="dark" type="submit">
             Submit
           </Button>
         </Stack>

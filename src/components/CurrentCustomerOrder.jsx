@@ -35,6 +35,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
   const [boardType, setBoardType] = useState('Surf');
   const [orderNum, setOrderNum] = useState('');
 
+  //prefills the form name fields
   useEffect(() => {
     console.log('here');
     form.setFieldValue('firstName', customer.firstName);
@@ -47,7 +48,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
       customerType: 'retail',
       firstName: '',
       lastName: '',
-      orderType: 'Surf',
+      orderType: 'surf',
       approvedBy: '',
       phone: '',
       email: '',
@@ -139,11 +140,11 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
         }
 
 
-        if (values.orderType === 'Surf') {
+        if (values.orderType === 'surf') {
           return ({
             ...commonValidationValues, ...surfValidationValues
           })
-        } else if (values.orderType === 'Windsurf') {
+        } else if (values.orderType === 'windsurf') {
           return({
             ...commonValidationValues, ...windsurfValidationValues
           })
@@ -245,15 +246,14 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
               </Group>
               <Radio.Group
                 name='order type'
-                defaultValue={['walk in']}
                 label='Order Type'
                 withAsterisk
                 onChange={() => console.log('change')}
                 {...form.getInputProps('orderType')}
               >
-                <Radio size='sm' value='Surf' label='Surf'/>
-                <Radio size='sm' value='Windsurf' label='Windsurf'/>
-                <Radio size='sm' value='Foil' label='Foil'/>
+                <Radio size='sm' value='surf' label='Surf'/>
+                <Radio size='sm' value='windsurf' label='Windsurf'/>
+                <Radio size='sm' value='foil' label='Foil'/>
               </Radio.Group>
               <Radio.Group
                 name='customer type'
@@ -298,13 +298,13 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
           </Stepper>
           <Group position="right" mt="xl">
             {(active !== 0 && active < 1) && (
-              <Button variant="default" onClick={prevStep}>
+              <Button color="dark" variant="default" onClick={prevStep}>
                 Back
               </Button>
             )}
-            {active < 1 && <Button onClick={nextStep}>Next step</Button>}
-            {active === 1 && <Button onClick={finishOrder}>Finish Order</Button>}
-            {active > 1 && <Button onClick={handleGeneratePdf}>Save/Print</Button>}
+            {active < 1 && <Button color="dark" onClick={nextStep}>Next step</Button>}
+            {active === 1 && <Button color="dark"  onClick={finishOrder}>Finish Order</Button>}
+            {active > 1 && <Button color="dark" onClick={handleGeneratePdf}>Save/Print</Button>}
           </Group>
       </Container>
     </div>

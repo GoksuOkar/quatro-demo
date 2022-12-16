@@ -27,8 +27,7 @@ export default function Home() {
     let input = searchRef.current.value.toLowerCase();
     if (input === "surf" || input === "windsurf" || input === "foil") {
       Axios.get(`/orders/${input}`).then((res) => {
-        //navigate(`/${input}Orders`, {state: res.data})
-        console.log(res.data);
+        navigate(`/orders`, {state: res.data})
       })
     } else {
       let inputModified = input.split(' ');

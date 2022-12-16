@@ -209,18 +209,20 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
     .catch(err => console.log(err));
   }
 
-  // finishes order
+  // finishes order and post to database if the form is complete
   const finishOrder = () => {
-    if (orderNum === '' || orderNum === undefined) {
-      storeNewCustomerOrder();
-    }
-    // else update order!
-    setActive((current) => {
-      if (form.validate().hasErrors) {
-        return current;
+    if (!form.validate().hasErrors) {
+      if (orderNum === '' || orderNum === undefined) {
+        storeNewCustomerOrder();
       }
-      return current < 4 ? current + 1 : current;
-    });
+      // else update order!
+      setActive((current) => {
+        if (form.validate().hasErrors) {
+          return current;
+        }
+        return current < 4 ? current + 1 : current;
+      });
+    }
   }
 
   // goes to previous step in form
@@ -232,7 +234,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       if (form.validate().hasErrors) {
         return val < current ? val : current;
       }
-      return val;
+      return current;
     })
     setBoardType(form.values.orderType);
   };
@@ -280,9 +282,9 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
                 onChange={() => console.log('change')}
                 {...form.getInputProps('orderType')}
               >
-                <Radio size='sm' value='Surf' label='Surf'/>
-                <Radio size='sm' value='Windsurf' label='Windsurf'/>
-                <Radio size='sm' value='Foil' label='Foil'/>
+                <Radio size='sm' value='surf' label='Surf'/>
+                <Radio size='sm' value='windsurf' label='Windsurf'/>
+                <Radio size='sm' value='foil' label='Foil'/>
               </Radio.Group>
               <Radio.Group
                 name='customer type'
@@ -380,13 +382,13 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           </Stepper>
           <Group position="right" mt="xl">
             {(active !== 0 && active < 3) && (
-              <Button variant="default" onClick={prevStep}>
+              <Button color="dark" variant="default" onClick={prevStep}>
                 Back
               </Button>
             )}
-            {active < 3 && <Button onClick={nextStep}>Next step</Button>}
-            {active === 3 && <Button onClick={finishOrder}>Finish Order</Button>}
-            {active > 3 && <Button onClick={handleGeneratePdf}>Save/Print</Button>}
+            {active < 3 && <Button color="dark" onClick={nextStep}>Next step</Button>}
+            {active === 3 && <Button color="dark" onClick={finishOrder}>Finish Order</Button>}
+            {active > 3 && <Button color="dark" onClick={handleGeneratePdf}>Save/Print</Button>}
           </Group>
       </Container>
     </div>
