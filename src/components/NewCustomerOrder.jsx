@@ -82,10 +82,10 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       handle: false,
     },
 
-    transformValues: (values) => ({
-      height: `${values.heightFt}ft ${values.heightIn}`,
-      length: `${values.lengthFt}ft ${values.lengthIn}`
-    }),
+    // transformValues: (values) => ({
+    //   height: `${values.heightFt}ft ${values.heightIn}`,
+    //   length: `${values.lengthFt}ft ${values.lengthIn}`
+    // }),
 
     validate: (values) => {
       if (active === 0) {
@@ -200,6 +200,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
     .then((result) => {
       setNewCustomer(result.data);
       let customerId = result.data._id;
+      let customerName = result.data.firstName + ' ' + result.data.lastName;
       Axios.post('/orders', { ...form.values, customerId })
         .then((result) => {
           console.log(result.data.orderId);
@@ -367,16 +368,16 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
             </Stepper.Step>
 
             <Stepper.Step description="Board Specs">
-              {boardType === "Surf" ? (
+              {boardType === "surf" ? (
                 <SurfSpecs form={form}/>
-              ) : boardType === "Windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
+              ) : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
             </Stepper.Step>
 
           <Stepper.Completed>
-            {boardType === "Surf" ? (
-                <PdfSurf form={form} orderNum={orderNum} customer={newCustomer}/>
-              ) : boardType === "Windsurf" ?
-              (<PdfWS form={form} orderNum={orderNum} customer={newCustomer}/>) : (<PdfFoil form={form} orderNum={orderNum} customer={newCustomer}/>)
+            {boardType === "surf" ? (
+                <PdfSurf values={form.values} orderNum={orderNum} customer={newCustomer}/>
+              ) : boardType === "windsurf" ?
+              (<PdfWS values={form.values} orderNum={orderNum} customer={newCustomer}/>) : (<PdfFoil values={form.values} orderNum={orderNum} customer={newCustomer}/>)
             }
           </Stepper.Completed>
           </Stepper>
