@@ -18,16 +18,12 @@ export default function Home() {
 
   const navigate = useNavigate();
 
-  const handleCustomerOrdersView = (name) => {
-    //seperate to first name and last name
-    //Axios.get(`/orders/${firstName}-${lastName}`)
-  }
-
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     let input = searchRef.current.value.toLowerCase();
     if (input === "surf" || input === "windsurf" || input === "foil") {
       Axios.get(`/orders/${input}`).then((res) => {
-        navigate(`/orders`, {state: res.data})
+        console.log(res.data);
+        navigate(`/orders`, {state: {orders: res.data}})
       })
     } else {
       let inputModified = input.split(' ');
