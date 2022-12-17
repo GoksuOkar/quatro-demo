@@ -23,13 +23,16 @@ export default function Home() {
     if (input === "surf" || input === "windsurf" || input === "foil") {
       Axios.get(`/orders/${input}`).then((res) => {
         console.log(res.data);
-        navigate(`/orders`, {state: {orders: res.data}})
+        navigate('/orders', {state: {orders: res.data}})
       })
     } else {
       let inputModified = input.split(' ');
       let firstName = inputModified[0];
       let lastName = inputModified[1];
-      Axios.get(`/${firstName}-${lastName}/orders`).then(res => console.log(res.data));
+      Axios.get(`/${firstName}-${lastName}/orders`).then((res) => {
+        console.log(res.data);
+        navigate('/orders', {state: {orders: res.data}})
+      });
     }
   }
 

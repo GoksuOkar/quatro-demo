@@ -172,7 +172,8 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
   //posts order to database
   const storeOrder = () => {
     let customerId = customer._id;
-    Axios.post('/orders', {...form.values, customerId})
+    let customerName = customer.firstName + ' ' + customer.lastName;
+    Axios.post('/orders', {...form.values, customerId, customerName})
     .then((result) => setOrderNum(result.data.orderId))
     .catch(err => console.log(err));
   }
@@ -218,7 +219,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
       <a href={`/`}>Home</a>
       <Container>
           <h1>Current Customer Order</h1>
-          <Stepper active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
+          <Stepper color="dark" size="sm" active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
             <Stepper.Step description='Intro'>
               <Radio.Group
                 name='intro'

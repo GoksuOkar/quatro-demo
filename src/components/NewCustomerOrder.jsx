@@ -201,7 +201,8 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       setNewCustomer(result.data);
       let customerId = result.data._id;
       let customerName = result.data.firstName + ' ' + result.data.lastName;
-      Axios.post('/orders', { ...form.values, customerId })
+      let date = new Date();
+      Axios.post('/orders', { ...form.values, customerId, customerName, date })
         .then((result) => {
           console.log(result.data.orderId);
           setOrderNum(`FM00${result.data.orderId}`)
@@ -250,7 +251,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       <a href={`/`}>Home</a>
       <Container>
           <h1>New Customer Order</h1>
-          <Stepper active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
+          <Stepper color="dark" size="sm" active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
             <Stepper.Step description='Intro'>
               <Radio.Group
                 name='intro'
