@@ -1,6 +1,7 @@
 import { Button } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
 import './output.css';
+import { capitalizeFirstLetter } from "../utils/helpers.js";
 
 //foil output
 
@@ -15,6 +16,7 @@ export default function PdfFoil({ values, orderNum, customer }) {
   useEffect(()=>{}, []);
 
   let handle = values.handle === false ? 'No' : 'Yes';
+  let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return(
       <div
@@ -23,7 +25,7 @@ export default function PdfFoil({ values, orderNum, customer }) {
       >
         <div id="intro1">
           <p><b>Date:</b>{` ${date}`}</p>
-          <p><b>Name:</b>{` ${customer.firstName} ${customer.lastName}`}</p>
+          <p><b>Name:</b>{` ${name}`}</p>
           <p><b>Phone:</b>{` ${customer.phone}`}</p>
           <p><b>Address:</b>{` ${customer.address}`}</p>
         </div>

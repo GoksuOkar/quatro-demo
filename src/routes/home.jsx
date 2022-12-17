@@ -1,4 +1,4 @@
-import { Group, Center, Container, Stack, Button, TextInput, Modal } from '@mantine/core';
+import { Group, Center, Container, Stack, Button, TextInput, Modal, Alert } from '@mantine/core';
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -23,7 +23,11 @@ export default function Home() {
     if (input === "surf" || input === "windsurf" || input === "foil") {
       Axios.get(`/orders/${input}`).then((res) => {
         console.log(res.data);
-        navigate('/orders', {state: {orders: res.data}})
+        if (Array.isArray(res.data) && res.data.length > 0) {
+          navigate('/orders', {state: {orders: res.data}})
+        } else {
+          alert("Orders not found");
+        }
       })
     } else {
       let inputModified = input.split(' ');
@@ -31,7 +35,11 @@ export default function Home() {
       let lastName = inputModified[1];
       Axios.get(`/${firstName}-${lastName}/orders`).then((res) => {
         console.log(res.data);
-        navigate('/orders', {state: {orders: res.data}})
+        if (Array.isArray(res.data) && res.data.length > 0) {
+          navigate('/orders', {state: {orders: res.data}})
+        } else {
+          alert("Customer Not Found. Make sure you entered the first and last name.")
+        }
       });
     }
   }
