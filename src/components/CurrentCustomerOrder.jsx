@@ -37,7 +37,6 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
 
   //prefills the form name fields
   useEffect(() => {
-    console.log('here');
     form.setFieldValue('firstName', customer.firstName);
     form.setFieldValue('lastName', customer.lastName);
   }, [])
@@ -284,16 +283,16 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
             </Stepper.Step>
 
             <Stepper.Step description="Board Specs">
-              {boardType === "Surf" ? (
+              {boardType === "surf" ? (
                 <SurfSpecs form={form}/>
-              ) : boardType === "Windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
+              ) : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
             </Stepper.Step>
 
           <Stepper.Completed>
-            {boardType === "Surf" ? (
-                <PdfSurf form={form} orderNum={orderNum} customer={customer}/>
-              ) : boardType === "Windsurf" ?
-              (<PdfWS form={form} orderNum={orderNum} customer={customer}/>) : (<PdfFoil form={form} orderNum={orderNum} customer={customer}/>)
+            {boardType === "surf" ? (
+                <PdfSurf values={form.values} orderNum={orderNum} customer={customer}/>
+              ) : boardType === "windsurf" ?
+              (<PdfWS values={form.values} orderNum={orderNum} customer={customer}/>) : (<PdfFoil values={form.values} orderNum={orderNum} customer={customer}/>)
             }
           </Stepper.Completed>
           </Stepper>
