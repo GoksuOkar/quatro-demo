@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Table } from '@mantine/core';
+import axios from 'axios';
+
+const Axios = axios.create({
+  baseURL: 'http://localhost:3000',
+});
 
 export default function Orders() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const convertDate = (d) => {
     let date = new Date(d);
@@ -19,8 +25,16 @@ export default function Orders() {
     return words.join(" ");
   }
 
+  function handleOrderClick(o) {
+    console.log(o.orderType);
+    Axios.get(`/customers/id/${o.customerId.valueOf()}`)
+      .then((res) => {
+        navigate('/order', {state: {customer: res.data, order: o}})
+      })
+  }
+
   const rows = location.state.orders.map((o) => (
-    <tr key={o.orderId}>
+    <tr key={o.orderId} onClick={() => {handleOrderClick(o)}}>
       <td>{convertDate(o.date)}</td>
       <td>{capitalizeFirstLetter(o.customerName)}</td>
       <td>{capitalizeFirstLetter(o.orderType)}</td>
@@ -28,10 +42,8 @@ export default function Orders() {
     </tr>
   ))
 
-  //TODO: TURN THESE INTO A STACK VIEW WITH ORDER DATE, CUSTOMER NAME, ORDER TYPE, ORDERNUMBER
-  //WHEN A STACK IS CLICKED, RENDER THE PDF FORM ACCORDING TO WHICH ORDERTYPE IT IS
   return (
-    <Table>
+    <Table highlightOnHover>
       <thead>
         <tr>
           <th>Date</th>
