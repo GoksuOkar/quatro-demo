@@ -21,14 +21,10 @@ import {
 import { useForm } from '@mantine/form';
 import { Carousel } from '@mantine/carousel';
 // import { OrderPDF } from '../components/OrderPDF.jsx';
-import SurfSpecs from '../components/SurfSpecs.jsx';
-import FoilSpecs from '../components/FoilSpecs.jsx';
-import WindsurfSpecs from '../components/WindsurfSpecs.jsx';
-
-const Axios = axios.create({
-  baseURL: 'http://localhost:3000',
-});
-
+import SurfSpecs from './SurfSpecs.jsx';
+import FoilSpecs from './FoilSpecs.jsx';
+import WindsurfSpecs from './WindsurfSpecs.jsx';
+import { Axios } from '../utils/helpers.js';
 
 export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer }) {
   const [active, setActive] = useState(0);
@@ -46,7 +42,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       customerType: 'retail',
       firstName: '',
       lastName: '',
-      orderType: 'Surf',
+      orderType: 'surf',
       approvedBy: '',
       phone: '',
       email: '',
@@ -82,10 +78,10 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       handle: false,
     },
 
-    transformValues: (values) => ({
-      height: `${values.heightFt}ft ${values.heightIn}`,
-      length: `${values.lengthFt}ft ${values.lengthIn}`
-    }),
+    // transformValues: (values) => ({
+    //   height: `${values.heightFt}ft ${values.heightIn}`,
+    //   length: `${values.lengthFt}ft ${values.lengthIn}`
+    // }),
 
     validate: (values) => {
       if (active === 0) {
@@ -152,11 +148,11 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
         }
 
 
-        if (values.orderType === 'Surf') {
+        if (values.orderType === 'surf') {
           return ({
             ...commonValidationValues, ...surfValidationValues
           })
-        } else if (values.orderType === 'Windsurf') {
+        } else if (values.orderType === 'windsurf') {
           return({
             ...commonValidationValues, ...windsurfValidationValues
           })
@@ -200,7 +196,9 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
     .then((result) => {
       setNewCustomer(result.data);
       let customerId = result.data._id;
-      Axios.post('/orders', { ...form.values, customerId })
+      let customerName = result.data.firstName + ' ' + result.data.lastName;
+      let date = new Date();
+      Axios.post('/orders', { ...form.values, customerId, customerName, date })
         .then((result) => {
           console.log(result.data.orderId);
           setOrderNum(`FM00${result.data.orderId}`)
@@ -209,18 +207,20 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
     .catch(err => console.log(err));
   }
 
-  // finishes order
+  // finishes order and post to database if the form is complete
   const finishOrder = () => {
-    if (orderNum === '' || orderNum === undefined) {
-      storeNewCustomerOrder();
-    }
-    // else update order!
-    setActive((current) => {
-      if (form.validate().hasErrors) {
-        return current;
+    if (!form.validate().hasErrors) {
+      if (orderNum === '' || orderNum === undefined) {
+        storeNewCustomerOrder();
       }
-      return current < 4 ? current + 1 : current;
-    });
+      // else update order!
+      setActive((current) => {
+        if (form.validate().hasErrors) {
+          return current;
+        }
+        return current < 4 ? current + 1 : current;
+      });
+    }
   }
 
   // goes to previous step in form
@@ -232,7 +232,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       if (form.validate().hasErrors) {
         return val < current ? val : current;
       }
-      return val;
+      return current;
     })
     setBoardType(form.values.orderType);
   };
@@ -247,7 +247,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       <a href={`/`}>Home</a>
       <Container>
           <h1>New Customer Order</h1>
-          <Stepper active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
+          <Stepper color="dark" size="sm" active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
             <Stepper.Step description='Intro'>
               <Radio.Group
                 name='intro'
@@ -275,15 +275,14 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
               </Group>
               <Radio.Group
                 name='order type'
-                defaultValue={['walk in']}
                 label='Order Type'
                 withAsterisk
                 onChange={() => console.log('change')}
                 {...form.getInputProps('orderType')}
               >
-                <Radio size='sm' value='Surf' label='Surf'/>
-                <Radio size='sm' value='Windsurf' label='Windsurf'/>
-                <Radio size='sm' value='Foil' label='Foil'/>
+                <Radio size='sm' value='surf' label='Surf'/>
+                <Radio size='sm' value='windsurf' label='Windsurf'/>
+                <Radio size='sm' value='foil' label='Foil'/>
               </Radio.Group>
               <Radio.Group
                 name='customer type'
@@ -366,28 +365,28 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
             </Stepper.Step>
 
             <Stepper.Step description="Board Specs">
-              {boardType === "Surf" ? (
+              {boardType === "surf" ? (
                 <SurfSpecs form={form}/>
-              ) : boardType === "Windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
+              ) : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
             </Stepper.Step>
 
           <Stepper.Completed>
-            {boardType === "Surf" ? (
-                <PdfSurf form={form} orderNum={orderNum} customer={newCustomer}/>
-              ) : boardType === "Windsurf" ?
-              (<PdfWS form={form} orderNum={orderNum} customer={newCustomer}/>) : (<PdfFoil form={form} orderNum={orderNum} customer={newCustomer}/>)
+            {boardType === "surf" ? (
+                <PdfSurf values={form.values} orderNum={orderNum} customer={newCustomer}/>
+              ) : boardType === "windsurf" ?
+              (<PdfWS values={form.values} orderNum={orderNum} customer={newCustomer}/>) : (<PdfFoil values={form.values} orderNum={orderNum} customer={newCustomer}/>)
             }
           </Stepper.Completed>
           </Stepper>
           <Group position="right" mt="xl">
             {(active !== 0 && active < 3) && (
-              <Button variant="default" onClick={prevStep}>
+              <Button color="dark" variant="default" onClick={prevStep}>
                 Back
               </Button>
             )}
-            {active < 3 && <Button onClick={nextStep}>Next step</Button>}
-            {active === 3 && <Button onClick={finishOrder}>Finish Order</Button>}
-            {active > 3 && <Button onClick={handleGeneratePdf}>Save/Print</Button>}
+            {active < 3 && <Button color="dark" onClick={nextStep}>Next step</Button>}
+            {active === 3 && <Button color="dark" onClick={finishOrder}>Finish Order</Button>}
+            {active > 3 && <Button color="dark" onClick={handleGeneratePdf}>Save/Print</Button>}
           </Group>
       </Container>
     </div>

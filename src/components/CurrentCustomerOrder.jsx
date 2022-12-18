@@ -1,6 +1,6 @@
-import PdfWS from '../components/PdfWS.jsx';
-import PdfSurf from '../components/PdfSurf.jsx';
-import PdfFoil from '../components/PdfFoil.jsx';
+import PdfWS from './PdfWS.jsx';
+import PdfSurf from './PdfSurf.jsx';
+import PdfFoil from './PdfFoil.jsx';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {
@@ -20,14 +20,11 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Carousel } from '@mantine/carousel';
-// import { OrderPDF } from '../components/OrderPDF.jsx';
-import SurfSpecs from '../components/SurfSpecs.jsx';
-import FoilSpecs from '../components/FoilSpecs.jsx';
-import WindsurfSpecs from '../components/WindsurfSpecs.jsx';
-
-const Axios = axios.create({
-  baseURL: 'http://localhost:3000',
-});
+// import { OrderPDF } from './OrderPDF.jsx';
+import SurfSpecs from './SurfSpecs.jsx';
+import FoilSpecs from './FoilSpecs.jsx';
+import WindsurfSpecs from './WindsurfSpecs.jsx';
+import { Axios } from '../utils/helpers.js';
 
 
 export default function CurrentCustomerOrder({ customer, setCustomer }) {
@@ -35,8 +32,8 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
   const [boardType, setBoardType] = useState('Surf');
   const [orderNum, setOrderNum] = useState('');
 
+  //prefills the form name fields
   useEffect(() => {
-    console.log('here');
     form.setFieldValue('firstName', customer.firstName);
     form.setFieldValue('lastName', customer.lastName);
   }, [])
@@ -47,7 +44,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
       customerType: 'retail',
       firstName: '',
       lastName: '',
-      orderType: 'Surf',
+      orderType: 'surf',
       approvedBy: '',
       phone: '',
       email: '',
@@ -139,11 +136,11 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
         }
 
 
-        if (values.orderType === 'Surf') {
+        if (values.orderType === 'surf') {
           return ({
             ...commonValidationValues, ...surfValidationValues
           })
-        } else if (values.orderType === 'Windsurf') {
+        } else if (values.orderType === 'windsurf') {
           return({
             ...commonValidationValues, ...windsurfValidationValues
           })
@@ -171,7 +168,8 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
   //posts order to database
   const storeOrder = () => {
     let customerId = customer._id;
-    Axios.post('/orders', {...form.values, customerId})
+    let customerName = customer.firstName + ' ' + customer.lastName;
+    Axios.post('/orders', {...form.values, customerId, customerName})
     .then((result) => setOrderNum(result.data.orderId))
     .catch(err => console.log(err));
   }
@@ -217,7 +215,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
       <a href={`/`}>Home</a>
       <Container>
           <h1>Current Customer Order</h1>
-          <Stepper active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
+          <Stepper color="dark" size="sm" active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
             <Stepper.Step description='Intro'>
               <Radio.Group
                 name='intro'
@@ -245,15 +243,14 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
               </Group>
               <Radio.Group
                 name='order type'
-                defaultValue={['walk in']}
                 label='Order Type'
                 withAsterisk
                 onChange={() => console.log('change')}
                 {...form.getInputProps('orderType')}
               >
-                <Radio size='sm' value='Surf' label='Surf'/>
-                <Radio size='sm' value='Windsurf' label='Windsurf'/>
-                <Radio size='sm' value='Foil' label='Foil'/>
+                <Radio size='sm' value='surf' label='Surf'/>
+                <Radio size='sm' value='windsurf' label='Windsurf'/>
+                <Radio size='sm' value='foil' label='Foil'/>
               </Radio.Group>
               <Radio.Group
                 name='customer type'
@@ -283,28 +280,28 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
             </Stepper.Step>
 
             <Stepper.Step description="Board Specs">
-              {boardType === "Surf" ? (
+              {boardType === "surf" ? (
                 <SurfSpecs form={form}/>
-              ) : boardType === "Windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
+              ) : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
             </Stepper.Step>
 
           <Stepper.Completed>
-            {boardType === "Surf" ? (
-                <PdfSurf form={form} orderNum={orderNum} customer={customer}/>
-              ) : boardType === "Windsurf" ?
-              (<PdfWS form={form} orderNum={orderNum} customer={customer}/>) : (<PdfFoil form={form} orderNum={orderNum} customer={customer}/>)
+            {boardType === "surf" ? (
+                <PdfSurf values={form.values} orderNum={orderNum} customer={customer}/>
+              ) : boardType === "windsurf" ?
+              (<PdfWS values={form.values} orderNum={orderNum} customer={customer}/>) : (<PdfFoil values={form.values} orderNum={orderNum} customer={customer}/>)
             }
           </Stepper.Completed>
           </Stepper>
           <Group position="right" mt="xl">
             {(active !== 0 && active < 1) && (
-              <Button variant="default" onClick={prevStep}>
+              <Button color="dark" variant="default" onClick={prevStep}>
                 Back
               </Button>
             )}
-            {active < 1 && <Button onClick={nextStep}>Next step</Button>}
-            {active === 1 && <Button onClick={finishOrder}>Finish Order</Button>}
-            {active > 1 && <Button onClick={handleGeneratePdf}>Save/Print</Button>}
+            {active < 1 && <Button color="dark" onClick={nextStep}>Next step</Button>}
+            {active === 1 && <Button color="dark"  onClick={finishOrder}>Finish Order</Button>}
+            {active > 1 && <Button color="dark" onClick={handleGeneratePdf}>Save/Print</Button>}
           </Group>
       </Container>
     </div>

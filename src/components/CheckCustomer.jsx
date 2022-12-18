@@ -1,5 +1,6 @@
 import { useForm } from '@mantine/form';
 import { TextInput, Center, Button, Stack } from '@mantine/core';
+import { Axios } from '../utils/helpers.js';
 import axios from 'axios';
 
 const customer = {
@@ -32,7 +33,7 @@ export default function CheckCustomer({ setCustomer, setOpened, customer }) {
   const handleClick = (values) => {
     let { firstName, lastName } = values;
     if (!form.validate().hasErrors) {
-      axios.get(`/customers/${firstName}-${lastName}`, {baseURL:'http://localhost:3000'})
+      Axios.get(`/customers/${firstName}-${lastName}`)
         .then((result) => {
           if (result.data) {
             setCustomer(result.data);
@@ -66,7 +67,7 @@ export default function CheckCustomer({ setCustomer, setOpened, customer }) {
             label="Last Name"
             {...form.getInputProps('lastName')}
           />
-          <Button type="submit">
+          <Button color="dark" type="submit">
             Submit
           </Button>
         </Stack>
