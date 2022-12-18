@@ -9,4 +9,4 @@ export function capitalizeFirstLetter(string) {
   return words.join(" ");
 }
 
-export const Axios = axios.create({baseURL: 'http://ec2-35-160-33-27.us-west-2.compute.amazonaws.com:443'});
+export const Axios = axios.create({baseURL: 'https://ec2-35-160-33-27.us-west-2.compute.amazonaws.com:443'});
