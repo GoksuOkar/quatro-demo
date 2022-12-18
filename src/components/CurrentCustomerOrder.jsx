@@ -1,6 +1,6 @@
-import PdfWS from '../components/PdfWS.jsx';
-import PdfSurf from '../components/PdfSurf.jsx';
-import PdfFoil from '../components/PdfFoil.jsx';
+import PdfWS from './PdfWS.jsx';
+import PdfSurf from './PdfSurf.jsx';
+import PdfFoil from './PdfFoil.jsx';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {
@@ -20,14 +20,11 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Carousel } from '@mantine/carousel';
-// import { OrderPDF } from '../components/OrderPDF.jsx';
-import SurfSpecs from '../components/SurfSpecs.jsx';
-import FoilSpecs from '../components/FoilSpecs.jsx';
-import WindsurfSpecs from '../components/WindsurfSpecs.jsx';
-
-const Axios = axios.create({
-  baseURL: 'http://localhost:3000',
-});
+// import { OrderPDF } from './OrderPDF.jsx';
+import SurfSpecs from './SurfSpecs.jsx';
+import FoilSpecs from './FoilSpecs.jsx';
+import WindsurfSpecs from './WindsurfSpecs.jsx';
+import { Axios } from '../utils/helpers.js';
 
 
 export default function CurrentCustomerOrder({ customer, setCustomer }) {

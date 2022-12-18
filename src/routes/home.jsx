@@ -5,6 +5,7 @@ import axios from 'axios';
 import NewCustomerOrder from '../components/NewCustomerOrder';
 import CheckCustomer from '../components/CheckCustomer';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
+import { Axios } from '../utils/helpers.js';
 
 
 export default function Home() {
@@ -13,8 +14,6 @@ export default function Home() {
   const [orders, setOrders] = useState([]);
   const [newCustomer, setNewCustomer] = useState({});
   const searchRef = useRef(null);
-
-  const Axios = axios.create({baseURL: 'http://localhost:3000'});
 
   const navigate = useNavigate();
 

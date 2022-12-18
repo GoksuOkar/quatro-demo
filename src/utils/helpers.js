@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export function capitalizeFirstLetter(string) {
   let words = string.split(" ");
 
@@ -6,3 +8,5 @@ export function capitalizeFirstLetter(string) {
   }
   return words.join(" ");
 }
+
+export const Axios = axios.create({baseURL: 'http://ec2-35-160-33-27.us-west-2.compute.amazonaws.com:3000'});

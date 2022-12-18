@@ -3,10 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Table, Container, Alert } from '@mantine/core';
 import axios from 'axios';
 import { capitalizeFirstLetter } from "../utils/helpers.js";
-
-const Axios = axios.create({
-  baseURL: 'http://localhost:3000',
-});
+import { Axios } from '../utils/helpers.js';
 
 export default function Orders() {
   const location = useLocation();
