@@ -33,7 +33,6 @@ export default function Home() {
       let firstName = inputModified[0];
       let lastName = inputModified[1];
       Axios.get(`/${firstName}-${lastName}/orders`).then((res) => {
-        console.log(res.data);
         if (Array.isArray(res.data) && res.data.length > 0) {
           navigate('/orders', {state: {orders: res.data}})
         } else {

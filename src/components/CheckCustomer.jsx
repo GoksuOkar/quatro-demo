@@ -32,6 +32,8 @@ export default function CheckCustomer({ setCustomer, setOpened, customer }) {
   // handles submission, setting state for customer name
   const handleClick = (values) => {
     let { firstName, lastName } = values;
+    firstName = firstName.toLowerCase();
+    lastName = lastName.toLowerCase();
     if (!form.validate().hasErrors) {
       Axios.get(`/customers/${firstName}-${lastName}`)
         .then((result) => {
@@ -40,7 +42,7 @@ export default function CheckCustomer({ setCustomer, setOpened, customer }) {
             setOpened(false);
           } else {
             console.log(result.data);
-            setCustomer(values);
+            setCustomer({firstName, lastName});
             setOpened(false);
           }
         })
