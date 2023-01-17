@@ -54,12 +54,12 @@ export default function Home() {
               <TextInput placeholder="search" ref={searchRef}/>
               <Button color="dark" onClick={handleSubmit}>submit</Button>
             </Center>
-            <Center>
+            {/* <Center>
               <Modal
                 opened={opened}
                 onClose={() => setOpened(false)}
               >
-                <CheckCustomer setCustomer={setCustomer} setOpened={setOpened}  customer={customer}/>
+                <CheckCustomer setCustomer={setCustomer} setOpened={setOpened} customer={customer}/>
             </Modal>
               <Button
                 variant="outline"
@@ -68,6 +68,27 @@ export default function Home() {
               >
                 New Order
               </Button>
+            </Center> */}
+            <Center>
+              NEW ORDER
+            </Center>
+            <Center>
+              <Group>
+                <Modal
+                  opened={opened}
+                  onClose={() => setOpened(false)}
+                >
+                  <CheckCustomer setCustomer={setCustomer} setOpened={setOpened} customer={customer}/>
+                </Modal>
+                <Button
+                  color="dark"
+                  variant="outline"
+                  onClick={() => setOpened(true)}
+                >
+                  New Customer
+                </Button>
+                <Button color="dark" variant="outline">Existing Customer</Button>
+              </Group>
             </Center>
           </Stack>
         </>
