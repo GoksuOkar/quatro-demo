@@ -1,21 +1,28 @@
-import { Group, Center, Container, Stack, Button, TextInput, Modal, Alert } from '@mantine/core';
+import { Group, Center, Container, Stack, Button, TextInput, Modal, Alert, Space } from '@mantine/core';
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NewCustomerOrder from '../components/NewCustomerOrder';
+import ExistingCustomer from '../components/existingCustomer';
 import CheckCustomer from '../components/CheckCustomer';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
 import { Axios } from '../utils/helpers.js';
 
 
 export default function Home() {
+  const [customers, setCustomers] = useState([]);
   const [opened, setOpened] = useState(false);
+  const [existingOpened, setExistingOpened] = useState(false);
   const [customer, setCustomer] = useState({});
   const [orders, setOrders] = useState([]);
   const [newCustomer, setNewCustomer] = useState({});
   const searchRef = useRef(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    Axios.get('/customers').then((res) => setCustomers(res.data));
+  }, [])
 
   const handleSubmit = () => {
     let input = searchRef.current.value.toLowerCase();
@@ -51,26 +58,12 @@ export default function Home() {
           </Center>
           <Stack>
             <Center>
-              <TextInput placeholder="search" ref={searchRef}/>
+              <TextInput placeholder="search order" ref={searchRef}/>
               <Button color="dark" onClick={handleSubmit}>submit</Button>
             </Center>
-            {/* <Center>
-              <Modal
-                opened={opened}
-                onClose={() => setOpened(false)}
-              >
-                <CheckCustomer setCustomer={setCustomer} setOpened={setOpened} customer={customer}/>
-            </Modal>
-              <Button
-                variant="outline"
-                color="dark"
-                onClick={() => setOpened(true)}
-              >
-                New Order
-              </Button>
-            </Center> */}
+            <Space h="lg"/>
             <Center>
-              NEW ORDER
+              New Order
             </Center>
             <Center>
               <Group>
@@ -87,7 +80,23 @@ export default function Home() {
                 >
                   New Customer
                 </Button>
-                <Button color="dark" variant="outline">Existing Customer</Button>
+                <Modal
+                  opened={existingOpened}
+                  onClose={() => setExistingOpened(false)}
+                >
+                  <ExistingCustomer
+                    customers={customers}
+                    setExistingOpened={setExistingOpened}
+                    setCustomer={setCustomer}
+                  />
+                </Modal>
+                <Button
+                  color="dark"
+                  variant="outline"
+                  onClick={() => setExistingOpened(true)}
+                >
+                  Existing Customer
+                </Button>
               </Group>
             </Center>
           </Stack>
