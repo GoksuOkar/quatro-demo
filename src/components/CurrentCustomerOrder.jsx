@@ -27,13 +27,16 @@ import WindsurfSpecs from './WindsurfSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
 
 
-export default function CurrentCustomerOrder({ customer, setCustomer }) {
+export default function CurrentCustomerOrder({ customer, setCustomer, values }) {
   const [active, setActive] = useState(0);
   const [boardType, setBoardType] = useState('Surf');
   const [orderNum, setOrderNum] = useState('');
 
   //prefills the form name fields
   useEffect(() => {
+    if (values) {
+      form.setValues(values)
+    }
     form.setFieldValue('firstName', customer.firstName);
     form.setFieldValue('lastName', customer.lastName);
   }, [])
@@ -300,7 +303,8 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
               </Button>
             )}
             {active < 1 && <Button color="dark" onClick={nextStep}>Next step</Button>}
-            {active === 1 && <Button color="dark"  onClick={finishOrder}>Finish Order</Button>}
+            {active === 1 && !values && <Button color="dark"  onClick={finishOrder}>Finish Order</Button>}
+            {active === 1 && values && <Button color="dark" onClick={()=>console.log('todo')}>Save</Button>}
             {active > 1 && <Button color="dark" onClick={handleGeneratePdf}>Save/Print</Button>}
           </Group>
       </Container>
