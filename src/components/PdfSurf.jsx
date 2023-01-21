@@ -11,9 +11,6 @@ const date = now.toISOString().slice(0, 10)
 export default function PdfSurf({ values, orderNum, customer }) {
   const myref = useRef(null);
 
-  //posts the order into the database, gets back the orderNumber
-  useEffect(()=>{}, []);
-
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return(
