@@ -23,6 +23,8 @@ export default function WindsurfSpecs({ form }) {
         />
         <NumberInput
           label='Length(in):'
+          precision={2}
+          step={0.5}
           {...form.getInputProps('lengthIn')}
         />
         </Group>
@@ -31,11 +33,15 @@ export default function WindsurfSpecs({ form }) {
           <NumberInput
             label="Width(in):"
             placeholder='inches'
+            precision={2}
+            step={0.5}
             {...form.getInputProps('width')}
           />
           <NumberInput
             label="Thickness(in):"
             placeholder='inches'
+            precision={2}
+            step={0.5}
             {...form.getInputProps('thickness')}
           />
           <NumberInput

@@ -28,6 +28,8 @@ export default function SurfSpecs({ form }) {
         />
         <NumberInput
           label='Length(in):'
+          precision={2}
+          step={0.5}
           {...form.getInputProps('lengthIn')}
         />
         </Group>
@@ -36,11 +38,15 @@ export default function SurfSpecs({ form }) {
           <NumberInput
             label="Width(in):"
             placeholder='inches'
+            precision={2}
+            step={0.5}
             {...form.getInputProps('width')}
           />
           <NumberInput
             label="Thickness(in):"
             placeholder='inches'
+            precision={2}
+            step={0.5}
             {...form.getInputProps('thickness')}
           />
           <NumberInput
@@ -183,7 +189,7 @@ export default function SurfSpecs({ form }) {
             ]}
             {...form.getInputProps('inserts')}
           />
-          <Select
+          {/* <Select
             label="Rear Strap From Tail:"
             placeholder='pick one'
             allowDeselect
@@ -199,23 +205,13 @@ export default function SurfSpecs({ form }) {
               { value: 'none', label: 'none' },
             ]}
             {...form.getInputProps('rearStrap')}
+          /> */}
+          <TextInput
+            label="Rear Strap From Tail:"
+            {...form.getInputProps('rearStrap')}
           />
-          <Select
+          <TextInput
             label="Strap Width:"
-            placeholder='pick one'
-            allowDeselect
-            defaultValue='none'
-            data={[
-              { value: '5', label: '5' },
-              { value: '5 1/4', label: '5 1/4' },
-              { value: '5 1/2', label: '5 1/2' },
-              { value: '5 3/4', label: '5 3/4' },
-              { value: '6', label: '6' },
-              { value: '6 1/4', label: '6 1/4' },
-              { value: '6 1/2', label: '6 1/2' },
-              { value: 'see notes', label: 'see notes' },
-              { value: 'none', label: 'none' },
-            ]}
             {...form.getInputProps('strapWidth')}
           />
         </Group>

@@ -26,6 +26,9 @@ import FoilSpecs from './FoilSpecs.jsx';
 import WindsurfSpecs from './WindsurfSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
 
+// const regexFt = /'/ig;
+// const regexIn = /"/ig;
+
 export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer }) {
   const [active, setActive] = useState(0);
   const [boardType, setBoardType] = useState('Surf');
@@ -79,8 +82,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
     },
 
     // transformValues: (values) => ({
-    //   height: `${values.heightFt}ft ${values.heightIn}`,
-    //   length: `${values.lengthFt}ft ${values.lengthIn}`
+    //   rearStrap: `${values.rearStrap.replaceAll(regexFt, "ft").replaceAll(regexIn, "in")}`
     // }),
 
     validate: (values) => {
@@ -108,9 +110,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       if(active === 3) {
 
         const commonValidationValues = {
-          // width: values.width <= 0 ? 'Enter Valid Width' : null,
           style: values.style === '' ? 'Style must be picked' : null,
-          // thickness: values.thickness <= 0 ? 'Enter valid thickness' : null,
           volume: values.volume <= 0 ? 'Enter valid volume' : null,
           blank: values.blank === '' ? 'Blank must be picked' : null,
           construction: values.construction === '' ? 'Construction must be picked' : null,
@@ -137,8 +137,6 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
         const windsurfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
-          // rearStrap: values.rearStrap === '' ? 'Rear Strap must be picked' : null,
-          // finFromTail: values.finFromTail === '' ? 'Must be entered' : null,
         }
 
         const foilValidationValues = {
@@ -191,6 +189,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
     }
 
   //post values to database
+  //WIP > CHANGED ALL FORM.VALUES TO VALUES
   const storeNewCustomerOrder = () => {
     Axios.post('/customers', form.values)
     .then((result) => {
