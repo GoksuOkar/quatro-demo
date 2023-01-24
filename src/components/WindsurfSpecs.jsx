@@ -168,7 +168,7 @@ export default function WindsurfSpecs({ form }) {
             ]}
             {...form.getInputProps('inserts')}
           />
-          <Select
+          {/* <Select
             label="Rear Strap From Tail:"
             placeholder='pick one'
             allowDeselect
@@ -182,8 +182,12 @@ export default function WindsurfSpecs({ form }) {
               { value: 'see notes', label: 'see notes' },
             ]}
             {...form.getInputProps('rearStrap')}
+          /> */}
+          <TextInput
+          label="Rear Strap From Tail:"
+          {...form.getInputProps('rearStrap')}
           />
-          <Select
+          {/* <Select
             label="Strap Width:"
             allowDeselect
             placeholder='pick one'
@@ -198,6 +202,10 @@ export default function WindsurfSpecs({ form }) {
               { value: 'see notes', label: 'see notes' },
               { value: 'none', label: 'none' },
             ]}
+            {...form.getInputProps('strapWidth')}
+          /> */}
+          <TextInput
+            label="Strap Width:"
             {...form.getInputProps('strapWidth')}
           />
         </Group>

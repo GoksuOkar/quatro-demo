@@ -136,7 +136,7 @@ export default function FoilSpecs({ form }) {
             ]}
             {...form.getInputProps('inserts')}
           />
-          <Select
+          {/* <Select
             label="Rear Inserts From Tail:"
             placeholder='pick one'
             allowDeselect
@@ -152,8 +152,12 @@ export default function FoilSpecs({ form }) {
               { value: 'none', label: 'none' },
             ]}
             {...form.getInputProps('rearInsertsFromTail')}
+          /> */}
+          <TextInput
+            label="Rear Inserts From Tail:"
+            {...form.getInputProps('rearInsertsFromTail')}
           />
-          <Select
+          {/* <Select
             label="Strap Width:"
             placeholder='pick one'
             allowDeselect
@@ -168,6 +172,10 @@ export default function FoilSpecs({ form }) {
               { value: 'see notes', label: 'see notes' },
               { value: null, label: 'none' },
             ]}
+            {...form.getInputProps('strapWidth')}
+          /> */}
+          <TextInput
+            label="Strap Width:"
             {...form.getInputProps('strapWidth')}
           />
           <Select
