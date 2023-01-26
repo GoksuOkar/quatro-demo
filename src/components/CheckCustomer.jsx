@@ -3,11 +3,6 @@ import { TextInput, Center, Button, Stack } from '@mantine/core';
 import { Axios } from '../utils/helpers.js';
 import axios from 'axios';
 
-const customer = {
-  firstName: 'goksu',
-  lastName: 'okar',
-}
-
 export default function CheckCustomer({ setCustomer, setOpened, customer }) {
   const form = useForm({
     initialValues: {

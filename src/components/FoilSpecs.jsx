@@ -24,16 +24,22 @@ export default function FoilSpecs({ form }) {
           />
           <NumberInput
             label='Length(in):'
+            precision={2}
+            step={0.5}
             {...form.getInputProps('lengthIn')}
           />
           <NumberInput
             label="Width(in):"
             placeholder='inches'
+            precision={2}
+            step={0.5}
             {...form.getInputProps('width')}
           />
           <NumberInput
             label="Thickness(in):"
             placeholder='inches'
+            precision={2}
+            step={0.5}
             {...form.getInputProps('thickness')}
           />
           <NumberInput
@@ -130,7 +136,7 @@ export default function FoilSpecs({ form }) {
             ]}
             {...form.getInputProps('inserts')}
           />
-          <Select
+          {/* <Select
             label="Rear Inserts From Tail:"
             placeholder='pick one'
             allowDeselect
@@ -146,8 +152,12 @@ export default function FoilSpecs({ form }) {
               { value: 'none', label: 'none' },
             ]}
             {...form.getInputProps('rearInsertsFromTail')}
+          /> */}
+          <TextInput
+            label="Rear Inserts From Tail:"
+            {...form.getInputProps('rearInsertsFromTail')}
           />
-          <Select
+          {/* <Select
             label="Strap Width:"
             placeholder='pick one'
             allowDeselect
@@ -162,6 +172,10 @@ export default function FoilSpecs({ form }) {
               { value: 'see notes', label: 'see notes' },
               { value: null, label: 'none' },
             ]}
+            {...form.getInputProps('strapWidth')}
+          /> */}
+          <TextInput
+            label="Strap Width:"
             {...form.getInputProps('strapWidth')}
           />
           <Select

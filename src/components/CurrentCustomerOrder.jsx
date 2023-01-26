@@ -27,13 +27,17 @@ import WindsurfSpecs from './WindsurfSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
 
 
-export default function CurrentCustomerOrder({ customer, setCustomer }) {
+export default function CurrentCustomerOrder({ customer, setCustomer, values }) {
   const [active, setActive] = useState(0);
   const [boardType, setBoardType] = useState('Surf');
   const [orderNum, setOrderNum] = useState('');
 
-  //prefills the form name fields
+  //if values are passed, it is to edit an existing order. Otherwise, it's a new order being created
   useEffect(() => {
+    if (values) {
+      form.setValues(values);
+      console.log(values);
+    }
     form.setFieldValue('firstName', customer.firstName);
     form.setFieldValue('lastName', customer.lastName);
   }, [])
@@ -176,11 +180,9 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
 
   // finishes order
   const finishOrder = () => {
-    if (orderNum === '' || orderNum === undefined) {
+    if (!form.validate().hasErrors) {
       storeOrder();
     }
-    // else update order!
-    //TODO
 
     //change the active to print screen
     setActive((current) => {
@@ -208,6 +210,22 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
   const handleGeneratePdf = () => {
     window.print();
   };
+
+  const saveEditedOrder = () => {
+    //Post values to store order (handle logic in backend)
+    setOrderNum(values.orderId);
+    const {orderId} = values;
+    const {_id} = values;
+    if (!form.validate().hasErrors) {
+      Axios.post('/orders', {...form.values, orderId, _id})
+    }
+    setActive((current) => {
+      if (form.validate().hasErrors) {
+        return current;
+      }
+      return current < 3 ? current + 1 : current;
+    });
+  }
 
 
   return (
@@ -300,8 +318,9 @@ export default function CurrentCustomerOrder({ customer, setCustomer }) {
               </Button>
             )}
             {active < 1 && <Button color="dark" onClick={nextStep}>Next step</Button>}
-            {active === 1 && <Button color="dark"  onClick={finishOrder}>Finish Order</Button>}
-            {active > 1 && <Button color="dark" onClick={handleGeneratePdf}>Save/Print</Button>}
+            {active === 1 && !values && <Button color="dark"  onClick={finishOrder}>Finish Order</Button>}
+            {active === 1 && values && <Button color="dark" onClick={saveEditedOrder}>Save</Button>}
+            {active > 1 && <Button color="dark" onClick={handleGeneratePdf}>Print</Button>}
           </Group>
       </Container>
     </div>

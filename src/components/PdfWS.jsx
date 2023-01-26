@@ -12,11 +12,6 @@ const date = now.toISOString().slice(0, 10)
 export default function PdfWS({ values, orderNum, customer }) {
   const myref = useRef(null);
 
-  //posts the order into the database, gets back the orderNumber
-  useEffect(()=>{
-    axios.post()
-  }, []);
-
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return(

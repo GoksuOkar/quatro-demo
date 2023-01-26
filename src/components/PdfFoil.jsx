@@ -11,10 +11,6 @@ const date = now.toISOString().slice(0, 10)
 export default function PdfFoil({ values, orderNum, customer }) {
   const myref = useRef(null);
 
-
-  //posts the order into the database, gets back the orderNumber
-  useEffect(()=>{}, []);
-
   let handle = values.handle === false ? 'No' : 'Yes';
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 

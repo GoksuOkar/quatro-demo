@@ -15,7 +15,6 @@ export default function Orders() {
   };
 
   function handleOrderClick(o) {
-    console.log(o.orderType);
     Axios.get(`/customers/id/${o.customerId.valueOf()}`)
       .then((res) => {
           navigate('/order', {state: {customer: res.data, order: o}})
