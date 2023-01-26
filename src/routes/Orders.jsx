@@ -18,6 +18,7 @@ export default function Orders() {
   const location = useLocation();
   const navigate = useNavigate();
   const [activePage, setPage] = useState(1);
+  const [numOfPages, setNumOfPages] = useState(0);
   const [orders, setOrders] = useState([]);
   const searchRef = useRef(null);
 
@@ -34,10 +35,11 @@ export default function Orders() {
     e.preventDefault();
     let input = searchRef.current.value.toLowerCase();
     if (input === "surf" || input === "windsurf" || input === "foil") {
-      Axios.get(`/orders/${input}`).then((res) => {
-        console.log(res.data);
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          setOrders(res.data);
+      Axios.get(`/orders/${input}/${activePage}`).then((res) => {
+        if (Array.isArray(res.data[0].totalData) && res.data[0].totalData.length > 0) {
+          setOrders(res.data[0].totalData);
+          setNumOfPages(res.data[0].totalCount[0].count);
+          console.log(numOfPages);
         } else {
           alert("Orders not found");
         }
@@ -46,9 +48,10 @@ export default function Orders() {
       let inputModified = input.split(' ');
       let firstName = inputModified[0];
       let lastName = inputModified[1];
-      Axios.get(`customers/${firstName}-${lastName}/orders`).then((res) => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          setOrders(res.data);
+      Axios.get(`customers/${firstName}-${lastName}/orders/${activePage}`).then((res) => {
+        if (Array.isArray(res.data[0].totalData) && res.data[0].totalData.length > 0) {
+          setOrders(res.data[0].totalData);
+          setNumOfPages(res.data[0].totalCount[0].count);
         } else {
           alert("Customer Not Found. Make sure you entered the first and last name.")
         }
@@ -87,7 +90,7 @@ export default function Orders() {
         </thead>
         <tbody>{rows}</tbody>
       </Table>
-      {orders.length > 20 ? <Pagination page={activePage} onChange={setPage} total={orders.length / 20}/> : null}
+      {numOfPages > 20 ? <Pagination page={activePage} onChange={setPage} total={numOfPages / 20}/> : null}
     </Container>
   )
 }
