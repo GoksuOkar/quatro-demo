@@ -5,6 +5,9 @@ import { Table, Container, Alert, Pagination, TextInput, Button, Group, Center }
 import axios from 'axios';
 import { capitalizeFirstLetter } from "../utils/helpers.js";
 import { Axios } from '../utils/helpers.js';
+import { getLastTwoDigitsOfYear } from "../utils/helpers.js";
+
+let year = getLastTwoDigitsOfYear();
 
 const convertDate = (d) => {
   let date = new Date(d);
@@ -58,7 +61,7 @@ export default function Orders() {
       <td>{convertDate(o.date)}</td>
       <td>{capitalizeFirstLetter(o.customerName)}</td>
       <td>{capitalizeFirstLetter(o.orderType)}</td>
-      <td>FM00{o.orderId}</td>
+      <td>{`FM${year}-OO${o.orderId}`}</td>
     </tr>
   ))
 

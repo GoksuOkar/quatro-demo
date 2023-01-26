@@ -10,7 +10,7 @@ export function capitalizeFirstLetter(string) {
 }
 
 export function getLastTwoDigitsOfYear() {
-  let date = Date.now();
+  let date = new Date();
   return date.getFullYear() % 2000;
 }
 

@@ -15,7 +15,7 @@ export default function OrderPage() {
   const location = useLocation();
   const order = location.state.order;
   const customer = location.state.customer;
-  const orderNum = `FM${year}-OO${result.data.orderId}`;
+  const orderNum = `FM${year}-OO${location.state.order.orderId}`;
 
   const handleEdit = () => {
     setEdit(true);
