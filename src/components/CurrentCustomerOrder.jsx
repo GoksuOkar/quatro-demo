@@ -25,7 +25,9 @@ import SurfSpecs from './SurfSpecs.jsx';
 import FoilSpecs from './FoilSpecs.jsx';
 import WindsurfSpecs from './WindsurfSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
+import { getLastTwoDigitsOfYear } from "../utils/helpers.js";
 
+let year = getLastTwoDigitsOfYear();
 
 export default function CurrentCustomerOrder({ customer, setCustomer, values }) {
   const [active, setActive] = useState(0);
@@ -174,7 +176,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
     let customerId = customer._id;
     let customerName = customer.firstName + ' ' + customer.lastName;
     Axios.post('/orders', {...form.values, customerId, customerName})
-    .then((result) => setOrderNum(result.data.orderId))
+    .then((result) => setOrderNum(`FM${year}-OO${result.data.orderId}`))
     .catch(err => console.log(err));
   }
 

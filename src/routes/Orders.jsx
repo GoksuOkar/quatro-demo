@@ -19,7 +19,6 @@ export default function Orders() {
   const searchRef = useRef(null);
 
 
-
   const goToOrder = (o) => {
     Axios.get(`/customers/id/${o.customerId.valueOf()}`)
       .then((res) => {
