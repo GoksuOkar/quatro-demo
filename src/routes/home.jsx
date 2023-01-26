@@ -14,7 +14,7 @@ export default function Home() {
   const [opened, setOpened] = useState(false);
   const [existingOpened, setExistingOpened] = useState(false);
   const [customer, setCustomer] = useState({});
-  const [orders, setOrders] = useState([]);
+
   const [newCustomer, setNewCustomer] = useState({});
   const searchRef = useRef(null);
 
@@ -24,29 +24,8 @@ export default function Home() {
     Axios.get('/customers').then((res) => setCustomers(res.data));
   }, [])
 
-  const handleSubmit = () => {
-    let input = searchRef.current.value.toLowerCase();
-    if (input === "surf" || input === "windsurf" || input === "foil") {
-      Axios.get(`/orders/${input}`).then((res) => {
-        console.log(res.data);
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          navigate('/orders', {state: {orders: res.data}})
-        } else {
-          alert("Orders not found");
-        }
-      })
-    } else {
-      let inputModified = input.split(' ');
-      let firstName = inputModified[0];
-      let lastName = inputModified[1];
-      Axios.get(`/${firstName}-${lastName}/orders`).then((res) => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          navigate('/orders', {state: {orders: res.data}})
-        } else {
-          alert("Customer Not Found. Make sure you entered the first and last name.")
-        }
-      });
-    }
+  const goToOrders = () => {
+    navigate('/orders');
   }
 
   return (
@@ -58,47 +37,48 @@ export default function Home() {
           </Center>
           <Stack>
             <Center>
-              <TextInput placeholder="search order" ref={searchRef}/>
-              <Button color="dark" onClick={handleSubmit}>submit</Button>
+              <Button color="dark" onClick={goToOrders}>View Orders</Button>
             </Center>
             <Space h="lg"/>
-            <Center>
-              New Order
-            </Center>
-            <Center>
-              <Group>
-                <Modal
-                  opened={opened}
-                  onClose={() => setOpened(false)}
-                >
-                  <CheckCustomer setCustomer={setCustomer} setOpened={setOpened} customer={customer}/>
-                </Modal>
-                <Button
-                  color="dark"
-                  variant="outline"
-                  onClick={() => setOpened(true)}
-                >
-                  New Customer
-                </Button>
-                <Modal
-                  opened={existingOpened}
-                  onClose={() => setExistingOpened(false)}
-                >
-                  <ExistingCustomer
-                    customers={customers}
-                    setExistingOpened={setExistingOpened}
-                    setCustomer={setCustomer}
-                  />
-                </Modal>
-                <Button
-                  color="dark"
-                  variant="outline"
-                  onClick={() => setExistingOpened(true)}
-                >
-                  Existing Customer
-                </Button>
-              </Group>
-            </Center>
+            <Stack>
+              <Center>
+                New Order
+              </Center>
+              <Center>
+                <Group>
+                  <Modal
+                    opened={opened}
+                    onClose={() => setOpened(false)}
+                  >
+                    <CheckCustomer setCustomer={setCustomer} setOpened={setOpened} customer={customer}/>
+                  </Modal>
+                  <Button
+                    color="dark"
+                    variant="outline"
+                    onClick={() => setOpened(true)}
+                  >
+                    New Customer
+                  </Button>
+                  <Modal
+                    opened={existingOpened}
+                    onClose={() => setExistingOpened(false)}
+                  >
+                    <ExistingCustomer
+                      customers={customers}
+                      setExistingOpened={setExistingOpened}
+                      setCustomer={setCustomer}
+                    />
+                  </Modal>
+                  <Button
+                    color="dark"
+                    variant="outline"
+                    onClick={() => setExistingOpened(true)}
+                  >
+                    Existing Customer
+                  </Button>
+                </Group>
+              </Center>
+            </Stack>
           </Stack>
         </>
       )}
