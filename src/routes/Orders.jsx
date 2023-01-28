@@ -65,7 +65,7 @@ export default function Orders() {
       <td>{convertDate(o.date)}</td>
       <td>{capitalizeFirstLetter(o.customerName)}</td>
       <td>{capitalizeFirstLetter(o.orderType)}</td>
-      <td>{`FM${year}-OO${o.orderId}`}</td>
+      <td>{o.orderId}</td>
     </tr>
   ))
 
