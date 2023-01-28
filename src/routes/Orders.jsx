@@ -14,15 +14,27 @@ const convertDate = (d) => {
 export default function Orders() {
   const location = useLocation();
   const navigate = useNavigate();
+
   const [activePage, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(0);
   const [orders, setOrders] = useState([]);
+  const [displayed, setDisplayed] = useState([])
   const searchRef = useRef(null);
 
   useEffect(()=>{
     Axios.get('/orders')
-      .then((res) => setOrders(res.data))
+      .then((res) => {
+        setOrders(res.data)
+        setDisplayed(res.data.slice(0, 20))
+        setNumOfPages(res.data.length)
+      })
   }, [])
+
+  useEffect(() => {
+    let start = (activePage - 1) * 20;
+    let end = start + 20;
+    setDisplayed(orders.slice(start, end))
+  }, [activePage])
 
   const goToOrder = (o) => {
     Axios.get(`/customers/id/${o.customerId.valueOf()}`)
@@ -60,7 +72,7 @@ export default function Orders() {
   //   }
   // }
 
-  const rows = orders.map((o) => (
+  const rows = displayed.map((o) => (
     <tr key={o.orderId} onClick={() => {goToOrder(o)}}>
       <td>{convertDate(o.date)}</td>
       <td>{capitalizeFirstLetter(o.customerName)}</td>
