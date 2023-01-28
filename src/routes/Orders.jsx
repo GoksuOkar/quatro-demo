@@ -5,9 +5,6 @@ import { Table, Container, Alert, Pagination, TextInput, Button, Group, Center }
 import axios from 'axios';
 import { capitalizeFirstLetter } from "../utils/helpers.js";
 import { Axios } from '../utils/helpers.js';
-import { getLastTwoDigitsOfYear } from "../utils/helpers.js";
-
-let year = getLastTwoDigitsOfYear();
 
 const convertDate = (d) => {
   let date = new Date(d);
@@ -22,6 +19,10 @@ export default function Orders() {
   const [orders, setOrders] = useState([]);
   const searchRef = useRef(null);
 
+  useEffect(()=>{
+    Axios.get('/orders')
+      .then((res) => setOrders(res.data))
+  }, [])
 
   const goToOrder = (o) => {
     Axios.get(`/customers/id/${o.customerId.valueOf()}`)
@@ -31,33 +32,33 @@ export default function Orders() {
       );
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let input = searchRef.current.value.toLowerCase();
-    if (input === "surf" || input === "windsurf" || input === "foil") {
-      Axios.get(`/orders/${input}/${activePage}`).then((res) => {
-        if (Array.isArray(res.data[0].totalData) && res.data[0].totalData.length > 0) {
-          setOrders(res.data[0].totalData);
-          setNumOfPages(res.data[0].totalCount[0].count);
-          console.log(numOfPages);
-        } else {
-          alert("Orders not found");
-        }
-      })
-    } else {
-      let inputModified = input.split(' ');
-      let firstName = inputModified[0];
-      let lastName = inputModified[1];
-      Axios.get(`customers/${firstName}-${lastName}/orders/${activePage}`).then((res) => {
-        if (Array.isArray(res.data[0].totalData) && res.data[0].totalData.length > 0) {
-          setOrders(res.data[0].totalData);
-          setNumOfPages(res.data[0].totalCount[0].count);
-        } else {
-          alert("Customer Not Found. Make sure you entered the first and last name.")
-        }
-      });
-    }
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   let input = searchRef.current.value.toLowerCase();
+  //   if (input === "surf" || input === "windsurf" || input === "foil") {
+  //     Axios.get(`/orders/${input}/${activePage}`).then((res) => {
+  //       if (Array.isArray(res.data[0].totalData) && res.data[0].totalData.length > 0) {
+  //         setOrders(res.data[0].totalData);
+  //         setNumOfPages(res.data[0].totalCount[0].count);
+  //         console.log(numOfPages);
+  //       } else {
+  //         alert("Orders not found");
+  //       }
+  //     })
+  //   } else {
+  //     let inputModified = input.split(' ');
+  //     let firstName = inputModified[0];
+  //     let lastName = inputModified[1];
+  //     Axios.get(`customers/${firstName}-${lastName}/orders/${activePage}`).then((res) => {
+  //       if (Array.isArray(res.data[0].totalData) && res.data[0].totalData.length > 0) {
+  //         setOrders(res.data[0].totalData);
+  //         setNumOfPages(res.data[0].totalCount[0].count);
+  //       } else {
+  //         alert("Customer Not Found. Make sure you entered the first and last name.")
+  //       }
+  //     });
+  //   }
+  // }
 
   const rows = orders.map((o) => (
     <tr key={o.orderId} onClick={() => {goToOrder(o)}}>
@@ -72,7 +73,7 @@ export default function Orders() {
     <Container>
       <a href={`/`}>Home</a>
       <Center>
-        <form onSubmit={handleSubmit}>
+        <form>
           <Group>
             <TextInput placeholder="search order" ref={searchRef}/>
             <Button color="dark" type="submit">submit</Button>
