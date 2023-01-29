@@ -1,7 +1,17 @@
 import * as React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Table, Container, Alert, Pagination, TextInput, Button, Group, Center } from '@mantine/core';
+import {
+  Table,
+  Container,
+  Alert,
+  Pagination,
+  TextInput,
+  Button,
+  Group,
+  Center,
+  Radio
+} from '@mantine/core';
 import axios from 'axios';
 import { capitalizeFirstLetter } from "../utils/helpers.js";
 import { Axios } from '../utils/helpers.js';
@@ -16,25 +26,30 @@ export default function Orders() {
   const navigate = useNavigate();
 
   const [activePage, setPage] = useState(1);
+  const [type, setType] = useState("all");
   const [numOfPages, setNumOfPages] = useState(0);
   const [orders, setOrders] = useState([]);
   const [displayed, setDisplayed] = useState([])
   const searchRef = useRef(null);
 
-  useEffect(()=>{
-    Axios.get('/orders')
-      .then((res) => {
-        setOrders(res.data)
-        setDisplayed(res.data.slice(0, 20))
-        setNumOfPages(res.data.length)
-      })
-  }, [])
-
   useEffect(() => {
-    let start = (activePage - 1) * 20;
-    let end = start + 20;
-    setDisplayed(orders.slice(start, end))
-  }, [activePage])
+    const types = ["surf", "windsurf", "foil"];
+    if (types.includes(type)) {
+      Axios.get(`/orders/${type}`)
+        .then((res) => {
+          setOrders(res.data)
+          setNumOfPages(res.data.length)
+        })
+        .catch((err) => {console.log(err)})
+    } else {
+      Axios.get(`/orders`)
+        .then((res) => {
+          setOrders(res.data)
+          setNumOfPages(res.data.length)
+        })
+        .catch((err) => {console.log(err)})
+    }
+  }, [type])
 
   const goToOrder = (o) => {
     Axios.get(`/customers/id/${o.customerId.valueOf()}`)
@@ -44,35 +59,10 @@ export default function Orders() {
       );
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   let input = searchRef.current.value.toLowerCase();
-  //   if (input === "surf" || input === "windsurf" || input === "foil") {
-  //     Axios.get(`/orders/${input}/${activePage}`).then((res) => {
-  //       if (Array.isArray(res.data[0].totalData) && res.data[0].totalData.length > 0) {
-  //         setOrders(res.data[0].totalData);
-  //         setNumOfPages(res.data[0].totalCount[0].count);
-  //         console.log(numOfPages);
-  //       } else {
-  //         alert("Orders not found");
-  //       }
-  //     })
-  //   } else {
-  //     let inputModified = input.split(' ');
-  //     let firstName = inputModified[0];
-  //     let lastName = inputModified[1];
-  //     Axios.get(`customers/${firstName}-${lastName}/orders/${activePage}`).then((res) => {
-  //       if (Array.isArray(res.data[0].totalData) && res.data[0].totalData.length > 0) {
-  //         setOrders(res.data[0].totalData);
-  //         setNumOfPages(res.data[0].totalCount[0].count);
-  //       } else {
-  //         alert("Customer Not Found. Make sure you entered the first and last name.")
-  //       }
-  //     });
-  //   }
-  // }
+  let start = (activePage - 1) * 20;
+  let end = start + 20;
 
-  const rows = displayed.map((o) => (
+  const rows = orders.slice(start, end).map((o) => (
     <tr key={o.orderId} onClick={() => {goToOrder(o)}}>
       <td>{convertDate(o.date)}</td>
       <td>{capitalizeFirstLetter(o.customerName)}</td>
@@ -84,14 +74,24 @@ export default function Orders() {
   return (
     <Container>
       <a href={`/`}>Home</a>
-      <Center>
+      <Group>
+        <Radio.Group
+        value={type}
+        onChange={setType}
+        spacing="xs"
+      >
+        <Radio value="all" label="All" />
+        <Radio value="surf" label="Surf" />
+        <Radio value="windsurf" label="Windsurf" />
+        <Radio value="foil" label="Foil" />
+      </Radio.Group>
         <form>
           <Group>
             <TextInput placeholder="search order" ref={searchRef}/>
             <Button color="dark" type="submit">submit</Button>
           </Group>
         </form>
-      </Center>
+      </Group>
       <Table highlightOnHover>
         <thead>
           <tr>
@@ -103,7 +103,18 @@ export default function Orders() {
         </thead>
         <tbody>{rows}</tbody>
       </Table>
-      {numOfPages > 20 ? <Pagination page={activePage} onChange={setPage} total={numOfPages / 20}/> : null}
+      {numOfPages > 20 ? (
+        <Center>
+          <Pagination
+            page={activePage}
+            onChange={setPage}
+            total={numOfPages / 20}
+            color="gray"
+            size="sm"
+            radius="xs"
+          />
+        </Center>
+        ) : null}
     </Container>
   )
 }

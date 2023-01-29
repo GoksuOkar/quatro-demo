@@ -57,3 +57,8 @@ h1 {
   height: 300px;
   width: 250;
 }
+
+.mantine-Table-root {
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
