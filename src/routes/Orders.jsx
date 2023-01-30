@@ -1,6 +1,5 @@
-import * as React from 'react';
 import { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import * as React from 'react';
 import {
   Table,
   Container,
@@ -13,71 +12,51 @@ import {
   Radio
 } from '@mantine/core';
 import axios from 'axios';
-import { capitalizeFirstLetter } from "../utils/helpers.js";
+import OrdersTable from '../components/ordersTable';
 import { Axios } from '../utils/helpers.js';
 
-const convertDate = (d) => {
-  let date = new Date(d);
-  return date.toISOString().slice(0, 10);
-};
-
 export default function Orders() {
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const [activePage, setPage] = useState(1);
   const [type, setType] = useState("all");
   const [numOfPages, setNumOfPages] = useState(0);
   const [orders, setOrders] = useState([]);
-  const [displayed, setDisplayed] = useState([])
+  const [display, setDisplay] = useState([]);
   const searchRef = useRef(null);
 
+  // initial render gets all the orders
   useEffect(() => {
-    const types = ["surf", "windsurf", "foil"];
-    if (types.includes(type)) {
-      Axios.get(`/orders/${type}`)
-        .then((res) => {
-          setOrders(res.data)
-          setNumOfPages(res.data.length)
-        })
-        .catch((err) => {console.log(err)})
-    } else {
-      Axios.get(`/orders`)
-        .then((res) => {
-          setOrders(res.data)
-          setNumOfPages(res.data.length)
-        })
-        .catch((err) => {console.log(err)})
-    }
-  }, [type])
+    Axios.get(`/orders`)
+    .then((res) => {
+      setOrders(res.data)
+      setDisplay(res.data)
+      setNumOfPages(res.data.length)
+    })
+    .catch((err) => {console.log(err)})
+  }, [])
 
-  const goToOrder = (o) => {
-    Axios.get(`/customers/id/${o.customerId.valueOf()}`)
-      .then((res) => {
-          navigate('/order', {state: {customer: res.data, order: o}})
-        }
-      );
-  };
+  const orderTypeChange = (v) => {
+    let newDisplay = orders.filter((order) => (order.orderType == v));
+    setDisplay(newDisplay);
+    setNumOfPages(display.length);
+    setType(v);
+  }
 
-  let start = (activePage - 1) * 20;
-  let end = start + 20;
-
-  const rows = orders.slice(start, end).map((o) => (
-    <tr key={o.orderId} onClick={() => {goToOrder(o)}}>
-      <td>{convertDate(o.date)}</td>
-      <td>{capitalizeFirstLetter(o.customerName)}</td>
-      <td>{capitalizeFirstLetter(o.orderType)}</td>
-      <td>{o.orderId}</td>
-    </tr>
-  ))
+  const handleSearch = (e) => {
+    e.preventDefault();
+    let name = searchRef.current.value;
+    let searchResults = orders.filter((order) => (order.customerName.includes(name)));
+    setDisplay(searchResults);
+    setNumOfPages(searchResults.length);
+  }
 
   return (
     <Container>
       <a href={`/`}>Home</a>
-      <Group>
+      <Group position="apart">
         <Radio.Group
         value={type}
-        onChange={setType}
+        onChange={orderTypeChange}
         spacing="xs"
       >
         <Radio value="all" label="All" />
@@ -85,24 +64,14 @@ export default function Orders() {
         <Radio value="windsurf" label="Windsurf" />
         <Radio value="foil" label="Foil" />
       </Radio.Group>
-        <form>
-          <Group>
+        <Group>
+          <form onSubmit={handleSearch}>
             <TextInput placeholder="search order" ref={searchRef}/>
             <Button color="dark" type="submit">submit</Button>
-          </Group>
-        </form>
+          </form>
+        </Group>
       </Group>
-      <Table highlightOnHover>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Customer Name</th>
-            <th>Order Type</th>
-            <th>Order Number</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </Table>
+      <OrdersTable orders={display} activePage={activePage}/>
       {numOfPages > 20 ? (
         <Center>
           <Pagination
