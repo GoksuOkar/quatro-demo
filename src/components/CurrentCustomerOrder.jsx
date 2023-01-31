@@ -81,6 +81,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       boxLocation: '',
       rearInsertsFromTail: '',
       handle: false,
+      notes: '',
     },
 
     transformValues: (values) => ({

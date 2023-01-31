@@ -66,7 +66,8 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <p><b>Rear Strap From Tail:</b>{` ${values.rearStrap}`}</p>
         </div>
         <div id="notes">
-          Notes:
+          <b>Notes:</b>
+          <p>{values.notes}</p>
         </div>
         <img id="image" src='/surfBoard.jpeg'/>
       </div>

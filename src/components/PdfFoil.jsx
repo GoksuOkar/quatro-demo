@@ -68,7 +68,8 @@ export default function PdfFoil({ values, orderNum, customer }) {
           <p><b>Rear Inserts From Tail:</b>{` ${values.rearInsertsFromTail}`}</p>
         </div>
         <div id="notes">
-          Notes:
+          <b>Notes:</b>
+          <p>{values.notes}</p>
         </div>
         <img id="image" src='/surfBoard.jpeg'/>
       </div>

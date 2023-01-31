@@ -76,6 +76,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       boxLocation: '',
       rearInsertsFromTail: '',
       handle: false,
+      notes: '',
     },
 
     // transformValues: (values) => ({

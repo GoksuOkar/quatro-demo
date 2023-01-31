@@ -68,6 +68,7 @@ export default function PdfWS({ values, orderNum, customer }) {
         </div>
         <div id="notes">
           <b>Notes:</b>
+          <p>{values.notes}</p>
         </div>
         <img id="image" src='/surfBoard.jpeg'/>
       </div>
