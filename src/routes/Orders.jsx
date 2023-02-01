@@ -36,10 +36,18 @@ export default function Orders() {
   }, [])
 
   const orderTypeChange = (v) => {
-    let newDisplay = orders.filter((order) => (order.orderType == v));
-    setDisplay(newDisplay);
-    setNumOfPages(display.length);
-    setType(v);
+    let types = ["surf", "windsurf", "foil"];
+    console.log(types.includes(v));
+    if (types.includes(v)) {
+      let newDisplay = orders.filter((order) => (order.orderType == v));
+      setDisplay(newDisplay);
+      setNumOfPages(newDisplay.length);
+      setType(v);
+    } else {
+      setDisplay(orders);
+      setNumOfPages(orders.length);
+      setType(v);
+    }
   }
 
   const handleSearch = (e) => {
@@ -72,18 +80,16 @@ export default function Orders() {
         </Group>
       </Group>
       <OrdersTable orders={display} activePage={activePage}/>
-      {numOfPages > 20 ? (
-        <Center>
-          <Pagination
-            page={activePage}
-            onChange={setPage}
-            total={numOfPages / 20}
-            color="gray"
-            size="sm"
-            radius="xs"
-          />
-        </Center>
-        ) : null}
+      <Center>
+        <Pagination
+          page={activePage}
+          onChange={setPage}
+          total={Math.ceil(numOfPages / 20)}
+          color="gray"
+          size="sm"
+          radius="xs"
+        />
+      </Center>
     </Container>
   )
 }
