@@ -26,7 +26,6 @@ import FoilSpecs from './FoilSpecs.jsx';
 import WindsurfSpecs from './WindsurfSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
 
-
 export default function CurrentCustomerOrder({ customer, setCustomer, values }) {
   const [active, setActive] = useState(0);
   const [boardType, setBoardType] = useState('Surf');
@@ -82,6 +81,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       boxLocation: '',
       rearInsertsFromTail: '',
       handle: false,
+      notes: '',
     },
 
     transformValues: (values) => ({

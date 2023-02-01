@@ -5,6 +5,9 @@ import PdfSurf from '../components/PdfSurf';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Container, Center, Button, Group } from '@mantine/core';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
+import { getLastTwoDigitsOfYear } from "../utils/helpers.js";
+
+let year = getLastTwoDigitsOfYear();
 
 export default function OrderPage() {
   const [edit, setEdit] = useState(false);
@@ -12,7 +15,7 @@ export default function OrderPage() {
   const location = useLocation();
   const order = location.state.order;
   const customer = location.state.customer;
-  const orderNum = `FM00${order.orderId}`;
+  const orderNum = `FM${year}-OO${location.state.order.orderId}`;
 
   const handleEdit = () => {
     setEdit(true);

@@ -1,4 +1,4 @@
-import { Select, NumberInput, TextInput, Group } from '@mantine/core';
+import { Select, NumberInput, TextInput, Group, Textarea } from '@mantine/core';
 
 export default function WindsurfSpecs({ form }) {
   return (
@@ -234,6 +234,13 @@ export default function WindsurfSpecs({ form }) {
           {...form.getInputProps('waveLocation')}
         />
         </Group>
+        <Textarea
+          placeholder="type here"
+          label="notes:"
+          radius="md"
+          size="md"
+          {...form.getInputProps('notes')}
+      />
     </>
   )
 }

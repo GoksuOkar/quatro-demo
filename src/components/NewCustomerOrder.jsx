@@ -26,9 +26,6 @@ import FoilSpecs from './FoilSpecs.jsx';
 import WindsurfSpecs from './WindsurfSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
 
-// const regexFt = /'/ig;
-// const regexIn = /"/ig;
-
 export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer }) {
   const [active, setActive] = useState(0);
   const [boardType, setBoardType] = useState('Surf');
@@ -79,6 +76,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       boxLocation: '',
       rearInsertsFromTail: '',
       handle: false,
+      notes: '',
     },
 
     // transformValues: (values) => ({
@@ -200,7 +198,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       Axios.post('/orders', { ...form.values, customerId, customerName, date })
         .then((result) => {
           console.log(result.data.orderId);
-          setOrderNum(`FM00${result.data.orderId}`)
+          setOrderNum(result.data.orderId)
         })
     })
     .catch(err => console.log(err));

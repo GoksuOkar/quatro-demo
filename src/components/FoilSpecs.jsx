@@ -1,4 +1,4 @@
-import { Select, NumberInput, TextInput, Space, Group, Grid, Stack, Checkbox, Radio, Container } from '@mantine/core';
+import { Select, NumberInput, TextInput, Space, Group, Grid, Stack, Checkbox, Radio, Container, Textarea } from '@mantine/core';
 
 export default function FoilSpecs({ form }) {
   return (
@@ -217,6 +217,13 @@ export default function FoilSpecs({ form }) {
           labelPosition="left"
           label="Handle:"
           {...form.getInputProps('handle', {type: 'Checkbox'})}
+        />
+        <Textarea
+          placeholder="type here"
+          label="notes:"
+          radius="md"
+          size="md"
+          {...form.getInputProps('notes')}
         />
     </>
   )
