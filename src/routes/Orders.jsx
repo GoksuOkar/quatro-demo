@@ -18,7 +18,7 @@ import { Axios } from '../utils/helpers.js';
 export default function Orders() {
 
   const [activePage, setPage] = useState(1);
-  const [type, setType] = useState("all");
+  const [type, setType] = useState("");
   const [numOfPages, setNumOfPages] = useState(0);
   const [orders, setOrders] = useState([]);
   const [display, setDisplay] = useState([]);
@@ -28,16 +28,16 @@ export default function Orders() {
   useEffect(() => {
     Axios.get(`/orders`)
     .then((res) => {
-      setOrders(res.data)
-      setDisplay(res.data)
-      setNumOfPages(res.data.length)
+      setType("all");
+      setOrders(res.data);
+      setDisplay(res.data);
+      setNumOfPages(res.data.length);
     })
     .catch((err) => {console.log(err)})
   }, [])
 
   const orderTypeChange = (v) => {
     let types = ["surf", "windsurf", "foil"];
-    console.log(types.includes(v));
     if (types.includes(v)) {
       let newDisplay = orders.filter((order) => (order.orderType == v));
       setDisplay(newDisplay);
