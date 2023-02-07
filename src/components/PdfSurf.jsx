@@ -22,7 +22,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <p><b>Name:</b>{` ${name}`}</p>
           <p><b>Phone:</b>{` ${customer.phone}`}</p>
           <p><b>Address:</b>{` ${customer.address}`}</p>
-          <p><b>Email:</b>{` ${cusotmer.email}`}</p>
+          <p><b>Email:</b>{` ${customer.email}`}</p>
         </div>
         <div id="intro2">
           <p><b>Date:</b>{` ${date}`}</p>
