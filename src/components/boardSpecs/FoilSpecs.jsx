@@ -45,6 +45,8 @@ export default function FoilSpecs({ form }) {
           <NumberInput
             label="Volume(lt):"
             placeholder='lt'
+            precision={2}
+            step={10}
             {...form.getInputProps('volume')}
           />
         </Group>

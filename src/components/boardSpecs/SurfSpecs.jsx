@@ -52,6 +52,8 @@ export default function SurfSpecs({ form }) {
           <NumberInput
             label="Volume(lt):"
             placeholder='lt'
+            precision={2}
+            step={10}
             {...form.getInputProps('volume')}
           />
         </Group>

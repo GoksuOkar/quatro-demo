@@ -47,6 +47,8 @@ export default function WindsurfSpecs({ form }) {
           <NumberInput
             label="Volume(lt):"
             placeholder='lt'
+            step={10}
+            precision={2}
             {...form.getInputProps('volume')}
           />
         </Group>
