@@ -12,6 +12,8 @@ export default function FoilSpecs({ form }) {
           { value: 'GINXU', label: 'GINXU' },
           { value: 'STD Wing', label: 'STD Wing' },
           { value: 'Down Wind', label: 'Down Wind' },
+          { value: 'Down Wind/Dragonfly', label: 'Down Wind/Dragonfly' },
+          { value: 'Prone', label: 'Prone' },
           { value: 'SUP/Sweeper', label: 'SUP/Sweeper' },
         ]}
         {...form.getInputProps('style')}
