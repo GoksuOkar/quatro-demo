@@ -134,7 +134,9 @@ export default function FoilSpecs({ form }) {
             data={[
               { value: 'single', label: 'single' },
               { value: 'double', label: 'double' },
-              { value: 'single/double', label: 'single/double' },
+              { value: 'regular', label: 'regular' },
+              { value: 'goofy', label: 'goofy' },
+              { value: 'Y', label: 'Y' },
               { value: 'see notes', label: 'see notes' },
               { value: 'none', label: 'none' },
             ]}
