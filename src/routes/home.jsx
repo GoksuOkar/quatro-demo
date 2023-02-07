@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NewCustomerOrder from '../components/NewCustomerOrder';
-import ExistingCustomer from '../components/existingCustomer';
+import CustomerListModal from '../components/CustomerListModal';
 import CheckCustomer from '../components/CheckCustomer';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
 import { Axios } from '../utils/helpers.js';
@@ -63,7 +63,7 @@ export default function Home() {
                     opened={existingOpened}
                     onClose={() => setExistingOpened(false)}
                   >
-                    <ExistingCustomer
+                    <CustomerListModal
                       customers={customers}
                       setExistingOpened={setExistingOpened}
                       setCustomer={setCustomer}

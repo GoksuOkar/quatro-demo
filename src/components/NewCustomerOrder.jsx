@@ -384,7 +384,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
             )}
             {active < 3 && <Button color="dark" onClick={nextStep}>Next step</Button>}
             {active === 3 && <Button color="dark" onClick={finishOrder}>Finish Order</Button>}
-            {active > 3 && <Button color="dark" onClick={handleGeneratePdf}>Save/Print</Button>}
+            {active > 3 && <Button color="dark" onClick={handleGeneratePdf}>Print</Button>}
           </Group>
       </Container>
     </div>
