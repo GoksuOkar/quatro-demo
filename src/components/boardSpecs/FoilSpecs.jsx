@@ -51,19 +51,6 @@ export default function FoilSpecs({ form }) {
             step={10}
             {...form.getInputProps('volume')}
           />
-        </Group>
-        <Group>
-          <Select
-          label="Blank:"
-          placeholder='pick one'
-          allowDeselect
-          data={[
-            { value: 'EPS/Sandwich', label: 'EPS/Sandwich' },
-            { value: 'EPS Custom', label: 'EPS Custom' },
-            { value: 'Other', label: 'Other' },
-          ]}
-          {...form.getInputProps('blank')}
-        />
           <Select
           label="Construction:"
           placeholder='pick one'
@@ -73,28 +60,6 @@ export default function FoilSpecs({ form }) {
             { value: 'Custom', label: 'Custom' },
           ]}
           {...form.getInputProps('construction')}
-        />
-          <NumberInput
-          label="Stance:"
-          {...form.getInputProps('stance')}
-          min={11}
-          max={20}
-        />
-        </Group>
-
-        <Group>
-          <Select
-            label="Logo:"
-            placeholder='pick one'
-            allowDeselect
-            data={[
-              { value: 'black', label: 'black' },
-              { value: 'blue', label: 'blue' },
-              { value: 'red', label: 'red' },
-              { value: 'white', label: 'white' },
-              { value: 'Production Team', label: 'Production Team' },
-            ]}
-            {...form.getInputProps('logo')}
           />
           <Select
             label="Board Color:"
@@ -108,6 +73,40 @@ export default function FoilSpecs({ form }) {
             ]}
             {...form.getInputProps('boardColor')}
           />
+        </Group>
+        <Group>
+          <Select
+          label="Blank:"
+          placeholder='pick one'
+          allowDeselect
+          data={[
+            { value: 'EPS/Sandwich', label: 'EPS/Sandwich' },
+            { value: 'EPS Custom', label: 'EPS Custom' },
+            { value: 'Other', label: 'Other' },
+          ]}
+          {...form.getInputProps('blank')}
+        />
+          <NumberInput
+          label="Stance:"
+          {...form.getInputProps('stance')}
+          min={11}
+          max={20}
+        />
+          <Select
+            label="Logo:"
+            placeholder='pick one'
+            allowDeselect
+            data={[
+              { value: 'black', label: 'black' },
+              { value: 'blue', label: 'blue' },
+              { value: 'red', label: 'red' },
+              { value: 'white', label: 'white' },
+              { value: 'Production Team', label: 'Production Team' },
+            ]}
+            {...form.getInputProps('logo')}
+          />
+        </Group>
+        <Group>
           <Select
             label="Box Type:"
             placeholder='pick one'
@@ -123,6 +122,10 @@ export default function FoilSpecs({ form }) {
             label='Box Location'
             placeholder='type in inches'
             {...form.getInputProps('boxLocation') }
+          />
+          <TextInput
+          label="Pads Color:"
+          {...form.getInputProps('pads')}
           />
         </Group>
 
@@ -197,6 +200,7 @@ export default function FoilSpecs({ form }) {
             {...form.getInputProps('waveLocation')}
           />
         </Group>
+        <Space h="md"/>
         <Group align="center" spacing={80}>
           <Radio.Group
             name='Leash'
@@ -209,21 +213,16 @@ export default function FoilSpecs({ form }) {
             <Radio size='sm' value='No' label='No'/>
           </Radio.Group>
           <Radio.Group
-            name='Pads'
-            label='Pads:'
-            {...form.getInputProps('pads')}
+            name='Handle'
+            label='Handle:'
+            // orientation='vertical'
+            {...form.getInputProps('handle')}
           >
-            <Radio size='sm' value='Yes' label='Yes'/>
+            <Radio size='sm' value='Deck' label='Deck'/>
+            <Radio size='sm' value='Bottom' label='Bottom'/>
             <Radio size='sm' value='No' label='No'/>
-            <Radio size='sm' value='Custom' label='Custom'/>
           </Radio.Group>
         </Group>
-        <Space h="md"/>
-        <Checkbox
-          labelPosition="left"
-          label="Handle:"
-          {...form.getInputProps('handle', {type: 'Checkbox'})}
-        />
         <Textarea
           placeholder="type here"
           label="notes:"

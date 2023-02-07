@@ -213,14 +213,8 @@ export default function WindsurfSpecs({ form }) {
         </Group>
 
         <Group>
-        <Select
-          label="Pads:"
-          placeholder='pick one'
-          data={[
-            { value: 'yes', label: 'Yes' },
-            { value: 'no', label: 'No' },
-            { value: 'custom', label: 'Custom' },
-          ]}
+        <TextInput
+          label="Pads Color:"
           {...form.getInputProps('pads')}
         />
         <Select
