@@ -145,44 +145,10 @@ export default function FoilSpecs({ form }) {
             ]}
             {...form.getInputProps('inserts')}
           />
-          {/* <Select
-            label="Rear Inserts From Tail:"
-            placeholder='pick one'
-            allowDeselect
-            data={[
-              { value: '6', label: '6' },
-              { value: '7', label: '7' },
-              { value: '7 1/2', label: '7 1/2' },
-              { value: '8', label: '8' },
-              { value: '8 1/2', label: '8 1/2' },
-              { value: '9', label: '9' },
-              { value: '9 1/2', label: '9 1/2' },
-              { value: 'see notes', label: 'see notes' },
-              { value: 'none', label: 'none' },
-            ]}
-            {...form.getInputProps('rearInsertsFromTail')}
-          /> */}
           <TextInput
             label="Rear Inserts From Tail:"
             {...form.getInputProps('rearInsertsFromTail')}
           />
-          {/* <Select
-            label="Strap Width:"
-            placeholder='pick one'
-            allowDeselect
-            data={[
-              { value: '5', label: '5' },
-              { value: '5 1/4', label: '5 1/4' },
-              { value: '5 1/2', label: '5 1/2' },
-              { value: '5 3/4', label: '5 3/4' },
-              { value: '6', label: '6' },
-              { value: '6 1/4', label: '6 1/4' },
-              { value: '6 1/2', label: '6 1/2' },
-              { value: 'see notes', label: 'see notes' },
-              { value: null, label: 'none' },
-            ]}
-            {...form.getInputProps('strapWidth')}
-          /> */}
           <TextInput
             label="Strap Width:"
             {...form.getInputProps('strapWidth')}
