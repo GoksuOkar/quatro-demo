@@ -20,12 +20,13 @@ export default function PdfWS({ values, orderNum, customer }) {
        id="container"
       >
         <div id="intro1">
-          <p><b>Date:</b>{` ${date}`}</p>
           <p><b>Name:</b>{` ${name}`}</p>
           <p><b>Phone:</b>{` ${customer.phone}`}</p>
           <p><b>Address:</b>{` ${customer.address}`}</p>
+          <p><b>Email:</b>{` ${customer.email}`}</p>
         </div>
         <div id="intro2">
+          <p><b>Date:</b>{` ${date}`}</p>
           <p><b>Order Number:</b>{` ${orderNum}`}</p>
           <p><b>Intro:</b>{` ${values.intro}`}</p>
           <p><b>Order Type:</b>{` ${values.orderType}`}</p>
