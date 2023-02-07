@@ -16,7 +16,7 @@ import {
   Divider,
   Stepper,
   Select,
-  Code
+  Text,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Carousel } from '@mantine/carousel';
@@ -310,19 +310,19 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
             </Stepper.Step>
 
             <Stepper.Step description='contact info'>
+              <Text>Fill in at least one:</Text>
               <TextInput
-                withAsterisk
-                label="Customer Email"
-                placeholder="customer@email.com"
+                label='Email:'
+                placeholder='customer@email.com'
                 {...form.getInputProps('email')}
               />
               <TextInput
-                label="Phone Number"
+                label='Phone Number:'
+                placeholder='808-888-8888'
                 {...form.getInputProps('phone')}
               />
               <Textarea
-                placeholder='customer address'
-                label='Address'
+                label='Address:'
                 {...form.getInputProps('address')}
               />
             </Stepper.Step>
