@@ -288,10 +288,11 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
                 allowDeselect
                 placeholder="Approved by"
                 data={[
-                  { value: 'lalo', label: 'Lalo' },
-                  { value: 'francisco', label: 'Francisco' },
-                  { value: 'pascal', label: 'Pascal' },
-                  { value: 'keith', label: 'Keith' },
+                  { value: 'Lalo', label: 'Lalo' },
+                  { value: 'Francisco', label: 'Francisco' },
+                  { value: 'Pascal', label: 'Pascal' },
+                  { value: 'Keith', label: 'Keith' },
+                  { value: 'Logan', label: 'Logan'},
                 ]}
                 {...form.getInputProps('approvedBy')}
               />
