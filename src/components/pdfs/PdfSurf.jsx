@@ -1,15 +1,14 @@
 import { Button } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
-import axios from 'axios';
 import './output.css';
-import { capitalizeFirstLetter } from "../utils/helpers.js";
+import { capitalizeFirstLetter } from "../../utils/helpers.js";
 
-//windsurf output
+//surf output
 
 const now = new Date()
 const date = now.toISOString().slice(0, 10)
 
-export default function PdfWS({ values, orderNum, customer }) {
+export default function PdfSurf({ values, orderNum, customer }) {
   const myref = useRef(null);
 
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
@@ -47,7 +46,7 @@ export default function PdfWS({ values, orderNum, customer }) {
           <p><b>Box:</b>{` ${values.boxType}`}</p>
           <p><b>Inserts:</b>{` ${values.inserts}`}</p>
           <p><b>Board Color:</b>{` ${values.boardColor}`}</p>
-          <p><b>Fin Box From Tail:</b>{` ${values.finFromTail}`}</p>
+          <p><b>Leash:</b>{` ${values.leash}`}</p>
         </div>
 
         <div id='boardSpecs2'>
@@ -65,7 +64,7 @@ export default function PdfWS({ values, orderNum, customer }) {
           <p><b>Straps Width:</b>{` ${values.strapWidth}`}</p>
           <p><b>Construction:</b>{` ${values.construction}`}</p>
           <p><b>Volume:</b>{` ${values.volume}`}</p>
-          <p><b>Rear Inserts From Tail:</b>{` ${values.rearInsertsFromTail}`}</p>
+          <p><b>Rear Strap From Tail:</b>{` ${values.rearStrap}`}</p>
         </div>
         <div id="notes">
           <b>Notes:</b>

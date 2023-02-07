@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import PdfFoil from '../components/PdfFoil';
-import PdfWS from '../components/PdfWS';
-import PdfSurf from '../components/PdfSurf';
+import PdfFoil from '../components/pdfs/PdfFoil';
+import PdfWS from '../components/pdfs/PdfWS';
+import PdfSurf from '../components/pdfs/PdfSurf';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Container, Center, Button, Group } from '@mantine/core';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';

@@ -1,17 +1,17 @@
 import { Button } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
+import axios from 'axios';
 import './output.css';
-import { capitalizeFirstLetter } from "../utils/helpers.js";
+import { capitalizeFirstLetter } from "../../utils/helpers.js";
 
-//foil output
+//windsurf output
 
 const now = new Date()
 const date = now.toISOString().slice(0, 10)
 
-export default function PdfFoil({ values, orderNum, customer }) {
+export default function PdfWS({ values, orderNum, customer }) {
   const myref = useRef(null);
 
-  let handle = values.handle === false ? 'No' : 'Yes';
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return(
@@ -43,18 +43,17 @@ export default function PdfFoil({ values, orderNum, customer }) {
         {/* BOARD SPECS */}
         <div id='boardSpecs1'>
           <p><b>Style:</b>{` ${values.style}`}</p>
-          <p><b>Length:</b>{` ${values.lengthFt}ft ${values.lengthIn}in`}</p>
+          <p><b>Length:</b>{` ${values.lengthFt}ft ${values.lengthIn}`}</p>
           <p><b>Box:</b>{` ${values.boxType}`}</p>
           <p><b>Inserts:</b>{` ${values.inserts}`}</p>
-          <p><b></b>{`Board Color: ${values.boardColor}`}</p>
-          <p><b></b>{`Box Location: ${values.boxLocation}`}</p>
+          <p><b>Board Color:</b>{` ${values.boardColor}`}</p>
+          <p><b>Fin Box From Tail:</b>{` ${values.finFromTail}`}</p>
         </div>
 
         <div id='boardSpecs2'>
           <p><b>Tail:</b>{` ${values.tail}`}</p>
           <p><b>Width:</b>{` ${values.width}`}</p>
-          <p><b>Leash:</b>{` ${values.leash}`}</p>
-          <p><b>Handle:</b>{` ${handle}`}</p>
+          <p><b>Fin Setup:</b>{` ${values.finSetup}`}</p>
           <p><b>Stance:</b>{` ${values.stance}`}</p>
           <p><b>Logos Color:</b>{` ${values.logo}`}</p>
           <p><b>Pads:</b>{` ${values.pads}`}</p>

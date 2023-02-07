@@ -1,16 +1,17 @@
 import { Button } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
 import './output.css';
-import { capitalizeFirstLetter } from "../utils/helpers.js";
+import { capitalizeFirstLetter } from "../../utils/helpers.js";
 
-//surf output
+//foil output
 
 const now = new Date()
 const date = now.toISOString().slice(0, 10)
 
-export default function PdfSurf({ values, orderNum, customer }) {
+export default function PdfFoil({ values, orderNum, customer }) {
   const myref = useRef(null);
 
+  let handle = values.handle === false ? 'No' : 'Yes';
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return(
@@ -42,17 +43,18 @@ export default function PdfSurf({ values, orderNum, customer }) {
         {/* BOARD SPECS */}
         <div id='boardSpecs1'>
           <p><b>Style:</b>{` ${values.style}`}</p>
-          <p><b>Length:</b>{` ${values.lengthFt}ft ${values.lengthIn}`}</p>
+          <p><b>Length:</b>{` ${values.lengthFt}ft ${values.lengthIn}in`}</p>
           <p><b>Box:</b>{` ${values.boxType}`}</p>
           <p><b>Inserts:</b>{` ${values.inserts}`}</p>
-          <p><b>Board Color:</b>{` ${values.boardColor}`}</p>
-          <p><b>Leash:</b>{` ${values.leash}`}</p>
+          <p><b></b>{`Board Color: ${values.boardColor}`}</p>
+          <p><b></b>{`Box Location: ${values.boxLocation}`}</p>
         </div>
 
         <div id='boardSpecs2'>
           <p><b>Tail:</b>{` ${values.tail}`}</p>
           <p><b>Width:</b>{` ${values.width}`}</p>
-          <p><b>Fin Setup:</b>{` ${values.finSetup}`}</p>
+          <p><b>Leash:</b>{` ${values.leash}`}</p>
+          <p><b>Handle:</b>{` ${handle}`}</p>
           <p><b>Stance:</b>{` ${values.stance}`}</p>
           <p><b>Logos Color:</b>{` ${values.logo}`}</p>
           <p><b>Pads:</b>{` ${values.pads}`}</p>
@@ -64,7 +66,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <p><b>Straps Width:</b>{` ${values.strapWidth}`}</p>
           <p><b>Construction:</b>{` ${values.construction}`}</p>
           <p><b>Volume:</b>{` ${values.volume}`}</p>
-          <p><b>Rear Strap From Tail:</b>{` ${values.rearStrap}`}</p>
+          <p><b>Rear Inserts From Tail:</b>{` ${values.rearInsertsFromTail}`}</p>
         </div>
         <div id="notes">
           <b>Notes:</b>
