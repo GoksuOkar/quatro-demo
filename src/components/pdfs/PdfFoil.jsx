@@ -10,8 +10,6 @@ const date = now.toISOString().slice(0, 10)
 
 export default function PdfFoil({ values, orderNum, customer }) {
   const myref = useRef(null);
-
-  let handle = values.handle === false ? 'No' : 'Yes';
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return(
@@ -54,7 +52,7 @@ export default function PdfFoil({ values, orderNum, customer }) {
           <p><b>Tail:</b>{` ${values.tail}`}</p>
           <p><b>Width:</b>{` ${values.width}`}</p>
           <p><b>Leash:</b>{` ${values.leash}`}</p>
-          <p><b>Handle:</b>{` ${handle}`}</p>
+          <p><b>Handle:</b>{` ${values.handle}`}</p>
           <p><b>Stance:</b>{` ${values.stance}`}</p>
           <p><b>Logos Color:</b>{` ${values.logo}`}</p>
           <p><b>Pads:</b>{` ${values.pads}`}</p>
