@@ -215,7 +215,6 @@ export default function FoilSpecs({ form }) {
           <Radio.Group
             name='Handle'
             label='Handle:'
-            // orientation='vertical'
             {...form.getInputProps('handle')}
           >
             <Radio size='sm' value='Deck' label='Deck'/>
