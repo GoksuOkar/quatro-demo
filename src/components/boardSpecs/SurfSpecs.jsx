@@ -101,12 +101,10 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps('construction')}
         />
-          <NumberInput
+          <TextInput
           label="Stance:"
-          placeholder={11}
+          placeholder="12"
           {...form.getInputProps('stance')}
-          min={11}
-          max={20}
         />
         </Group>
 

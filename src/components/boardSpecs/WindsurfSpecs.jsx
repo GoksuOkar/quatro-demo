@@ -88,13 +88,12 @@ export default function WindsurfSpecs({ form }) {
             { value: 'Custom', label: 'Custom' },
           ]}
           {...form.getInputProps('construction')}
-        />
-          <NumberInput
+          />
+          <TextInput
           label="Stance:"
+          placeholder="12"
           {...form.getInputProps('stance')}
-          min={11}
-          max={20}
-        />
+          />
         </Group>
 
         <Group>

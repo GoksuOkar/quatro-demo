@@ -85,13 +85,12 @@ export default function FoilSpecs({ form }) {
             { value: 'Other', label: 'Other' },
           ]}
           {...form.getInputProps('blank')}
-        />
-          <NumberInput
+          />
+          <TextInput
           label="Stance:"
+          placeholder="12"
           {...form.getInputProps('stance')}
-          min={11}
-          max={20}
-        />
+          />
           <Select
             label="Logo:"
             placeholder='pick one'

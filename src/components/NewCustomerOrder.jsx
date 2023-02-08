@@ -68,7 +68,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       inserts: '',
       rearStrap: '',
       strapWidth: 0,
-      stance: 0,
+      stance: '',
       leash: 'Deck',
       pads: '',
       waveLocation: '',
@@ -117,7 +117,6 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           inserts: values.inserts === '' ? 'Inserts must be picked' : null,
           waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
           pads: values.pads === '' ? 'Pick pads' : null,
-          stance: values.stance <= 0 ? 'Enter valid stance' : null,
           boxType: values.boxType === '' ? 'Box type must be picked' : null,
           strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null,
         }
