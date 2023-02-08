@@ -21,6 +21,10 @@ export default function OrderPage() {
     setEdit(true);
   }
 
+  const print = () => {
+    window.print();
+  }
+
   return (
     <Center>
       {
@@ -31,7 +35,7 @@ export default function OrderPage() {
             }
             <Center>
               <Group>
-                <Button color="dark" onClick={() => window.print()}>Print/Save</Button>
+                <Button color="dark" onClick={print}>Print/Save</Button>
                 <Button color="dark" onClick={() => navigate('/')}>Go Home</Button>
                 <Button color="dark" onClick={handleEdit}>Edit</Button>
               </Group>

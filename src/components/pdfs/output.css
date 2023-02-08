@@ -3,6 +3,15 @@
     .mantine-Stepper-steps, h1 { display: none;}
     .mantine-Group-root { display: none;}
     a { display: none;}
+    .printme {
+      padding: 20px;
+    }
+    #id {
+      height: 100%;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
 }
 
 h1 {
@@ -10,7 +19,8 @@ h1 {
   margin-bottom: 5%;
 }
 
-#container {
+#printcontents {
+  margin:auto;
   display: grid;
   height: 297mm;
   width: 210mm;

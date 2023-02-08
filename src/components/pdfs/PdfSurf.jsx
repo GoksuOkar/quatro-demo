@@ -16,7 +16,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
   return(
       <div
        className="printme"
-       id="container"
+       id="printcontents"
       >
         <div id="intro1">
           <p><b>Name:</b>{` ${name}`}</p>

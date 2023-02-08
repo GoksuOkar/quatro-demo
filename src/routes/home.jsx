@@ -40,7 +40,7 @@ export default function Home() {
               <Button color="dark" onClick={goToOrders}>View Orders</Button>
             </Center>
             <Space h="lg"/>
-            <Stack>
+            <Stack sx={(theme) => ({border: '1px', borderStyle: 'solid', borderRadius: '8px', borderColor: 'black', paddingTop:'5px', paddingBottom: '10px', backgroundColor: 'lightgray'})}>
               <Center>
                 New Order
               </Center>
