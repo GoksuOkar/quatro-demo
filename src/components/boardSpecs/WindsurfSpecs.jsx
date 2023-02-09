@@ -174,32 +174,16 @@ export default function WindsurfSpecs({ form }) {
           placeholder="type here"
           {...form.getInputProps('rearStrap')}
           />
-          {/* <Select
-            label="Strap Width:"
-            allowDeselect
-            placeholder='pick one'
-            data={[
-              { value: '5', label: '5' },
-              { value: '5 1/4', label: '5 1/4' },
-              { value: '5 1/2', label: '5 1/2' },
-              { value: '5 3/4', label: '5 3/4' },
-              { value: '6', label: '6' },
-              { value: '6 1/4', label: '6 1/4' },
-              { value: '6 1/2', label: '6 1/2' },
-              { value: 'see notes', label: 'see notes' },
-              { value: 'none', label: 'none' },
-            ]}
-            {...form.getInputProps('strapWidth')}
-          /> */}
           <TextInput
             label="Strap Width:"
+            placeholder='type here'
             {...form.getInputProps('strapWidth')}
           />
         </Group>
-
         <Group>
         <TextInput
           label="Pads Color:"
+          placeholder='type here'
           {...form.getInputProps('pads')}
         />
         <Select

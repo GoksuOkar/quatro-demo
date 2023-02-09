@@ -119,15 +119,17 @@ export default function FoilSpecs({ form }) {
           />
           <TextInput
             label='Box Location'
-            placeholder='type in inches'
+            placeholder='type here'
             {...form.getInputProps('boxLocation') }
           />
           <TextInput
           label="Pads Color:"
+          placeholder='type here'
           {...form.getInputProps('pads')}
           />
           <TextInput
           label="Foil Type:"
+          placeholder='type here'
           {...form.getInputProps('foilType')}
           />
         </Group>
@@ -150,6 +152,7 @@ export default function FoilSpecs({ form }) {
           />
           <TextInput
             label="Rear Inserts From Tail:"
+            placeholder='type here'
             {...form.getInputProps('rearInsertsFromTail')}
           />
           <TextInput

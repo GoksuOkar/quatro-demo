@@ -191,6 +191,7 @@ export default function SurfSpecs({ form }) {
           />
           <TextInput
             label="Rear Strap From Tail:"
+            placeholder='type here'
             {...form.getInputProps('rearStrap')}
           />
           <TextInput
@@ -213,6 +214,7 @@ export default function SurfSpecs({ form }) {
         />
         <TextInput
           label="Pads Color:"
+          placeholder='type here'
           {...form.getInputProps('pads')}
         />
         <Select

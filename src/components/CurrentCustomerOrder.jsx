@@ -77,6 +77,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       leash: 'Deck',
       pads: '',
       waveLocation: '',
+      foilType: '',
       finFromTail: '',
       boxLocation: '',
       rearInsertsFromTail: '',
