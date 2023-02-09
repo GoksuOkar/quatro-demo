@@ -18,29 +18,29 @@ export default function PdfSurf({ values, orderNum, customer }) {
        className="printme"
        id="printcontents"
       >
-        <div id="intro1">
+        <div className="child">
           <p><b>Name:</b>{` ${name}`}</p>
           <p><b>Phone:</b>{` ${customer.phone}`}</p>
           <p><b>Address:</b>{` ${customer.address}`}</p>
           <p><b>Email:</b>{` ${customer.email}`}</p>
         </div>
-        <div id="intro2">
+        <div className="child">
           <p><b>Date:</b>{` ${date}`}</p>
           <p><b>Order Number:</b>{` ${orderNum}`}</p>
           <p><b>Intro:</b>{` ${values.intro}`}</p>
           <p><b>Order Type:</b>{` ${values.orderType}`}</p>
         </div>
         {/* RIDER INFO */}
-        <div id='rider1'>
+        <div className="child">
           <p><b>Weight:</b>{` ${customer.weight}lbs`}</p>
           <p><b>Height:</b>{` ${customer.heightFt}ft ${customer.heightIn}in`}</p>
         </div>
-        <div id='rider2'>
+        <div className="child">
           <p><b>Level:</b>{` ${customer.level}`}</p>
-          <p><b>Location:</b>{` ${values.waveLocation}`}</p>
+          <p><b>Location:</b>{` ${values.waveclassName="child"}`}</p>
         </div>
         {/* BOARD SPECS */}
-        <div id='boardSpecs1'>
+        <div className="child">
           <p><b>Style:</b>{` ${values.style}`}</p>
           <p><b>Length:</b>{` ${values.lengthFt}ft ${values.lengthIn}`}</p>
           <p><b>Box:</b>{` ${values.boxType}`}</p>
@@ -49,7 +49,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <p><b>Leash:</b>{` ${values.leash}`}</p>
         </div>
 
-        <div id='boardSpecs2'>
+        <div className="child">
           <p><b>Tail:</b>{` ${values.tail}`}</p>
           <p><b>Width:</b>{` ${values.width}`}</p>
           <p><b>Fin Setup:</b>{` ${values.finSetup}`}</p>
@@ -58,7 +58,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <p><b>Pads:</b>{` ${values.pads}`}</p>
         </div>
 
-        <div id='boardSpecs3'>
+        <div className="child">
           <p><b>Blank:</b>{` ${values.blank}`}</p>
           <p><b>Thickness:</b>{` ${values.thickness}`}</p>
           <p><b>Straps Width:</b>{` ${values.strapWidth}`}</p>
@@ -66,7 +66,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <p><b>Volume:</b>{` ${values.volume}`}</p>
           <p><b>Rear Strap From Tail:</b>{` ${values.rearStrap}`}</p>
         </div>
-        <div id="notes">
+        <div className="child">
           <b>Notes:</b>
           <p>{values.notes}</p>
         </div>
