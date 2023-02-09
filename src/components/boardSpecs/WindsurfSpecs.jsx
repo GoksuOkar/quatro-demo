@@ -141,7 +141,6 @@ export default function WindsurfSpecs({ form }) {
             placeholder='pick one'
             allowDeselect
             data={[
-              { value: 'STD', label: 'STD' },
               { value: 'US', label: 'US' },
               { value: 'Power Box', label: 'Power Box' },
               { value: 'Custom Mix', label: 'Custom Mix' },
