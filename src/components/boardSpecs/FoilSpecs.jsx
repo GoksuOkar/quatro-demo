@@ -126,6 +126,10 @@ export default function FoilSpecs({ form }) {
           label="Pads Color:"
           {...form.getInputProps('pads')}
           />
+          <TextInput
+          label="Foil Type:"
+          {...form.getInputProps('foilType')}
+          />
         </Group>
 
         <Group>
@@ -150,6 +154,7 @@ export default function FoilSpecs({ form }) {
           />
           <TextInput
             label="Strap Width:"
+            placeholder="type here"
             {...form.getInputProps('strapWidth')}
           />
           <Select

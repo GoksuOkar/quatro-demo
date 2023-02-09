@@ -72,7 +72,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       logo:'',
       inserts: '',
       rearStrap: '',
-      strapWidth: 0,
+      strapWidth: '',
       stance: '',
       leash: 'Deck',
       pads: '',

@@ -37,6 +37,7 @@ export default function PdfFoil({ values, orderNum, customer }) {
         <div id='rider2'>
           <p><b>Level:</b>{` ${customer.level}`}</p>
           <p><b>Location:</b>{` ${values.waveLocation}`}</p>
+          <p><b>Foil Type:</b>{` ${values.foilType}`}</p>
         </div>
         {/* BOARD SPECS */}
         <div id='boardSpecs1'>
@@ -44,8 +45,8 @@ export default function PdfFoil({ values, orderNum, customer }) {
           <p><b>Length:</b>{` ${values.lengthFt}ft ${values.lengthIn}in`}</p>
           <p><b>Box:</b>{` ${values.boxType}`}</p>
           <p><b>Inserts:</b>{` ${values.inserts}`}</p>
-          <p><b></b>{`Board Color: ${values.boardColor}`}</p>
-          <p><b></b>{`Box Location: ${values.boxLocation}`}</p>
+          <p><b>Board Color:</b>{` ${values.boardColor}`}</p>
+          <p><b>Box Location:</b>{` ${values.boxLocation}`}</p>
         </div>
 
         <div id='boardSpecs2'>
