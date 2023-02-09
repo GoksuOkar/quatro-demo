@@ -24,20 +24,18 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <p><b>Address:</b>{` ${customer.address}`}</p>
           <p><b>Email:</b>{` ${customer.email}`}</p>
         </div>
+        {/* RIDER INFO */}
+        <div className="child">
+          <p><b>Weight:</b>{` ${customer.weight}lbs`}</p>
+          <p><b>Height:</b>{` ${customer.heightFt}ft ${customer.heightIn}in`}</p>
+          <p><b>Level:</b>{` ${customer.level}`}</p>
+          <p><b>Location:</b>{` ${values.waveclassName="child"}`}</p>
+        </div>
         <div className="child">
           <p><b>Date:</b>{` ${date}`}</p>
           <p><b>Order Number:</b>{` ${orderNum}`}</p>
           <p><b>Intro:</b>{` ${values.intro}`}</p>
           <p><b>Order Type:</b>{` ${values.orderType}`}</p>
-        </div>
-        {/* RIDER INFO */}
-        <div className="child">
-          <p><b>Weight:</b>{` ${customer.weight}lbs`}</p>
-          <p><b>Height:</b>{` ${customer.heightFt}ft ${customer.heightIn}in`}</p>
-        </div>
-        <div className="child">
-          <p><b>Level:</b>{` ${customer.level}`}</p>
-          <p><b>Location:</b>{` ${values.waveclassName="child"}`}</p>
         </div>
         {/* BOARD SPECS */}
         <div className="child">
@@ -66,11 +64,13 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <p><b>Volume:</b>{` ${values.volume}`}</p>
           <p><b>Rear Strap From Tail:</b>{` ${values.rearStrap}`}</p>
         </div>
-        <div className="child">
+        <div className="child" id="notes">
           <b>Notes:</b>
           <p>{values.notes}</p>
         </div>
-        <img id="image" src='/surfBoard.jpeg'/>
+        <div className="child">
+          <img id="image" src='/surfBoard.jpeg'/>
+        </div>
       </div>
   )
 }
