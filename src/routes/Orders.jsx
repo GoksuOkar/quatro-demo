@@ -39,7 +39,7 @@ export default function Orders() {
   const orderTypeChange = (v) => {
     let types = ["surf", "windsurf", "foil"];
     if (types.includes(v)) {
-      let newDisplay = orders.filter((order) => (order.orderType == v));
+      let newDisplay = display.filter((order) => (order.orderType == v));
       setDisplay(newDisplay);
       setNumOfPages(newDisplay.length);
       setType(v);
@@ -53,7 +53,7 @@ export default function Orders() {
   const handleSearch = (e) => {
     e.preventDefault();
     let name = searchRef.current.value;
-    let searchResults = orders.filter((order) => (order.customerName.includes(name)));
+    let searchResults = display.filter((order) => (order.customerName.includes(name)));
     setDisplay(searchResults);
     setNumOfPages(searchResults.length);
   }
