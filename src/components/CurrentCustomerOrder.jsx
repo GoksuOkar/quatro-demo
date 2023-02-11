@@ -62,6 +62,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       width: 0,
       thickness: 0,
       volume: 0,
+      towWeight: 0,
       tail: '',
       blank: '',
       construction: '',
@@ -83,6 +84,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       rearInsertsFromTail: '',
       handle: 'Deck',
       notes: '',
+      invoiceNum: '',
     },
 
     transformValues: (values) => ({

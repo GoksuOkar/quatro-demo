@@ -57,6 +57,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       width: 0,
       thickness: 0,
       volume: 0,
+      towWeight: 0,
       tail: '',
       blank: '',
       construction: '',
@@ -78,6 +79,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       handle: 'Deck',
       foilType: '',
       notes: '',
+      invoiceNum: '',
     },
 
     // transformValues: (values) => ({
