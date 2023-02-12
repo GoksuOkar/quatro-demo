@@ -7,6 +7,7 @@ export default function FoilSpecs({ form }) {
       <Group>
         <Select
           label="Style:"
+          withAsterisk
           allowDeselect
           placeholder="pick one"
           data={[
@@ -35,6 +36,15 @@ export default function FoilSpecs({ form }) {
           {...form.getInputProps("lengthIn")}
         />
         <NumberInput
+          label="Tow Weight (if applicable):"
+          placeholder="0"
+          step={5}
+          min={0}
+          {...form.getInputProps("towWeight")}
+        />
+      </Group>
+      <Group>
+        <NumberInput
           label="Width(in):"
           placeholder="inches"
           precision={2}
@@ -48,23 +58,19 @@ export default function FoilSpecs({ form }) {
           step={0.5}
           {...form.getInputProps("thickness")}
         />
-      </Group>
-      <Group>
         <NumberInput
           label="Volume(lt):"
+          withAsterisk
           placeholder="lt"
           precision={2}
           step={10}
           {...form.getInputProps("volume")}
         />
-        <NumberInput
-          label="Tow Weight:"
-          min={0}
-          step={2}
-          {...form.getInputProps("towWeight")}
-        />
+        </Group>
+        <Group>
         <Select
           label="Construction:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -75,6 +81,7 @@ export default function FoilSpecs({ form }) {
         />
         <Select
           label="Board Color:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -88,10 +95,9 @@ export default function FoilSpecs({ form }) {
           ]}
           {...form.getInputProps("boardColor")}
         />
-      </Group>
-      <Group>
         <Select
           label="Blank:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -101,6 +107,8 @@ export default function FoilSpecs({ form }) {
           ]}
           {...form.getInputProps("blank")}
         />
+      </Group>
+      <Group>
         <TextInput
           label="Stance:"
           placeholder="12"
@@ -108,6 +116,7 @@ export default function FoilSpecs({ form }) {
         />
         <Select
           label="Logo:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -123,6 +132,7 @@ export default function FoilSpecs({ form }) {
       <Group>
         <Select
           label="Box Type:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -134,11 +144,13 @@ export default function FoilSpecs({ form }) {
         />
         <TextInput
           label="Box Location"
+          withAsterisk
           placeholder="type here"
           {...form.getInputProps("boxLocation")}
         />
         <TextInput
           label="Pads Color:"
+          withAsterisk
           placeholder="type here"
           {...form.getInputProps("pads")}
         />
@@ -152,6 +164,7 @@ export default function FoilSpecs({ form }) {
       <Group>
         <Select
           label="Inserts:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -167,16 +180,19 @@ export default function FoilSpecs({ form }) {
         />
         <TextInput
           label="Rear Inserts From Tail:"
+          withAsterisk
           placeholder="type here"
           {...form.getInputProps("rearInsertsFromTail")}
         />
         <TextInput
           label="Strap Width:"
+          withAsterisk
           placeholder="type here"
           {...form.getInputProps("strapWidth")}
         />
         <Select
           label="Wave/Location:"
+          withAsterisk
           placeholder="pick one"
           data={[
             { value: "Harbor Freeride", label: "Harbor Freeride" },
