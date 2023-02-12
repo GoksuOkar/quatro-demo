@@ -27,19 +27,20 @@ export default function PdfFoil({ values, orderNum, customer }) {
           <p><b>Weight:</b>{` ${customer.weight}lbs`}</p>
           <p><b>Height:</b>{` ${customer.heightFt}ft ${customer.heightIn}in`}</p>
           <p><b>Level:</b>{` ${customer.level}`}</p>
-          <p><b>Location:</b>{` ${values.waveLocation}`}</p>
-          <p><b>Foil Type:</b>{` ${values.foilType}`}</p>
+          <p><b>Intro:</b>{` ${values.intro}`}</p>
         </div>
         <div className="child">
           <p><b>Date:</b>{` ${date}`}</p>
-          <p><b>Order Number:</b>{` ${orderNum}`}</p>
-          <p><b>Intro:</b>{` ${values.intro}`}</p>
           <p><b>Order Type:</b>{` ${values.orderType}`}</p>
+          <p><b>Order Number:</b>{` ${orderNum}`}</p>
+          <p><b>Invoice Number:</b>{` ${values.invoiceNum}`}</p>
         </div>
         {/* RIDER INFO */}
         {/* BOARD SPECS */}
         <div className="child">
           <p><b>Style:</b>{` ${values.style}`}</p>
+          <p><b>Location:</b>{` ${values.waveLocation}`}</p>
+          <p><b>Foil Type:</b>{` ${values.foilType}`}</p>
           <p><b>Length:</b>{` ${values.lengthFt}ft ${values.lengthIn}in`}</p>
           <p><b>Box:</b>{` ${values.boxType}`}</p>
           <p><b>Inserts:</b>{` ${values.inserts}`}</p>
@@ -58,6 +59,7 @@ export default function PdfFoil({ values, orderNum, customer }) {
         </div>
 
         <div className="child">
+          <p><b>Tow Weight:</b>{` ${values.towWeight}`}</p>
           <p><b>Blank:</b>{` ${values.blank}`}</p>
           <p><b>Thickness:</b>{` ${values.thickness}`}</p>
           <p><b>Straps Width:</b>{` ${values.strapWidth}`}</p>
