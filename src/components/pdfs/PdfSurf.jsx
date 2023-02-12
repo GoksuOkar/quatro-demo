@@ -47,10 +47,6 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <b>Location:</b>
           {` ${values.waveLocation}`}
         </p>
-        <p>
-          <b>Intro:</b>
-          {` ${values.intro}`}
-        </p>
       </div>
       <div className="child">
         <p>
@@ -68,6 +64,10 @@ export default function PdfSurf({ values, orderNum, customer }) {
         <p>
           <b>Invoice Number:</b>
           {` ${values.invoiceNum}`}
+        </p>
+        <p>
+          <b>Intro:</b>
+          {` ${values.intro}`}
         </p>
       </div>
       {/* BOARD SPECS */}
