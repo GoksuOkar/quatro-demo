@@ -7,6 +7,7 @@ export default function WindsurfSpecs({ form }) {
       <Group>
         <Select
           label="Style:"
+          withAsterisk
           allowDeselect
           placeholder="pick one"
           data={[
@@ -24,6 +25,24 @@ export default function WindsurfSpecs({ form }) {
       </Group>
 
       <Group>
+        <NumberInput
+          label="Volume(lt):"
+          withAsterisk
+          placeholder="lt"
+          step={10}
+          precision={2}
+          {...form.getInputProps("volume")}
+        />
+        <NumberInput
+          label="Tow Weight (if applicable):"
+          placeholder="0"
+          step={5}
+          min={0}
+          {...form.getInputProps("towWeight")}
+        />
+      </Group>
+
+      <Group>
         <NumberInput label="Length(ft):" {...form.getInputProps("lengthFt")} />
         <NumberInput
           label="Length(in):"
@@ -31,9 +50,6 @@ export default function WindsurfSpecs({ form }) {
           step={0.5}
           {...form.getInputProps("lengthIn")}
         />
-      </Group>
-
-      <Group>
         <NumberInput
           label="Width(in):"
           placeholder="inches"
@@ -48,25 +64,12 @@ export default function WindsurfSpecs({ form }) {
           step={0.5}
           {...form.getInputProps("thickness")}
         />
-        <NumberInput
-          label="Volume(lt):"
-          placeholder="lt"
-          step={10}
-          precision={2}
-          {...form.getInputProps("volume")}
-        />
-        <NumberInput
-          label="Tow Weight (if applicable)"
-          placeholder="0"
-          step={5}
-          min={0}
-          {...form.getInputProps("towWeight")}
-        />
       </Group>
 
       <Group>
         <Select
           label="Tail:"
+          withAsterisk
           allowDeselect
           placeholder="pick one"
           data={[
@@ -79,6 +82,7 @@ export default function WindsurfSpecs({ form }) {
         />
         <Select
           label="Blank:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -90,6 +94,7 @@ export default function WindsurfSpecs({ form }) {
         />
         <Select
           label="Construction:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -110,6 +115,7 @@ export default function WindsurfSpecs({ form }) {
       <Group>
         <Select
           label="Logo:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -123,6 +129,7 @@ export default function WindsurfSpecs({ form }) {
         />
         <Select
           label="Board Color:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -136,6 +143,7 @@ export default function WindsurfSpecs({ form }) {
         />
         <Select
           label="Fin Setup:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -149,6 +157,7 @@ export default function WindsurfSpecs({ form }) {
         />
         <Select
           label="Box Type:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -168,6 +177,7 @@ export default function WindsurfSpecs({ form }) {
         />
         <Select
           label="Inserts:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           data={[
@@ -186,6 +196,7 @@ export default function WindsurfSpecs({ form }) {
         />
         <TextInput
           label="Strap Width:"
+          withAsterisk
           placeholder="type here"
           {...form.getInputProps("strapWidth")}
         />
@@ -193,11 +204,13 @@ export default function WindsurfSpecs({ form }) {
       <Group>
         <TextInput
           label="Pads Color:"
+          withAsterisk
           placeholder="type here"
           {...form.getInputProps("pads")}
         />
         <Select
           label="Wave/Location:"
+          withAsterisk
           placeholder="pick one"
           data={[
             { value: "Hookipa", label: "Hookipa" },

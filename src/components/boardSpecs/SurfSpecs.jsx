@@ -6,6 +6,7 @@ export default function SurfSpecs({ form }) {
       <Group>
         <Select
           label="Style:"
+          withAsterisk
           allowDeselect
           placeholder="style"
           data={[
@@ -29,7 +30,11 @@ export default function SurfSpecs({ form }) {
       </Group>
 
       <Group>
-        <NumberInput label="Length(ft):" {...form.getInputProps("lengthFt")} />
+        <NumberInput
+          withAsterisk
+          label="Length(ft):"
+          {...form.getInputProps("lengthFt")}
+        />
         <NumberInput
           label="Length(in):"
           precision={2}
@@ -61,6 +66,7 @@ export default function SurfSpecs({ form }) {
         />
         <NumberInput
           label="Volume(lt):"
+          withAsterisk
           placeholder="lt"
           precision={2}
           step={10}
@@ -71,6 +77,7 @@ export default function SurfSpecs({ form }) {
       <Group>
         <Select
           label="Tail:"
+          withAsterisk
           allowDeselect
           placeholder="pick one"
           data={[
@@ -84,6 +91,7 @@ export default function SurfSpecs({ form }) {
         />
         <Select
           label="Blank:"
+          withAsterisk
           placeholder="pick one"
           allowDeselect
           defaultValue="PU"
@@ -97,6 +105,7 @@ export default function SurfSpecs({ form }) {
         <Select
           label="Construction:"
           placeholder="pick one"
+          withAsterisk
           allowDeselect
           data={[
             { value: "STD PU", label: "STD PU" },
@@ -111,17 +120,13 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("construction")}
         />
-        <TextInput
-          label="Stance:"
-          placeholder="12"
-          {...form.getInputProps("stance")}
-        />
       </Group>
 
       <Group>
         <Select
           placeholder="pick one"
           label="Logo:"
+          withAsterisk
           allowDeselect
           data={[
             { value: "black", label: "black" },
@@ -135,6 +140,7 @@ export default function SurfSpecs({ form }) {
         <Select
           label="Board Color:"
           placeholder="pick one"
+          withAsterisk
           allowDeselect
           data={[
             { value: "Natural White", label: "Natural White" },
@@ -147,6 +153,7 @@ export default function SurfSpecs({ form }) {
         <Select
           label="Fin Setup:"
           placeholder="pick one"
+          withAsterisk
           allowDeselect
           data={[
             { value: "Thruster", label: "Thruster" },
@@ -160,6 +167,7 @@ export default function SurfSpecs({ form }) {
         <Select
           label="Box Type:"
           placeholder="pick one"
+          withAsterisk
           allowDeselect
           data={[
             { value: "FCS II", label: "FCS II" },
@@ -172,6 +180,7 @@ export default function SurfSpecs({ form }) {
         <Select
           label="Box Color:"
           placeholder="pick one"
+          withAsterisk
           allowDeselect
           data={[
             { value: "black", label: "black" },
@@ -182,10 +191,16 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("boxColor")}
         />
+        <TextInput
+          label="Stance:"
+          placeholder="12"
+          {...form.getInputProps("stance")}
+        />
       </Group>
 
       <Group>
         <Select
+          withAsterisk
           label="Inserts:"
           placeholder="pick one"
           allowDeselect
@@ -200,11 +215,13 @@ export default function SurfSpecs({ form }) {
         />
         <TextInput
           label="Rear Strap From Tail:"
+          withAsterisk
           placeholder="type here"
           {...form.getInputProps("rearStrap")}
         />
         <TextInput
           label="Strap Width:"
+          withAsterisk
           placeholder="type here"
           {...form.getInputProps("strapWidth")}
         />
@@ -223,11 +240,13 @@ export default function SurfSpecs({ form }) {
         />
         <TextInput
           label="Pads Color:"
+          withAsterisk
           placeholder="type here"
           {...form.getInputProps("pads")}
         />
         <Select
           label="Wave/Location:"
+          withAsterisk
           placeholder="pick one"
           data={[
             {
