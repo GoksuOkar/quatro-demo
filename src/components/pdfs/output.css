@@ -50,6 +50,7 @@ h1 {
 .mantine-Table-root {
   margin-top: 4%;
   margin-bottom: 4%;
+  cursor: default;
 }
 
 /* b {
