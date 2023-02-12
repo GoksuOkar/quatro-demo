@@ -1,6 +1,6 @@
-import PdfWS from './PdfWS.jsx';
-import PdfSurf from './PdfSurf.jsx';
-import PdfFoil from './PdfFoil.jsx';
+import PdfWS from './pdfs/PdfWS.jsx';
+import PdfSurf from './pdfs/PdfSurf.jsx';
+import PdfFoil from './pdfs/PdfFoil.jsx';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {
@@ -21,9 +21,9 @@ import {
 import { useForm } from '@mantine/form';
 import { Carousel } from '@mantine/carousel';
 // import { OrderPDF } from './OrderPDF.jsx';
-import SurfSpecs from './SurfSpecs.jsx';
-import FoilSpecs from './FoilSpecs.jsx';
-import WindsurfSpecs from './WindsurfSpecs.jsx';
+import SurfSpecs from './boardSpecs/SurfSpecs.jsx';
+import FoilSpecs from './boardSpecs/FoilSpecs.jsx';
+import WindsurfSpecs from './boardSpecs/WindsurfSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
 
 export default function CurrentCustomerOrder({ customer, setCustomer, values }) {
@@ -49,9 +49,9 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       lastName: '',
       orderType: 'surf',
       approvedBy: '',
-      phone: '',
-      email: '',
-      address: '',
+      phone: 'na',
+      email: 'na',
+      address: 'na',
       weight: 0,
       heightFt: 0,
       heightIn: 0,
@@ -62,6 +62,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       width: 0,
       thickness: 0,
       volume: 0,
+      towWeight: 0,
       tail: '',
       blank: '',
       construction: '',
@@ -72,16 +73,18 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       logo:'',
       inserts: '',
       rearStrap: '',
-      strapWidth: 0,
-      stance: 0,
-      leash: '',
+      strapWidth: '',
+      stance: '',
+      leash: 'Deck',
       pads: '',
       waveLocation: '',
+      foilType: '',
       finFromTail: '',
       boxLocation: '',
       rearInsertsFromTail: '',
-      handle: false,
+      handle: 'Deck',
       notes: '',
+      invoiceNum: '',
     },
 
     transformValues: (values) => ({
@@ -111,7 +114,6 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
           inserts: values.inserts === '' ? 'Inserts must be picked' : null,
           waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
           pads: values.pads === '' ? 'Pick pads' : null,
-          stance: values.stance <= 0 ? 'Enter valid stance' : null,
           boxType: values.boxType === '' ? 'Box type must be picked' : null,
           strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null,
         }
@@ -288,10 +290,11 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
                 allowDeselect
                 placeholder="Approved by"
                 data={[
-                  { value: 'lalo', label: 'Lalo' },
-                  { value: 'francisco', label: 'Francisco' },
-                  { value: 'pascal', label: 'Pascal' },
-                  { value: 'keith', label: 'Keith' },
+                  { value: 'Lalo', label: 'Lalo' },
+                  { value: 'Francisco', label: 'Francisco' },
+                  { value: 'Pascal', label: 'Pascal' },
+                  { value: 'Keith', label: 'Keith' },
+                  { value: 'Logan', label: 'Logan'},
                 ]}
                 {...form.getInputProps('approvedBy')}
               />

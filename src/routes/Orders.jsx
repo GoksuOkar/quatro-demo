@@ -39,7 +39,7 @@ export default function Orders() {
   const orderTypeChange = (v) => {
     let types = ["surf", "windsurf", "foil"];
     if (types.includes(v)) {
-      let newDisplay = orders.filter((order) => (order.orderType == v));
+      let newDisplay = display.filter((order) => (order.orderType == v));
       setDisplay(newDisplay);
       setNumOfPages(newDisplay.length);
       setType(v);
@@ -53,7 +53,7 @@ export default function Orders() {
   const handleSearch = (e) => {
     e.preventDefault();
     let name = searchRef.current.value;
-    let searchResults = orders.filter((order) => (order.customerName.includes(name)));
+    let searchResults = display.filter((order) => (order.customerName.includes(name)));
     setDisplay(searchResults);
     setNumOfPages(searchResults.length);
   }
@@ -62,24 +62,22 @@ export default function Orders() {
     <Container>
       <a href={`/`}>Home</a>
       <Group position="apart">
-        <Radio.Group
-        value={type}
-        onChange={orderTypeChange}
-        spacing="xs"
-      >
-        <Radio value="all" label="All" />
-        <Radio value="surf" label="Surf" />
-        <Radio value="windsurf" label="Windsurf" />
-        <Radio value="foil" label="Foil" />
-      </Radio.Group>
+        <Radio.Group value={type} onChange={orderTypeChange} spacing="xs">
+          <Radio value="all" label="All" />
+          <Radio value="surf" label="Surf" />
+          <Radio value="windsurf" label="Windsurf" />
+          <Radio value="foil" label="Foil" />
+        </Radio.Group>
         <Group>
           <form onSubmit={handleSearch}>
-            <TextInput placeholder="search order" ref={searchRef}/>
-            <Button color="dark" type="submit">submit</Button>
+            <TextInput placeholder="search order" ref={searchRef} />
+            <Button color="dark" type="submit">
+              submit
+            </Button>
           </form>
         </Group>
       </Group>
-      <OrdersTable orders={display} activePage={activePage}/>
+      <OrdersTable orders={display} activePage={activePage} />
       <Center>
         <Pagination
           page={activePage}
@@ -91,5 +89,5 @@ export default function Orders() {
         />
       </Center>
     </Container>
-  )
+  );
 }

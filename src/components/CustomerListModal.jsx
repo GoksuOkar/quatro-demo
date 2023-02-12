@@ -2,7 +2,7 @@ import { Stack, Card, Input } from '@mantine/core';
 import { capitalizeFirstLetter } from '../utils/helpers.js';
 import { useState } from 'react';
 
-export default function ExistingCustomer({customers, setExistingOpened, setCustomer}) {
+export default function CustomerListModal({customers, setExistingOpened, setCustomer}) {
   const [customersHere, setCustomersHere] = useState(customers);
 
   const filterCustomer = (string) => {

@@ -1,6 +1,6 @@
-import PdfWS from '../components/PdfWS.jsx';
-import PdfSurf from '../components/PdfSurf.jsx';
-import PdfFoil from '../components/PdfFoil.jsx';
+import PdfWS from './pdfs/PdfWS.jsx';
+import PdfSurf from './pdfs/PdfSurf.jsx';
+import PdfFoil from './pdfs/PdfFoil.jsx';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {
@@ -16,14 +16,14 @@ import {
   Divider,
   Stepper,
   Select,
-  Code
+  Text,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Carousel } from '@mantine/carousel';
 // import { OrderPDF } from '../components/OrderPDF.jsx';
-import SurfSpecs from './SurfSpecs.jsx';
-import FoilSpecs from './FoilSpecs.jsx';
-import WindsurfSpecs from './WindsurfSpecs.jsx';
+import SurfSpecs from './boardSpecs/SurfSpecs.jsx';
+import FoilSpecs from './boardSpecs/FoilSpecs.jsx';
+import WindsurfSpecs from './boardSpecs/WindsurfSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
 
 export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer }) {
@@ -44,9 +44,9 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       lastName: '',
       orderType: 'surf',
       approvedBy: '',
-      phone: '',
-      email: '',
-      address: '',
+      phone: 'na',
+      email: 'na',
+      address: 'na',
       weight: 0,
       heightFt: 0,
       heightIn: 0,
@@ -57,6 +57,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       width: 0,
       thickness: 0,
       volume: 0,
+      towWeight: 0,
       tail: '',
       blank: '',
       construction: '',
@@ -67,16 +68,18 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       logo:'',
       inserts: '',
       rearStrap: '',
-      strapWidth: 0,
-      stance: 0,
-      leash: '',
+      strapWidth: '',
+      stance: '',
+      leash: 'Deck',
       pads: '',
-      waveLocation: '',
+      waveLocation: 'Other',
       finFromTail: '',
       boxLocation: '',
       rearInsertsFromTail: '',
-      handle: false,
+      handle: 'Deck',
+      foilType: '',
       notes: '',
+      invoiceNum: '',
     },
 
     // transformValues: (values) => ({
@@ -117,7 +120,6 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           inserts: values.inserts === '' ? 'Inserts must be picked' : null,
           waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
           pads: values.pads === '' ? 'Pick pads' : null,
-          stance: values.stance <= 0 ? 'Enter valid stance' : null,
           boxType: values.boxType === '' ? 'Box type must be picked' : null,
           strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null,
         }
@@ -299,29 +301,30 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
                 allowDeselect
                 placeholder="Approved by"
                 data={[
-                  { value: 'lalo', label: 'Lalo' },
-                  { value: 'francisco', label: 'Francisco' },
-                  { value: 'pascal', label: 'Pascal' },
-                  { value: 'keith', label: 'Keith' },
+                  { value: 'Lalo', label: 'Lalo' },
+                  { value: 'Francisco', label: 'Francisco' },
+                  { value: 'Pascal', label: 'Pascal' },
+                  { value: 'Keith', label: 'Keith' },
+                  { value: 'Logan', label: 'Logan'},
                 ]}
                 {...form.getInputProps('approvedBy')}
               />
             </Stepper.Step>
 
             <Stepper.Step description='contact info'>
+              <Text>Fill in at least one:</Text>
               <TextInput
-                withAsterisk
-                label="Customer Email"
-                placeholder="customer@email.com"
+                label='Email:'
+                placeholder='customer@email.com'
                 {...form.getInputProps('email')}
               />
               <TextInput
-                label="Phone Number"
+                label='Phone Number:'
+                placeholder='808-888-8888'
                 {...form.getInputProps('phone')}
               />
               <Textarea
-                placeholder='customer address'
-                label='Address'
+                label='Address:'
                 {...form.getInputProps('address')}
               />
             </Stepper.Step>
@@ -383,7 +386,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
             )}
             {active < 3 && <Button color="dark" onClick={nextStep}>Next step</Button>}
             {active === 3 && <Button color="dark" onClick={finishOrder}>Finish Order</Button>}
-            {active > 3 && <Button color="dark" onClick={handleGeneratePdf}>Save/Print</Button>}
+            {active > 3 && <Button color="dark" onClick={handleGeneratePdf}>Print</Button>}
           </Group>
       </Container>
     </div>

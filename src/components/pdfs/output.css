@@ -1,0 +1,59 @@
+
+@media print {
+    .mantine-Stepper-steps, h1 { display: none;}
+    .mantine-Group-root { display: none;}
+    a { display: none;}
+    .printme {
+      padding: 20px;
+    }
+    #id {
+      height: 100%;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+}
+
+h1 {
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 5%;
+}
+
+#printcontents {
+  margin:auto;
+  display: grid;
+  height: 297mm;
+  width: 210mm;
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-rows: 1fr 2fr 3fr;
+  row-gap: 2px;
+  column-gap: 4px;
+}
+
+.child {
+  background-color: white;
+  padding: 2px;
+}
+
+#image {
+  /* grid-column: 3 / span 2; */
+  background-color: white;
+  grid-column: 3;
+  height: 300px;
+  width: 250;
+}
+
+#notes {
+  grid-column: 1 / span 2;
+}
+
+.mantine-Table-root {
+  margin-top: 4%;
+  margin-bottom: 4%;
+  cursor: default;
+}
+
+/* b {
+  color: black;
+  background-color: yellow;
+} */

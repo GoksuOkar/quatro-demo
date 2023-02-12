@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import PdfFoil from '../components/PdfFoil';
-import PdfWS from '../components/PdfWS';
-import PdfSurf from '../components/PdfSurf';
+import PdfFoil from '../components/pdfs/PdfFoil';
+import PdfWS from '../components/pdfs/PdfWS';
+import PdfSurf from '../components/pdfs/PdfSurf';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Container, Center, Button, Group } from '@mantine/core';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
@@ -15,10 +15,14 @@ export default function OrderPage() {
   const location = useLocation();
   const order = location.state.order;
   const customer = location.state.customer;
-  const orderNum = `FM${year}-OO${location.state.order.orderId}`;
+  const orderNum = location.state.order.orderId;
 
   const handleEdit = () => {
     setEdit(true);
+  }
+
+  const print = () => {
+    window.print();
   }
 
   return (
@@ -31,7 +35,7 @@ export default function OrderPage() {
             }
             <Center>
               <Group>
-                <Button color="dark" onClick={() => window.print()}>Print/Save</Button>
+                <Button color="dark" onClick={print}>Print/Save</Button>
                 <Button color="dark" onClick={() => navigate('/')}>Go Home</Button>
                 <Button color="dark" onClick={handleEdit}>Edit</Button>
               </Group>

@@ -1,9 +1,9 @@
-import { Group, Center, Container, Stack, Button, TextInput, Modal, Alert, Space } from '@mantine/core';
+import { Group, Center, Container, Stack, Button, Modal, Alert, Space, Text } from '@mantine/core';
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NewCustomerOrder from '../components/NewCustomerOrder';
-import ExistingCustomer from '../components/existingCustomer';
+import CustomerListModal from '../components/CustomerListModal';
 import CheckCustomer from '../components/CheckCustomer';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
 import { Axios } from '../utils/helpers.js';
@@ -37,24 +37,37 @@ export default function Home() {
           </Center>
           <Stack>
             <Center>
-              <Button color="dark" onClick={goToOrders}>View Orders</Button>
+              <Button color="dark" onClick={goToOrders}>
+                View Orders
+              </Button>
             </Center>
-            <Space h="lg"/>
-            <Stack>
+            <Space h="lg" />
+            <Stack
+              sx={(theme) => ({
+                border: "1px",
+                borderStyle: "solid",
+                borderRadius: "8px",
+                paddingTop: "5px",
+                paddingBottom: "10px",
+                borderColor: "white",
+                backgroundColor: "lightBlue",
+              })}
+            >
               <Center>
-                New Order
+                <Text>New Order</Text>
               </Center>
               <Center>
                 <Group>
-                  <Modal
-                    opened={opened}
-                    onClose={() => setOpened(false)}
-                  >
-                    <CheckCustomer setCustomer={setCustomer} setOpened={setOpened} customer={customer}/>
+                  <Modal opened={opened} onClose={() => setOpened(false)}>
+                    <CheckCustomer
+                      setCustomer={setCustomer}
+                      setOpened={setOpened}
+                      customer={customer}
+                    />
                   </Modal>
                   <Button
-                    color="dark"
-                    variant="outline"
+                    color="gray"
+                    variant="default"
                     onClick={() => setOpened(true)}
                   >
                     New Customer
@@ -63,15 +76,15 @@ export default function Home() {
                     opened={existingOpened}
                     onClose={() => setExistingOpened(false)}
                   >
-                    <ExistingCustomer
+                    <CustomerListModal
                       customers={customers}
                       setExistingOpened={setExistingOpened}
                       setCustomer={setCustomer}
                     />
                   </Modal>
                   <Button
-                    color="dark"
-                    variant="outline"
+                    color="gray"
+                    variant="default"
                     onClick={() => setExistingOpened(true)}
                   >
                     Existing Customer
@@ -82,9 +95,14 @@ export default function Home() {
           </Stack>
         </>
       )}
-        {(customer._id === undefined && customer.firstName)&& <NewCustomerOrder
-      customer={customer} newCustomer={newCustomer} setNewCustomer={setNewCustomer}/>}
-        {customer._id && <CurrentCustomerOrder customer={customer}/>}
+      {customer._id === undefined && customer.firstName && (
+        <NewCustomerOrder
+          customer={customer}
+          newCustomer={newCustomer}
+          setNewCustomer={setNewCustomer}
+        />
+      )}
+      {customer._id && <CurrentCustomerOrder customer={customer} />}
     </Container>
-  )
+  );
 }
