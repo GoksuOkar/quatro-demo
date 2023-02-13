@@ -39,7 +39,7 @@ export default function Orders() {
   const orderTypeChange = (v) => {
     let types = ["surf", "windsurf", "foil"];
     if (types.includes(v)) {
-      let newDisplay = display.filter((order) => (order.orderType == v));
+      let newDisplay = orders.filter((order) => (order.orderType == v));
       setDisplay(newDisplay);
       setNumOfPages(newDisplay.length);
       setType(v);
