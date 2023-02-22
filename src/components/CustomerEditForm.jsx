@@ -23,10 +23,16 @@ export default function CustomerEditForm({customerValues}) {
 
   return (
     <Container>
-      <TextInput />
+      <TextInput
+        label="First Name:"
+        {...form.getInputProps("firstName")}
+      />
+      <TextInput
+        label="Last Name:"
+        {...form.getInputProps("lastName")}
+      />
       <TextInput
         label="Email:"
-        placeholder="customer@email.com"
         {...form.getInputProps("email")}
       />
       <TextInput

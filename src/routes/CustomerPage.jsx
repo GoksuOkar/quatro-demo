@@ -1,5 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect } from "react";
+import { Container, Center } from '@mantine/core';
+import CustomerEditForm from '../components/CustomerEditForm';
 
 export default function CustomerPage() {
   const location = useLocation();
@@ -8,8 +10,8 @@ export default function CustomerPage() {
   useEffect(() => {console.log(customer)}, [])
 
   return (
-    <div>
-      {customer.firstName}
-    </div>
+    <Container>
+      <CustomerEditForm customerValues={customer} />
+    </Container>
   )
 }
