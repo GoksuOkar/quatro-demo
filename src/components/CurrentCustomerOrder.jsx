@@ -35,7 +35,6 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
   useEffect(() => {
     if (values) {
       form.setValues(values);
-      console.log(values);
     }
     form.setFieldValue('firstName', customer.firstName);
     form.setFieldValue('lastName', customer.lastName);
