@@ -8,6 +8,7 @@ import {
  import Orders from "./routes/Orders";
  import OrderPage from "./routes/OrderPage";
  import Customers from "./routes/Customers";
+ import CustomerPage from "./routes/CustomerPage";
 
  export default function App () {
   return (
@@ -19,6 +20,7 @@ import {
             <Route element={<Orders />} path="/orders" exact/>
             <Route element={<OrderPage />} path="/order" />
             <Route element={<Customers />} path="/customers" />
+            <Route element={<CustomerPage />} path="/customer/edit" />
           </Route>
           <Route element={<Login />} path="/login"/>
         </Routes>

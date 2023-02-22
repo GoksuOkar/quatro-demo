@@ -1,7 +1,8 @@
 import { useForm } from '@mantine/form';
 import { useEffect } from "react";
+import {Container, TextInput, Textarea} from '@mantine/core';
 
-export default function CustomerEditForm(customerValues) {
+export default function CustomerEditForm({customerValues}) {
   const form = useForm({
     initialValues: {
       firstName: "",
@@ -18,7 +19,7 @@ export default function CustomerEditForm(customerValues) {
 
   useEffect(() => {
     form.setValues(customerValues);
-  }, []);
+  }, [customerValues]);
 
   return (
     <Container>
