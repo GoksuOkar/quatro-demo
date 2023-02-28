@@ -41,12 +41,14 @@ export default function Home() {
           </Center>
           <Stack>
             <Center>
-              <Button color="dark" onClick={goToOrders}>
-                View Orders
-              </Button>
-              <Button color="dark" onClick={goToCustomers}>
-                View Customers
-              </Button>
+              <Group spacing="lg">
+                <Button color="dark" onClick={goToOrders}>
+                  View Orders
+                </Button>
+                <Button color="dark" onClick={goToCustomers}>
+                  View Customers
+                </Button>
+              </Group>
             </Center>
             <Space h="lg" />
             <Stack
