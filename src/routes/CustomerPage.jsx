@@ -7,8 +7,6 @@ export default function CustomerPage() {
   const location = useLocation();
   const customer = location.state.customer;
 
-  useEffect(() => {console.log(customer)}, [])
-
   return (
     <Container>
       <CustomerEditForm customerValues={customer} />

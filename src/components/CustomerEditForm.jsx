@@ -1,6 +1,7 @@
 import { useForm } from '@mantine/form';
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Axios } from "../utils/helpers.js";
 import {Container, Center, TextInput, Textarea, Button, Group, Stack} from '@mantine/core';
 
 export default function CustomerEditForm({customerValues}) {
@@ -24,6 +25,19 @@ export default function CustomerEditForm({customerValues}) {
     form.setValues(customerValues);
   }, [customerValues]);
 
+  const handleSave = (v) => {
+    //TODO AXIOS CALL FOR SAVING CUSTOMER INFO
+  }
+
+  const handleDelete = () => {
+      Axios.delete('/customers', {
+      data: {_id: customerValues._id}
+    })
+    .then((res) => {navigate(-1)})
+    .catch((err) => {alert('oops could not delete')});
+  }
+
+
   return (
     <Container>
       <Stack spacing="lg">
@@ -41,8 +55,9 @@ export default function CustomerEditForm({customerValues}) {
         <Textarea label="Address:" {...form.getInputProps("address")} />
 
         <Group spacing="lg" position="right">
-          <Button color="dark">Save</Button>
+          <Button color="dark" onClick={(v)=>{handleSave(v)}}>Save</Button>
           <Button color="dark" onClick={() => {navigate(-1)}}>Back</Button>
+          <Button color="dark" onClick={() => {handleDelete()}}>Delete Customer</Button>
         </Group>
       </Stack>
     </Container>
