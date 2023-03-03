@@ -20,14 +20,24 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <b>Name:</b>
           {` ${name}`}
         </p>
-        <b>Phone:</b>
-        <p style={{ marginTop: 0 }}>{customer.phone}</p>
-        <b>Address:</b>
-        <p style={{ marginTop: 0 }}>{` ${customer.address}`}</p>
-        <p>
-          <b>Email:</b>
-          {` ${customer.email}`}
-        </p>
+        {customer.phone === "" ? null : (
+          <>
+            <b>Phone:</b>
+            <p style={{ marginTop: 0 }}>{customer.phone}</p>
+          </>
+        )}
+        {customer.address === "" ? null : (
+          <>
+            <b>Address:</b>
+            <p style={{ marginTop: 0 }}>{customer.address}</p>
+          </>
+        )}
+        {customer.email === "" ? null : (
+          <>
+            <b>Email:</b>
+            <p style={{ marginTop: 0 }}>{customer.email}</p>
+          </>
+        )}
       </div>
       {/* RIDER INFO */}
       <div className="child">
@@ -95,6 +105,10 @@ export default function PdfSurf({ values, orderNum, customer }) {
         <p>
           <b>Board Color:</b>
           {` ${values.boardColor}`}
+        </p>
+        <p>
+          <b>Box Color:</b>
+          {` ${values.boxColor}`}
         </p>
       </div>
 

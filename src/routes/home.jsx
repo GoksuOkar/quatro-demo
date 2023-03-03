@@ -28,6 +28,10 @@ export default function Home() {
     navigate('/orders');
   }
 
+  const goToCustomers = () => {
+    navigate('/customers', {state: {customers: customers}});
+  }
+
   return (
     <Container>
       {customer.firstName === undefined && (
@@ -37,9 +41,14 @@ export default function Home() {
           </Center>
           <Stack>
             <Center>
-              <Button color="dark" onClick={goToOrders}>
-                View Orders
-              </Button>
+              <Group spacing="lg">
+                <Button color="dark" onClick={goToOrders}>
+                  View Orders
+                </Button>
+                <Button color="dark" onClick={goToCustomers}>
+                  View Customers
+                </Button>
+              </Group>
             </Center>
             <Space h="lg" />
             <Stack

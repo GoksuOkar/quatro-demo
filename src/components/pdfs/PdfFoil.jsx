@@ -19,18 +19,24 @@ export default function PdfFoil({ values, orderNum, customer }) {
           <b>Name:</b>
           {` ${name}`}
         </p>
-        <p>
-          <b>Phone:</b>
-          {` ${customer.phone}`}
-        </p>
-        <p>
-          <b>Address:</b>
-          {` ${customer.address}`}
-        </p>
-        <p>
-          <b>Email:</b>
-          {` ${customer.email}`}
-        </p>
+        {customer.phone === "" ? null : (
+          <>
+            <b>Phone:</b>
+            <p style={{ marginTop: 0 }}>{customer.phone}</p>
+          </>
+        )}
+        {customer.address === "" ? null : (
+          <>
+            <b>Address:</b>
+            <p style={{ marginTop: 0 }}>{customer.address}</p>
+          </>
+        )}
+        {customer.email === "" ? null : (
+          <>
+            <b>Email:</b>
+            <p style={{ marginTop: 0 }}>{customer.email}</p>
+          </>
+        )}
       </div>
       <div className="child">
         <p>
