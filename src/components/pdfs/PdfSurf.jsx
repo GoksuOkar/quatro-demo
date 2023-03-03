@@ -106,6 +106,10 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <b>Board Color:</b>
           {` ${values.boardColor}`}
         </p>
+        <p>
+          <b>Box Color:</b>
+          {` ${values.boxColor}`}
+        </p>
       </div>
 
       <div className="child">
