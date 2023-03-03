@@ -25,8 +25,15 @@ export default function CustomerEditForm({customerValues}) {
     form.setValues(customerValues);
   }, [customerValues]);
 
-  const handleSave = (v) => {
-    //TODO AXIOS CALL FOR SAVING CUSTOMER INFO
+  const handleSave = () => {
+    console.log(form.values)
+    Axios.patch('/customers', form.values)
+      .then((res) => {
+        form.setValues(res.data);
+      })
+      .catch((err) => {
+        alert("could not save, try again");
+      });
   }
 
   const handleDelete = () => {
@@ -55,7 +62,7 @@ export default function CustomerEditForm({customerValues}) {
         <Textarea label="Address:" {...form.getInputProps("address")} />
 
         <Group spacing="lg" position="right">
-          <Button color="dark" onClick={(v)=>{handleSave(v)}}>Save</Button>
+          <Button color="dark" onClick={handleSave}>Save</Button>
           <Button color="dark" onClick={() => {navigate(-1)}}>Back</Button>
           <Button color="dark" onClick={() => {handleDelete()}}>Delete Customer</Button>
         </Group>
