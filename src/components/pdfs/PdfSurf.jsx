@@ -59,13 +59,12 @@ export default function PdfSurf({ values, orderNum, customer }) {
         </p>
       </div>
       <div className="child">
+        <p className="orderNum">
+          <b>Order Number: {` ${orderNum}`}</b>
+        </p>
         <p>
           <b>Date:</b>
           {` ${date}`}
-        </p>
-        <p>
-          <b>Order Number:</b>
-          {` ${orderNum}`}
         </p>
         <p>
           <b>Order Type:</b>

@@ -53,6 +53,10 @@ h1 {
   cursor: default;
 }
 
+.orderNum {
+  background-color: gainsboro;
+}
+
 /* b {
   color: black;
   background-color: yellow;
