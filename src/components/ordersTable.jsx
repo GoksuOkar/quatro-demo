@@ -29,6 +29,7 @@ export default function OrdersTable ({ orders, activePage }) {
       <td>{capitalizeFirstLetter(o.customerName)}</td>
       <td>{capitalizeFirstLetter(o.orderType)}</td>
       <td>{o.orderId}</td>
+      <td>{o.invoiceNum}</td>
     </tr>
   ))
 
@@ -40,6 +41,7 @@ export default function OrdersTable ({ orders, activePage }) {
         <th>Customer Name</th>
         <th>Order Type</th>
         <th>Order Number</th>
+        <th>Invoice Number</th>
       </tr>
     </thead>
     <tbody>{rows}</tbody>
