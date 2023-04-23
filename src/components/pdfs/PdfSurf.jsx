@@ -1,14 +1,12 @@
 import { Button } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
 import './output.css';
-import { capitalizeFirstLetter } from "../../utils/helpers.js";
+import { capitalizeFirstLetter, convertDate } from "../../utils/helpers.js";
 
 //surf output
 
-const now = new Date()
-const date = now.toISOString().slice(0, 10)
-
 export default function PdfSurf({ values, orderNum, customer }) {
+  console.log(values);
   const myref = useRef(null);
 
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
@@ -64,7 +62,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
         </p>
         <p>
           <b>Date:</b>
-          {` ${date}`}
+          {` ${convertDate(values.createdAt)}`}
         </p>
         <p>
           <b>Order Type:</b>

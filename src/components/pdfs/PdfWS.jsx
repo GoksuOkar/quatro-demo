@@ -2,10 +2,7 @@ import { Button } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import './output.css';
-import { capitalizeFirstLetter } from "../../utils/helpers.js";
-
-const now = new Date()
-const date = now.toISOString().slice(0, 10)
+import { capitalizeFirstLetter, convertDate } from "../../utils/helpers.js";
 
 export default function PdfWS({ values, orderNum, customer }) {
   const myref = useRef(null);
@@ -63,7 +60,7 @@ export default function PdfWS({ values, orderNum, customer }) {
         </p>
         <p>
           <b>Date:</b>
-          {` ${date}`}
+          {` ${convertDate(values.createdAt)}`}
         </p>
         <p>
           <b>Order Type:</b>
