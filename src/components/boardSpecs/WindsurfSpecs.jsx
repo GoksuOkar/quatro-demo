@@ -127,18 +127,11 @@ export default function WindsurfSpecs({ form }) {
           ]}
           {...form.getInputProps("logo")}
         />
-        <Select
+        <TextInput
           label="Board Color:"
           withAsterisk
-          placeholder="pick one"
+          placeholder="type here"
           allowDeselect
-          data={[
-            { value: "Base Color", label: "Base Color" },
-            { value: "Clear Carbon", label: "Clear Carbon" },
-            { value: "Tint", label: "Tint" },
-            { value: "Paint Custom", label: "Paint Custom" },
-            { value: "Prodution Team", label: "Prodution Team" },
-          ]}
           {...form.getInputProps("boardColor")}
         />
         <Select
