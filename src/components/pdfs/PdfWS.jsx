@@ -124,7 +124,7 @@ export default function PdfWS({ values, orderNum, customer }) {
           {` ${values.stance}`}
         </p>
         <p>
-          <b>Logos Color:</b>
+          <b>Logo:</b>
           {` ${values.logo}`}
         </p>
         <p>
