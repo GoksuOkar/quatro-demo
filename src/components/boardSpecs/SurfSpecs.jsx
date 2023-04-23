@@ -137,17 +137,10 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("logo")}
         />
-        <Select
+        <TextInput
           label="Board Color:"
-          placeholder="pick one"
+          placeholder="type here"
           withAsterisk
-          allowDeselect
-          data={[
-            { value: "Natural White", label: "Natural White" },
-            { value: "Clear Carbon", label: "Clear Carbon" },
-            { value: "Tint", label: "Tint" },
-            { value: "Custom", label: "Custom" },
-          ]}
           {...form.getInputProps("boardColor")}
         />
         <Select
