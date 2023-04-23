@@ -25,7 +25,7 @@ export default function OrdersTable ({ orders, activePage }) {
 
   const rows = orders.slice(start, end).map((o) => (
     <tr key={o.orderId} onClick={() => {goToOrder(o)}}>
-      <td>{convertDate(o.date)}</td>
+      <td>{convertDate(o.createdAt)}</td>
       <td>{capitalizeFirstLetter(o.customerName)}</td>
       <td>{capitalizeFirstLetter(o.orderType)}</td>
       <td>{o.orderId}</td>
