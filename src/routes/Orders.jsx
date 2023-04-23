@@ -82,7 +82,7 @@ export default function Orders() {
         <Pagination
           page={activePage}
           onChange={setPage}
-          total={Math.ceil(numOfPages / 20)}
+          total={Math.ceil(numOfPages / 30)}
           color="gray"
           size="sm"
           radius="xs"
