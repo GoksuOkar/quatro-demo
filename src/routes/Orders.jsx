@@ -53,7 +53,7 @@ export default function Orders() {
   const handleSearch = (e) => {
     e.preventDefault();
     let name = searchRef.current.value;
-    let searchResults = display.filter((order) => (order.customerName.includes(name)));
+    let searchResults = orders.filter((order) => (order.customerName.includes(name)));
     setDisplay(searchResults);
     setNumOfPages(searchResults.length);
   }
