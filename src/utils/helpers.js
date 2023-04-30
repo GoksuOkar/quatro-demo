@@ -14,7 +14,8 @@ export function getLastTwoDigitsOfYear() {
   return date.getFullYear() % 2000;
 }
 
-export function convertDate(d) {
+export function convertDate(d = new Date()) {
+  console.log(d);
   let date = new Date(d);
   return date.toISOString().slice(0, 10);
 };

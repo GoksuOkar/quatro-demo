@@ -196,10 +196,8 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       setNewCustomer(result.data);
       let customerId = result.data._id;
       let customerName = result.data.firstName + ' ' + result.data.lastName;
-      let date = new Date();
-      Axios.post('/orders', { ...form.values, customerId, customerName, date })
+      Axios.post('/orders', { ...form.values, customerId, customerName })
         .then((result) => {
-          console.log(result.data.orderId);
           setOrderNum(result.data.orderId)
         })
     })

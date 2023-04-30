@@ -6,7 +6,6 @@ import { capitalizeFirstLetter, convertDate } from "../../utils/helpers.js";
 //surf output
 
 export default function PdfSurf({ values, orderNum, customer }) {
-  console.log(values);
   const myref = useRef(null);
 
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
