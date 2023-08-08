@@ -270,6 +270,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
                 <Radio size='sm' value='surf' label='Surf'/>
                 <Radio size='sm' value='windsurf' label='Windsurf'/>
                 <Radio size='sm' value='foil' label='Foil'/>
+                <Radio size='sm' value='tow' label='Tow'/>
               </Radio.Group>
               <Radio.Group
                 name='customer type'
