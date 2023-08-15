@@ -161,8 +161,10 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
 
   // goes to next step in form, if it's validated
   const nextStep = () => {
+    console.log('fired')
     setActive((current) => {
       if (form.validate().hasErrors) {
+        // console.log('current', current)
         return current;
       }
       return current < 4 ? current + 1 : current;

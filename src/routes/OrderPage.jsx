@@ -41,7 +41,9 @@ export default function OrderPage() {
               </Group>
             </Center>
           </Container>
-        ) : (
+        ) :
+        (
+          
           <CurrentCustomerOrder values={order} customer={customer}/>
         )
       }

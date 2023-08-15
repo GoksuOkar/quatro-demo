@@ -16,9 +16,9 @@ export default function SurfSpecs({ form }) {
             { value: "MINI TANKER", label: "MINI TANKER" },
             { value: "LONG BOARD", label: "LONG BOARD" },
             { value: "GUN", label: "GUN" },
-            { value: "TOW", label: "TOW" },
             { value: "GROVELER", label: "GROVELER" },
             { value: "SUP", label: "SUP" },
+            { value: "STEP-OFF", label: "STEP-OFF" }
           ]}
           {...form.getInputProps("style")}
         />
