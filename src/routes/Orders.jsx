@@ -67,6 +67,7 @@ export default function Orders() {
           <Radio value="surf" label="Surf" />
           <Radio value="windsurf" label="Windsurf" />
           <Radio value="foil" label="Foil" />
+          <Radio value="tow" label="Tow" />
         </Radio.Group>
         <Group>
           <form onSubmit={handleSearch}>

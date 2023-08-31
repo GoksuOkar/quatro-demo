@@ -79,20 +79,10 @@ export default function FoilSpecs({ form }) {
           ]}
           {...form.getInputProps("construction")}
         />
-        <Select
+        <TextInput
           label="Board Color:"
           withAsterisk
-          placeholder="pick one"
-          allowDeselect
-          data={[
-            { value: "Tint", label: "Tint" },
-            {
-              value: "Clear Carbon Const Lines",
-              label: "Clear Carbon Const Lines",
-            },
-            { value: "Paint", label: "Paint" },
-            { value: "Custom", label: "Custom" },
-          ]}
+          placeholder="type here"
           {...form.getInputProps("boardColor")}
         />
         <Select
@@ -114,18 +104,10 @@ export default function FoilSpecs({ form }) {
           placeholder="12"
           {...form.getInputProps("stance")}
         />
-        <Select
+        <TextInput
           label="Logo:"
           withAsterisk
-          placeholder="pick one"
-          allowDeselect
-          data={[
-            { value: "black", label: "black" },
-            { value: "blue", label: "blue" },
-            { value: "red", label: "red" },
-            { value: "white", label: "white" },
-            { value: "Production Team", label: "Production Team" },
-          ]}
+          placeholder="type here"
           {...form.getInputProps("logo")}
         />
       </Group>

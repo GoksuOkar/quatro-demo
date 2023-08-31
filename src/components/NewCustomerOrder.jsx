@@ -24,6 +24,7 @@ import { Carousel } from '@mantine/carousel';
 import SurfSpecs from './boardSpecs/SurfSpecs.jsx';
 import FoilSpecs from './boardSpecs/FoilSpecs.jsx';
 import WindsurfSpecs from './boardSpecs/WindsurfSpecs.jsx';
+import TowSpecs from './boardSpecs/TowSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
 
 export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer }) {
@@ -70,8 +71,9 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       rearStrap: '',
       strapWidth: '',
       stance: '',
-      leash: 'Deck',
+      leash: '', //'Deck'
       pads: '',
+      airbush:'',
       waveLocation: 'Other',
       finFromTail: '',
       boxLocation: '',
@@ -122,6 +124,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           pads: values.pads === '' ? 'Pick pads' : null,
           boxType: values.boxType === '' ? 'Box type must be picked' : null,
           strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null,
+          airbush: values.airbush === '' ? 'Airbrush must be picked' : null
         }
 
         const surfValidationValues = {
@@ -146,7 +149,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
         }
 
 
-        if (values.orderType === 'surf') {
+        if (values.orderType === 'surf' || values.orderType === 'tow') {
           return ({
             ...commonValidationValues, ...surfValidationValues
           })
@@ -212,6 +215,8 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       }
       // else update order!
       setActive((current) => {
+
+        console.log('current', current)
         if (form.validate().hasErrors) {
           return current;
         }
@@ -244,7 +249,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       <a href={`/`}>Home</a>
       <Container>
           <h1>New Customer Order</h1>
-          <Stepper color="dark" size="sm" active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
+          <Stepper color="dark" size="sm" active={active} breakpoint='sm' onStepClick={(val) => changeToActive(val)}>
             <Stepper.Step description='Intro'>
               <Radio.Group
                 name='intro'
@@ -280,6 +285,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
                 <Radio size='sm' value='surf' label='Surf'/>
                 <Radio size='sm' value='windsurf' label='Windsurf'/>
                 <Radio size='sm' value='foil' label='Foil'/>
+                <Radio size='sm' value='tow' label='Tow'/>
               </Radio.Group>
               <Radio.Group
                 name='customer type'
@@ -363,9 +369,11 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
             </Stepper.Step>
 
             <Stepper.Step description="Board Specs">
-              {boardType === "surf" ? (
-                <SurfSpecs form={form}/>
-              ) : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
+              {boardType === "surf" ? (<SurfSpecs form={form}/>) 
+              : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) 
+              : boardType === "foil" ? (<FoilSpecs form={form}/>) 
+              : (<TowSpecs form={form}/>)
+              }
             </Stepper.Step>
 
           <Stepper.Completed>

@@ -30,46 +30,34 @@ export default function SurfSpecs({ form }) {
       </Group>
 
       <Group>
-        <NumberInput
+        <TextInput
           withAsterisk
+          placeholder='feet'
           label="Length(ft):"
           {...form.getInputProps("lengthFt")}
         />
-        <NumberInput
+        <TextInput
           label="Length(in):"
-          precision={2}
-          step={0.5}
+          placeholder='inches'
           {...form.getInputProps("lengthIn")}
-        />
-        <NumberInput
-          label="Tow Weight:"
-          min={0}
-          step={2}
-          {...form.getInputProps("towWeight")}
         />
       </Group>
 
       <Group>
-        <NumberInput
+        <TextInput
           label="Width(in):"
           placeholder="inches"
-          precision={2}
-          step={0.5}
           {...form.getInputProps("width")}
         />
-        <NumberInput
+        <TextInput
           label="Thickness(in):"
           placeholder="inches"
-          precision={2}
-          step={0.5}
           {...form.getInputProps("thickness")}
         />
-        <NumberInput
+        <TextInput
           label="Volume(lt):"
           withAsterisk
           placeholder="lt"
-          precision={2}
-          step={10}
           {...form.getInputProps("volume")}
         />
       </Group>
@@ -222,19 +210,22 @@ export default function SurfSpecs({ form }) {
 
       <Group>
         <Select
-          label="Leash:"
+          label="Leash Plug:"
           placeholder="pick one"
           data={[
-            { value: "black", label: "Black" },
-            { value: "white", label: "White" },
-            { value: "no leash", label: "No Leash" },
+            { value: "yes", label: "yes" },
+            { value: "no", label: "no" },
           ]}
           {...form.getInputProps("leash")}
         />
-        <TextInput
-          label="Pads Color:"
+        <Select
+          label="Install Pad:"
           withAsterisk
-          placeholder="type here"
+          placeholder="pick one"
+          data={[
+            { value: "yes", label: "yes" },
+            { value: "no", label: "no" },
+          ]}
           {...form.getInputProps("pads")}
         />
         <Select
@@ -253,6 +244,17 @@ export default function SurfSpecs({ form }) {
             { value: "Other", label: "Other" },
           ]}
           {...form.getInputProps("waveLocation")}
+        />
+      </Group>
+      <Group>
+      <Select
+          label="Airbrush:"
+          placeholder="pick one"
+          data={[
+            { value: "yes", label: "yes" },
+            { value: "no", label: "no" },
+          ]}
+          {...form.getInputProps("airbrush")}
         />
       </Group>
       <Textarea
