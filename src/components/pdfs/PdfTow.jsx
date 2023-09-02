@@ -3,10 +3,12 @@ import { useRef, useEffect, useState } from 'react';
 import './output.css';
 import { capitalizeFirstLetter, convertDate } from "../../utils/helpers.js";
 
-//surf output
+//tow output
 
-export default function PdfSurf({ values, orderNum, customer }) {
+export default function PdfTow({ values, orderNum, customer }) {
   const myref = useRef(null);
+
+  console.log("values: ", values);
 
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
@@ -130,16 +132,16 @@ export default function PdfSurf({ values, orderNum, customer }) {
           {` ${values.logo}`}
         </p>
         <p>
-          <b>Pads:</b>
+          <b>Install Pad:</b>
           {` ${values.pads}`}
         </p>
       </div>
 
       <div className="child">
-        {/* <p>
+        <p>
           <b>Tow Weight:</b>
           {` ${values.towWeight}`}
-        </p> */}
+        </p>
         <p>
           <b>Blank:</b>
           {` ${values.blank}`}
@@ -161,8 +163,12 @@ export default function PdfSurf({ values, orderNum, customer }) {
           {` ${values.rearStrap}`}
         </p>
         <p>
-          <b>Leash:</b>
+          <b>Leash Plug:</b>
           {` ${values.leash}`}
+        </p>
+        <p>
+          <b>Airbrush:</b>
+          {` ${values.airbrush}`}
         </p>
       </div>
       <div className="child" id="notes">

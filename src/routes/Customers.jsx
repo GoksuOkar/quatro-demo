@@ -24,7 +24,7 @@ export default function Customers() {
   ))
 
   return (
-    <div>
+    <div className='customers-list'>
       <a href={`/`}>Home</a>
       <Center>
         <Container>

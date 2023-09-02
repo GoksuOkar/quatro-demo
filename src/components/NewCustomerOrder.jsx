@@ -1,6 +1,7 @@
 import PdfWS from './pdfs/PdfWS.jsx';
 import PdfSurf from './pdfs/PdfSurf.jsx';
 import PdfFoil from './pdfs/PdfFoil.jsx';
+import PdfTow from './pdfs/PdfTow.jsx';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {
@@ -26,6 +27,7 @@ import FoilSpecs from './boardSpecs/FoilSpecs.jsx';
 import WindsurfSpecs from './boardSpecs/WindsurfSpecs.jsx';
 import TowSpecs from './boardSpecs/TowSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
+
 
 export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer }) {
   const [active, setActive] = useState(0);
@@ -245,7 +247,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
 
 
   return (
-    <div>
+    <div className='new-customer'>
       <a href={`/`}>Home</a>
       <Container>
           <h1>New Customer Order</h1>
@@ -334,21 +336,18 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
             </Stepper.Step>
 
             <Stepper.Step description="rider info">
-              <NumberInput
+              <TextInput
                 label="Weight:"
-                hideControls
                 placeholder="weight in lb"
                 {...form.getInputProps('weight')}
               />
               <Group>
-                <NumberInput
+                <TextInput
                   label="Ft:"
                   placeholder="ft"
                   {...form.getInputProps('heightFt')}
-                  min={0}
-                  max={12}
                 />
-                <NumberInput
+                <TextInput
                   label="Inch:"
                   placeholder="in"
                   {...form.getInputProps('heightIn')}
@@ -378,9 +377,27 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
 
           <Stepper.Completed>
             {boardType === "surf" ? (
-                <PdfSurf values={form.values} orderNum={orderNum} customer={newCustomer}/>
+                <PdfSurf 
+                  values={form.values} 
+                  orderNum={orderNum} 
+                  customer={newCustomer}
+                />
               ) : boardType === "windsurf" ?
-              (<PdfWS values={form.values} orderNum={orderNum} customer={newCustomer}/>) : (<PdfFoil values={form.values} orderNum={orderNum} customer={newCustomer}/>)
+              (<PdfWS 
+                values={form.values} 
+                orderNum={orderNum} 
+                customer={newCustomer}
+              />) : boardType === "foil" ?
+              (<PdfFoil 
+                values={form.values} 
+                orderNum={orderNum} 
+                customer={newCustomer}
+              />) :
+              (<PdfTow 
+                values={form.values} 
+                orderNum={orderNum} 
+                customer={newCustomer}
+              />) 
             }
           </Stepper.Completed>
           </Stepper>

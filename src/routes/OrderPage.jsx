@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PdfFoil from '../components/pdfs/PdfFoil';
 import PdfWS from '../components/pdfs/PdfWS';
 import PdfSurf from '../components/pdfs/PdfSurf';
+import PdfTow from '../components/pdfs/PdfTow';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Container, Center, Button, Group } from '@mantine/core';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
@@ -31,7 +32,10 @@ export default function OrderPage() {
         !edit ? (
           <Container>
             {
-              order.orderType === "surf" ? <PdfSurf values={order} orderNum={orderNum} customer={customer}/> : order.orderType === "windsurf" ?<PdfWS values={order} orderNum={orderNum} customer={customer}/> : <PdfFoil values={order} orderNum={orderNum} customer={customer}/>
+              order.orderType === "surf" ? <PdfSurf values={order} orderNum={orderNum} customer={customer}/> 
+              : order.orderType === "windsurf" ? <PdfWS values={order} orderNum={orderNum} customer={customer}/> 
+              : order.orderType === "foil" ? <PdfFoil values={order} orderNum={orderNum} customer={customer}/>
+              : <PdfTow values={order} orderNum={orderNum} customer={customer} />
             }
             <Center>
               <Group>
