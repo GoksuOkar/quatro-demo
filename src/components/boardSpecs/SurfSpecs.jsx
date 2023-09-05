@@ -30,13 +30,13 @@ export default function SurfSpecs({ form }) {
       </Group>
 
       <Group>
-        <TextInput
+        <NumberInput
           withAsterisk
           placeholder='feet'
           label="Length(ft):"
           {...form.getInputProps("lengthFt")}
         />
-        <TextInput
+        <NumberInput
           label="Length(in):"
           placeholder='inches'
           {...form.getInputProps("lengthIn")}
@@ -44,17 +44,17 @@ export default function SurfSpecs({ form }) {
       </Group>
 
       <Group>
-        <TextInput
+        <NumberInput
           label="Width(in):"
           placeholder="inches"
           {...form.getInputProps("width")}
         />
-        <TextInput
+        <NumberInput
           label="Thickness(in):"
           placeholder="inches"
           {...form.getInputProps("thickness")}
         />
-        <TextInput
+        <NumberInput
           label="Volume(lt):"
           withAsterisk
           placeholder="lt"

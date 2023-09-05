@@ -75,7 +75,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       stance: '',
       leash: '', //'Deck'
       pads: '',
-      airbush:'',
+      airbrush:'',
       waveLocation: 'Other',
       finFromTail: '',
       boxLocation: '',
@@ -126,7 +126,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           pads: values.pads === '' ? 'Pick pads' : null,
           boxType: values.boxType === '' ? 'Box type must be picked' : null,
           strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null,
-          airbush: values.airbush === '' ? 'Airbrush must be picked' : null
+          airbrush: values.airbrush === '' ? 'Airbrush must be picked' : null
         }
 
         const surfValidationValues = {
@@ -336,7 +336,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
             </Stepper.Step>
 
             <Stepper.Step description="rider info">
-              <TextInput
+              <NumberInput
                 label="Weight:"
                 placeholder="weight in lb"
                 {...form.getInputProps('weight')}
@@ -347,7 +347,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
                   placeholder="ft"
                   {...form.getInputProps('heightFt')}
                 />
-                <TextInput
+                <NumberInput
                   label="Inch:"
                   placeholder="in"
                   {...form.getInputProps('heightIn')}
