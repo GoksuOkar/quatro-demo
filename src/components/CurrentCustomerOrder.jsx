@@ -105,7 +105,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
 
         const commonValidationValues = {
           // width: values.width <= 0 ? 'Enter Valid Width' : null,
-          style: values.style === '' ? 'Style must be picked' : null,
+          // style: values.style === '' ? 'Style must be picked' : null,
           // thickness: values.thickness <= 0 ? 'Enter valid thickness' : null,
           volume: values.volume <= 0 ? 'Enter valid volume' : null,
           blank: values.blank === '' ? 'Blank must be picked' : null,
@@ -142,6 +142,11 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
           rearInsertsFromTail: values.rearInsertsFromTail === '' ? 'Pick one' : null,
         }
 
+        const towValidationValues = {
+          leash: values.leash === '' ? 'Pick leash' : null,
+          airbrush: values.airbrush === '' ? 'Pick one' : null
+        }
+
 
         if (values.orderType === 'surf') {
           return ({
@@ -151,9 +156,13 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
           return({
             ...commonValidationValues, ...windsurfValidationValues
           })
-        } else {
+        } else if (values.orderType === 'foil') {
           return({
             ...commonValidationValues, ...foilValidationValues
+          })
+        } else {
+          return({
+            ...commonValidationValues, ...towValidationValues
           })
         }
       }
@@ -163,7 +172,6 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
 
   // goes to next step in form, if it's validated
   const nextStep = () => {
-    console.log('fired')
     setActive((current) => {
       if (form.validate().hasErrors) {
         // console.log('current', current)
@@ -185,6 +193,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
 
   // finishes order
   const finishOrder = () => {
+    // console.log('fired')
     if (!form.validate().hasErrors) {
       storeOrder();
     }

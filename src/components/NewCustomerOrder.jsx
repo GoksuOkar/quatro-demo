@@ -115,7 +115,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       if(active === 3) {
 
         const commonValidationValues = {
-          style: values.style === '' ? 'Style must be picked' : null,
+          // style: values.style === '' ? 'Style must be picked' : null,
           volume: values.volume <= 0 ? 'Enter valid volume' : null,
           blank: values.blank === '' ? 'Blank must be picked' : null,
           construction: values.construction === '' ? 'Construction must be picked' : null,
@@ -125,8 +125,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
           pads: values.pads === '' ? 'Pick pads' : null,
           boxType: values.boxType === '' ? 'Box type must be picked' : null,
-          strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null,
-          airbrush: values.airbrush === '' ? 'Airbrush must be picked' : null
+          strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null
         }
 
         const surfValidationValues = {
@@ -150,8 +149,13 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           rearInsertsFromTail: values.rearInsertsFromTail === '' ? 'Pick one' : null,
         }
 
+        const towValidationValues = {
+          leash: values.leash === '' ? 'Pick leash' : null,
+          airbrush: values.leash === '' ? 'Select one' : null
+        }
 
-        if (values.orderType === 'surf' || values.orderType === 'tow') {
+
+        if (values.orderType === 'surf') {
           return ({
             ...commonValidationValues, ...surfValidationValues
           })
@@ -159,9 +163,13 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           return({
             ...commonValidationValues, ...windsurfValidationValues
           })
-        } else {
+        } else if (values.orderType === 'foil') {
           return({
             ...commonValidationValues, ...foilValidationValues
+          })
+        } else {
+          return({
+            ...commonValidationValues, ...towValidationValues
           })
         }
       }
@@ -196,8 +204,10 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
   //post values to database
   //WIP > CHANGED ALL FORM.VALUES TO VALUES
   const storeNewCustomerOrder = () => {
+
     Axios.post('/customers', form.values)
     .then((result) => {
+      console.log('result: ', result)
       setNewCustomer(result.data);
       let customerId = result.data._id;
       let customerName = result.data.firstName + ' ' + result.data.lastName;
@@ -215,9 +225,10 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       if (orderNum === '' || orderNum === undefined) {
         storeNewCustomerOrder();
       }
+  
+    storeNewCustomerOrder();
       // else update order!
       setActive((current) => {
-
         console.log('current', current)
         if (form.validate().hasErrors) {
           return current;

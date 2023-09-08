@@ -68,24 +68,6 @@ export default function CheckCustomer({ setCustomer, setOpened, customer }) {
           </Button>
         </Stack>
       </form>
-      {/* <form
-        // onSubmit={form.onSubmit((values) => handleClick(values))}
-        // <Stack>
-        //   <TextInput
-        //     placeholder="type here"
-        //     label="First Name"
-        //     {...form.getInputProps('firstName')}
-        //   />
-        //   <TextInput
-        //     placeholder="type here"
-        //     label="Last Name"
-        //     {...form.getInputProps('lastName')}
-        //   />
-        //   <Button color="dark" type="submit">
-        //     Submit
-        //   </Button>
-        // </Stack>
-      </form> */}
     </Stack>
   );
 }

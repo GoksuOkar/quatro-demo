@@ -136,10 +136,10 @@ export default function PdfSurf({ values, orderNum, customer }) {
       </div>
 
       <div className="child">
-        {/* <p>
+        <p>
           <b>Tow Weight:</b>
           {` ${values.towWeight}`}
-        </p> */}
+        </p>
         <p>
           <b>Blank:</b>
           {` ${values.blank}`}
