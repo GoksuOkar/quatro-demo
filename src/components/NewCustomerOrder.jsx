@@ -225,8 +225,6 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       if (orderNum === '' || orderNum === undefined) {
         storeNewCustomerOrder();
       }
-  
-    storeNewCustomerOrder();
       // else update order!
       setActive((current) => {
         console.log('current', current)
