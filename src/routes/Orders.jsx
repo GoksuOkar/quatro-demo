@@ -38,7 +38,7 @@ export default function Orders() {
   }, [])
 
   const orderTypeChange = (v) => {
-    let types = ["surf", "windsurf", "foil"];
+    let types = ["surf", "windsurf", "foil", "tow"];
     if (types.includes(v)) {
       let newDisplay = orders.filter((order) => (order.orderType == v));
       setDisplay(newDisplay);
