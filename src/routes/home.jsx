@@ -59,11 +59,10 @@ export default function Home() {
                 paddingTop: "5px",
                 paddingBottom: "10px",
                 borderColor: "white",
-                backgroundColor: "lightBlue",
               })}
             >
               <Center>
-                <Text>New Order</Text>
+                <Text >New Order</Text>
               </Center>
               <Center>
                 <Group>
