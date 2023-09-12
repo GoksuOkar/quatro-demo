@@ -174,7 +174,6 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
   const nextStep = () => {
     setActive((current) => {
       if (form.validate().hasErrors) {
-        // console.log('current', current)
         return current;
       }
       return current < 4 ? current + 1 : current;
@@ -193,7 +192,6 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
 
   // finishes order
   const finishOrder = () => {
-    // console.log('fired')
     if (!form.validate().hasErrors) {
       storeOrder();
     }
@@ -317,7 +315,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
               {boardType === "surf" ? (<SurfSpecs form={form}/>) 
               : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) 
               : boardType === "foil"  ? (<FoilSpecs form={form}/>) 
-              : (<TowSpecs form={form}/>)}
+              : boardType === "tow" ? (<TowSpecs form={form}/>): null}
             </Stepper.Step>
 
           <Stepper.Completed>
