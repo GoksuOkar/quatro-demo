@@ -243,7 +243,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
   return (
     <div className='cc-order'>
       <a href={`/`}>Home</a>
-      <Container>
+      <Container mt='10px'>
           <h1>Current Customer Order</h1>
           <Stepper color="dark" size="sm" active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
             <Stepper.Step description='Intro'>

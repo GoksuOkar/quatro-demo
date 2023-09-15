@@ -33,36 +33,29 @@ export default function Home() {
   }
 
   return (
-    <Container>
+    <div className='home'>
       {customer.firstName === undefined && (
         <>
-          <Center>
-            <h1>Forward Maui</h1>
+          <Center mb="35px" >
+            <div className='title'>Forward Maui</div>
           </Center>
           <Stack>
             <Center>
               <Group spacing="lg">
-                <Button color="dark" onClick={goToOrders}>
-                  View Orders
-                </Button>
-                <Button color="dark" onClick={goToCustomers}>
-                  View Customers
-                </Button>
+                <button className='voc-button' onClick={goToOrders}>View Orders</button>
+                <button className='voc-button' onClick={goToCustomers}>View Customers</button>
               </Group>
             </Center>
             <Space h="lg" />
             <Stack
               sx={(theme) => ({
-                border: "1px",
-                borderStyle: "solid",
-                borderRadius: "8px",
                 paddingTop: "5px",
                 paddingBottom: "10px",
                 borderColor: "white",
               })}
             >
               <Center>
-                <Text >New Order</Text>
+                <div className='sub-text'>New Order</div>
               </Center>
               <Center>
                 <Group>
@@ -73,13 +66,7 @@ export default function Home() {
                       customer={customer}
                     />
                   </Modal>
-                  <Button
-                    color="gray"
-                    variant="default"
-                    onClick={() => setOpened(true)}
-                  >
-                    New Customer
-                  </Button>
+                  <button className='n-e-c-button' onClick={() => setOpened(true)}>New Customer</button>
                   <Modal
                     opened={existingOpened}
                     onClose={() => setExistingOpened(false)}
@@ -90,13 +77,7 @@ export default function Home() {
                       setCustomer={setCustomer}
                     />
                   </Modal>
-                  <Button
-                    color="gray"
-                    variant="default"
-                    onClick={() => setExistingOpened(true)}
-                  >
-                    Existing Customer
-                  </Button>
+                  <button className='n-e-c-button' onClick={() => setExistingOpened(true)}>Existing Customer</button>
                 </Group>
               </Center>
             </Stack>
@@ -111,6 +92,6 @@ export default function Home() {
         />
       )}
       {customer._id && <CurrentCustomerOrder customer={customer} />}
-    </Container>
+    </div>
   );
 }

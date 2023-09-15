@@ -47,7 +47,7 @@ export default function CheckCustomer({ setCustomer, setOpened, customer }) {
 
   return (
     <Stack>
-      <Center>Enter Customer Name</Center>
+      <Center ff='Arial'>Enter Customer Name</Center>
       <form 
         onSubmit={form.onSubmit((values) => { 
           handleClick(values) 
