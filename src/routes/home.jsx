@@ -6,7 +6,25 @@ import NewCustomerOrder from '../components/NewCustomerOrder';
 import CustomerListModal from '../components/CustomerListModal';
 import CheckCustomer from '../components/CheckCustomer';
 import CurrentCustomerOrder from '../components/CurrentCustomerOrder';
+import BackgroundSlider from 'react-background-slider';
 import { Axios } from '../utils/helpers.js';
+import d1 from '../pictures/d1.jpg'
+import d2 from '../pictures/d2.jpg'
+import d3 from '../pictures/d3.jpg'
+import d4 from '../pictures/d4.jpg'
+import d5 from '../pictures/d5.jpg'
+import d6 from '../pictures/d6.jpg'
+import d7 from '../pictures/d7.jpg'
+import d8 from '../pictures/d8.jpg'
+import d9 from '../pictures/d9.jpg'
+import d10 from '../pictures/d10.jpg'
+import d11 from '../pictures/d11.jpg'
+import d12 from '../pictures/d12.jpg'
+import d13 from '../pictures/d13.jpg'
+import d14 from '../pictures/d14.jpg'
+import d16 from '../pictures/d16.jpg'
+// @ts-ignore Workaround for bug on react-background-slider 
+const Slider = BackgroundSlider['react-background-slider'].default;
 
 
 export default function Home() {
@@ -37,7 +55,7 @@ export default function Home() {
       {customer.firstName === undefined && (
         <>
           <Center mb="35px" >
-            <div className='title'>Forward Maui</div>
+            <div className='title'>FORWARD MAUI</div>
           </Center>
           <Stack>
             <Center>
@@ -48,11 +66,6 @@ export default function Home() {
             </Center>
             <Space h="lg" />
             <Stack
-              sx={(theme) => ({
-                paddingTop: "5px",
-                paddingBottom: "10px",
-                borderColor: "white",
-              })}
             >
               <Center>
                 <div className='sub-text'>New Order</div>
@@ -92,6 +105,7 @@ export default function Home() {
         />
       )}
       {customer._id && <CurrentCustomerOrder customer={customer} />}
+      <Slider images={[d3, d2, d1, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d16]} duration={5} transition={1} />
     </div>
   );
 }
