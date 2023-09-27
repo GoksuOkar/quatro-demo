@@ -1,6 +1,7 @@
 import PdfWS from './pdfs/PdfWS.jsx';
 import PdfSurf from './pdfs/PdfSurf.jsx';
 import PdfFoil from './pdfs/PdfFoil.jsx';
+import PdfTow from './pdfs/PdfTow.jsx';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {
@@ -23,6 +24,7 @@ import { Carousel } from '@mantine/carousel';
 // import { OrderPDF } from './OrderPDF.jsx';
 import SurfSpecs from './boardSpecs/SurfSpecs.jsx';
 import FoilSpecs from './boardSpecs/FoilSpecs.jsx';
+import TowSpecs from './boardSpecs/TowSpecs.jsx';
 import WindsurfSpecs from './boardSpecs/WindsurfSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
 
@@ -103,7 +105,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
 
         const commonValidationValues = {
           // width: values.width <= 0 ? 'Enter Valid Width' : null,
-          style: values.style === '' ? 'Style must be picked' : null,
+          // style: values.style === '' ? 'Style must be picked' : null,
           // thickness: values.thickness <= 0 ? 'Enter valid thickness' : null,
           volume: values.volume <= 0 ? 'Enter valid volume' : null,
           blank: values.blank === '' ? 'Blank must be picked' : null,
@@ -140,6 +142,11 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
           rearInsertsFromTail: values.rearInsertsFromTail === '' ? 'Pick one' : null,
         }
 
+        const towValidationValues = {
+          leash: values.leash === '' ? 'Pick leash' : null,
+          airbrush: values.airbrush === '' ? 'Pick one' : null
+        }
+
 
         if (values.orderType === 'surf') {
           return ({
@@ -149,9 +156,13 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
           return({
             ...commonValidationValues, ...windsurfValidationValues
           })
-        } else {
+        } else if (values.orderType === 'foil') {
           return({
             ...commonValidationValues, ...foilValidationValues
+          })
+        } else {
+          return({
+            ...commonValidationValues, ...towValidationValues
           })
         }
       }
@@ -230,7 +241,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
 
 
   return (
-    <div>
+    <div className='cc-order'>
       <a href={`/`}>Home</a>
       <Container>
           <h1>Current Customer Order</h1>
@@ -301,16 +312,18 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
             </Stepper.Step>
 
             <Stepper.Step description="Board Specs">
-              {boardType === "surf" ? (
-                <SurfSpecs form={form}/>
-              ) : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
+              {boardType === "surf" ? (<SurfSpecs form={form}/>) 
+              : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) 
+              : boardType === "foil"  ? (<FoilSpecs form={form}/>) 
+              : boardType === "tow" ? (<TowSpecs form={form}/>): null}
             </Stepper.Step>
 
           <Stepper.Completed>
-            {boardType === "surf" ? (
-                <PdfSurf values={form.values} orderNum={orderNum} customer={customer}/>
-              ) : boardType === "windsurf" ?
-              (<PdfWS values={form.values} orderNum={orderNum} customer={customer}/>) : (<PdfFoil values={form.values} orderNum={orderNum} customer={customer}/>)
+            {boardType === "surf" ? 
+            (<PdfSurf values={form.values} orderNum={orderNum} customer={customer}/>) 
+            : boardType === "windsurf" ? (<PdfWS values={form.values} orderNum={orderNum} customer={customer}/>) 
+            : boardType === "foil" ? (<PdfFoil values={form.values} orderNum={orderNum} customer={customer}/>) 
+            : (<PdfTow values={form.values} orderNum={orderNum} customer={customer}/>)
             }
           </Stepper.Completed>
           </Stepper>

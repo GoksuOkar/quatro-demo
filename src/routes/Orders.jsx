@@ -9,7 +9,8 @@ import {
   Button,
   Group,
   Center,
-  Radio
+  Radio,
+  Flex
 } from '@mantine/core';
 import axios from 'axios';
 import OrdersTable from '../components/ordersTable';
@@ -37,7 +38,7 @@ export default function Orders() {
   }, [])
 
   const orderTypeChange = (v) => {
-    let types = ["surf", "windsurf", "foil"];
+    let types = ["surf", "windsurf", "foil", "tow"];
     if (types.includes(v)) {
       let newDisplay = orders.filter((order) => (order.orderType == v));
       setDisplay(newDisplay);
@@ -59,18 +60,19 @@ export default function Orders() {
   }
 
   return (
-    <Container>
+    <Container mt="20px">
       <a href={`/`}>Home</a>
-      <Group position="apart">
+      <Group position="apart" mt={10}>
         <Radio.Group value={type} onChange={orderTypeChange} spacing="xs">
           <Radio value="all" label="All" />
           <Radio value="surf" label="Surf" />
           <Radio value="windsurf" label="Windsurf" />
           <Radio value="foil" label="Foil" />
+          <Radio value="tow" label="Tow" />
         </Radio.Group>
         <Group>
-          <form onSubmit={handleSearch}>
-            <TextInput placeholder="search order" ref={searchRef} />
+          <form onSubmit={handleSearch} className='search-form'>
+            <TextInput placeholder="search order" ref={searchRef} w="160px"/>
             <Button color="dark" type="submit">
               submit
             </Button>

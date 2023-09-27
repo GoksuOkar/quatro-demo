@@ -1,27 +1,9 @@
-import { Select, NumberInput, TextInput, Group, Textarea } from '@mantine/core';
+import { Select, TextInput, Group, Textarea } from '@mantine/core';
 
-export default function SurfSpecs({ form }) {
+export default function TowSpecs({ form }) {
   return (
     <>
       <Group>
-        <Select
-          label="Style:"
-          withAsterisk
-          allowDeselect
-          placeholder="style"
-          data={[
-            { value: "STD SHORT", label: "STD SHORT" },
-            { value: "STEP-UP", label: "STEP-UP" },
-            { value: "FISH", label: "FISH" },
-            { value: "MINI TANKER", label: "MINI TANKER" },
-            { value: "LONG BOARD", label: "LONG BOARD" },
-            { value: "GUN", label: "GUN" },
-            { value: "GROVELER", label: "GROVELER" },
-            { value: "SUP", label: "SUP" },
-            { value: "STEP-OFF", label: "STEP-OFF" }
-          ]}
-          {...form.getInputProps("style")}
-        />
         <TextInput
           label="Invoice Number:"
           placeholder="type here"
@@ -30,31 +12,35 @@ export default function SurfSpecs({ form }) {
       </Group>
 
       <Group>
-        <NumberInput
+        <TextInput
           withAsterisk
           placeholder='feet'
           label="Length(ft):"
           {...form.getInputProps("lengthFt")}
         />
-        <NumberInput
+        <TextInput
           label="Length(in):"
           placeholder='inches'
           {...form.getInputProps("lengthIn")}
         />
+        <TextInput
+          label="Tow Weight:"
+          {...form.getInputProps("towWeight")}
+        />
       </Group>
 
       <Group>
-        <NumberInput
+        <TextInput
           label="Width(in):"
           placeholder="inches"
           {...form.getInputProps("width")}
         />
-        <NumberInput
+        <TextInput
           label="Thickness(in):"
           placeholder="inches"
           {...form.getInputProps("thickness")}
         />
-        <NumberInput
+        <TextInput
           label="Volume(lt):"
           withAsterisk
           placeholder="lt"
@@ -87,6 +73,7 @@ export default function SurfSpecs({ form }) {
             { value: "PU", label: "PU" },
             { value: "EPS", label: "EPS" },
             { value: "Custom", label: "Custom" },
+            { value: "Pu Tow", label: "Pu Tow" }
           ]}
           {...form.getInputProps("blank")}
         />
@@ -211,6 +198,7 @@ export default function SurfSpecs({ form }) {
       <Group>
         <Select
           label="Leash Plug:"
+          withAsterisk
           placeholder="pick one"
           data={[
             { value: "yes", label: "yes" },
@@ -233,14 +221,12 @@ export default function SurfSpecs({ form }) {
           withAsterisk
           placeholder="pick one"
           data={[
-            {
-              value: "steep/hollow point break",
-              label: "Steep/Hollor Point Break",
-            },
+            { value: "steep/hollow point break", label: "Steep/Hollow Point Break" },
             { value: "punchy beach break", label: "Punchy Beach Break" },
             { value: "ankle waist high mush", label: "Ankle Waist High Mush" },
-            { value: "xl-xxl", label: "xl-xxl" },
+            { value: "Xl-XXL", label: "XL-XXL" },
             { value: "Peahi", label: "Peahi" },
+            { value: "Outer Sprecks", label: "Outer Sprecks" },
             { value: "Other", label: "Other" },
           ]}
           {...form.getInputProps("waveLocation")}
@@ -249,6 +235,7 @@ export default function SurfSpecs({ form }) {
       <Group>
       <Select
           label="Airbrush:"
+          withAsterisk
           placeholder="pick one"
           data={[
             { value: "yes", label: "yes" },
@@ -265,5 +252,6 @@ export default function SurfSpecs({ form }) {
         {...form.getInputProps("notes")}
       />
     </>
-  );
+  )
+    
 }
