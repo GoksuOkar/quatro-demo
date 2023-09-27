@@ -105,7 +105,7 @@ export default function Home() {
         />
       )}
       {customer._id && <CurrentCustomerOrder customer={customer} />}
-      <Slider images={[d3, d2, d1, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d16]} duration={5} transition={1} />
+      <Slider images={[d3, d2, d1, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d16, ]} duration={5} transition={1} />
     </div>
   );
 }
