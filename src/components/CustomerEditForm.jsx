@@ -46,7 +46,7 @@ export default function CustomerEditForm({customerValues}) {
 
 
   return (
-    <Container>
+    <Container pt='10px' pb='15px'>
       <Stack spacing="lg">
         <Center>
           <h1>Customer Form</h1>

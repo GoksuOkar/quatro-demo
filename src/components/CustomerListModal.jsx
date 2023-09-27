@@ -27,7 +27,7 @@ export default function CustomerListModal({customers, setExistingOpened, setCust
         onChange={(e) => filterCustomer((e.target.value).toLowerCase())}
       />
       {customersHere.map((customer) => (
-        <Card
+        <Card ff='Arial'
           key={customer._id}
           onClick={() => handleClick(customer)}
         >
