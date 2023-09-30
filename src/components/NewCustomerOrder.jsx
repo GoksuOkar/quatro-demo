@@ -84,6 +84,8 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       foilType: '',
       notes: '',
       invoiceNum: '',
+      rush: '',
+      boardWeight: 0
     },
 
     // transformValues: (values) => ({

@@ -13,6 +13,10 @@ export default function PdfTow({ values, orderNum, customer }) {
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return (
+    <>
+    <div className='rush'>
+      {values.rush === "yes" ? (<div className='r-div'>RUSH</div>) : null}
+    </div>
     <div className="printme" id="printcontents">
       <div className="child">
         <p>
@@ -80,10 +84,6 @@ export default function PdfTow({ values, orderNum, customer }) {
       </div>
       {/* BOARD SPECS */}
       <div className="child">
-        <p>
-          <b>Style:</b>
-          {` ${values.style}`}
-        </p>
         <p>
           <b>Construction:</b>
           {` ${values.construction}`}
@@ -179,5 +179,6 @@ export default function PdfTow({ values, orderNum, customer }) {
         <img id="image" src="/surfBoard.jpeg" />
       </div>
     </div>
+    </>
   );
 }

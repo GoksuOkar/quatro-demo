@@ -1,9 +1,9 @@
-import { Select, NumberInput, TextInput, Space, Group, Grid, Stack, Checkbox, Radio, Container, Textarea } from '@mantine/core';
+import { Select, NumberInput, TextInput, Space, Group, Grid, Stack, Checkbox, Radio, Container, Textarea, Title } from '@mantine/core';
 
 export default function FoilSpecs({ form }) {
   return (
     <>
-      <h3>FOIL</h3>
+      <Title order={3} mb={3}>FOIL</Title>
       <Group>
         <Select
           label="Style:"
@@ -24,6 +24,16 @@ export default function FoilSpecs({ form }) {
           label="Invoice Number:"
           placeholder="type here"
           {...form.getInputProps("invoiceNum")}
+        />
+        <Select
+          label="Rush:"
+          withAsterisk
+          placeholder="pick one"
+          data={[
+            { value: "yes", label: "yes" },
+            { value: "no", label: "no" },
+          ]}
+          {...form.getInputProps("rush")}
         />
       </Group>
 
@@ -110,8 +120,6 @@ export default function FoilSpecs({ form }) {
           placeholder="type here"
           {...form.getInputProps("logo")}
         />
-      </Group>
-      <Group>
         <Select
           label="Box Type:"
           withAsterisk
@@ -124,6 +132,8 @@ export default function FoilSpecs({ form }) {
           ]}
           {...form.getInputProps("boxType")}
         />
+      </Group>
+      <Group>
         <TextInput
           label="Box Location"
           withAsterisk
@@ -172,6 +182,8 @@ export default function FoilSpecs({ form }) {
           placeholder="type here"
           {...form.getInputProps("strapWidth")}
         />
+        </Group>
+        <Group>
         <Select
           label="Wave/Location:"
           withAsterisk
@@ -185,7 +197,23 @@ export default function FoilSpecs({ form }) {
           ]}
           {...form.getInputProps("waveLocation")}
         />
-      </Group>
+        <Select
+          label="Airbrush:"
+          withAsterisk
+          placeholder="pick one"
+          data={[
+            { value: "yes", label: "yes" },
+            { value: "no", label: "no" },
+          ]}
+          {...form.getInputProps("airbrush")}
+        />
+        <NumberInput
+          label="Board Weight:"
+          placeholder="lbs"
+          {...form.getInputProps("boardWeight")}
+        />
+        </Group>
+        
       <Space h="md" />
       <Group align="center" spacing={80}>
         <Radio.Group
@@ -209,8 +237,9 @@ export default function FoilSpecs({ form }) {
         </Radio.Group>
       </Group>
       <Textarea
+        mt={3}
         placeholder="type here"
-        label="notes:"
+        label="Notes:"
         radius="md"
         size="md"
         {...form.getInputProps("notes")}

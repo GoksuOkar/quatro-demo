@@ -1,8 +1,9 @@
-import { Select, NumberInput, TextInput, Group, Textarea } from '@mantine/core';
+import { Select, NumberInput, TextInput, Group, Textarea, Title } from '@mantine/core';
 
 export default function SurfSpecs({ form }) {
   return (
     <>
+    <Title order={3} mb={3}>SURF</Title>
       <Group>
         <Select
           label="Style:"
@@ -27,6 +28,16 @@ export default function SurfSpecs({ form }) {
           placeholder="type here"
           {...form.getInputProps("invoiceNum")}
         />
+        <Select
+          label="Rush:"
+          withAsterisk
+          placeholder="pick one"
+          data={[
+            { value: "yes", label: "yes" },
+            { value: "no", label: "no" },
+          ]}
+          {...form.getInputProps("rush")}
+        />
       </Group>
 
       <Group>
@@ -41,14 +52,14 @@ export default function SurfSpecs({ form }) {
           placeholder='inches'
           {...form.getInputProps("lengthIn")}
         />
-      </Group>
-
-      <Group>
         <NumberInput
           label="Width(in):"
           placeholder="inches"
           {...form.getInputProps("width")}
         />
+      </Group>
+
+      <Group>
         <NumberInput
           label="Thickness(in):"
           placeholder="inches"
@@ -60,13 +71,10 @@ export default function SurfSpecs({ form }) {
           placeholder="lt"
           {...form.getInputProps("volume")}
         />
-      </Group>
-
-      <Group>
         <Select
           label="Tail:"
           withAsterisk
-          allowDeselect
+          // allowDeselect
           placeholder="pick one"
           data={[
             { value: "squash", label: "squash" },
@@ -77,6 +85,9 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("tail")}
         />
+      </Group>
+
+      <Group>
         <Select
           label="Blank:"
           withAsterisk
@@ -108,6 +119,20 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("construction")}
         />
+        <Select
+          label="Fin Setup:"
+          placeholder="pick one"
+          withAsterisk
+          allowDeselect
+          data={[
+            { value: "Thruster", label: "Thruster" },
+            { value: "Quad", label: "Quad" },
+            { value: "Twin", label: "Twin" },
+            { value: "Single", label: "Single" },
+            { value: "Five Fin", label: "Five Fin" },
+          ]}
+          {...form.getInputProps("finSetup")}
+        />
       </Group>
 
       <Group>
@@ -132,20 +157,6 @@ export default function SurfSpecs({ form }) {
           {...form.getInputProps("boardColor")}
         />
         <Select
-          label="Fin Setup:"
-          placeholder="pick one"
-          withAsterisk
-          allowDeselect
-          data={[
-            { value: "Thruster", label: "Thruster" },
-            { value: "Quad", label: "Quad" },
-            { value: "Twin", label: "Twin" },
-            { value: "Single", label: "Single" },
-            { value: "Five Fin", label: "Five Fin" },
-          ]}
-          {...form.getInputProps("finSetup")}
-        />
-        <Select
           label="Box Type:"
           placeholder="pick one"
           withAsterisk
@@ -158,6 +169,9 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("boxType")}
         />
+        </Group>
+
+        <Group>
         <Select
           label="Box Color:"
           placeholder="pick one"
@@ -177,9 +191,6 @@ export default function SurfSpecs({ form }) {
           placeholder="12"
           {...form.getInputProps("stance")}
         />
-      </Group>
-
-      <Group>
         <Select
           withAsterisk
           label="Inserts:"
@@ -194,6 +205,11 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("inserts")}
         />
+        </Group>
+        
+      
+
+      <Group>
         <TextInput
           label="Rear Strap From Tail:"
           withAsterisk
@@ -206,11 +222,9 @@ export default function SurfSpecs({ form }) {
           placeholder="type here"
           {...form.getInputProps("strapWidth")}
         />
-      </Group>
-
-      <Group>
         <Select
           label="Leash Plug:"
+          withAsterisk
           placeholder="pick one"
           data={[
             { value: "yes", label: "yes" },
@@ -218,6 +232,10 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("leash")}
         />
+      </Group>
+
+      <Group>
+        
         <Select
           label="Install Pad:"
           withAsterisk
@@ -245,10 +263,9 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("waveLocation")}
         />
-      </Group>
-      <Group>
-      <Select
+        <Select
           label="Airbrush:"
+          withAsterisk
           placeholder="pick one"
           data={[
             { value: "yes", label: "yes" },
@@ -257,9 +274,17 @@ export default function SurfSpecs({ form }) {
           {...form.getInputProps("airbrush")}
         />
       </Group>
+      <Group>
+      <NumberInput
+        label="Board Weight:"
+        placeholder="lbs"
+        {...form.getInputProps("boardWeight")}
+      />
+      </Group>
       <Textarea
+        mt={3}
         placeholder="type here"
-        label="notes:"
+        label="Notes:"
         radius="md"
         size="md"
         {...form.getInputProps("notes")}

@@ -86,6 +86,8 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       handle: 'Deck',
       notes: '',
       invoiceNum: '',
+      rush: '',
+      boardWeight: 0
     },
 
     transformValues: (values) => ({

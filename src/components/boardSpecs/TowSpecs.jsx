@@ -1,13 +1,24 @@
-import { Select, TextInput, Group, Textarea } from '@mantine/core';
+import { Select, TextInput, Group, Textarea, NumberInput, Title } from '@mantine/core';
 
 export default function TowSpecs({ form }) {
   return (
     <>
+      <Title order={3} mb={3}>TOW</Title>
       <Group>
         <TextInput
           label="Invoice Number:"
           placeholder="type here"
           {...form.getInputProps("invoiceNum")}
+        />
+        <Select
+          label="Rush:"
+          withAsterisk
+          placeholder="pick one"
+          data={[
+            { value: "yes", label: "yes" },
+            { value: "no", label: "no" },
+          ]}
+          {...form.getInputProps("rush")}
         />
       </Group>
 
@@ -132,39 +143,44 @@ export default function TowSpecs({ form }) {
           ]}
           {...form.getInputProps("finSetup")}
         />
-        <Select
-          label="Box Type:"
-          placeholder="pick one"
-          withAsterisk
-          allowDeselect
-          data={[
-            { value: "FCS II", label: "FCS II" },
-            { value: "Futures", label: "Futures" },
-            { value: "A Box", label: "A Box" },
-            { value: "US Box", label: "US Box" },
-          ]}
-          {...form.getInputProps("boxType")}
-        />
-        <Select
-          label="Box Color:"
-          placeholder="pick one"
-          withAsterisk
-          allowDeselect
-          data={[
-            { value: "black", label: "black" },
-            { value: "blue", label: "blue" },
-            { value: "red", label: "red" },
-            { value: "white", label: "white" },
-            { value: "any", label: "any" },
-          ]}
-          {...form.getInputProps("boxColor")}
-        />
-        <TextInput
-          label="Stance:"
-          placeholder="12"
-          {...form.getInputProps("stance")}
-        />
       </Group>
+
+      <Group>
+        <Select
+            label="Box Type:"
+            placeholder="pick one"
+            withAsterisk
+            allowDeselect
+            data={[
+              { value: "FCS II", label: "FCS II" },
+              { value: "Futures", label: "Futures" },
+              { value: "A Box", label: "A Box" },
+              { value: "US Box", label: "US Box" },
+            ]}
+            {...form.getInputProps("boxType")}
+          />
+          <Select
+            label="Box Color:"
+            placeholder="pick one"
+            withAsterisk
+            allowDeselect
+            data={[
+              { value: "black", label: "black" },
+              { value: "blue", label: "blue" },
+              { value: "red", label: "red" },
+              { value: "white", label: "white" },
+              { value: "any", label: "any" },
+            ]}
+            {...form.getInputProps("boxColor")}
+          />
+          <TextInput
+            label="Stance:"
+            placeholder="12"
+            {...form.getInputProps("stance")}
+          />
+      </Group>
+        
+      
 
       <Group>
         <Select
@@ -234,19 +250,25 @@ export default function TowSpecs({ form }) {
       </Group>
       <Group>
       <Select
-          label="Airbrush:"
-          withAsterisk
-          placeholder="pick one"
-          data={[
-            { value: "yes", label: "yes" },
-            { value: "no", label: "no" },
-          ]}
-          {...form.getInputProps("airbrush")}
-        />
+        label="Airbrush:"
+        withAsterisk
+        placeholder="pick one"
+        data={[
+          { value: "yes", label: "yes" },
+          { value: "no", label: "no" },
+        ]}
+        {...form.getInputProps("airbrush")}
+      />
+      <NumberInput
+        label="Board Weight:"
+        placeholder="lbs"
+        {...form.getInputProps("boardWeight")}
+      />
       </Group>
       <Textarea
+        mt={3}
         placeholder="type here"
-        label="notes:"
+        label="Notes:"
         radius="md"
         size="md"
         {...form.getInputProps("notes")}
