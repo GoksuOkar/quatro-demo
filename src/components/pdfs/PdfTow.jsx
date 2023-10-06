@@ -170,6 +170,10 @@ export default function PdfTow({ values, orderNum, customer }) {
           <b>Airbrush:</b>
           {` ${values.airbrush}`}
         </p>
+        <p>
+          <b>Board Weight:</b>
+          {` ${values.boardWeight}`}
+        </p>
       </div>
       <div className="child" id="notes">
         <b>Notes:</b>

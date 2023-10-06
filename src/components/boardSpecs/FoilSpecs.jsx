@@ -207,7 +207,7 @@ export default function FoilSpecs({ form }) {
           ]}
           {...form.getInputProps("airbrush")}
         />
-        <NumberInput
+        <TextInput
           label="Board Weight:"
           placeholder="lbs"
           {...form.getInputProps("boardWeight")}

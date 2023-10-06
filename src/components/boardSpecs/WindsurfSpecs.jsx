@@ -247,7 +247,7 @@ export default function WindsurfSpecs({ form }) {
           ]}
           {...form.getInputProps("airbrush")}
         />
-        <NumberInput
+        <TextInput
           label="Board Weight:"
           placeholder="lbs"
           {...form.getInputProps("boardWeight")}

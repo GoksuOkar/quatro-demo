@@ -16,7 +16,6 @@ export default function PdfSurf({ values, orderNum, customer }) {
       {values.rush === "yes" ? (<div className='r-div'>RUSH</div>) : null}
     </div>
     <div className="printme" id="printcontents">
-        
       <div className="child">
         <p>
           <b>Name:</b>
@@ -166,8 +165,16 @@ export default function PdfSurf({ values, orderNum, customer }) {
           {` ${values.rearStrap}`}
         </p>
         <p>
-          <b>Leash:</b>
+          <b>Leash Plug:</b>
           {` ${values.leash}`}
+        </p>
+        <p>
+          <b>Airbrush:</b>
+          {` ${values.airbrush}`}
+        </p>
+        <p>
+          <b>Board Weight:</b>
+          {` ${values.boardWeight}`}
         </p>
       </div>
       <div className="child" id="notes">

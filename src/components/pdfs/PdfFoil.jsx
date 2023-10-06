@@ -171,6 +171,14 @@ export default function PdfFoil({ values, orderNum, customer }) {
           <b>Rear Inserts From Tail:</b>
           {` ${values.rearInsertsFromTail}`}
         </p>
+        <p>
+          <b>Airbrush:</b>
+          {` ${values.airbrush}`}
+        </p>
+        <p>
+          <b>Board Weight:</b>
+          {` ${values.boardWeight}`}
+        </p>
       </div>
       <div className="child" id="notes">
         <b>Notes:</b>

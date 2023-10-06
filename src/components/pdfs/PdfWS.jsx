@@ -148,7 +148,7 @@ export default function PdfWS({ values, orderNum, customer }) {
           {` ${values.thickness}`}
         </p>
         <p>
-          <b>Straps Width:</b>
+          <b>Strap Width:</b>
           {` ${values.strapWidth}`}
         </p>
         <p>
@@ -162,6 +162,14 @@ export default function PdfWS({ values, orderNum, customer }) {
         <p>
           <b>Rear Inserts From Tail:</b>
           {` ${values.rearInsertsFromTail}`}
+        </p>
+        <p>
+          <b>Airbrush:</b>
+          {` ${values.airbrush}`}
+        </p>
+        <p>
+          <b>Board Weight:</b>
+          {` ${values.boardWeight}`}
         </p>
       </div>
       <div className="child" id="notes">

@@ -87,7 +87,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       notes: '',
       invoiceNum: '',
       rush: '',
-      boardWeight: 0
+      boardWeight: ''
     },
 
     transformValues: (values) => ({

@@ -275,7 +275,7 @@ export default function SurfSpecs({ form }) {
         />
       </Group>
       <Group>
-      <NumberInput
+      <TextInput
         label="Board Weight:"
         placeholder="lbs"
         {...form.getInputProps("boardWeight")}
