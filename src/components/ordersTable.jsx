@@ -5,8 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { Axios } from '../utils/helpers.js';
 
 const convertDate = (d) => {
-  let date = new Date(d);
-  return date.toISOString().slice(0, 10);
+  if (d) {
+    let date = new Date(d);
+    return date.toISOString().slice(0, 10);
+  } 
 };
 
 export default function OrdersTable ({ orders, activePage }) {

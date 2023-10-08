@@ -48,13 +48,12 @@ export default function CheckCustomer({ setCustomer, setOpened, customer }) {
   return (
     <Stack>
       <Center>Enter Customer Name</Center>
-      <form
-        onSubmit={form.onSubmit(
-          (values) => handleClick(values)
-          )}
-      >
+      <form 
+        onSubmit={form.onSubmit((values) => { 
+          handleClick(values) 
+        })}>
         <Stack>
-          <TextInput
+        <TextInput
             placeholder="type here"
             label="First Name"
             {...form.getInputProps('firstName')}
@@ -70,5 +69,5 @@ export default function CheckCustomer({ setCustomer, setOpened, customer }) {
         </Stack>
       </form>
     </Stack>
-  )
+  );
 }

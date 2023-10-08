@@ -1,4 +1,4 @@
-import { Button } from '@mantine/core';
+import { Button, Title } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
 import './output.css';
 import { capitalizeFirstLetter, convertDate } from "../../utils/helpers.js";
@@ -11,6 +11,10 @@ export default function PdfSurf({ values, orderNum, customer }) {
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return (
+    <>
+    <div className='rush'>
+      {values.rush === "yes" ? (<div className='r-div'>RUSH</div>) : null}
+    </div>
     <div className="printme" id="printcontents">
       <div className="child">
         <p>
@@ -161,8 +165,16 @@ export default function PdfSurf({ values, orderNum, customer }) {
           {` ${values.rearStrap}`}
         </p>
         <p>
-          <b>Leash:</b>
+          <b>Leash Plug:</b>
           {` ${values.leash}`}
+        </p>
+        <p>
+          <b>Airbrush:</b>
+          {` ${values.airbrush}`}
+        </p>
+        <p>
+          <b>Board Weight:</b>
+          {` ${values.boardWeight}`}
         </p>
       </div>
       <div className="child" id="notes">
@@ -173,5 +185,6 @@ export default function PdfSurf({ values, orderNum, customer }) {
         <img id="image" src="/surfBoard.jpeg" />
       </div>
     </div>
+    </>
   );
 }
