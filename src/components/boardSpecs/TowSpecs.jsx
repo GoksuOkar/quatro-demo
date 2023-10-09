@@ -23,38 +23,46 @@ export default function TowSpecs({ form }) {
       </Group>
 
       <Group>
-        <TextInput
+        <NumberInput
           withAsterisk
-          placeholder='feet'
           label="Length(ft):"
           {...form.getInputProps("lengthFt")}
         />
-        <TextInput
+        <NumberInput
           label="Length(in):"
-          placeholder='inches'
+          precision={2}
+          step={0.5}
           {...form.getInputProps("lengthIn")}
         />
-        <TextInput
+        <NumberInput
           label="Tow Weight:"
+          min={0}
+          step={2}
           {...form.getInputProps("towWeight")}
         />
       </Group>
 
       <Group>
-        <TextInput
+        <NumberInput
           label="Width(in):"
           placeholder="inches"
+          precision={2}
+          step={0.5}
           {...form.getInputProps("width")}
         />
-        <TextInput
+        <NumberInput
           label="Thickness(in):"
           placeholder="inches"
+          precision={2}
+          step={0.5}
           {...form.getInputProps("thickness")}
         />
-        <TextInput
+        <NumberInput
           label="Volume(lt):"
           withAsterisk
           placeholder="lt"
+          precision={2}
+          step={10}
           {...form.getInputProps("volume")}
         />
       </Group>
