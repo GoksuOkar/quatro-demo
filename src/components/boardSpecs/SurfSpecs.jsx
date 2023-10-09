@@ -63,7 +63,7 @@ export default function SurfSpecs({ form }) {
       </Group>
 
       <Group>
-      <NumberInput
+        <NumberInput
           label="Thickness(in):"
           placeholder="inches"
           precision={2}
