@@ -49,12 +49,15 @@ export default function SurfSpecs({ form }) {
         />
         <NumberInput
           label="Length(in):"
-          placeholder='inches'
+          precision={2}
+          step={0.5}
           {...form.getInputProps("lengthIn")}
         />
         <NumberInput
           label="Width(in):"
           placeholder="inches"
+          precision={2}
+          step={0.5}
           {...form.getInputProps("width")}
         />
       </Group>
@@ -63,12 +66,16 @@ export default function SurfSpecs({ form }) {
         <NumberInput
           label="Thickness(in):"
           placeholder="inches"
+          precision={2}
+          step={0.5}
           {...form.getInputProps("thickness")}
         />
         <NumberInput
           label="Volume(lt):"
           withAsterisk
           placeholder="lt"
+          precision={2}
+          step={10}
           {...form.getInputProps("volume")}
         />
         <Select
