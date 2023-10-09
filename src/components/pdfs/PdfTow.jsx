@@ -3,10 +3,13 @@ import { useRef, useEffect, useState } from 'react';
 import './output.css';
 import { capitalizeFirstLetter, convertDate } from "../../utils/helpers.js";
 
-//foil output
+//tow output
 
-export default function PdfFoil({ values, orderNum, customer }) {
+export default function PdfTow({ values, orderNum, customer }) {
   const myref = useRef(null);
+
+  console.log("values: ", values);
+
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return (
@@ -39,6 +42,7 @@ export default function PdfFoil({ values, orderNum, customer }) {
           </>
         )}
       </div>
+      {/* RIDER INFO */}
       <div className="child">
         <p>
           <b>Weight:</b>
@@ -78,20 +82,15 @@ export default function PdfFoil({ values, orderNum, customer }) {
           {` ${values.intro}`}
         </p>
       </div>
-      {/* RIDER INFO */}
       {/* BOARD SPECS */}
       <div className="child">
         <p>
-          <b>Style:</b>
-          {` ${values.style}`}
-        </p>
-        <p>
-          <b>Foil Type:</b>
-          {` ${values.foilType}`}
+          <b>Construction:</b>
+          {` ${values.construction}`}
         </p>
         <p>
           <b>Length:</b>
-          {` ${values.lengthFt}ft ${values.lengthIn}in`}
+          {` ${values.lengthFt}ft ${values.lengthIn}`}
         </p>
         <p>
           <b>Box:</b>
@@ -106,8 +105,8 @@ export default function PdfFoil({ values, orderNum, customer }) {
           {` ${values.boardColor}`}
         </p>
         <p>
-          <b>Box Location:</b>
-          {` ${values.boxLocation}`}
+          <b>Box Color:</b>
+          {` ${values.boxColor}`}
         </p>
       </div>
 
@@ -121,12 +120,8 @@ export default function PdfFoil({ values, orderNum, customer }) {
           {` ${values.width}`}
         </p>
         <p>
-          <b>Leash:</b>
-          {` ${values.leash}`}
-        </p>
-        <p>
-          <b>Handle:</b>
-          {` ${values.handle}`}
+          <b>Fin Setup:</b>
+          {` ${values.finSetup}`}
         </p>
         <p>
           <b>Stance:</b>
@@ -137,7 +132,7 @@ export default function PdfFoil({ values, orderNum, customer }) {
           {` ${values.logo}`}
         </p>
         <p>
-          <b>Pads:</b>
+          <b>Install Pad:</b>
           {` ${values.pads}`}
         </p>
       </div>
@@ -160,16 +155,16 @@ export default function PdfFoil({ values, orderNum, customer }) {
           {` ${values.strapWidth}`}
         </p>
         <p>
-          <b>Construction:</b>
-          {` ${values.construction}`}
-        </p>
-        <p>
           <b>Volume:</b>
           {` ${values.volume}`}
         </p>
         <p>
-          <b>Rear Inserts From Tail:</b>
-          {` ${values.rearInsertsFromTail}`}
+          <b>Rear Strap From Tail:</b>
+          {` ${values.rearStrap}`}
+        </p>
+        <p>
+          <b>Leash Plug:</b>
+          {` ${values.leash}`}
         </p>
         <p>
           <b>Airbrush:</b>

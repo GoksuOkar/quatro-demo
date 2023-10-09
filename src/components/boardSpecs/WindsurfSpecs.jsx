@@ -1,14 +1,14 @@
-import { Select, NumberInput, TextInput, Group, Textarea } from '@mantine/core';
+import { Select, NumberInput, TextInput, Group, Textarea, Title } from '@mantine/core';
 
 export default function WindsurfSpecs({ form }) {
   return (
     <>
-      <h3>WINDSURF</h3>
+      <Title order={3} mb={3}>WINDSURF</Title>
       <Group>
         <Select
           label="Style:"
           withAsterisk
-          allowDeselect
+          allowdeselect="true"
           placeholder="pick one"
           data={[
             { value: "Wave Symmetrical", label: "Wave Symmetrical" },
@@ -21,6 +21,16 @@ export default function WindsurfSpecs({ form }) {
           label="Invoice Number:"
           placeholder="type here"
           {...form.getInputProps("invoiceNum")}
+        />
+        <Select
+          label="Rush:"
+          withAsterisk
+          placeholder="pick one"
+          data={[
+            { value: "yes", label: "yes" },
+            { value: "no", label: "no" },
+          ]}
+          {...form.getInputProps("rush")}
         />
       </Group>
 
@@ -40,10 +50,11 @@ export default function WindsurfSpecs({ form }) {
           min={0}
           {...form.getInputProps("towWeight")}
         />
+        <NumberInput label="Length(ft):" {...form.getInputProps("lengthFt")} />
       </Group>
 
       <Group>
-        <NumberInput label="Length(ft):" {...form.getInputProps("lengthFt")} />
+        
         <NumberInput
           label="Length(in):"
           precision={2}
@@ -70,7 +81,7 @@ export default function WindsurfSpecs({ form }) {
         <Select
           label="Tail:"
           withAsterisk
-          allowDeselect
+          allowdeselect="true"
           placeholder="pick one"
           data={[
             { value: "Squash", label: "Squash" },
@@ -84,7 +95,7 @@ export default function WindsurfSpecs({ form }) {
           label="Blank:"
           withAsterisk
           placeholder="pick one"
-          allowDeselect
+          allowdeselect="true"
           data={[
             { value: "EPS/Sandwich", label: "EPS/Sandwich" },
             { value: "EPS Custom", label: "EPS Custom" },
@@ -96,7 +107,7 @@ export default function WindsurfSpecs({ form }) {
           label="Construction:"
           withAsterisk
           placeholder="pick one"
-          allowDeselect
+          allowdeselect="true"
           data={[
             { value: "Regular", label: "Regular" },
             { value: "Ultra Lite", label: "Ultra Lite" },
@@ -105,11 +116,6 @@ export default function WindsurfSpecs({ form }) {
           ]}
           {...form.getInputProps("construction")}
         />
-        <TextInput
-          label="Stance:"
-          placeholder="12"
-          {...form.getInputProps("stance")}
-        />
       </Group>
 
       <Group>
@@ -117,7 +123,7 @@ export default function WindsurfSpecs({ form }) {
           label="Logo:"
           withAsterisk
           placeholder="pick one"
-          allowDeselect
+          allowDeselect="true"
           data={[
             { value: "black", label: "black" },
             { value: "blue", label: "blue" },
@@ -131,14 +137,26 @@ export default function WindsurfSpecs({ form }) {
           label="Board Color:"
           withAsterisk
           placeholder="type here"
-          allowDeselect
+          allowdeselect="true"
           {...form.getInputProps("boardColor")}
         />
+        <TextInput
+          label="Pads Color:"
+          withAsterisk
+          placeholder="type here"
+          {...form.getInputProps("pads")}
+        />
+        
+        </Group>
+
+        
+
+        <Group>
         <Select
           label="Fin Setup:"
           withAsterisk
           placeholder="pick one"
-          allowDeselect
+          allowdeselect="true"
           data={[
             { value: "Thruster", label: "Thruster" },
             { value: "Quad", label: "Quad" },
@@ -148,59 +166,64 @@ export default function WindsurfSpecs({ form }) {
           ]}
           {...form.getInputProps("finSetup")}
         />
-        <Select
-          label="Box Type:"
-          withAsterisk
-          placeholder="pick one"
-          allowDeselect
-          data={[
-            { value: "US", label: "US" },
-            { value: "Power Box", label: "Power Box" },
-            { value: "Custom Mix", label: "Custom Mix" },
-          ]}
-          {...form.getInputProps("boxType")}
-        />
-      </Group>
+          <Select
+            label="Box Type:"
+            withAsterisk
+            placeholder="pick one"
+            allowdeselect="true"
+            data={[
+              { value: "US", label: "US" },
+              { value: "Power Box", label: "Power Box" },
+              { value: "Custom Mix", label: "Custom Mix" },
+            ]}
+            {...form.getInputProps("boxType")}
+          />
+          <TextInput
+            label="Stance:"
+            placeholder="12"
+            {...form.getInputProps("stance")}
+          />
+          
+        </Group>
+        
+        <Group>
+          <TextInput
+            label="Fin Box From Tail"
+            placeholder="type here"
+            {...form.getInputProps("finFromTail")}
+          />
+          <Select
+            label="Inserts:"
+            withAsterisk
+            placeholder="pick one"
+            allowdeselect="true"
+            data={[
+              { value: "single", label: "single" },
+              { value: "double", label: "double" },
+              { value: "single/double", label: "single/double" },
+              { value: "see notes", label: "see notes" },
+              { value: "none", label: "none" },
+            ]}
+            {...form.getInputProps("inserts")}
+          />
+          <TextInput
+            label="Rear Strap From Tail:"
+            placeholder="type here"
+            {...form.getInputProps("rearStrap")}
+          />
+          <TextInput
+            label="Strap Width:"
+            withAsterisk
+            placeholder="type here"
+            {...form.getInputProps("strapWidth")}
+          />
+        </Group>
+         
+      
+
 
       <Group>
-        <TextInput
-          label="Fin Box From Tail"
-          placeholder="type here"
-          {...form.getInputProps("finFromTail")}
-        />
-        <Select
-          label="Inserts:"
-          withAsterisk
-          placeholder="pick one"
-          allowDeselect
-          data={[
-            { value: "single", label: "single" },
-            { value: "double", label: "double" },
-            { value: "single/double", label: "single/double" },
-            { value: "see notes", label: "see notes" },
-            { value: "none", label: "none" },
-          ]}
-          {...form.getInputProps("inserts")}
-        />
-        <TextInput
-          label="Rear Strap From Tail:"
-          placeholder="type here"
-          {...form.getInputProps("rearStrap")}
-        />
-        <TextInput
-          label="Strap Width:"
-          withAsterisk
-          placeholder="type here"
-          {...form.getInputProps("strapWidth")}
-        />
-      </Group>
-      <Group>
-        <TextInput
-          label="Pads Color:"
-          withAsterisk
-          placeholder="type here"
-          {...form.getInputProps("pads")}
-        />
+        
         <Select
           label="Wave/Location:"
           withAsterisk
@@ -214,10 +237,26 @@ export default function WindsurfSpecs({ form }) {
           ]}
           {...form.getInputProps("waveLocation")}
         />
+        <Select
+          label="Airbrush:"
+          withAsterisk
+          placeholder="pick one"
+          data={[
+            { value: "yes", label: "yes" },
+            { value: "no", label: "no" },
+          ]}
+          {...form.getInputProps("airbrush")}
+        />
+        <TextInput
+          label="Board Weight:"
+          placeholder="lbs"
+          {...form.getInputProps("boardWeight")}
+        />
       </Group>
       <Textarea
+        mt={3}
         placeholder="type here"
-        label="notes:"
+        label="Notes:"
         radius="md"
         size="md"
         {...form.getInputProps("notes")}

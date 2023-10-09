@@ -10,6 +10,10 @@ export default function PdfWS({ values, orderNum, customer }) {
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return (
+    <>
+    <div className='rush'>
+      {values.rush === "yes" ? (<div className='r-div'>RUSH</div>) : null}
+    </div>
     <div className="printme" id="printcontents">
       <div className="child">
         <p>
@@ -144,7 +148,7 @@ export default function PdfWS({ values, orderNum, customer }) {
           {` ${values.thickness}`}
         </p>
         <p>
-          <b>Straps Width:</b>
+          <b>Strap Width:</b>
           {` ${values.strapWidth}`}
         </p>
         <p>
@@ -159,6 +163,14 @@ export default function PdfWS({ values, orderNum, customer }) {
           <b>Rear Inserts From Tail:</b>
           {` ${values.rearInsertsFromTail}`}
         </p>
+        <p>
+          <b>Airbrush:</b>
+          {` ${values.airbrush}`}
+        </p>
+        <p>
+          <b>Board Weight:</b>
+          {` ${values.boardWeight}`}
+        </p>
       </div>
       <div className="child" id="notes">
         <b>Notes:</b>
@@ -168,5 +180,6 @@ export default function PdfWS({ values, orderNum, customer }) {
         <img id="image" src="/surfBoard.jpeg" />
       </div>
     </div>
+    </>
   );
 }

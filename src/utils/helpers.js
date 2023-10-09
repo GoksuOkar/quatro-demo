@@ -20,5 +20,10 @@ export function convertDate(d = new Date()) {
   return date.toISOString().slice(0, 10);
 };
 
+<<<<<<< HEAD
 //export const Axios = axios.create({baseURL: 'https://frwdmauiapi.com:443'});
 export const Axios = axios.create({baseURL: 'http://localhost:3000'});
+=======
+export const Axios = axios.create({baseURL: 'https://frwdmauiapi.com:443'});
+//export const Axios = axios.create({baseURL: 'http://localhost:3000'});
+>>>>>>> 751f83ba3c875296768857723fdd72f6ecc84434

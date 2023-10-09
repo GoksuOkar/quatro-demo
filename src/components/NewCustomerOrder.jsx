@@ -1,6 +1,7 @@
 import PdfWS from './pdfs/PdfWS.jsx';
 import PdfSurf from './pdfs/PdfSurf.jsx';
 import PdfFoil from './pdfs/PdfFoil.jsx';
+import PdfTow from './pdfs/PdfTow.jsx';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {
@@ -24,7 +25,9 @@ import { Carousel } from '@mantine/carousel';
 import SurfSpecs from './boardSpecs/SurfSpecs.jsx';
 import FoilSpecs from './boardSpecs/FoilSpecs.jsx';
 import WindsurfSpecs from './boardSpecs/WindsurfSpecs.jsx';
+import TowSpecs from './boardSpecs/TowSpecs.jsx';
 import { Axios } from '../utils/helpers.js';
+
 
 export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer }) {
   const [active, setActive] = useState(0);
@@ -70,8 +73,9 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       rearStrap: '',
       strapWidth: '',
       stance: '',
-      leash: 'Deck',
+      leash: '', //'Deck'
       pads: '',
+      airbrush:'',
       waveLocation: 'Other',
       finFromTail: '',
       boxLocation: '',
@@ -80,6 +84,8 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       foilType: '',
       notes: '',
       invoiceNum: '',
+      rush: '',
+      boardWeight: ''
     },
 
     // transformValues: (values) => ({
@@ -111,7 +117,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       if(active === 3) {
 
         const commonValidationValues = {
-          style: values.style === '' ? 'Style must be picked' : null,
+          // style: values.style === '' ? 'Style must be picked' : null,
           volume: values.volume <= 0 ? 'Enter valid volume' : null,
           blank: values.blank === '' ? 'Blank must be picked' : null,
           construction: values.construction === '' ? 'Construction must be picked' : null,
@@ -121,7 +127,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
           pads: values.pads === '' ? 'Pick pads' : null,
           boxType: values.boxType === '' ? 'Box type must be picked' : null,
-          strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null,
+          strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null
         }
 
         const surfValidationValues = {
@@ -145,6 +151,11 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           rearInsertsFromTail: values.rearInsertsFromTail === '' ? 'Pick one' : null,
         }
 
+        const towValidationValues = {
+          leash: values.leash === '' ? 'Pick leash' : null,
+          airbrush: values.leash === '' ? 'Select one' : null
+        }
+
 
         if (values.orderType === 'surf') {
           return ({
@@ -154,9 +165,13 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
           return({
             ...commonValidationValues, ...windsurfValidationValues
           })
-        } else {
+        } else if (values.orderType === 'foil') {
           return({
             ...commonValidationValues, ...foilValidationValues
+          })
+        } else {
+          return({
+            ...commonValidationValues, ...towValidationValues
           })
         }
       }
@@ -191,8 +206,10 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
   //post values to database
   //WIP > CHANGED ALL FORM.VALUES TO VALUES
   const storeNewCustomerOrder = () => {
+
     Axios.post('/customers', form.values)
     .then((result) => {
+      console.log('result: ', result)
       setNewCustomer(result.data);
       let customerId = result.data._id;
       let customerName = result.data.firstName + ' ' + result.data.lastName;
@@ -212,6 +229,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       }
       // else update order!
       setActive((current) => {
+        console.log('current', current)
         if (form.validate().hasErrors) {
           return current;
         }
@@ -240,153 +258,173 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
 
 
   return (
-    <div>
-      <a href={`/`}>Home</a>
-      <Container>
-          <h1>New Customer Order</h1>
-          <Stepper color="dark" size="sm" active={active} breapoint='sm' onStepClick={(val) => changeToActive(val)}>
-            <Stepper.Step description='Intro'>
-              <Radio.Group
-                name='intro'
-                defaultValue={['walk in']}
-                label='INTRO'
-                withAsterisk
-                {...form.getInputProps('intro')}
-              >
-                <Radio size='sm' value='walk in' label='walk in'/>
-                <Radio size='sm' value='phone' label='phone'/>
-                <Radio size='sm' value='email' label='email'/>
-                <Radio size='sm' value='website' label='website'/>
-              </Radio.Group>
-              <Group>
-                <TextInput
+    <div className='new-customer'>
+      <div className='nc-inner-cont'>
+        <a id='nc-h-btn' href={`/`}>Home</a>
+        <Container mt='10px'>
+            <h1>New Customer Order</h1>
+            <Stepper color="dark" size="sm" active={active} breakpoint='sm' onStepClick={(val) => changeToActive(val)}>
+              <Stepper.Step description='Intro'>
+                <Radio.Group
+                  name='intro'
+                  defaultValue={['walk in']}
+                  label='INTRO'
                   withAsterisk
-                  label="First Name"
-                  {...form.getInputProps('firstName')}
+                  {...form.getInputProps('intro')}
+                >
+                  <Radio size='sm' value='walk in' label='walk in'/>
+                  <Radio size='sm' value='phone' label='phone'/>
+                  <Radio size='sm' value='email' label='email'/>
+                  <Radio size='sm' value='website' label='website'/>
+                </Radio.Group>
+                <Group>
+                  <TextInput 
+                    withAsterisk
+                    label="First Name"
+                    {...form.getInputProps('firstName')}
+                  />
+                  <TextInput
+                    withAsterisk
+                    label="Last Name"
+                    {...form.getInputProps('lastName')}
+                  />
+                </Group>
+                <Radio.Group
+                  name='order type'
+                  label='Order Type'
+                  withAsterisk
+                  onChange={() => console.log('change')}
+                  {...form.getInputProps('orderType')}
+                >
+                  <Radio size='sm' value='surf' label='Surf'/>
+                  <Radio size='sm' value='windsurf' label='Windsurf'/>
+                  <Radio size='sm' value='foil' label='Foil'/>
+                  <Radio size='sm' value='tow' label='Tow'/>
+                </Radio.Group>
+                <Radio.Group
+                  name='customer type'
+                  defaultValue={['retail']}
+                  label='Customer Type'
+                  withAsterisk
+                  {...form.getInputProps('customerType')}
+                >
+                  <Radio size='sm' value='retail' label='Retail'/>
+                  <Radio size='sm' value='team' label='Team'/>
+                  <Radio size='sm' value='gratis' label='Gratis'/>
+                  <Radio size='sm' value='wholesale' label='Wholesale'/>
+                </Radio.Group>
+
+                <Select
+                  label="Approved By (only for team and gratis orders)"
+                  allowDeselect
+                  placeholder="Approved by"
+                  data={[
+                    { value: 'Lalo', label: 'Lalo' },
+                    { value: 'Francisco', label: 'Francisco' },
+                    { value: 'Pascal', label: 'Pascal' },
+                    { value: 'Keith', label: 'Keith' },
+                    { value: 'Logan', label: 'Logan'},
+                  ]}
+                  {...form.getInputProps('approvedBy')}
+                />
+              </Stepper.Step>
+
+              <Stepper.Step description='contact info'>
+                <Text>Fill in at least one:</Text>
+                <TextInput
+                  label='Email:'
+                  placeholder='customer@email.com'
+                  {...form.getInputProps('email')}
                 />
                 <TextInput
-                  withAsterisk
-                  label="Last Name"
-                  {...form.getInputProps('lastName')}
+                  label='Phone Number:'
+                  placeholder='808-888-8888'
+                  {...form.getInputProps('phone')}
                 />
-              </Group>
-              <Radio.Group
-                name='order type'
-                label='Order Type'
-                withAsterisk
-                onChange={() => console.log('change')}
-                {...form.getInputProps('orderType')}
-              >
-                <Radio size='sm' value='surf' label='Surf'/>
-                <Radio size='sm' value='windsurf' label='Windsurf'/>
-                <Radio size='sm' value='foil' label='Foil'/>
-              </Radio.Group>
-              <Radio.Group
-                name='customer type'
-                defaultValue={['retail']}
-                label='Customer Type'
-                withAsterisk
-                {...form.getInputProps('customerType')}
-              >
-                <Radio size='sm' value='retail' label='Retail'/>
-                <Radio size='sm' value='team' label='Team'/>
-                <Radio size='sm' value='gratis' label='Gratis'/>
-                <Radio size='sm' value='wholesale' label='Wholesale'/>
-              </Radio.Group>
+                <Textarea
+                  label='Address:'
+                  {...form.getInputProps('address')}
+                />
+              </Stepper.Step>
 
-              <Select
-                label="Approved By (only for team and gratis orders)"
-                allowDeselect
-                placeholder="Approved by"
-                data={[
-                  { value: 'Lalo', label: 'Lalo' },
-                  { value: 'Francisco', label: 'Francisco' },
-                  { value: 'Pascal', label: 'Pascal' },
-                  { value: 'Keith', label: 'Keith' },
-                  { value: 'Logan', label: 'Logan'},
-                ]}
-                {...form.getInputProps('approvedBy')}
-              />
-            </Stepper.Step>
-
-            <Stepper.Step description='contact info'>
-              <Text>Fill in at least one:</Text>
-              <TextInput
-                label='Email:'
-                placeholder='customer@email.com'
-                {...form.getInputProps('email')}
-              />
-              <TextInput
-                label='Phone Number:'
-                placeholder='808-888-8888'
-                {...form.getInputProps('phone')}
-              />
-              <Textarea
-                label='Address:'
-                {...form.getInputProps('address')}
-              />
-            </Stepper.Step>
-
-            <Stepper.Step description="rider info">
-              <NumberInput
-                label="Weight:"
-                hideControls
-                placeholder="weight in lb"
-                {...form.getInputProps('weight')}
-              />
-              <Group>
+              <Stepper.Step description="rider info">
                 <NumberInput
-                  label="Ft:"
-                  placeholder="ft"
-                  {...form.getInputProps('heightFt')}
-                  min={0}
-                  max={12}
+                  label="Weight:"
+                  placeholder="weight in lb"
+                  {...form.getInputProps('weight')}
                 />
-                <NumberInput
-                  label="Inch:"
-                  placeholder="in"
-                  {...form.getInputProps('heightIn')}
+                <Group>
+                  <TextInput
+                    label="Ft:"
+                    placeholder="ft"
+                    {...form.getInputProps('heightFt')}
+                  />
+                  <NumberInput
+                    label="Inch:"
+                    placeholder="in"
+                    {...form.getInputProps('heightIn')}
+                  />
+                </Group>
+                <Select
+                  label="Level"
+                  allowDeselect
+                  placeholder="pick one"
+                  data={[
+                    { value: 'entry', label: 'entry' },
+                    { value: 'intermediate', label: 'intermediate' },
+                    { value: 'advanced', label: 'advanced' },
+                    { value: 'pro', label: 'pro' },
+                  ]}
+                  {...form.getInputProps('level')}
                 />
-              </Group>
-              <Select
-                label="Level"
-                allowDeselect
-                placeholder="pick one"
-                data={[
-                  { value: 'entry', label: 'entry' },
-                  { value: 'intermediate', label: 'intermediate' },
-                  { value: 'advanced', label: 'advanced' },
-                  { value: 'pro', label: 'pro' },
-                ]}
-                {...form.getInputProps('level')}
-              />
-            </Stepper.Step>
+              </Stepper.Step>
 
-            <Stepper.Step description="Board Specs">
+              <Stepper.Step description="Board Specs">
+                {boardType === "surf" ? (<SurfSpecs form={form}/>) 
+                : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) 
+                : boardType === "foil" ? (<FoilSpecs form={form}/>) 
+                : (<TowSpecs form={form}/>)
+                }
+              </Stepper.Step>
+
+            <Stepper.Completed>
               {boardType === "surf" ? (
-                <SurfSpecs form={form}/>
-              ) : boardType === "windsurf" ? (<WindsurfSpecs form={form}/>) : (<FoilSpecs form={form}/>)}
-            </Stepper.Step>
-
-          <Stepper.Completed>
-            {boardType === "surf" ? (
-                <PdfSurf values={form.values} orderNum={orderNum} customer={newCustomer}/>
-              ) : boardType === "windsurf" ?
-              (<PdfWS values={form.values} orderNum={orderNum} customer={newCustomer}/>) : (<PdfFoil values={form.values} orderNum={orderNum} customer={newCustomer}/>)
-            }
-          </Stepper.Completed>
-          </Stepper>
-          <Group position="right" mt="xl">
-            {(active !== 0 && active < 3) && (
-              <Button color="dark" variant="default" onClick={prevStep}>
-                Back
-              </Button>
-            )}
-            {active < 3 && <Button color="dark" onClick={nextStep}>Next step</Button>}
-            {active === 3 && <Button color="dark" onClick={finishOrder}>Finish Order</Button>}
-            {active > 3 && <Button color="dark" onClick={handleGeneratePdf}>Print</Button>}
-          </Group>
-      </Container>
+                  <PdfSurf 
+                    values={form.values} 
+                    orderNum={orderNum} 
+                    customer={newCustomer}
+                  />
+                ) : boardType === "windsurf" ?
+                (<PdfWS 
+                  values={form.values} 
+                  orderNum={orderNum} 
+                  customer={newCustomer}
+                />) : boardType === "foil" ?
+                (<PdfFoil 
+                  values={form.values} 
+                  orderNum={orderNum} 
+                  customer={newCustomer}
+                />) :
+                (<PdfTow 
+                  values={form.values} 
+                  orderNum={orderNum} 
+                  customer={newCustomer}
+                />) 
+              }
+            </Stepper.Completed>
+            </Stepper>
+            <Group position="right" mt="xl">
+              {(active !== 0 && active < 3) && (
+                <Button color="dark" variant="default" onClick={prevStep}>
+                  Back
+                </Button>
+              )}
+              {active < 3 && <Button color="dark" onClick={nextStep}>Next step</Button>}
+              {active === 3 && <Button color="dark" onClick={finishOrder}>Finish Order</Button>}
+              {active > 3 && <Button color="dark" onClick={handleGeneratePdf}>Print</Button>}
+            </Group>
+        </Container>
+      </div>
     </div>
   )
 };

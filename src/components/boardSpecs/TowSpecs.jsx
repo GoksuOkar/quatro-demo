@@ -1,28 +1,10 @@
-import { Select, NumberInput, TextInput, Group, Textarea, Title } from '@mantine/core';
+import { Select, TextInput, Group, Textarea, NumberInput, Title } from '@mantine/core';
 
-export default function SurfSpecs({ form }) {
+export default function TowSpecs({ form }) {
   return (
     <>
-    <Title order={3} mb={3}>SURF</Title>
+      <Title order={3} mb={3}>TOW</Title>
       <Group>
-        <Select
-          label="Style:"
-          withAsterisk
-          allowDeselect
-          placeholder="style"
-          data={[
-            { value: "STD SHORT", label: "STD SHORT" },
-            { value: "STEP-UP", label: "STEP-UP" },
-            { value: "FISH", label: "FISH" },
-            { value: "MINI TANKER", label: "MINI TANKER" },
-            { value: "LONG BOARD", label: "LONG BOARD" },
-            { value: "GUN", label: "GUN" },
-            { value: "GROVELER", label: "GROVELER" },
-            { value: "SUP", label: "SUP" },
-            { value: "STEP-OFF", label: "STEP-OFF" }
-          ]}
-          {...form.getInputProps("style")}
-        />
         <TextInput
           label="Invoice Number:"
           placeholder="type here"
@@ -41,40 +23,47 @@ export default function SurfSpecs({ form }) {
       </Group>
 
       <Group>
-        <NumberInput
+        <TextInput
           withAsterisk
           placeholder='feet'
           label="Length(ft):"
           {...form.getInputProps("lengthFt")}
         />
-        <NumberInput
+        <TextInput
           label="Length(in):"
           placeholder='inches'
           {...form.getInputProps("lengthIn")}
         />
-        <NumberInput
-          label="Width(in):"
-          placeholder="inches"
-          {...form.getInputProps("width")}
+        <TextInput
+          label="Tow Weight:"
+          {...form.getInputProps("towWeight")}
         />
       </Group>
 
       <Group>
-        <NumberInput
+        <TextInput
+          label="Width(in):"
+          placeholder="inches"
+          {...form.getInputProps("width")}
+        />
+        <TextInput
           label="Thickness(in):"
           placeholder="inches"
           {...form.getInputProps("thickness")}
         />
-        <NumberInput
+        <TextInput
           label="Volume(lt):"
           withAsterisk
           placeholder="lt"
           {...form.getInputProps("volume")}
         />
+      </Group>
+
+      <Group>
         <Select
           label="Tail:"
           withAsterisk
-          // allowDeselect
+          allowDeselect
           placeholder="pick one"
           data={[
             { value: "squash", label: "squash" },
@@ -85,9 +74,6 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("tail")}
         />
-      </Group>
-
-      <Group>
         <Select
           label="Blank:"
           withAsterisk
@@ -98,6 +84,7 @@ export default function SurfSpecs({ form }) {
             { value: "PU", label: "PU" },
             { value: "EPS", label: "EPS" },
             { value: "Custom", label: "Custom" },
+            { value: "Pu Tow", label: "Pu Tow" }
           ]}
           {...form.getInputProps("blank")}
         />
@@ -118,20 +105,6 @@ export default function SurfSpecs({ form }) {
             { value: "6+4/6", label: "6+4/6" },
           ]}
           {...form.getInputProps("construction")}
-        />
-        <Select
-          label="Fin Setup:"
-          placeholder="pick one"
-          withAsterisk
-          allowDeselect
-          data={[
-            { value: "Thruster", label: "Thruster" },
-            { value: "Quad", label: "Quad" },
-            { value: "Twin", label: "Twin" },
-            { value: "Single", label: "Single" },
-            { value: "Five Fin", label: "Five Fin" },
-          ]}
-          {...form.getInputProps("finSetup")}
         />
       </Group>
 
@@ -157,40 +130,59 @@ export default function SurfSpecs({ form }) {
           {...form.getInputProps("boardColor")}
         />
         <Select
-          label="Box Type:"
+          label="Fin Setup:"
           placeholder="pick one"
           withAsterisk
           allowDeselect
           data={[
-            { value: "FCS II", label: "FCS II" },
-            { value: "Futures", label: "Futures" },
-            { value: "A Box", label: "A Box" },
-            { value: "US Box", label: "US Box" },
+            { value: "Thruster", label: "Thruster" },
+            { value: "Quad", label: "Quad" },
+            { value: "Twin", label: "Twin" },
+            { value: "Single", label: "Single" },
+            { value: "Five Fin", label: "Five Fin" },
           ]}
-          {...form.getInputProps("boxType")}
+          {...form.getInputProps("finSetup")}
         />
-        </Group>
+      </Group>
 
-        <Group>
+      <Group>
         <Select
-          label="Box Color:"
-          placeholder="pick one"
-          withAsterisk
-          allowDeselect
-          data={[
-            { value: "black", label: "black" },
-            { value: "blue", label: "blue" },
-            { value: "red", label: "red" },
-            { value: "white", label: "white" },
-            { value: "any", label: "any" },
-          ]}
-          {...form.getInputProps("boxColor")}
-        />
-        <TextInput
-          label="Stance:"
-          placeholder="12"
-          {...form.getInputProps("stance")}
-        />
+            label="Box Type:"
+            placeholder="pick one"
+            withAsterisk
+            allowDeselect
+            data={[
+              { value: "FCS II", label: "FCS II" },
+              { value: "Futures", label: "Futures" },
+              { value: "A Box", label: "A Box" },
+              { value: "US Box", label: "US Box" },
+            ]}
+            {...form.getInputProps("boxType")}
+          />
+          <Select
+            label="Box Color:"
+            placeholder="pick one"
+            withAsterisk
+            allowDeselect
+            data={[
+              { value: "black", label: "black" },
+              { value: "blue", label: "blue" },
+              { value: "red", label: "red" },
+              { value: "white", label: "white" },
+              { value: "any", label: "any" },
+            ]}
+            {...form.getInputProps("boxColor")}
+          />
+          <TextInput
+            label="Stance:"
+            placeholder="12"
+            {...form.getInputProps("stance")}
+          />
+      </Group>
+        
+      
+
+      <Group>
         <Select
           withAsterisk
           label="Inserts:"
@@ -205,11 +197,6 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("inserts")}
         />
-        </Group>
-        
-      
-
-      <Group>
         <TextInput
           label="Rear Strap From Tail:"
           withAsterisk
@@ -222,6 +209,9 @@ export default function SurfSpecs({ form }) {
           placeholder="type here"
           {...form.getInputProps("strapWidth")}
         />
+      </Group>
+
+      <Group>
         <Select
           label="Leash Plug:"
           withAsterisk
@@ -232,10 +222,6 @@ export default function SurfSpecs({ form }) {
           ]}
           {...form.getInputProps("leash")}
         />
-      </Group>
-
-      <Group>
-        
         <Select
           label="Install Pad:"
           withAsterisk
@@ -251,30 +237,28 @@ export default function SurfSpecs({ form }) {
           withAsterisk
           placeholder="pick one"
           data={[
-            {
-              value: "steep/hollow point break",
-              label: "Steep/Hollor Point Break",
-            },
+            { value: "steep/hollow point break", label: "Steep/Hollow Point Break" },
             { value: "punchy beach break", label: "Punchy Beach Break" },
             { value: "ankle waist high mush", label: "Ankle Waist High Mush" },
-            { value: "xl-xxl", label: "xl-xxl" },
+            { value: "Xl-XXL", label: "XL-XXL" },
             { value: "Peahi", label: "Peahi" },
+            { value: "Outer Sprecks", label: "Outer Sprecks" },
             { value: "Other", label: "Other" },
           ]}
           {...form.getInputProps("waveLocation")}
         />
-        <Select
-          label="Airbrush:"
-          withAsterisk
-          placeholder="pick one"
-          data={[
-            { value: "yes", label: "yes" },
-            { value: "no", label: "no" },
-          ]}
-          {...form.getInputProps("airbrush")}
-        />
       </Group>
       <Group>
+      <Select
+        label="Airbrush:"
+        withAsterisk
+        placeholder="pick one"
+        data={[
+          { value: "yes", label: "yes" },
+          { value: "no", label: "no" },
+        ]}
+        {...form.getInputProps("airbrush")}
+      />
       <TextInput
         label="Board Weight:"
         placeholder="lbs"
@@ -290,5 +274,6 @@ export default function SurfSpecs({ form }) {
         {...form.getInputProps("notes")}
       />
     </>
-  );
+  )
+    
 }
