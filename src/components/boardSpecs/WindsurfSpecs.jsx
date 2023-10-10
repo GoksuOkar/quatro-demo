@@ -247,6 +247,16 @@ export default function WindsurfSpecs({ form }) {
           ]}
           {...form.getInputProps("airbrush")}
         />
+        {/* <Select
+          label="Finish:"
+          withAsterisk
+          placeholder="pick one"
+          data={[
+            { value: "matte", label: "matte" },
+            { value: "clear", label: "clear" },
+          ]}
+          {...form.getInputProps("finish")}
+        /> */}
         <TextInput
           label="Board Weight:"
           placeholder="lbs"
