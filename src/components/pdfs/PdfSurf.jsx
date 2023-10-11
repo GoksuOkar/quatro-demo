@@ -27,7 +27,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
             <p style={{ marginTop: 0 }}>{customer.phone}</p>
           </>
         )}
-        {customer.address === "" ? null : (
+        {customer.address === "na" ? null : (
           <>
             <b>Address:</b>
             <p style={{ marginTop: 0 }}>{customer.address}</p>
@@ -179,7 +179,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
       </div>
       <div className="child" id="notes">
         <b>Notes:</b>
-        <p>{values.notes}</p>
+        <p style={{marginTop: '5px'}}>{values.notes}</p>
       </div>
       <div className="child">
         <img id="image" src="/surfBoard.jpeg" />
