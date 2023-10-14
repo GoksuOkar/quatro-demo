@@ -25,7 +25,7 @@ export default function OrdersTable ({ orders, activePage }) {
   let start = (activePage - 1) * 30;
   let end = start + 30;
 
-  // console.log(orders[1])
+  console.log(orders[1])
 
   const rows = orders.slice(start, end).map((o) => (
     <tr key={o.orderId} onClick={() => {goToOrder(o)}}>
@@ -34,6 +34,7 @@ export default function OrdersTable ({ orders, activePage }) {
       <td>{capitalizeFirstLetter(o.orderType)}</td>
       <td>{o.orderId}</td>
       <td>{o.invoiceNum}</td>
+      <td>{o.dueDate}</td>
     </tr>
   ))
 
@@ -46,7 +47,7 @@ export default function OrdersTable ({ orders, activePage }) {
         <th>Order Type</th>
         <th>Order Number</th>
         <th>Invoice Number</th>
-        {/* <th>Due Date</th> */}
+        <th>Due Date</th>
       </tr>
     </thead>
     <tbody>{rows}</tbody>

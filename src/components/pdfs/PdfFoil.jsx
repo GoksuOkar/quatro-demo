@@ -12,7 +12,7 @@ export default function PdfFoil({ values, orderNum, customer }) {
   return (
     <>
     <div className='rush'>
-      {values.rush === "yes" ? (<div className='r-div'>RUSH</div>) : null}
+      {values.dueDate === "" ? null : (<div className='r-div'>DUE {values.dueDate}</div>)}
     </div>
     <div className="printme" id="printcontents">
       <div className="child">

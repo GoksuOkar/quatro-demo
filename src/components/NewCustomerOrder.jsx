@@ -84,7 +84,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       foilType: '',
       notes: '',
       invoiceNum: '',
-      rush: '',
+      dueDate: '',
       boardWeight: '',
       // finish: ''
     },

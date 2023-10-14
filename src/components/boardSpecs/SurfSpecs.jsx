@@ -28,15 +28,10 @@ export default function SurfSpecs({ form }) {
           placeholder="type here"
           {...form.getInputProps("invoiceNum")}
         />
-        <Select
-          label="Rush:"
-          withAsterisk
-          placeholder="pick one"
-          data={[
-            { value: "yes", label: "yes" },
-            { value: "no", label: "no" },
-          ]}
-          {...form.getInputProps("rush")}
+        <TextInput
+          label="Due Date:"
+          placeholder="MM/DD/YYYY"
+          {...form.getInputProps("dueDate")}
         />
       </Group>
 
@@ -259,8 +254,8 @@ export default function SurfSpecs({ form }) {
           placeholder="pick one"
           data={[
             {
-              value: "steep/hollow point break",
-              label: "Steep/Hollor Point Break",
+              value: "point break",
+              label: "Point Break",
             },
             { value: "punchy beach break", label: "Punchy Beach Break" },
             { value: "ankle waist high mush", label: "Ankle Waist High Mush" },
