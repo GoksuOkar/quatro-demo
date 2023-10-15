@@ -47,7 +47,7 @@ export default function OrdersTable ({ orders, activePage }) {
         <th>Order Type</th>
         <th>Order Number</th>
         <th>Invoice Number</th>
-        <th>Due Date</th>
+        <th>Due</th>
       </tr>
     </thead>
     <tbody>{rows}</tbody>
