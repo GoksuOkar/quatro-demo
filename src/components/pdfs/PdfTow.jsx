@@ -14,9 +14,7 @@ export default function PdfTow({ values, orderNum, customer }) {
 
   return (
     <>
-    <div className='rush'>
-      {values.dueDate === "" ? null : (<div className='r-div'>{values.dueDate}</div>)}
-    </div>
+    
     <div className="printme" id="printcontents">
       <div className="child">
         <p>
@@ -182,6 +180,9 @@ export default function PdfTow({ values, orderNum, customer }) {
       <div className="child">
         <img id="image" src="/surfBoard.jpeg" />
       </div>
+    </div>
+    <div className='rush'>
+      {values.dueDate === "" ? null : (<div className='r-div'>DUE {values.dueDate}</div>)}
     </div>
     </>
   );

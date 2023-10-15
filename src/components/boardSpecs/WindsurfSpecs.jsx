@@ -242,7 +242,7 @@ export default function WindsurfSpecs({ form }) {
           ]}
           {...form.getInputProps("airbrush")}
         />
-        {/* <Select
+        <Select
           label="Finish:"
           withAsterisk
           placeholder="pick one"
@@ -251,7 +251,7 @@ export default function WindsurfSpecs({ form }) {
             { value: "clear", label: "clear" },
           ]}
           {...form.getInputProps("finish")}
-        /> */}
+        />
         <TextInput
           label="Board Weight:"
           placeholder="lbs"
