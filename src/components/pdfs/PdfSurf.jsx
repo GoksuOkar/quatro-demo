@@ -12,9 +12,6 @@ export default function PdfSurf({ values, orderNum, customer }) {
 
   return (
     <>
-    <div className='rush'>
-      {values.rush === "yes" ? (<div className='r-div'>RUSH</div>) : null}
-    </div>
     <div className="printme" id="printcontents">
       <div className="child">
         <p>
@@ -185,6 +182,9 @@ export default function PdfSurf({ values, orderNum, customer }) {
         <img id="image" src="/surfBoard.jpeg" />
       </div>
     </div>
+      <div className='rush'>
+        {values.dueDate === "" ? null : (<div className='r-div'>DUE {values.dueDate}</div>)}
+      </div>
     </>
   );
 }

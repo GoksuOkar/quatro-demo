@@ -25,15 +25,10 @@ export default function FoilSpecs({ form }) {
           placeholder="type here"
           {...form.getInputProps("invoiceNum")}
         />
-        <Select
-          label="Rush:"
-          withAsterisk
-          placeholder="pick one"
-          data={[
-            { value: "yes", label: "yes" },
-            { value: "no", label: "no" },
-          ]}
-          {...form.getInputProps("rush")}
+        <TextInput
+          label="Due Date:"
+          placeholder="MM/DD/YYYY"
+          {...form.getInputProps("dueDate")}
         />
       </Group>
 

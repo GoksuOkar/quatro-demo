@@ -11,9 +11,7 @@ export default function PdfWS({ values, orderNum, customer }) {
 
   return (
     <>
-    <div className='rush'>
-      {values.rush === "yes" ? (<div className='r-div'>RUSH</div>) : null}
-    </div>
+    
     <div className="printme" id="printcontents">
       <div className="child">
         <p>
@@ -168,6 +166,10 @@ export default function PdfWS({ values, orderNum, customer }) {
           {` ${values.airbrush}`}
         </p>
         <p>
+          <b>Finish:</b>
+          {` ${values.finish}`}
+        </p>
+        <p>
           <b>Board Weight:</b>
           {` ${values.boardWeight}`}
         </p>
@@ -179,6 +181,9 @@ export default function PdfWS({ values, orderNum, customer }) {
       <div>
         <img id="image" src="/surfBoard.jpeg" />
       </div>
+    </div>
+    <div className='rush'>
+      {values.dueDate === "" ? null : (<div className='r-div'>DUE {values.dueDate}</div>)}
     </div>
     </>
   );

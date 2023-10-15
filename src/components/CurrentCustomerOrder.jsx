@@ -86,7 +86,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       handle: 'Deck',
       notes: '',
       invoiceNum: '',
-      rush: '',
+      dueDate: '',
       boardWeight: '',
       // finish: ''
     },
