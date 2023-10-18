@@ -2,13 +2,98 @@
   .mantine-Stepper-steps, h1 { display: none;}
   .mantine-Group-root { display: none;}
   a { display: none;}
-  .printme {
-    padding: 20px;
+  .outer-box {
+    margin-top: 30px;
   }
 }
 
 h1 {
   margin-bottom: 5%;
+}
+
+span {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.outer-box {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 95vh;
+  width: 800px;
+}
+
+.contact-box {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  width: 100%;
+  font-size: large;
+}
+
+.customer-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  width: 200px;
+  font-size: large;
+}
+
+.contact-info {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.c-info-in-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar-info {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid black;
+  /* margin-bottom: 5px; */
+}
+
+.one-data {
+  margin: 5px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@font-face {
+  font-family: "Brush";
+  src: local('Avallon'),
+    url('./fonts/Avallon.ttf') format('truetype')
+}
+
+.order-title {
+  font-family: 'Brush';
+}
+
+.order-date {
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+}
+
+.order-type-heading {
+  border: 4px solid black;
+  border-radius: 10px;
+  padding: 0 19px;
+  font-size: 80px;
+}
+
+.title-box {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
 #printcontents {
