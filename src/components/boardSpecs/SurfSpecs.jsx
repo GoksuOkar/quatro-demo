@@ -45,12 +45,14 @@ export default function SurfSpecs({ form }) {
         <NumberInput
           label="Length(in):"
           precision={2}
+          withAsterisk
           step={0.5}
           {...form.getInputProps("lengthIn")}
         />
         <NumberInput
           label="Width(in):"
           placeholder="inches"
+          withAsterisk
           precision={2}
           step={0.5}
           {...form.getInputProps("width")}
@@ -61,6 +63,7 @@ export default function SurfSpecs({ form }) {
         <NumberInput
           label="Thickness(in):"
           placeholder="inches"
+          withAsterisk
           precision={2}
           step={0.5}
           {...form.getInputProps("thickness")}
@@ -76,14 +79,13 @@ export default function SurfSpecs({ form }) {
         <Select
           label="Tail:"
           withAsterisk
-          // allowDeselect
           placeholder="pick one"
           data={[
-            { value: "squash", label: "squash" },
-            { value: "round pin", label: "round pin" },
-            { value: "swallow", label: "swallow" },
-            { value: "thumb", label: "thumb" },
-            { value: "fish", label: "fish" },
+            { value: "Squash", label: "Squash" },
+            { value: "Round Pin", label: "Round Pin" },
+            { value: "Swallow", label: "Swallow" },
+            { value: "Thumb", label: "Thumb" },
+            { value: "Fish", label: "Fish" },
           ]}
           {...form.getInputProps("tail")}
         />
@@ -138,24 +140,14 @@ export default function SurfSpecs({ form }) {
       </Group>
 
       <Group>
-        <Select
-          placeholder="pick one"
-          label="Logo:"
-          withAsterisk
-          allowDeselect
-          data={[
-            { value: "black", label: "black" },
-            { value: "blue", label: "blue" },
-            { value: "red", label: "red" },
-            { value: "white", label: "white" },
-            { value: "any", label: "any" },
-          ]}
+        <TextInput
+          label="Logo Color:"
+          placeholder="type here"
           {...form.getInputProps("logo")}
         />
         <TextInput
           label="Board Color:"
           placeholder="type here"
-          withAsterisk
           {...form.getInputProps("boardColor")}
         />
         <Select
@@ -177,8 +169,8 @@ export default function SurfSpecs({ form }) {
         <Select
           label="Box Color:"
           placeholder="pick one"
-          withAsterisk
           allowDeselect
+          withAsterisk
           data={[
             { value: "black", label: "black" },
             { value: "blue", label: "blue" },
@@ -194,7 +186,6 @@ export default function SurfSpecs({ form }) {
           {...form.getInputProps("stance")}
         />
         <Select
-          withAsterisk
           label="Inserts:"
           placeholder="pick one"
           allowDeselect
@@ -214,13 +205,11 @@ export default function SurfSpecs({ form }) {
       <Group>
         <TextInput
           label="Rear Strap From Tail:"
-          withAsterisk
           placeholder="type here"
           {...form.getInputProps("rearStrap")}
         />
         <TextInput
           label="Strap Width:"
-          withAsterisk
           placeholder="type here"
           {...form.getInputProps("strapWidth")}
         />
@@ -254,12 +243,12 @@ export default function SurfSpecs({ form }) {
           placeholder="pick one"
           data={[
             {
-              value: "point break",
+              value: "Point Break",
               label: "Point Break",
             },
-            { value: "punchy beach break", label: "Punchy Beach Break" },
-            { value: "ankle waist high mush", label: "Ankle Waist High Mush" },
-            { value: "xl-xxl", label: "xl-xxl" },
+            { value: "Punchy Beach Break", label: "Punchy Beach Break" },
+            { value: "Ankle Waist High Mush", label: "Ankle Waist High Mush" },
+            { value: "XL-XXL", label: "XL-XXL" },
             { value: "Peahi", label: "Peahi" },
             { value: "Other", label: "Other" },
           ]}

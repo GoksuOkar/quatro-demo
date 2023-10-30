@@ -1,193 +1,216 @@
-import { Button } from '@mantine/core';
-import { useRef, useEffect, useState } from 'react';
+import { Avatar } from '@mantine/core';
 import './output.css';
 import { capitalizeFirstLetter, convertDate } from "../../utils/helpers.js";
-
+import myAvatarPerson from '../../pictures/black-avatar.jpg'
+import myAvatarBoard from '../../pictures/board-black.png'
+import myAvatarPen from '../../pictures/black-pen1.png'
 //foil output
 
 export default function PdfFoil({ values, orderNum, customer }) {
-  const myref = useRef(null);
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return (
     <>
-    <div className="printme" id="printcontents">
-      <div className="child">
-        <p>
-          <b>Name:</b>
-          {` ${name}`}
-        </p>
-        {customer.phone === "" ? null : (
-          <>
-            <b>Phone:</b>
-            <p style={{ marginTop: 0 }}>{customer.phone}</p>
-          </>
-        )}
-        {customer.address === "na" ? null : (
-          <>
-            <b>Address:</b>
-            <p style={{ marginTop: 0 }}>{customer.address}</p>
-          </>
-        )}
-        {customer.email === "" ? null : (
-          <>
-            <b>Email:</b>
-            <p style={{ marginTop: 0 }}>{customer.email}</p>
-          </>
-        )}
-      </div>
-      <div className="child">
-        <p>
-          <b>Weight:</b>
-          {` ${customer.weight}lbs`}
-        </p>
-        <p>
-          <b>Height:</b>
-          {` ${customer.heightFt}ft ${customer.heightIn}in`}
-        </p>
-        <p>
-          <b>Level:</b>
-          {` ${customer.level}`}
-        </p>
-        <p>
-          <b>Location:</b>
-          {` ${values.waveLocation}`}
-        </p>
-      </div>
-      <div className="child">
-        <p className="orderNum">
-          <b>Order Number: {` ${orderNum}`}</b>
-        </p>
-        <p>
-          <b>Date:</b>
-          {` ${convertDate(values.createdAt)}`}
-        </p>
-        <p>
-          <b>Order Type:</b>
-          {` ${values.orderType}`}
-        </p>
-        <p>
-          <b>Invoice Number:</b>
-          {` ${values.invoiceNum}`}
-        </p>
-        <p>
-          <b>Intro:</b>
-          {` ${values.intro}`}
-        </p>
-      </div>
-      {/* RIDER INFO */}
-      {/* BOARD SPECS */}
-      <div className="child">
-        <p>
-          <b>Style:</b>
-          {` ${values.style}`}
-        </p>
-        <p>
-          <b>Foil Type:</b>
-          {` ${values.foilType}`}
-        </p>
-        <p>
-          <b>Length:</b>
-          {` ${values.lengthFt}ft ${values.lengthIn}in`}
-        </p>
-        <p>
-          <b>Box:</b>
-          {` ${values.boxType}`}
-        </p>
-        <p>
-          <b>Inserts:</b>
-          {` ${values.inserts}`}
-        </p>
-        <p>
-          <b>Board Color:</b>
-          {` ${values.boardColor}`}
-        </p>
-        <p>
-          <b>Box Location:</b>
-          {` ${values.boxLocation}`}
-        </p>
-      </div>
+      <div className='outer-box'>
 
-      <div className="child">
-        <p>
-          <b>Tail:</b>
-          {` ${values.tail}`}
-        </p>
-        <p>
-          <b>Width:</b>
-          {` ${values.width}`}
-        </p>
-        <p>
-          <b>Leash:</b>
-          {` ${values.leash}`}
-        </p>
-        <p>
-          <b>Handle:</b>
-          {` ${values.handle}`}
-        </p>
-        <p>
-          <b>Stance:</b>
-          {` ${values.stance}`}
-        </p>
-        <p>
-          <b>Logo:</b>
-          {` ${values.logo}`}
-        </p>
-        <p>
-          <b>Pads:</b>
-          {` ${values.pads}`}
-        </p>
-      </div>
+        <div className='title-box'>
+          <div className='order-type-heading'>
+            <div className='order-title'>{capitalizeFirstLetter(values.orderType)}</div>
+          </div>
+          <div className='order-date'>
+            <span>Order Created</span>
+            {convertDate(values.createdAt)}
+          </div>
+        </div>
 
-      <div className="child">
-        <p>
-          <b>Tow Weight:</b>
-          {` ${values.towWeight}`}
-        </p>
-        <p>
-          <b>Blank:</b>
-          {` ${values.blank}`}
-        </p>
-        <p>
-          <b>Thickness:</b>
-          {` ${values.thickness}`}
-        </p>
-        <p>
-          <b>Straps Width:</b>
-          {` ${values.strapWidth}`}
-        </p>
-        <p>
-          <b>Construction:</b>
-          {` ${values.construction}`}
-        </p>
-        <p>
-          <b>Volume:</b>
-          {` ${values.volume}`}
-        </p>
-        <p>
-          <b>Rear Inserts From Tail:</b>
-          {` ${values.rearInsertsFromTail}`}
-        </p>
-        <p>
-          <b>Airbrush:</b>
-          {` ${values.airbrush}`}
-        </p>
-        <p>
-          <b>Board Weight:</b>
-          {` ${values.boardWeight}`}
-        </p>
+        <div className='contact-box'>
+          <div className='avatar-info'>
+            <Avatar src={myAvatarPerson} size='80px'></Avatar>
+            <span>Customer Information</span>
+          </div>
+          <div className='info-in-box'>
+            {/* One */}
+            <div className='general-info'>
+              <div className='one-data'>
+                <span>Name </span>
+                {name}
+              </div>
+              <div className='one-data'>
+                <span>Phone </span>
+                {customer.phone === "na" ? <>&nbsp;</> : customer.phone}
+              </div>
+              <div className='one-data'>
+                <span>Email </span>
+                {customer.email === "na" ? null: customer.email}
+              </div>
+            </div>
+            {/* Two */}
+            <div className='general-info'>
+              <div className='one-data'>
+                <span>Weight </span>
+                {customer.weight}
+              </div>
+              <div className='one-data'>
+                <span>Height </span>
+                {` ${customer.heightFt}' ${customer.heightIn}`}
+              </div>
+              <div className='one-data'>
+                <span>Level </span>
+                {customer.level}
+              </div>
+            </div>
+
+            {/* Three */}
+            <div className='general-info'>
+              <div className='one-data'>
+                <span>Location </span>
+                {values.waveLocation}
+              </div>
+              <div className='one-data'>
+                <span>Order #</span>
+                {orderNum}
+              </div>
+              <div className='one-data'>
+                <span>Invoice #</span>
+                {values.invoiceNum === '' ? <>&nbsp;</> : values.invoiceNum}
+              </div>
+            </div>
+
+          </div>
+
+          <div className='board-spec-box'>
+            {/* Board Heading */}
+            <div className='board-avatar-info'>
+              <Avatar src={myAvatarBoard} size='80px'></Avatar>
+              <span style={{marginLeft: '-10px'}}>Board Specs</span>
+            </div>
+
+            <div className='info-in-box'>
+              {/* First Box */}
+              <div className='general-info'>
+                <div className='one-data'>
+                  <span>Style</span>
+                  {values.style}
+                </div>
+                <div className='one-data'>
+                  <span>Construction</span>
+                  {values.construction}
+                </div>
+                <div className='one-data'>
+                  <span>Blank</span>
+                  {values.blank}
+                </div>
+                <div className='one-data'>
+                  <span>Foil Type</span>
+                  {values.foilType === "" ? <>&nbsp;</> : values.foilType}
+                </div>
+              </div>
+
+              {/* Second Box */}
+              <div className='general-info'>
+                <div className='one-data'>
+                  <span>Length</span>
+                  {` ${values.lengthFt}' ${values.lengthIn}`}
+                </div>
+                <div className='one-data'>
+                  <span>Width</span>
+                  {values.width}
+                </div>
+                <div className='one-data'>
+                  <span>Thickness</span>
+                  {values.thickness}
+                </div>
+                <div className='one-data'>
+                  <span>Volume</span>
+                  {values.volume}
+                </div>
+              </div>
+
+              {/* Third Box */}
+              <div className='general-info'>
+                <div className='one-data'>
+                  <span>Box Type</span>
+                  {values.boxType}
+                  </div>
+                <div className='one-data'>
+                  <span>Box Location</span>
+                  {values.boxLocation}
+                </div>
+                <div className='one-data'>
+                  <span>Inserts</span>
+                  {values.inserts}
+                </div>
+                <div className='one-data'>
+                  <span>Rear Inserts</span>
+                  {values.boxLocation}
+                </div>
+              </div>
+
+              {/* Third Box */}
+              <div className='general-info'>
+                <div className='one-data'>
+                  <span>Stance</span>
+                  {values.stance === "" ? <>&nbsp;</> : values.stance}
+                </div>
+                <div className='one-data'>
+                  <span>Leash</span>
+                  {values.leash}
+                </div>
+                <div className='one-data'>
+                  <span>Handle</span>
+                  {values.handle}
+                </div>
+                <div className='one-data'>
+                  <span>Strap Width</span>
+                  {values.strapWidth === "" ? <>&nbsp;</> : values.strapWidth}
+                </div>
+              </div>
+
+              {/* Fourth Box */}
+              <div className='general-info'>
+                <div className='one-data'>
+                  <span>Airbrush</span>
+                  {values.airbrush === '' ? <>&nbsp;</> : values.airbrush}
+                </div>
+                <div className='one-data'>
+                  <span>Board Color</span>
+                  {values.boardColor === "" ? <>&nbsp;</> : values.boardColor}
+                </div>
+                <div className='one-data'>
+                  <span>Logo Color</span>
+                  {values.logo === "" ? <>&nbsp;</> : values.logo}
+                </div>
+                <div className='one-data'>
+                  <span>Pad Color</span>
+                  {values.pads}
+                </div>
+                <div className='one-data'>
+                  <span>Board Weight</span>
+                  {values.boardWeight === '' ? <>&nbsp;</> : values.boardWeight}
+                </div>
+              </div>
+            </div>
+
+            {/* Notes */}
+            <div className='notes-outer-box'>
+              <div className='notes-avatar-info'>
+                <Avatar mr={5} src={myAvatarPen} size='70px'></Avatar>
+                <span>Notes</span>
+              </div>
+
+              {/* Text Area */}
+              <div className='notes-inner-div'>
+                <div>{values.notes}</div>
+              </div>
+            </div>
+
+            <div className='rush'>
+              {values.dueDate === "" ? null : (<div className='r-div'>DUE {values.dueDate}</div>)}
+            </div>
+
+          </div>
+        </div>    
       </div>
-      <div className="child" id="notes">
-        <b>Notes:</b>
-        <p style={{marginTop: '5px'}}>{values.notes}</p>
-      </div>
-      <div className="child">
-        <img id="image" src="/surfBoard.jpeg" />
-      </div>
-    </div>
-    <div className='rush'>
-      {values.dueDate === "" ? null : (<div className='r-div'>DUE {values.dueDate}</div>)}
-    </div>
     </>
   );
 }

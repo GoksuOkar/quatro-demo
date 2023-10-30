@@ -88,7 +88,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       invoiceNum: '',
       dueDate: '',
       boardWeight: '',
-      // finish: ''
+      finish: ''
     },
 
     transformValues: (values) => ({
@@ -107,36 +107,27 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       if(active === 1) {
 
         const commonValidationValues = {
-          // width: values.width <= 0 ? 'Enter Valid Width' : null,
-          // style: values.style === '' ? 'Style must be picked' : null,
-          // thickness: values.thickness <= 0 ? 'Enter valid thickness' : null,
           volume: values.volume <= 0 ? 'Enter valid volume' : null,
           blank: values.blank === '' ? 'Blank must be picked' : null,
           construction: values.construction === '' ? 'Construction must be picked' : null,
-          boardColor: values.boardColor === '' ? 'Board color must be picked' : null,
-          logo: values.logo === '' ? 'Logo color must be picked' : null,
-          inserts: values.inserts === '' ? 'Inserts must be picked' : null,
           waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
           pads: values.pads === '' ? 'Pick pads' : null,
           boxType: values.boxType === '' ? 'Box type must be picked' : null,
-          strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null,
         }
 
         const surfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
           lengthFt: values.lengthFt <= 0 ? 'Enter valid length' : null,
-          lengthIn: values.lengthIn < 0 ? 'Enter valid length' : null,
+          lengthIn: values.lengthIn <= 0 ? 'Enter valid length' : null,
+          width: values.width <= 0 ? 'Enter valid width' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
           boxColor: values.boxColor === '' ? 'Box color must be picked' : null,
-          rearStrap: values.rearStrap === '' ? 'Rear Strap must be picked' : null,
           leash: values.leash === '' ? 'Pick leash' : null,
         }
 
         const windsurfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
-          // rearStrap: values.rearStrap === '' ? 'Rear Strap must be picked' : null,
-          // finFromTail: values.finFromTail === '' ? 'Must be entered' : null,
         }
 
         const foilValidationValues = {

@@ -114,18 +114,10 @@ export default function WindsurfSpecs({ form }) {
       </Group>
 
       <Group>
-        <Select
-          label="Logo:"
+      <TextInput
+          label="Logo Color:"
           withAsterisk
-          placeholder="pick one"
-          allowDeselect="true"
-          data={[
-            { value: "black", label: "black" },
-            { value: "blue", label: "blue" },
-            { value: "red", label: "red" },
-            { value: "white", label: "white" },
-            { value: "Production Team", label: "Production Team" },
-          ]}
+          placeholder="type here"
           {...form.getInputProps("logo")}
         />
         <TextInput
@@ -175,7 +167,7 @@ export default function WindsurfSpecs({ form }) {
           />
           <TextInput
             label="Stance:"
-            placeholder="12"
+            placeholder="type here"
             {...form.getInputProps("stance")}
           />
           
@@ -208,7 +200,6 @@ export default function WindsurfSpecs({ form }) {
           />
           <TextInput
             label="Strap Width:"
-            withAsterisk
             placeholder="type here"
             {...form.getInputProps("strapWidth")}
           />
@@ -234,7 +225,6 @@ export default function WindsurfSpecs({ form }) {
         />
         <Select
           label="Airbrush:"
-          withAsterisk
           placeholder="pick one"
           data={[
             { value: "yes", label: "yes" },
@@ -244,7 +234,6 @@ export default function WindsurfSpecs({ form }) {
         />
         <Select
           label="Finish:"
-          withAsterisk
           placeholder="pick one"
           data={[
             { value: "matte", label: "matte" },
