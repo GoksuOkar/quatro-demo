@@ -6,7 +6,7 @@ import myAvatarBoard from '../../pictures/board-black.png'
 import myAvatarPen from '../../pictures/black-pen1.png'
 
 export default function PdfWS({ values, orderNum, customer }) {
-  console.log('windsurf test', values)
+  
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return (
