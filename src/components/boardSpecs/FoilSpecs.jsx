@@ -40,13 +40,6 @@ export default function FoilSpecs({ form }) {
           step={0.5}
           {...form.getInputProps("lengthIn")}
         />
-        <NumberInput
-          label="Tow Weight (if applicable):"
-          placeholder="0"
-          step={5}
-          min={0}
-          {...form.getInputProps("towWeight")}
-        />
       </Group>
       <Group>
         <NumberInput

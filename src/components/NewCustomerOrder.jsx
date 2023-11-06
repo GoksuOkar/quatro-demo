@@ -76,7 +76,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       leash: '', //'Deck'
       pads: '',
       airbrush:'',
-      waveLocation: 'Other',
+      waveLocation: '',
       finFromTail: '',
       boxLocation: '',
       rearInsertsFromTail: '',
@@ -86,7 +86,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       invoiceNum: '',
       dueDate: '',
       boardWeight: '',
-      // finish: ''
+      finish: ''
     },
 
     // transformValues: (values) => ({
@@ -118,32 +118,26 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       if(active === 3) {
 
         const commonValidationValues = {
-          // style: values.style === '' ? 'Style must be picked' : null,
           volume: values.volume <= 0 ? 'Enter valid volume' : null,
-          blank: values.blank === '' ? 'Blank must be picked' : null,
           construction: values.construction === '' ? 'Construction must be picked' : null,
-          boardColor: values.boardColor === '' ? 'Board color must be picked' : null,
-          logo: values.logo === '' ? 'Logo color must be picked' : null,
-          inserts: values.inserts === '' ? 'Inserts must be picked' : null,
           waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
           pads: values.pads === '' ? 'Pick pads' : null,
           boxType: values.boxType === '' ? 'Box type must be picked' : null,
-          strapWidth: values.strapWidth <= 0 ? 'Strap width must be picked' : null
         }
 
         const surfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
           lengthFt: values.lengthFt <= 0 ? 'Enter valid length' : null,
-          lengthIn: values.lengthIn < 0 ? 'Enter valid length' : null,
+          width: values.width <= 0 ? 'Enter valid width' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
           boxColor: values.boxColor === '' ? 'Box color must be picked' : null,
-          rearStrap: values.rearStrap === '' ? 'Rear Strap must be picked' : null,
           leash: values.leash === '' ? 'Pick leash' : null,
         }
 
         const windsurfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
+          inserts: values.inserts === '' ? 'Inserts must be picked' : null,
         }
 
         const foilValidationValues = {
@@ -154,7 +148,7 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
 
         const towValidationValues = {
           leash: values.leash === '' ? 'Pick leash' : null,
-          airbrush: values.leash === '' ? 'Select one' : null
+          airbrush: values.airbrush === '' ? 'Select one' : null,
         }
 
 
@@ -371,10 +365,10 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
                   allowDeselect
                   placeholder="pick one"
                   data={[
-                    { value: 'entry', label: 'entry' },
-                    { value: 'intermediate', label: 'intermediate' },
-                    { value: 'advanced', label: 'advanced' },
-                    { value: 'pro', label: 'pro' },
+                    { value: 'Entry', label: 'Entry' },
+                    { value: 'Intermediate', label: 'Intermediate' },
+                    { value: 'Advanced', label: 'Advanced' },
+                    { value: 'Pro', label: 'Pro' },
                   ]}
                   {...form.getInputProps('level')}
                 />
@@ -390,27 +384,35 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
 
             <Stepper.Completed>
               {boardType === "surf" ? (
-                  <PdfSurf 
+                  <div className='pdf-output'>
+                    <PdfSurf 
                     values={form.values} 
                     orderNum={orderNum} 
                     customer={newCustomer}
                   />
+                  </div>
                 ) : boardType === "windsurf" ?
-                (<PdfWS 
+                (<div className='pdf-output'>
+                  <PdfWS 
                   values={form.values} 
                   orderNum={orderNum} 
                   customer={newCustomer}
-                />) : boardType === "foil" ?
-                (<PdfFoil 
+                />
+                </div>) : boardType === "foil" ?
+                (<div className='pdf-output'>
+                  <PdfFoil 
                   values={form.values} 
                   orderNum={orderNum} 
                   customer={newCustomer}
-                />) :
-                (<PdfTow 
+                />
+                </div>) :
+                (<div className='pdf-output'>
+                  <PdfTow 
                   values={form.values} 
                   orderNum={orderNum} 
                   customer={newCustomer}
-                />) 
+                />
+                </div>) 
               }
             </Stepper.Completed>
             </Stepper>
