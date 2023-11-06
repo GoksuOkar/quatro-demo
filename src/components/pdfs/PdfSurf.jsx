@@ -1,7 +1,7 @@
 import { Avatar } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
 import './output.css';
-import { capitalizeFirstLetter, convertDate } from "../../utils/helpers.js";
+import { capitalizeFirstLetter, convertDate, createTodaysDate } from "../../utils/helpers.js";
 import myAvatarPerson from '../../pictures/black-avatar.jpg'
 import myAvatarBoard from '../../pictures/board-black.png'
 import myAvatarPen from '../../pictures/black-pen1.png'
@@ -20,15 +20,21 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <div className='order-type-heading'>
             <div className='order-title'>{capitalizeFirstLetter(values.orderType)}</div>
           </div>
-          <div className='order-date'>
-            <span>Order Created</span>
-            {convertDate(values.createdAt)}
-          </div>
+          {values.createdAt ? (
+            <div className='order-date'>
+              <span>Order Created</span>
+              {convertDate(values.createdAt)}
+          </div>) : (
+            <div className='order-date'>
+              <span>Order Created</span>
+              {createTodaysDate()}
+          </div> 
+          )}
         </div>
 
         <div className='contact-box'>
           <div className='avatar-info'>
-            <Avatar src={myAvatarPerson} size='80px'></Avatar>
+            <Avatar src={myAvatarPerson} size='70px'></Avatar>
             <span>Customer Information</span>
           </div>
           <div className='info-in-box'>
@@ -84,7 +90,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
           <div className='board-spec-box'>
             {/* Board Heading */}
             <div className='board-avatar-info'>
-              <Avatar src={myAvatarBoard} size='80px'></Avatar>
+              <Avatar src={myAvatarBoard} size='70px'></Avatar>
               <span style={{marginLeft: '-10px'}}>Board Specs</span>
             </div>
 
@@ -132,16 +138,20 @@ export default function PdfSurf({ values, orderNum, customer }) {
               {/* Third Box */}
               <div className='general-info'>
                 <div className='one-data'>
+                  <span>Fin Setup</span>
+                  {values.finSetup}
+                </div>
+                <div className='one-data'>
+                  <span>Box Type</span>
+                  {values.boxType}
+                </div>
+                <div className='one-data'>
                   <span>Box Color</span>
                   {values.boxColor}
                 </div>
                 <div className='one-data'>
-                <span>Box Type</span>
-                  {values.boxType}
-                </div>
-                <div className='one-data'>
                   <span>Board Color</span>
-                  {values.boardColor === "" ? <>&nbsp;</> : values.boardColor}
+                  {values.boardColor === "na" ? <>&nbsp;</> : values.boardColor}
                 </div>
                 <div className='one-data'>
                   <span>Logo Color</span>

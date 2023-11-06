@@ -108,7 +108,6 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
 
         const commonValidationValues = {
           volume: values.volume <= 0 ? 'Enter valid volume' : null,
-          blank: values.blank === '' ? 'Blank must be picked' : null,
           construction: values.construction === '' ? 'Construction must be picked' : null,
           waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
           pads: values.pads === '' ? 'Pick pads' : null,

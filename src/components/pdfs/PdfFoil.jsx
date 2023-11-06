@@ -1,6 +1,6 @@
 import { Avatar } from '@mantine/core';
 import './output.css';
-import { capitalizeFirstLetter, convertDate } from "../../utils/helpers.js";
+import { capitalizeFirstLetter, convertDate, createTodaysDate } from "../../utils/helpers.js";
 import myAvatarPerson from '../../pictures/black-avatar.jpg'
 import myAvatarBoard from '../../pictures/board-black.png'
 import myAvatarPen from '../../pictures/black-pen1.png'
@@ -17,15 +17,21 @@ export default function PdfFoil({ values, orderNum, customer }) {
           <div className='order-type-heading'>
             <div className='order-title'>{capitalizeFirstLetter(values.orderType)}</div>
           </div>
-          <div className='order-date'>
-            <span>Order Created</span>
-            {convertDate(values.createdAt)}
-          </div>
+          {values.createdAt ? (
+            <div className='order-date'>
+              <span>Order Created</span>
+              {convertDate(values.createdAt)}
+          </div>) : (
+            <div className='order-date'>
+              <span>Order Created</span>
+              {createTodaysDate()}
+          </div> 
+          )}
         </div>
 
         <div className='contact-box'>
           <div className='avatar-info'>
-            <Avatar src={myAvatarPerson} size='80px'></Avatar>
+            <Avatar src={myAvatarPerson} size='70px'></Avatar>
             <span>Customer Information</span>
           </div>
           <div className='info-in-box'>
@@ -81,7 +87,7 @@ export default function PdfFoil({ values, orderNum, customer }) {
           <div className='board-spec-box'>
             {/* Board Heading */}
             <div className='board-avatar-info'>
-              <Avatar src={myAvatarBoard} size='80px'></Avatar>
+              <Avatar src={myAvatarBoard} size='70px'></Avatar>
               <span style={{marginLeft: '-10px'}}>Board Specs</span>
             </div>
 

@@ -119,7 +119,6 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
 
         const commonValidationValues = {
           volume: values.volume <= 0 ? 'Enter valid volume' : null,
-          blank: values.blank === '' ? 'Blank must be picked' : null,
           construction: values.construction === '' ? 'Construction must be picked' : null,
           waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
           pads: values.pads === '' ? 'Pick pads' : null,
@@ -129,7 +128,6 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
         const surfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
           lengthFt: values.lengthFt <= 0 ? 'Enter valid length' : null,
-          lengthIn: values.lengthIn <= 0 ? 'Enter valid length' : null,
           width: values.width <= 0 ? 'Enter valid width' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
           boxColor: values.boxColor === '' ? 'Box color must be picked' : null,

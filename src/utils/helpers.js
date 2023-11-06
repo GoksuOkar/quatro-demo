@@ -17,16 +17,15 @@ export function getLastTwoDigitsOfYear() {
 }
 
 export function convertDate(d) {
-  let date = new Date(d.slice(0, 10));
-  if (!isNaN(date.getTime())) {
-      let day = date.getDate() + 1;
-      day = day.toString();
-      let month = (date.getMonth() + 1).toString();
-
-      return (month[1] ? month : '0' + month[0]) + '-' +
-         (day[1] ? day : '0' + day[0]) + '-' + 
-         date.getFullYear();
+  if (d) {
+    let date = new Date(d).toString().slice(4, 15);
+    return date;
   }
+}
+
+export function createTodaysDate() {
+  let date = new Date().toString().slice(4,15);
+  return date;
 }
 
 // export const Axios = axios.create({baseURL: 'https://frwdmauiapi.com:443'});
