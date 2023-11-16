@@ -8,6 +8,8 @@ import myAvatarPen from '../../pictures/black-pen1.png'
 //surf output
 
 export default function PdfSurf({ values, orderNum, customer }) {
+
+  console.log('surfValues:', values)
   const myref = useRef(null);
 
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
@@ -50,7 +52,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
               </div>
               <div className='one-data'>
                 <span>Email </span>
-                {customer.email === "na" ? null: customer.email}
+                {customer.email === "na" ? <>&nbsp;</>: customer.email}
               </div>
             </div>
             {/* Two */}
@@ -151,7 +153,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
                 </div>
                 <div className='one-data'>
                   <span>Board Color</span>
-                  {values.boardColor === "na" ? <>&nbsp;</> : values.boardColor}
+                  {values.boardColor === "" ? <>&nbsp;</> : values.boardColor}
                 </div>
                 <div className='one-data'>
                   <span>Logo Color</span>
