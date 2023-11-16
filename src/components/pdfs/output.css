@@ -129,17 +129,6 @@ span {
   margin-bottom: 30px;
 }
 
-#printcontents {
-  margin:auto;
-  display: grid;
-  height: 250mm;
-  width: 210mm;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 2fr 2fr;
-  row-gap: 20px;
-  column-gap: 4px;
-}
-
 .child {
   display: flex;
   flex-direction: column;

@@ -47,7 +47,7 @@ export default function PdfFoil({ values, orderNum, customer }) {
               </div>
               <div className='one-data'>
                 <span>Email </span>
-                {customer.email === "na" ? null: customer.email}
+                {customer.email === "na" ? <>&nbsp;</>: customer.email}
               </div>
             </div>
             {/* Two */}
