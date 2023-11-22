@@ -2,9 +2,9 @@
   .mantine-Stepper-steps, h1 { display: none;}
   .mantine-Group-root { display: none;}
   a { display: none;}
-  .outer-box {
+  /* .outer-box {
     margin-top: 30px;
-  }
+  } */
 
   ::-webkit-scrollbar {
     display: none;
@@ -34,7 +34,6 @@ span {
   flex-direction: column;
   height: 150px;
   width: 100%;
-  /* font-size: large; */
 }
 
 .customer-info {
@@ -43,7 +42,6 @@ span {
   justify-content: space-between;
   height: 200px;
   width: 200px;
-  /* font-size: large; */
 }
 
 .general-info {
@@ -90,7 +88,6 @@ span {
   flex-direction: column;
   height: 150px;
   width: 100%;
-  /* font-size: large; */
 }
 
 .notes-inner-div {
@@ -112,7 +109,6 @@ span {
 .order-date {
   display: flex;
   flex-direction: column;
-  /* font-size: large; */
 }
 
 .order-type-heading {
@@ -120,13 +116,14 @@ span {
   border-radius: 10px;
   padding: 0 19px;
   font-size: 70px;
+  height: 95px;
 }
 
 .title-box {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 .child {
@@ -171,4 +168,14 @@ span {
 
 .orderNum {
   background-color: gainsboro;
+}
+
+.qr-code {
+  height: 100px;
+  width: 100px;
+}
+
+.right-box-top {
+  display: flex;
+  flex-direction: column;
 }
