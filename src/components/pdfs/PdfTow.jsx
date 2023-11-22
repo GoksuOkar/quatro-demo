@@ -1,16 +1,22 @@
 import { Avatar } from '@mantine/core';
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './output.css';
 import { capitalizeFirstLetter, convertDate, createTodaysDate } from "../../utils/helpers.js";
 import myAvatarPerson from '../../pictures/black-avatar.jpg';
 import myAvatarBoard from '../../pictures/board-black.png';
 import myAvatarPen from '../../pictures/black-pen1.png';
-
+import QRCode from 'qrcode';
 //tow output
 
 export default function PdfTow({ values, orderNum, customer }) {
 
-  console.log("values: ", values);
+  const [src, setSrc] = useState('');
+
+  const url = 'https://www.google.com'; 
+
+  useEffect(() => {
+    QRCode.toDataURL(url).then(setSrc);
+  }, []);
 
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
@@ -22,16 +28,21 @@ export default function PdfTow({ values, orderNum, customer }) {
           <div className='order-type-heading'>
             <div className='order-title'>{capitalizeFirstLetter(values.orderType)}</div>
           </div>
-          {values.createdAt ? (
-            <div className='order-date'>
-              <span>Order Created</span>
-              {convertDate(values.createdAt)}
-          </div>) : (
-            <div className='order-date'>
-              <span>Order Created</span>
-              {createTodaysDate()}
-          </div> 
-          )}
+          <div className='right-box-top'>
+            {values.createdAt ? (
+              <div className='order-date'>
+                <span>Order Created</span>
+                {convertDate(values.createdAt)}
+            </div>) : (
+              <div className='order-date'>
+                <span>Order Created</span>
+                {createTodaysDate()}
+            </div> 
+            )}
+            <div>
+              <img className='qr-code' src={src}/>
+            </div>
+          </div>
         </div>
 
         <div className='contact-box'>
