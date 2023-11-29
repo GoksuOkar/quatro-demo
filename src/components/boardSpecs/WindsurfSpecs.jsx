@@ -1,6 +1,15 @@
 import { Select, NumberInput, TextInput, Group, Textarea, Title } from '@mantine/core';
+import { futureDate7 } from '../../utils/helpers';
+import { useEffect } from 'react';
 
 export default function WindsurfSpecs({ form }) {
+
+  useEffect(() => {
+    if (form.values.dueDate === "") {
+      form.setFieldValue('dueDate', futureDate7())
+    }
+  }, [])
+
   return (
     <>
       <Title order={3} mb={3}>WINDSURF</Title>
@@ -24,8 +33,9 @@ export default function WindsurfSpecs({ form }) {
         />
         <TextInput
           label="Due Date:"
-          placeholder="MM/DD/YYYY"
-          {...form.getInputProps("dueDate")}
+          value={form.values.dueDate}
+          onChange={(event) => form.setFieldValue('dueDate', event.currentTarget.value)}
+          // {...form.getInputProps("dueDate")}
         />
       </Group>
 

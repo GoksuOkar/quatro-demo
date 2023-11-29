@@ -1,7 +1,7 @@
 import { Avatar } from '@mantine/core';
 import { useRef, useEffect, useState } from 'react';
 import './output.css';
-import { capitalizeFirstLetter, convertDate, createTodaysDate } from "../../utils/helpers.js";
+import { capitalizeFirstLetter, convertDate, createTodaysDate, futureDate7 } from "../../utils/helpers.js";
 import myAvatarPerson from '../../pictures/black-avatar.jpg';
 import myAvatarBoard from '../../pictures/board-black.png';
 import myAvatarPen from '../../pictures/black-pen1.png';
@@ -10,7 +10,7 @@ import myAvatarPen from '../../pictures/black-pen1.png';
 
 export default function PdfTow({ values, orderNum, customer }) {
 
-  console.log("values: ", values);
+  // console.log("values: ", values);
 
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 

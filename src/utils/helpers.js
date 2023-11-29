@@ -28,5 +28,17 @@ export function createTodaysDate() {
   return date;
 }
 
+export function futureDate6() {
+  let date = new Date();
+  date.setDate(date.getDate() + 42);
+  return date.toString().slice(4, 15);
+}
+
+export function futureDate7() {
+  let date = new Date();
+  date.setDate(date.getDate() + 49);
+  return date.toString().slice(4, 15);
+}
+
 export const Axios = axios.create({baseURL: 'https://frwdmauiapi.com:443'});
 // export const Axios = axios.create({baseURL: 'http://localhost:3000'});
