@@ -116,8 +116,6 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
 
         const surfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
-          lengthFt: values.lengthFt <= 0 ? 'Enter valid length' : null,
-          lengthIn: values.lengthIn <= 0 ? 'Enter valid length' : null,
           width: values.width <= 0 ? 'Enter valid width' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
           boxColor: values.boxColor === '' ? 'Box color must be picked' : null,
