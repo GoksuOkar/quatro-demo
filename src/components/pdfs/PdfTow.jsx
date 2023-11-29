@@ -1,7 +1,7 @@
 import { Avatar } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import './output.css';
-import { capitalizeFirstLetter, convertDate, createTodaysDate } from "../../utils/helpers.js";
+import { capitalizeFirstLetter, convertDate, createTodaysDate, futureDate7 } from "../../utils/helpers.js";
 import myAvatarPerson from '../../pictures/black-avatar.jpg';
 import myAvatarBoard from '../../pictures/board-black.png';
 import myAvatarPen from '../../pictures/black-pen1.png';
@@ -12,7 +12,7 @@ export default function PdfTow({ values, orderNum, customer }) {
 
   const [src, setSrc] = useState('');
 
-  const url = 'https://www.google.com'; 
+  const url = 'https://www.google.com';
 
   useEffect(() => {
     QRCode.toDataURL(url).then(setSrc);

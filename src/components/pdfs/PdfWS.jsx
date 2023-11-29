@@ -1,6 +1,6 @@
 import { Avatar } from '@mantine/core';
 import './output.css';
-import { capitalizeFirstLetter, convertDate, createTodaysDate } from "../../utils/helpers.js";
+import { capitalizeFirstLetter, convertDate, createTodaysDate, futureDate7 } from "../../utils/helpers.js";
 import myAvatarPerson from '../../pictures/black-avatar.jpg'
 import myAvatarBoard from '../../pictures/board-black.png'
 import myAvatarPen from '../../pictures/black-pen1.png'

@@ -89,10 +89,6 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       finish: ''
     },
 
-    // transformValues: (values) => ({
-    //   rearStrap: `${values.rearStrap.replaceAll(regexFt, "ft").replaceAll(regexIn, "in")}`
-    // }),
-
     validate: (values) => {
       if (active === 0) {
         return {
@@ -127,7 +123,6 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
 
         const surfValidationValues = {
           tail: values.tail === '' ? 'Tail must be picked' : null,
-          lengthFt: values.lengthFt <= 0 ? 'Enter valid length' : null,
           width: values.width <= 0 ? 'Enter valid width' : null,
           finSetup: values.finSetup === '' ? 'Fin setup must be picked' : null,
           boxColor: values.boxColor === '' ? 'Box color must be picked' : null,
