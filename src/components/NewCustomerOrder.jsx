@@ -89,10 +89,6 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       finish: ''
     },
 
-    // transformValues: (values) => ({
-    //   rearStrap: `${values.rearStrap.replaceAll(regexFt, "ft").replaceAll(regexIn, "in")}`
-    // }),
-
     validate: (values) => {
       if (active === 0) {
         return {
