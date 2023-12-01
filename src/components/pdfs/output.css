@@ -138,12 +138,11 @@ span {
   display: flex;
   padding-top: 8px;
   justify-content: center;
-  /* margin-bottom: 15px; */
 }
 
 .r-div {
   color: red;
-  font-size: 80px;
+  font-size: 100px;
   font-weight: 500;
 }
 
