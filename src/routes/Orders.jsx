@@ -38,9 +38,9 @@ export default function Orders() {
   }, [])
 
   const orderTypeChange = (v) => {
-    let types = ["surf", "windsurf", "foil", "tow"];
+    let types = ["surf", "windsurf", "foil", "tow", "retail", "team", "wholesale"];
     if (types.includes(v)) {
-      let newDisplay = orders.filter((order) => (order.orderType == v));
+      let newDisplay = orders.filter((order) => (order.orderType == v || order.customerType == v));
       setDisplay(newDisplay);
       setNumOfPages(newDisplay.length);
       setType(v);
@@ -69,6 +69,9 @@ export default function Orders() {
           <Radio value="windsurf" label="Windsurf" />
           <Radio value="foil" label="Foil" />
           <Radio value="tow" label="Tow" />
+          <Radio value="retail" label="Retail" />
+          <Radio value="team" label="Team" />
+          <Radio value="wholesale" label="Whole Sale" />
         </Radio.Group>
         <Group>
           <form onSubmit={handleSearch} className='search-form'>

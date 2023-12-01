@@ -25,7 +25,7 @@ export default function OrdersTable ({ orders, activePage }) {
   let start = (activePage - 1) * 30;
   let end = start + 30;
 
-  console.log(orders[1])
+  console.log('orders: ' ,orders);
 
   const rows = orders.slice(start, end).map((o) => (
     <tr key={o.orderId} onClick={() => {goToOrder(o)}}>
