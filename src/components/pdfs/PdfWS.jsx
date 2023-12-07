@@ -1,4 +1,4 @@
-import { Avatar } from '@mantine/core';
+import { Avatar, Button, Anchor } from '@mantine/core';
 import './output.css';
 import { capitalizeFirstLetter, convertDate, createTodaysDate, futureDate7 } from "../../utils/helpers.js";
 import myAvatarPerson from '../../pictures/black-avatar.jpg'
@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import QRCode from 'qrcode';
 
 export default function PdfWS({ values, orderNum, customer }) {
+
+  console.log('WS-values', values)
 
   const [src, setSrc] = useState('');
 
@@ -101,8 +103,11 @@ export default function PdfWS({ values, orderNum, customer }) {
           <div className='board-spec-box'>
             {/* Board Heading */}
             <div className='board-avatar-info'>
-              <Avatar src={myAvatarBoard} size='70px'></Avatar>
-              <span style={{marginLeft: '-10px'}}>Board Specs</span>
+              <div className='logo-info'>
+                <Avatar src={myAvatarBoard} size='70px'></Avatar>
+                <span style={{marginLeft: '-10px'}}>Board Specs</span>
+              </div>
+              {values.image.length === '' ? null : <a href={values.image} target="_blank">Board Photo</a>}
             </div>
 
             <div className='info-in-box'>

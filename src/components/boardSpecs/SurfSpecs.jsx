@@ -1,6 +1,7 @@
 import { Select, NumberInput, TextInput, Group, Textarea, Title } from '@mantine/core';
 import { useEffect } from 'react';
 import { futureDate6 } from '../../utils/helpers';
+import UploadWidget from '../upload/UploadWidget';
 
 export default function SurfSpecs({ form }) {
 
@@ -281,6 +282,9 @@ export default function SurfSpecs({ form }) {
         placeholder="lbs"
         {...form.getInputProps("boardWeight")}
       />
+      </Group>
+      <Group mt={12}>
+        <UploadWidget form={form}/>
       </Group>
       <Textarea
         mt={3}

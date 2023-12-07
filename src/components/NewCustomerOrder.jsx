@@ -86,7 +86,8 @@ export default function NewCustomerOrder({ customer, newCustomer, setNewCustomer
       invoiceNum: '',
       dueDate: '',
       boardWeight: '',
-      finish: ''
+      finish: '',
+      image: ''
     },
 
     validate: (values) => {

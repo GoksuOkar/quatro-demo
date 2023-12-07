@@ -101,10 +101,13 @@ export default function PdfTow({ values, orderNum, customer }) {
           </div>
 
           <div className='board-spec-box'>
-            {/* Board Heading */}
-            <div className='board-avatar-info'>
-              <Avatar src={myAvatarBoard} size='70px'></Avatar>
-              <span style={{marginLeft: '-10px'}}>Board Specs</span>
+             {/* Board Heading */}
+             <div className='board-avatar-info'>
+              <div className='logo-info'>
+                <Avatar src={myAvatarBoard} size='70px'></Avatar>
+                <span style={{marginLeft: '-10px'}}>Board Specs</span>
+              </div>
+              {values.image.length === '' ? null : <a href={values.image} target="_blank">Board Photo</a>}
             </div>
 
             <div className='info-in-box'>
