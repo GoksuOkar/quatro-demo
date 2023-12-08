@@ -9,15 +9,15 @@ import QRCode from 'qrcode';
 
 export default function PdfWS({ values, orderNum, customer }) {
 
-  const [src, setSrc] = useState('');
+  let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
-  const url = 'https://forms.gle/CQz4sQkKEXN6q4on6'; 
+  const url = `https://docs.google.com/forms/d/e/1FAIpQLSeIwTqrOx95b12xhoh4hzNCSRXaUTCTFzOGaN6FtseEyklcxg/viewform?usp=pp_url&entry.428376193=${name}&entry.1361324807=${orderNum}`;
+
+  const [src, setSrc] = useState('');
 
   useEffect(() => {
     QRCode.toDataURL(url).then(setSrc);
   }, []);
-  
-  let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
   return (
     <>
