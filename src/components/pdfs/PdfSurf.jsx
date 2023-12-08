@@ -107,7 +107,7 @@ export default function PdfSurf({ values, orderNum, customer }) {
                 <Avatar src={myAvatarBoard} size='70px'></Avatar>
                 <span style={{marginLeft: '-10px'}}>Board Specs</span>
               </div>
-              {values.image.length === '' ? null : <a href={values.image} target="_blank">Board Photo</a>}
+              {values.image === '' ? null : <a href={values.image} target="_blank">Board Photo</a>}
             </div>
 
             <div className='info-in-box'>
