@@ -12,7 +12,8 @@ export default function PdfSurf({ values, orderNum, customer }) {
 
   const [src, setSrc] = useState('');
 
-  const url = 'https://forms.gle/CQz4sQkKEXN6q4on6';
+  // const url = 'https://forms.gle/CQz4sQkKEXN6q4on6';
+  const url = `https://docs.google.com/forms/d/e/1FAIpQLSeIwTqrOx95b12xhoh4hzNCSRXaUTCTFzOGaN6FtseEyklcxg/viewform?usp=pp_url&entry.1361324807=${orderNum}`;
 
   useEffect(() => {
     QRCode.toDataURL(url).then(setSrc);
