@@ -1,6 +1,7 @@
 import { Select, TextInput, Group, Textarea, NumberInput, Title } from '@mantine/core';
 import { futureDate7 } from '../../utils/helpers';
 import { useEffect } from 'react';
+import UploadWidget from '../upload/UploadWidget';
 //
 
 export default function TowSpecs({ form }) {
@@ -279,6 +280,9 @@ export default function TowSpecs({ form }) {
         placeholder="lbs"
         {...form.getInputProps("boardWeight")}
       />
+      </Group>
+      <Group mt={12}>
+        <UploadWidget form={form}/>
       </Group>
       <Textarea
         mt={3}

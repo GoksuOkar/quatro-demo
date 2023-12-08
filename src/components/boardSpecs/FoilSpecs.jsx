@@ -1,6 +1,7 @@
 import { Select, NumberInput, TextInput, Space, Group, Radio, Textarea, Title } from '@mantine/core';
 import { futureDate7 } from '../../utils/helpers';
 import { useEffect } from 'react';
+import UploadWidget from '../upload/UploadWidget';
 
 export default function FoilSpecs({ form }) {
 
@@ -234,6 +235,9 @@ export default function FoilSpecs({ form }) {
           <Radio size="sm" value="Bottom" label="Bottom" />
           <Radio size="sm" value="No" label="No" />
         </Radio.Group>
+      </Group>
+      <Group mt={12}>
+        <UploadWidget form={form}/>
       </Group>
       <Textarea
         mt={3}
