@@ -1,4 +1,4 @@
-import { Select, NumberInput, TextInput, Group, Textarea, Title } from '@mantine/core';
+import { Select, NumberInput, TextInput, Group, Textarea, Title, Radio, Flex } from '@mantine/core';
 import { useEffect } from 'react';
 import { futureDate6 } from '../../utils/helpers';
 import UploadWidget from '../upload/UploadWidget';
@@ -282,10 +282,20 @@ export default function SurfSpecs({ form }) {
         placeholder="lbs"
         {...form.getInputProps("boardWeight")}
       />
+      
       </Group>
-      <Group mt={12}>
+      <Flex mt={12} justify='space-between' align='center'>
+      <Radio.Group
+          name="Shop Flow"
+          label="Shop Flow:"
+          {...form.getInputProps("priority")}
+        >
+          <Radio size="sm" value="Red" label="Red" />
+          <Radio size="sm" value="Green" label="Green" />
+          <Radio size="sm" value="Yellow" label="Yellow" />
+        </Radio.Group>
         <UploadWidget form={form}/>
-      </Group>
+      </Flex>
       <Textarea
         mt={3}
         placeholder="type here"

@@ -1,10 +1,9 @@
 @media print {
   .mantine-Stepper-steps, h1 { display: none;}
   .mantine-Group-root { display: none;}
+
+  /* body {-webkit-print-color-adjust: exact;} */
   a { display: none;}
-  /* .outer-box {
-    margin-top: 30px;
-  } */
 
   ::-webkit-scrollbar {
     display: none;

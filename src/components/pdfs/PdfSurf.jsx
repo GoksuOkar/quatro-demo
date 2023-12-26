@@ -25,8 +25,11 @@ export default function PdfSurf({ values, orderNum, customer }) {
       <div className='outer-box'>
 
         <div className='title-box'>
-          <div className='order-type-heading'>
-            <div className='order-title'>{capitalizeFirstLetter(values.orderType)}</div>
+          <div style={{display: 'flex', justifyContent: 'space-between', width: '57%'}}>
+            <div className='order-type-heading'>
+              <div className='order-title'>{capitalizeFirstLetter(values.orderType)}</div>
+            </div>
+            {values.priority && <div style={{backgroundColor: values.priority.toLowerCase(), width: '125px', height: '125px', borderRadius: '50%'}}></div>}
           </div>
           <div className='right-box-top'>
             {values.createdAt ? (
