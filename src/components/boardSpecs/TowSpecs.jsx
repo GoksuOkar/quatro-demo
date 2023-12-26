@@ -1,4 +1,4 @@
-import { Select, TextInput, Group, Textarea, NumberInput, Title } from '@mantine/core';
+import { Select, TextInput, Group, Textarea, NumberInput, Title, Flex, Radio } from '@mantine/core';
 import { futureDate7 } from '../../utils/helpers';
 import { useEffect } from 'react';
 import UploadWidget from '../upload/UploadWidget';
@@ -281,9 +281,18 @@ export default function TowSpecs({ form }) {
         {...form.getInputProps("boardWeight")}
       />
       </Group>
-      <Group mt={12}>
+      <Flex mt={12} justify='space-between' align='center'>
+      <Radio.Group
+          name="Shop Flow"
+          label="Shop Flow:"
+          {...form.getInputProps("priority")}
+        >
+          <Radio size="sm" value="Red" label="Red" />
+          <Radio size="sm" value="Green" label="Green" />
+          <Radio size="sm" value="Yellow" label="Yellow" />
+        </Radio.Group>
         <UploadWidget form={form}/>
-      </Group>
+      </Flex>
       <Textarea
         mt={3}
         placeholder="type here"

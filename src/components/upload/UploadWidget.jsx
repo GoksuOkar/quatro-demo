@@ -4,7 +4,7 @@ import { Button } from "@mantine/core";
 
 export default function UploadWidget({ form }) {
 
-console.log('form-upload-widget', form);
+// console.log('form-upload-widget', form);
 
 const cloudinaryRef = useRef();
 const widgetRef = useRef();

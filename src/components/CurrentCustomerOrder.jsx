@@ -89,7 +89,8 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
       dueDate: '',
       boardWeight: '',
       finish: '',
-      image: ''
+      image: '',
+      priority: ''
     },
 
     transformValues: (values) => ({
