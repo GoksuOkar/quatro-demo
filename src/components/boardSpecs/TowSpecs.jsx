@@ -42,12 +42,6 @@ export default function TowSpecs({ form }) {
           step={0.5}
           {...form.getInputProps("lengthIn")}
         />
-        <NumberInput
-          label="Tow Weight:"
-          min={0}
-          step={2}
-          {...form.getInputProps("towWeight")}
-        />
       </Group>
 
       <Group>
