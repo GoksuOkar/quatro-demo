@@ -129,8 +129,8 @@ export default function PdfTow({ values, orderNum, customer }) {
                   {values.tail}
                 </div>
                 <div className='one-data'>
-                  <span>Tow Weight</span>
-                  {values.towWeight}
+                  <span>Board Weight</span>
+                  {values.boardWeight === '' ? <>&nbsp;</> : values.boardWeight}
                 </div>
               </div>
 
@@ -212,10 +212,6 @@ export default function PdfTow({ values, orderNum, customer }) {
                 <div className='one-data'>
                 <span>Airbrush</span>
                   {values.airbrush === '' ? <>&nbsp;</> : values.airbrush}
-                </div>
-                <div className='one-data'>
-                  <span>Board Weight</span>
-                  {values.boardWeight === '' ? <>&nbsp;</> : values.boardWeight}
                 </div>
               </div>
             </div>
