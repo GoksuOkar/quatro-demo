@@ -114,6 +114,7 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
           waveLocation: values.waveLocation === '' ? 'Location must be picked' : null,
           pads: values.pads === '' ? 'Pick pads' : null,
           boxType: values.boxType === '' ? 'Box type must be picked' : null,
+          dueDate: values.dueDate === '' ? 'Due date must be entered': null
         }
 
         const surfValidationValues = {
