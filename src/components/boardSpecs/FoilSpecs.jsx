@@ -5,11 +5,11 @@ import UploadWidget from '../upload/UploadWidget';
 
 export default function FoilSpecs({ form }) {
 
-  useEffect(() => {
-    if (form.values.dueDate === "") {
-      form.setFieldValue('dueDate', futureDate7())
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (form.values.dueDate === "") {
+  //     form.setFieldValue('dueDate', futureDate7())
+  //   }
+  // }, []);
 
 
   return (
@@ -38,9 +38,11 @@ export default function FoilSpecs({ form }) {
         />
         <TextInput
           label="Due Date:"
-          value={form.values.dueDate}
-          onChange={(event) => form.setFieldValue('dueDate', event.currentTarget.value)}
-          // {...form.getInputProps("dueDate")}
+          placeholder="type here"
+          withAsterisk
+          // value={form.values.dueDate}
+          // onChange={(event) => form.setFieldValue('dueDate', event.currentTarget.value)}
+          {...form.getInputProps("dueDate")}
         />
       </Group>
 
