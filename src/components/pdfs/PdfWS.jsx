@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import QRCode from 'qrcode';
 //Windsurf Output
 
-export default function PdfWS({ values, orderNum, customer }) {
+export default function ({values, orderNum, customer}) {
 
   let name = capitalizeFirstLetter(customer.firstName + " " + customer.lastName);
 
@@ -23,8 +23,8 @@ export default function PdfWS({ values, orderNum, customer }) {
   return (
     <>
       <div className='outer-box'>
-
-      <div className='title-box'>
+      
+        <div className='title-box'>
           <div style={{display: 'flex', justifyContent: 'space-between', width: '57%'}}>
             <div className='order-type-heading'>
               <div className='order-title'>{capitalizeFirstLetter(values.orderType)}</div>
@@ -48,187 +48,85 @@ export default function PdfWS({ values, orderNum, customer }) {
           </div>
         </div>
 
-        <div className='contact-box'>
-          <div className='avatar-info'>
-            <Avatar src={myAvatarPerson} size='70px'></Avatar>
-            <span>Customer Information</span>
-          </div>
-
-          <div className='info-in-box'>
-            {/* One */}
-            <div className='general-info'>
-              <div className='one-data'>
-                <span>Name </span>
-                {name}
-              </div>
-              <div className='one-data'>
-                <span>Phone </span>
-                {customer.phone === "na" ? <>&nbsp;</> : customer.phone}
-              </div>
-              <div className='one-data'>
-                <span>Email </span>
-                {customer.email === "na" ? <>&nbsp;</> : customer.email}
-              </div>
+        <div className='wide-box-1'>
+          <div className='row'>
+            <div className='dataa'>
+              {name}
             </div>
-            {/* Two */}
-            <div className='general-info'>
-              <div className='one-data'>
-                <span>Weight </span>
-                {customer.weight}
-              </div>
-              <div className='one-data'>
-                <span>Height </span>
-                {` ${customer.heightFt}' ${customer.heightIn}`}
-              </div>
-              <div className='one-data'>
-                <span>Level </span>
-                {customer.level}
-              </div>
+            <div className='dataa'>
+              {orderNum}
             </div>
-            {/* Three */}
-            <div className='general-info'>
-              <div className='one-data'>
-                <span>Location </span>
-                {values.waveLocation}
-              </div>
-              <div className='one-data'>
-                <span>Order #</span>
-                {orderNum}
-              </div>
-              <div className='one-data'>
-                <span>Invoice #</span>
-                {values.invoiceNum === '' ? <>&nbsp;</> : values.invoiceNum}
-              </div>
+            <div className='dataa'>
+              &nbsp;
+            </div>
+            <div className='dataa'>
+              &nbsp;
             </div>
           </div>
-
-          <div className='board-spec-box'>
-            {/* Board Heading */}
-            <div className='board-avatar-info'>
-              <div className='logo-info'>
-                <Avatar src={myAvatarBoard} size='70px'></Avatar>
-                <span style={{marginLeft: '-10px'}}>Board Specs</span>
-              </div>
-              {values.image === '' ? null : <a href={values.image} target="_blank">Board Photo</a>}
+          <div className='row'>
+            <div className='dataa'>
+              {values.construction}
             </div>
-
-            <div className='info-in-box'>
-              {/* First Box */}
-              <div className='general-info'>
-                <div className='one-data'>
-                  <span>Style</span>
-                  {values.style}
-                </div>
-                <div className='one-data'>
-                  <span>Construction</span>
-                  {values.construction}
-                </div>
-                <div className='one-data'>
-                  <span>Blank</span>
-                  {values.blank}
-                </div>
-                <div className='one-data'>
-                  <span>Tail</span>
-                  {values.tail}
-                </div>
-              </div>
-
-              {/* Second Box */}
-              <div className='general-info'>
-                <div className='one-data'>
-                  <span>Length</span>
-                  {` ${values.lengthFt}' ${values.lengthIn}`}
-                </div>
-                <div className='one-data'>
-                  <span>Width</span>
-                  {values.width}
-                </div>
-                <div className='one-data'>
-                  <span>Volume</span>
-                  {values.volume}
-                </div>
-                <div className='one-data'>
-                <span>Thickness</span>
-                {values.thickness === "" ? <>&nbsp;</> : values.thickness}
-                  
-                </div>
-              </div>
-
-              {/* Third Box */}
-              <div className='general-info'>
-                <div className='one-data'>
-                  <span>Fin Setup</span>
-                  {values.finSetup}
-                </div>
-                <div className='one-data'>
-                  <span>Box Type</span>
-                  {values.boxType}
-                </div>
-                <div className='one-data'>
-                  <span>Inserts</span>
-                  {values.inserts}
-                </div>
-                <div className='one-data'>
-                  <span>Strap Width</span>
-                  {values.strapWidth === "" ? <>&nbsp;</> : values.strapWidth}
-                </div>
-                <div className='one-data'>
-                  <span>Stance</span>
-                  {values.stance}
-                </div>
-              </div>
-
-              {/* Fourth Box */}
-              <div className='general-info'>
-                <div className='one-data'>
-                  <span>Board Color</span>
-                  {values.boardColor}
-                </div>
-                <div className='one-data'>
-                  <span>Logo Color</span>
-                  {values.logo}
-                </div>
-                <div className='one-data'>
-                  <span>Pads</span>
-                  {values.pads}
-                </div>
-                <div className='one-data'>
-                  <span>Air Brush</span>
-                  {values.airbrush === "" ? <>&nbsp;</> : values.airbrush}
-                </div>
-                <div className='one-data'>
-                  <span>Finish</span>
-                  {values.finish === "" ? <>&nbsp;</> : values.finish}
-                </div>
-                <div className='one-data'>
-                  <span>Board Weight</span>
-                  {values.boardWeight === "" ? <>&nbsp;</> : values.boardWeight}
-                </div>
-              </div>
-
-
-
+            <div className='dataa'>
+              {values.finSetup}
             </div>
-
-            {/* Notes */}
-            <div className='notes-outer-box'>
-              <div className='notes-avatar-info'>
-                <Avatar mr={5} src={myAvatarPen} size='70px'></Avatar>
-                <span>Notes</span>
-              </div>
-
-              {/* Text Area */}
-              <div className='notes-inner-div'>
-                <div>{values.notes}</div>
-              </div>
+            <div className='dataa'>
+              {capitalizeFirstLetter(values.tail)}
             </div>
-
-            <div className='rush'>
-              {values.dueDate === "" ? null : (<div className='r-div'>DUE {values.dueDate}</div>)}
+            <div className='dataa'>
+              &nbsp;
             </div>
-
+          </div>
+            <div className='row'>
+              {values.airbrush === "" ? null : <div className='dataa'>
+                <u><span className='heading'>Air Brush:</span></u>
+                {values.airbrush}
+              </div>}
+              <div className='dataa'>
+                <u><span className='heading'>Board Color:</span></u>
+                {values.boardColor}
+              </div>
+              <div className='dataa'>
+                <u><span className='heading'>Pad Color:</span></u>
+                {values.pads}
+              </div>
+              <div className='dataa'>
+                <u><span className='heading'>Logo Color:</span></u>
+                {values.logo}
+              </div>
           </div>
         </div>
+
+        <div className='wide-box-2'>
+          <div className='row'>
+            <div className='dataa'>
+              <u><span className='heading'>Inserts:</span></u>
+              {values.inserts}
+            </div>
+            <div className='dataa'>
+              <u><span className='heading'>Stance:</span></u>
+              {values.stance}
+            </div>
+            <div className='dataa'>
+              <u><span className='heading'>Strap Width:</span></u>
+              {values.strapWidth === "" ? <>&nbsp;</> : values.strapWidth}
+            </div>
+          </div>
+          <div className='row'>
+            <div className='dataa'>
+              <u><span className='heading'>Volume:</span></u>
+              {values.volume}
+            </div>
+            <div className='dataa'>
+              <u><span className='heading'>Length:</span></u>
+              {` ${values.lengthFt}' ${values.lengthIn}`}
+            </div>
+            <div className='dataa'>
+              &nbsp;
+            </div>
+          </div>
+        </div>
+
       </div>
     </>
   );
