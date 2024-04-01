@@ -117,10 +117,16 @@ export default function WindsurfSpecs({ form }) {
           allowdeselect="true"
           {...form.getInputProps("boardColor")}
         />
-        <TextInput
-          label="Pads Color:"
+        <Select
+          label="Pad Color:"
           withAsterisk
-          placeholder="type here"
+          placeholder="pick one"
+          allowdeselect="true"
+          data={[
+            { value: "Black", label: "Black" },
+            { value: "White", label: "White" },
+            { value: "tba", label: "tba" },
+          ]}
           {...form.getInputProps("pads")}
         />
         
@@ -135,11 +141,11 @@ export default function WindsurfSpecs({ form }) {
           placeholder="pick one"
           allowdeselect="true"
           data={[
+            { value: "Single", label: "Single" },
+            { value: "Twin", label: "Twin" },
             { value: "Thruster", label: "Thruster" },
             { value: "Quad", label: "Quad" },
-            { value: "Twin", label: "Twin" },
-            { value: "Single", label: "Single" },
-            { value: "Five Fin", label: "Five Fin" },
+            { value: "Five Fin", label: "Five Fin" }
           ]}
           {...form.getInputProps("finSetup")}
         />
@@ -204,15 +210,15 @@ export default function WindsurfSpecs({ form }) {
           label="Airbrush:"
           placeholder="pick one"
           data={[
-            { value: "yes", label: "yes" },
-            { value: "no", label: "no" },
+            { value: "Yes", label: "Yes" },
+            { value: "No", label: "No" },
           ]}
           {...form.getInputProps("airbrush")}
         />
         <TextInput
             label="Finish:"
             placeholder="type here"
-            {...form.getInputProps("Finish")}
+            {...form.getInputProps("finish")}
           />
         <TextInput
           label="Board Weight:"
