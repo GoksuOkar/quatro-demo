@@ -212,6 +212,10 @@ export default function ({values, orderNum, customer}) {
 
         </div>
 
+        <div className='board-pic-button'>
+          {values.image === '' ? null : <a href={values.image} target="_blank">Board Photo</a>}
+        </div>
+
         <div className='rush'>
           {values.dueDate === "" ? null : (<div className='r-div'>DUE {values.dueDate}</div>)}
         </div>
