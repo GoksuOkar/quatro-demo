@@ -35,7 +35,7 @@ export default function ({values, orderNum, customer}) {
     setup = thruster;
    } else if (setup === 'Quad') {
     setup = quad;
-   } else if (setup === 'Quad') {
+   } else if (setup === 'Five Fin') {
     setup = fiveFin;
    }
 
@@ -115,7 +115,6 @@ export default function ({values, orderNum, customer}) {
               <u><span className='heading'>Pad Color:</span></u>
               {values.pads}
             </div>
-            
             {values.airbrush === "" ? null : <div className='dataa'>
               <u><span className='heading'>Air Brush:</span></u>
               {values.airbrush}
