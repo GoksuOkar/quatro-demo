@@ -286,12 +286,12 @@ export default function CurrentCustomerOrder({ customer, setCustomer, values }) 
               >
                 <Radio size='sm' value='retail' label='Retail'/>
                 <Radio size='sm' value='team' label='Team'/>
-                <Radio size='sm' value='gratis' label='Gratis'/>
+                {/* <Radio size='sm' value='gratis' label='Gratis'/> */}
                 <Radio size='sm' value='wholesale' label='Wholesale'/>
               </Radio.Group>
 
               <Select
-                label="Approved By (only for team and gratis orders)"
+                label="Approved By (only for team orders)"
                 allowDeselect
                 placeholder="Approved by"
                 data={[
