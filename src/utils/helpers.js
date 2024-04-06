@@ -40,5 +40,5 @@ export function futureDate7() {
   return date.toString().slice(4, 15);
 }
 
-// export const Axios = axios.create({baseURL: 'https://frwdmauiapi.com:443'});
-export const Axios = axios.create({baseURL: 'http://localhost:3000'});
+export const Axios = axios.create({baseURL: 'https://frwdmauiapi.com:443'});
+// export const Axios = axios.create({baseURL: 'http://localhost:3000'});

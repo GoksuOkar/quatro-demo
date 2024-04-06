@@ -125,7 +125,7 @@ export default function WindsurfSpecs({ form }) {
           data={[
             { value: "Black", label: "Black" },
             { value: "White", label: "White" },
-            { value: "tba", label: "tba" },
+            { value: "TBA", label: "TBA" },
           ]}
           {...form.getInputProps("pads")}
         />

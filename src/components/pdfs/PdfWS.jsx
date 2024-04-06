@@ -108,19 +108,21 @@ export default function ({values, orderNum, customer}) {
               {values.boardColor}
             </div>
             <div className='dataa'>
-              <u><span className='heading'>Pad Color:</span></u>
-              {values.pads}
-            </div>
-            <div className='dataa'>
               <u><span className='heading'>Logo Color:</span></u>
               {values.logo}
             </div>
             <div className='dataa'>
-              &nbsp;
+              <u><span className='heading'>Pad Color:</span></u>
+              {values.pads}
             </div>
+            
+            {values.airbrush === "" ? null : <div className='dataa'>
+              <u><span className='heading'>Air Brush:</span></u>
+              {values.airbrush}
+            </div>}
           </div>
 
-          <div className='row'>
+          {/* <div className='row'>
             {values.airbrush === "" ? null : <div className='dataa'>
               <u><span className='heading'>Air Brush:</span></u>
               {values.airbrush}
@@ -137,7 +139,7 @@ export default function ({values, orderNum, customer}) {
             <div className='dataa'>
               &nbsp;
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className='wide-box-2'>
