@@ -7,6 +7,7 @@ import myAvatarPen from '../../pictures/black-pen1.png'
 import blackPad from '../../pictures/black-pad.png';
 import whitePad from '../../pictures/white-pad.png';
 import padsTBA from '../../pictures/pads-tba.png';
+import single from '../../pictures/single.png';
 import thruster from '../../pictures/thruster.png';
 import quad from '../../pictures/quad.png';
 import fiveFin from '../../pictures/five.png';
@@ -31,7 +32,9 @@ export default function ({values, orderNum, customer}) {
   const finSetup = (setup) => {
     console.log(setup)
 
-   if (setup === "Thruster") {
+   if (setup === "Single") {
+    setup = single;
+   } else if (setup === 'Thruster') {
     setup = thruster;
    } else if (setup === 'Quad') {
     setup = quad;
