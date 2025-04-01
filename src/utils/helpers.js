@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export function capitalizeFirstLetter(string) {
   if (string) {
@@ -24,7 +24,7 @@ export function convertDate(d) {
 }
 
 export function createTodaysDate() {
-  let date = new Date().toString().slice(4,15);
+  let date = new Date().toString().slice(4, 15);
   return date;
 }
 
@@ -40,5 +40,5 @@ export function futureDate7() {
   return date.toString().slice(4, 15);
 }
 
-export const Axios = axios.create({baseURL: 'https://frwdmauiapi.com:443'});
-// export const Axios = axios.create({baseURL: 'http://localhost:3000'});
+export const Axios = axios.create({ baseURL: "https://frwdmauiapi.com:443" });
+// export const Axios = axios.create({ baseURL: "http://localhost:3000" });
