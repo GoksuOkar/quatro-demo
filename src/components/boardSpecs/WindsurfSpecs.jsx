@@ -1,10 +1,18 @@
-import { Select, NumberInput, TextInput, Group, Textarea, Title, Flex, Radio } from '@mantine/core';
-import { futureDate7 } from '../../utils/helpers';
-import { useEffect } from 'react';
-import UploadWidget from '../upload/UploadWidget';
+import {
+  Select,
+  NumberInput,
+  TextInput,
+  Group,
+  Textarea,
+  Title,
+  Flex,
+  Radio,
+} from "@mantine/core";
+import { futureDate7 } from "../../utils/helpers";
+import { useEffect } from "react";
+import UploadWidget from "../upload/UploadWidget";
 
 export default function WindsurfSpecs({ form }) {
-
   // useEffect(() => {
   //   if (form.values.dueDate === "") {
   //     form.setFieldValue('dueDate', futureDate7())
@@ -13,7 +21,9 @@ export default function WindsurfSpecs({ form }) {
 
   return (
     <>
-      <Title order={3} mb={3}>WINDSURF</Title>
+      <Title order={3} mb={3}>
+        WINDSURF
+      </Title>
       <Group>
         <Select
           label="Style:"
@@ -51,14 +61,10 @@ export default function WindsurfSpecs({ form }) {
           precision={2}
           {...form.getInputProps("volume")}
         />
-        <NumberInput 
-          label="Length(ft):" 
-          {...form.getInputProps("lengthFt")} 
-        />
+        <NumberInput label="Length(ft):" {...form.getInputProps("lengthFt")} />
       </Group>
 
       <Group>
-        
         <NumberInput
           label="Length(in):"
           precision={2}
@@ -95,16 +101,15 @@ export default function WindsurfSpecs({ form }) {
           allowdeselect="true"
           data={[
             { value: "Regular", label: "Regular" },
-            { value: "Ultra Lite", label: "Ultra Lite" },
             { value: "Pro", label: "Pro" },
-            { value: "Custom", label: "Custom" },
+            { value: "Ultra Lite", label: "Ultra Lite" },
           ]}
           {...form.getInputProps("construction")}
         />
       </Group>
 
       <Group>
-      <TextInput
+        <TextInput
           label="Logo Color:"
           withAsterisk
           placeholder="type here"
@@ -129,12 +134,9 @@ export default function WindsurfSpecs({ form }) {
           ]}
           {...form.getInputProps("pads")}
         />
-        
-        </Group>
+      </Group>
 
-        
-
-        <Group>
+      <Group>
         <Select
           label="Fin Setup:"
           withAsterisk
@@ -145,67 +147,63 @@ export default function WindsurfSpecs({ form }) {
             { value: "Twin", label: "Twin" },
             { value: "Thruster", label: "Thruster" },
             { value: "Quad", label: "Quad" },
-            { value: "Five Fin", label: "Five Fin" }
+            { value: "Five Fin", label: "Five Fin" },
           ]}
           {...form.getInputProps("finSetup")}
         />
-          <Select
-            label="Box Type:"
-            withAsterisk
-            placeholder="pick one"
-            allowdeselect="true"
-            data={[
-              { value: "US", label: "US" },
-              { value: "Power Box", label: "Power Box" },
-              { value: "Custom Mix", label: "Custom Mix" },
-            ]}
-            {...form.getInputProps("boxType")}
-          />
-          <TextInput
-            label="Stance:"
-            placeholder="type here"
-            {...form.getInputProps("stance")}
-          />
-          
-        </Group>
-        
-        <Group>
-          <Select
-            label="Inserts:"
-            withAsterisk
-            placeholder="pick one"
-            allowdeselect="true"
-            data={[
-              { value: "single", label: "single" },
-              { value: "double", label: "double" },
-              { value: "single/double", label: "single/double" },
-              { value: "see notes", label: "see notes" },
-              { value: "none", label: "none" },
-            ]}
-            {...form.getInputProps("inserts")}
-          />
-          <TextInput
-            label="Rear Strap From Tail:"
-            placeholder="type here"
-            {...form.getInputProps("rearStrap")}
-          />
-          <TextInput
-            label="Strap Width:"
-            placeholder="type here"
-            {...form.getInputProps("strapWidth")}
-          />
-        </Group>
-         
-      
+        <Select
+          label="Box Type:"
+          withAsterisk
+          placeholder="pick one"
+          allowdeselect="true"
+          data={[
+            { value: "US", label: "US" },
+            { value: "Power Box", label: "Power Box" },
+            { value: "Custom Mix", label: "Custom Mix" },
+          ]}
+          {...form.getInputProps("boxType")}
+        />
+        <TextInput
+          label="Stance:"
+          placeholder="type here"
+          {...form.getInputProps("stance")}
+        />
+      </Group>
 
+      <Group>
+        <Select
+          label="Inserts:"
+          withAsterisk
+          placeholder="pick one"
+          allowdeselect="true"
+          data={[
+            { value: "single", label: "single" },
+            { value: "double", label: "double" },
+            { value: "single/double", label: "single/double" },
+            { value: "see notes", label: "see notes" },
+            { value: "none", label: "none" },
+          ]}
+          {...form.getInputProps("inserts")}
+        />
+        <TextInput
+          label="Rear Strap From Tail:"
+          placeholder="type here"
+          {...form.getInputProps("rearStrap")}
+        />
+        <TextInput
+          label="Strap Width:"
+          placeholder="type here"
+          {...form.getInputProps("strapWidth")}
+        />
+      </Group>
 
       <Group>
         <TextInput
-            label="Wave/Location:"
-            withAsterisk
-            placeholder="type here"
-            {...form.getInputProps("waveLocation")}
-          />
+          label="Wave/Location:"
+          withAsterisk
+          placeholder="type here"
+          {...form.getInputProps("waveLocation")}
+        />
         <Select
           label="Airbrush:"
           placeholder="pick one"
@@ -216,18 +214,18 @@ export default function WindsurfSpecs({ form }) {
           {...form.getInputProps("airbrush")}
         />
         <TextInput
-            label="Finish:"
-            placeholder="type here"
-            {...form.getInputProps("finish")}
-          />
+          label="Finish:"
+          placeholder="type here"
+          {...form.getInputProps("finish")}
+        />
         <TextInput
           label="Board Weight:"
           placeholder="lbs"
           {...form.getInputProps("boardWeight")}
         />
       </Group>
-      <Flex mt={12} justify='space-between' align='center'>
-      <Radio.Group
+      <Flex mt={12} justify="space-between" align="center">
+        <Radio.Group
           name="Shop Flow"
           label="Shop Flow:"
           {...form.getInputProps("priority")}
@@ -236,7 +234,7 @@ export default function WindsurfSpecs({ form }) {
           <Radio size="sm" value="Green" label="Green" />
           <Radio size="sm" value="Yellow" label="Yellow" />
         </Radio.Group>
-        <UploadWidget form={form}/>
+        <UploadWidget form={form} />
       </Flex>
       <Textarea
         mt={3}
